@@ -1,0 +1,41 @@
+{
+  "patient_id": "SYNTHETIC_MOCK_001",
+  "visit_date": "2026-10-15",
+  "department": "Khoa Khám Bệnh Đa Khoa - Vinmec",
+  "test_category": "Sinh hóa máu (Biochemistry Panel)",
+  "results": [
+    {
+      "test_name": "AST (SGOT)",
+      "value": 52.0,
+      "unit": "U/L",
+      "reference_range": "< 40",
+      "status": "HIGH",
+      "flag": "H"
+    },
+    {
+      "test_name": "ALT (SGPT)",
+      "value": 58.0,
+      "unit": "U/L",
+      "reference_range": "< 40",
+      "status": "HIGH",
+      "flag": "H"
+    },
+    {
+      "test_name": "Creatinine",
+      "value": 85.0,
+      "unit": "µmol/L",
+      "reference_range": "62 - 106",
+      "status": "NORMAL",
+      "flag": ""
+    },
+    {
+      "test_name": "Glucose (Máu lúc đói)",
+      "value": 5.2,
+      "unit": "mmol/L",
+      "reference_range": "3.9 - 6.4",
+      "status": "NORMAL",
+      "flag": ""
+    }
+  ],
+  "disclaimer": "Dữ liệu giả lập 100% phục vụ nghiên cứu trải nghiệm người dùng VinUni VRIC. Không chứa thông tin bệnh nhân thực tế."
+}
