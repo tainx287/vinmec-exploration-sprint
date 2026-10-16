@@ -25,7 +25,7 @@ Toàn bộ tài liệu, bằng chứng nghiên cứu và mã nguồn được c�
 
 | Thư mục / File | Mô tả nội dung chi tiết | Liên kết nhanh |
 | :--- | :--- | :--- |
-| `01-phong-van/` | Ghi chép dùng thử MyVinmec, Interview Guide, biên bản phỏng vấn ẩn danh P1–P3 và tổng hợp Insight. | [Xem 01-phong-van](./01-phong-van/interview-guide.md) |
+| `01-phong-van/` | Ghi chép dùng thử MyVinmec, Interview Guide, biên bản phỏng vấn P1–P3, tổng hợp Insight & **Cẩm nang phỏng vấn thực địa bệnh viện (6 nhóm đối tượng & 4 chủ đề)**. | [Xem 01-phong-van](./01-phong-van/interview-guide.md) · [Ngân hàng câu hỏi](./01-phong-van/fieldwork-stakeholder-questions.md) |
 | `02-journey-map/` | Bản đồ hành trình (Workflow Journey Map) và ma trận phân tích điểm đau (Pain points analysis). | [Xem 02-journey-map](./02-journey-map/workflow-journey-map.md) |
 | `03-need-statement/` | Tuyên bố nhu cầu chuẩn Stanford Biodesign (không chứa công nghệ/giải pháp). | [Xem 03-need-statement](./03-need-statement/need-statement.md) |
 | `04-best-practice/` | Nghiên cứu 3 mô hình quốc tế (Mayo Clinic, Cleveland Clinic/MyChart, Ada Health/NHS) & bài học cho Vinmec. | [Xem 04-best-practice](./04-best-practice/international-benchmarks.md) |
