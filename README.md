@@ -28,7 +28,7 @@ Toàn bộ tài liệu, bằng chứng nghiên cứu và mã nguồn được c�
 | `01-phong-van/` | Ghi chép dùng thử MyVinmec (Bạn làm gì – Thấy gì – Vướng ở đâu), Interview Guide, biên bản phỏng vấn 3 người dùng (P1–P3 theo quy chế bảo mật), tổng hợp Insight & **Bộ công cụ câu hỏi thực địa chuẩn bị cho Sprint 6 tuần (Fieldwork Question Bank để K1–K3 coach K4 khi Onboard vào viện)**. | [Dùng thử MyVinmec](./01-phong-van/myvinmec-heuristic-audit.md) · [Interview Guide](./01-phong-van/interview-guide.md) · [Nhật ký P1–P3](./01-phong-van/interview-notes.md) · [Ngân hàng câu hỏi 6 tuần](./01-phong-van/fieldwork-stakeholder-questions.md) |
 | `02-journey-map/` | Bản đồ hành trình (Workflow Journey Map) và ma trận phân tích điểm đau (Pain points analysis). | [Xem 02-journey-map](./02-journey-map/workflow-journey-map.md) |
 | `03-need-statement/` | Tuyên bố nhu cầu chuẩn Stanford Biodesign (không chứa công nghệ/giải pháp). | [Xem 03-need-statement](./03-need-statement/need-statement.md) |
-| `04-best-practice/` | Nghiên cứu 3 mô hình quốc tế (Mayo Clinic, Cleveland Clinic/MyChart, Ada Health/NHS) & bài học cho Vinmec. | [Xem 04-best-practice](./04-best-practice/international-benchmarks.md) |
+| `04-best-practice/` | Nghiên cứu 3 mô hình quốc tế (Mayo Clinic, Cleveland Clinic/MyChart, Ada Health/NHS) & bài học cho thiết kế trải nghiệm khám tại Vinmec. | [Xem 04-best-practice](./04-best-practice/international-benchmarks.md) |
 | `05-prototype/` | Mã nguồn/thiết kế prototype AI: **Giao diện điện thoại MyVinmec độc lập ([Xem trực tiếp index.html](./05-prototype/index.html))**, script **1-click [start.bat](./05-prototype/start.bat)**, bản Streamlit (`app.py`), System Instructions và User Testing Logs. | [Xem trực tiếp Prototype](./05-prototype/index.html) · [Hướng dẫn kỹ thuật](./05-prototype/README.md) |
 | `06-rui-ro-dao-duc/` | Phân tích rủi ro an toàn thông tin (Nghị định 13/2023/NĐ-CP, HIPAA), Ảo giác AI và Quy trình chuyển tuyến khẩn cấp. | [Xem 06-rui-ro-dao-duc](./06-rui-ro-dao-duc/safety-and-privacy-risks.md) |
 | `07-coach-plan/` | Bản kế hoạch 1 trang dẫn dắt nhóm K4: Lịch trình các cổng, quy trình review tuần, chiến lược gỡ rối và Quality Gate. | [Xem 07-coach-plan](./07-coach-plan/k4-coaching-framework.md) |
@@ -43,7 +43,7 @@ Giải pháp tập trung vào **"MyVinmec Plain-Language Care Navigator"** — T
 * **Escalation Protocol tự động:** Tự động phát hiện các từ khóa nguy kịch (Red Flag Symptoms) và lập tức cung cấp số hotline cấp cứu Vinmec / 115 cùng hướng dẫn tới phòng Cấp cứu gần nhất.
 * **Tech Stack Prototype:**
   * **Frontend:** Streamlit / Web UI tương tác mô phỏng giao diện MyVinmec.
-  * **LLM Engine:** Gemini 1.5 Flash / Claude 3.5 Sonnet với System Prompt có Guardrail nghiêm ngặt.
+  * **LLM Engine:** Agness API với System Prompt có Guardrail nghiêm ngặt.
   * **Synthetic Mock Data:** Bộ dữ liệu xét nghiệm máu/nước tiểu giả lập 100%, không chứa bất kỳ thông tin bệnh nhân thật nào.
 
 ```mermaid
@@ -71,6 +71,9 @@ Tuân thủ nghiêm ngặt quy định tại Mục 6.4 & 142 của tài liệu h
 | **06. Rủi ro & Đạo đức** | **25% AI** (AI hỗ trợ tra cứu điều khoản luật) | Ứng viên đối chiếu Nghị định 13/2023/NĐ-CP, HIPAA và trực tiếp xây dựng quy trình chuyển tuyến khẩn cấp phù hợp quy chế y tế. |
 | **07. Coach Plan K4** | **10% AI** (AI hỗ trợ căn chỉnh bố cục 1 trang) | Ứng viên đúc kết 100% từ kinh nghiệm làm Lab Coach / Team Lead các khóa trước để thiết lập khung hỗ trợ nhóm K4 thực chiến. |
 | **Slides Deck** | **20% AI** (AI hỗ trợ dàn ý tóm tắt) | Ứng viên biên soạn nội dung, chọn lọc thông điệp và thiết kế bản thuyết trình 10 slide. |
+
+> 📌 **Công khai Prompts & Nhật ký phát triển AI:** Toàn bộ System Instructions, Guardrails Rules của Prototype và các câu lệnh Prompt chỉ đạo AI trong quá trình xây dựng được công khai minh bạch tại:  
+> 👉 **[05-prototype/prompts-and-system-instructions.md](./05-prototype/prompts-and-system-instructions.md)**
 
 ---
 

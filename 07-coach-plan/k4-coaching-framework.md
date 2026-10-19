@@ -1,4 +1,4 @@
-﻿# Kế Hoạch 1 Trang: Dẫn Dắt & Huấn Luyện Nhóm K4 (K4 Coaching Framework)
+# Kế Hoạch 1 Trang: Dẫn Dắt & Huấn Luyện Nhóm K4 (K4 Coaching Framework)
 
 > **Người thực hiện:** Nguyễn Xuân Tài — Cựu học viên K2 (Lab Coach / Technical Lead)  
 > **Vai trò:** K2 Lab Coach / Technical Lead & Forward Deployed Engineer  
@@ -24,7 +24,7 @@ timeline
 | Tuần | Trọng tâm học viên K4 | Vai trò của Coach (K1–K3) | Sản phẩm nghiệm thu (Deliverables) |
 | :--- | :--- | :--- | :--- |
 | **Tuần 0** | Hoàn thành đào tạo Vinmec, ký NDA, hiểu quy tắc dữ liệu bệnh viện. | Ôn tập, giải đáp thắc mắc, kiểm tra chéo kiến thức bảo mật; chuẩn bị tâm thế vào viện. | 100% học viên đỗ bài test đầu vào ≥ 80%. |
-| **Tuần 1** | Đi thực địa cùng bác sĩ/điều dưỡng; ghi chép quan sát hiện trường. | Đi cùng nhóm trong 2 buổi đầu; hướng dẫn cách ghi chú khách quan, không làm phiền y bác sĩ. | Nhật ký quan sát khoa phòng + Danh sách điểm nghẽn. |
+| **Tuần 1** | Đi thực địa cùng bác sĩ/điều dưỡng; ghi chép quan sát hiện trường. | Đi cùng nhóm trong 2 buổi đầu; chuyển giao [Tài liệu phát tay K4 & Ngân hàng câu hỏi](./fieldwork-stakeholder-questions.md), hướng dẫn ghi chú The Mom Test không làm phiền y bác sĩ. | Nhật ký quan sát khoa phòng + Danh sách điểm nghẽn. |
 | **Tuần 2** | Hội tụ bài toán, viết Need Statement theo Stanford Biodesign. | **Thử thách gắt gao:** Loại bỏ 100% từ khóa giải pháp công nghệ khỏi Need Statement; chuẩn bị bảo vệ Cổng 1. | **⚑ Cổng 1:** Need Statement được Trưởng khoa phê duyệt. |
 | **Tuần 3** | Làm prototype nhanh trên mock data (Streamlit / Figma clickable). | Định hướng kiến trúc tối giản; ngăn nhóm over-engineer; kết nối với bác sĩ lâm sàng để lấy phản hồi sơ bộ. | Prototype chạy được kịch bản cốt lõi trên mock data. |
 | **Tuần 4** | Thử nghiệm người dùng vòng 1 (3–5 người Vinmec) + Viết báo cáo. | Giám sát buổi test đầu tiên; hướng dẫn phân tích insight khách quan, không tự bào chữa lỗi thiết kế. | **⚑ Rà soát giữa kỳ:** Báo cáo thử nghiệm 4 phần chuẩn mực. |

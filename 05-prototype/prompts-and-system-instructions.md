@@ -1,4 +1,4 @@
-﻿# Định Nghĩa Prompt & Hướng Dẫn Hệ Thống (Prompts & System Instructions)
+# Định Nghĩa Prompt & Hướng Dẫn Hệ Thống (Prompts & System Instructions)
 
 > **Mô tả module:** Hệ thống chỉ dẫn prompt được thiết kế cho **MyVinmec Plain-Language Care Navigator** — Trợ lý ngôn ngữ bình dân hỗ trợ người bệnh đọc hiểu kết quả cận lâm sàng và chuẩn bị câu hỏi cho bác sĩ, tuân thủ các chuẩn mực an toàn y tế nghiêm ngặt nhất.
 
@@ -121,4 +121,37 @@ Mỗi phản hồi giải thích kết quả phải tuân thủ đúng 3 phần:
   > - Cách 2: Nhờ nhân viên tại Quầy Lễ tân hỗ trợ đặt lịch ngay trước khi bạn rời bệnh viện.  
   >  
   > Chúc bạn có một ngày thăm khám thuận lợi và nhiều sức khỏe!
+
+---
+
+## 4. Nhật Ký Các Prompt Chỉ Đạo Trong Quá Trình Phát Triển (Development Prompts & AI Coding Log)
+
+Nhằm đảm bảo tính minh bạch tuyệt đối theo yêu cầu của tài liệu tuyển chọn, dưới đây là các câu lệnh (prompts) chính mà ứng viên đã sử dụng để chỉ đạo AI hỗ trợ trong quá trình lập trình và hoàn thiện dự án:
+
+### 4.1. Prompt chỉ đạo dựng khung giao diện Web SPA Prototype
+```text
+"Hãy hỗ trợ tôi dựng khung mã nguồn HTML/CSS/JS cho một ứng dụng Single Page Application (SPA) mô phỏng điện thoại di động MyVinmec. 
+Yêu cầu:
+1. Giao diện chuẩn phong cách y tế cao cấp Vinmec (màu Teal, Mint, Trắng và điểm nhấn Vàng/Đỏ).
+2. Thiết kế 6 màn hình liên thông 2 chiều: Trang chủ, Danh sách kết quả, Chi tiết xét nghiệm, Chat Care Navigator, Cảnh báo cấp cứu và Lịch tái khám.
+3. Tích hợp thanh tiến trình trạm khám (Live Journey Tracker) để giải quyết điểm đau lạc đường của người bệnh.
+4. Tuyệt đối không dùng thư viện ngoài nặng nề, ưu tiên Vanilla JS để chạy mượt mà ngay trên mọi trình duyệt mà không cần cài đặt."
+```
+
+### 4.2. Prompt rà soát rào chắn an toàn y tế & phát hiện từ khóa nguy cấp
+```text
+"Dựa trên các hướng dẫn y khoa và phân loại cấp cứu chuẩn (Triage), hãy giúp tôi liệt kê danh mục các từ khóa 'Red-Flag' biểu hiện tình trạng nguy kịch (nhồi máu cơ tim, đột quỵ theo thang FAST, khó thở cấp tính, nôn ra máu). 
+Sau đó, hãy viết một module JavaScript (guardrails.js) để:
+- Quét nhanh (độ trễ < 50ms) câu hỏi của người dùng trước khi gửi tới LLM.
+- Nếu phát hiện Red-Flag: Hủy ngay luồng xử lý thông thường, lập tức hiển thị cảnh báo cấp cứu với số Hotline Vinmec 1900 23 23 89 và 115 có thể bấm gọi ngay.
+- Đảm bảo rào chắn có tính tất định (Deterministic), không phụ thuộc vào phản hồi ngẫu nhiên của AI."
+```
+
+### 4.3. Prompt tra cứu và đối chiếu khung pháp lý y tế Việt Nam
+```text
+"Hãy tra cứu và tóm tắt các điều khoản liên quan đến Dữ liệu Cá nhân Nhạy cảm trong Nghị định 13/2023/NĐ-CP và các quy định về bảo mật hồ sơ bệnh án trong Luật Khám bệnh, chữa bệnh số 15/2023/QH15. 
+Từ đó, hãy gợi ý cấu trúc ma trận đánh giá rủi ro (Risk Assessment Matrix) cho một giải pháp trợ lý AI hỗ trợ giải thích kết quả xét nghiệm, tập trung vào:
+- Nguyên tắc tối thiểu hóa dữ liệu (Data Minimization).
+- Ranh giới giữa giải thích thông tin phi lâm sàng và hành vi chẩn đoán y khoa trái phép."
+```
 

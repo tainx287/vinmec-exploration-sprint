@@ -1,12 +1,9 @@
-# Cẩm Nang Phỏng Vấn Thực Địa & Ngân Hàng Câu Hỏi Nghiên Cứu Bệnh Viện (Fieldwork Stakeholder Question Bank)
+# Tài Liệu Bàn Giao Nhóm K4: Cẩm Nang Phỏng Vấn Thực Địa & Ngân Hàng Câu Hỏi Bệnh Viện (K4 Fieldwork Toolkit)
 
-> **Dành cho:** Forward Deployed Engineer / Product Lead trong đợt **Exploration Sprint 6 tuần tại Hệ thống Y tế Vinmec**  
-> **Mục đích tài liệu:** Ngân hàng câu hỏi nghiên cứu thực địa (Stakeholder Question Bank) phục vụ giai đoạn làm việc trực tiếp tại bệnh viện Vinmec.  
-> **Nguyên tắc bất biến:** **TUYỆT ĐỐI KHÔNG NHẮC ĐẾN CÔNG NGHỆ, TÍNH NĂNG HAY AI** (Zero-Solution Bias / Solution-Blindness). Mục tiêu là quan sát thực tế, lắng nghe thấu cảm, bóc tách hành vi đã xảy ra và phát hiện các điểm nghẽn vận hành.  
-> **Cơ sở phương pháp luận:** Tổng hợp từ **The Mom Test (Rob Fitzpatrick)**, **Contextual Inquiry** và **Stanford Biodesign Need Finding** (Track 1 AI Thực Chiến).  
-
-> [!NOTE]
-> **Phạm vi bài tập sơ bộ 1 tuần:** Đây là tài liệu nghiên cứu mở rộng được chuẩn bị sẵn cho giai đoạn thực địa 6 tuần tại bệnh viện. Đối với bài tập 1 tuần hiện tại, ứng viên chỉ thực hiện phỏng vấn 3 người dùng bên ngoài theo kịch bản chuẩn tại [interview-guide.md](./interview-guide.md).
+> **Tài liệu bàn giao (Mentee Handout):** Do Coach / Technical Lead K2 biên soạn dành riêng cho các thành viên nhóm học viên Khóa 4 (K4) khi bước vào Tuần 1 đợt Exploration Sprint tại Hệ thống Y tế Vinmec.  
+> **Mục tiêu chuyển giao:** Hướng dẫn các bạn K4 tâm thế quan sát hiện trường, kỹ thuật tâm lý học giao tiếp (The Mom Test, Contextual Inquiry) và cung cấp sẵn ngân hàng câu hỏi chuẩn cho 6 nhóm nhân sự trong viện (Bác sĩ, Điều dưỡng, Tiếp đón, IT HIS, Dược sĩ, Bệnh nhân) để nhóm tự tin đi thực địa mà không làm phiền y bác sĩ và không bị thiên kiến giải pháp/AI.  
+> **Nguyên tắc bất biến cho K4:** **TUYỆT ĐỐI KHÔNG NHẮC ĐẾN CÔNG NGHỆ, TÍNH NĂNG HAY AI** khi trò chuyện với nhân viên y tế (Zero-Solution Bias / Solution-Blindness). Mục tiêu duy nhất là lắng nghe thấu cảm, bóc tách hành vi đã xảy ra, cảm xúc chân thật và phát hiện các điểm nghẽn (Bottlenecks) trong quy trình vận hành bệnh viện.  
+> **Cơ sở phương pháp luận:** Tổng hợp từ **The Mom Test (Rob Fitzpatrick)**, **Contextual Inquiry** và **Stanford Biodesign Need Finding** (Track 1 AI Thực Chiến).
 
 ---
 
