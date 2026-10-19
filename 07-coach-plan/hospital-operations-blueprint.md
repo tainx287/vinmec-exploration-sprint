@@ -46,7 +46,40 @@ flowchart TD
 
 ---
 
-## 2. Chi Tiết 4 Trạm Trọng Yếu & Danh Mục Điểm Nghẽn Tiềm Năng
+## 2. Phân Tích Định Lượng: Tỷ Lệ Chiếm Dụng Phòng Ban & Nghịch Lý "Tảng Băng Chìm" (Iceberg Effect)
+
+Dựa trên quy chuẩn vận hành của một ca khám bệnh ngoại trú tiêu chuẩn (OPD with Diagnostics) tại Vinmec, số lượng phòng ban mà một bệnh nhân trực tiếp đi qua và tỷ lệ so với toàn viện được phân tích định lượng như sau:
+
+### 2.1. Hành trình trực tiếp: 5 đến 7 đơn vị / phòng chức năng
+Trong một ca khám tổng quát hoặc chuyên khoa có chỉ định cận lâm sàng, người bệnh thường đi qua **từ 5 đến 7 điểm chạm vật lý**:
+1. **Bộ phận Chăm sóc khách hàng & Tiếp đón (Front Desk / Patient Relations):** Sảnh chính đón tiếp, cấp số thứ tự, xác thực thông tin, thủ tục thẻ/bảo hiểm (BHYT/BHTN).
+2. **Khu vực Sàng lọc & Đo sinh hiệu ban đầu (Triage / Vital Signs Station):** Trạm đo huyết áp, chiều cao, cân nặng, nhịp tim trước khi vào khám.
+3. **Phòng khám Chuyên khoa Lâm sàng (OPD Consultation Room):** Nơi bác sĩ chuyên khoa (Nội, Ngoại, Nhi, Tai Mũi Họng...) khám lâm sàng ban đầu và chỉ định xét nghiệm.
+4. **Khoa Cận lâm sàng - Phòng Lấy mẫu xét nghiệm (Phlebotomy / Lab Station):** Nơi lấy máu, thu mẫu bệnh phẩm (nước tiểu/phân) gửi về phòng Lab trung tâm.
+5. **Khoa Chẩn đoán hình ảnh (Imaging Department):** Các phòng kỹ thuật chuyên biệt như Siêu âm (Ultrasound), X-quang, Chụp CT hoặc MRI (nếu có chỉ định hình ảnh).
+6. **Quầy Thu ngân / Viện phí (Billing & Cashier):** Nơi thanh toán chênh lệch viện phí, duyệt bảo lãnh bảo hiểm thương mại.
+7. **Khoa Dược ngoại trú / Nhà thuốc bệnh viện (OPD Pharmacy):** Quầy tư vấn dùng thuốc, nhận thuốc theo đơn hoặc hướng dẫn xuất viện.
+
+> ⚠️ **Điểm va chạm kép (The Re-entry Loop):** Bệnh nhân bắt buộc phải quay lại **Phòng khám Lâm sàng lần thứ 2** để nhận tư vấn kết quả sau khi có kết quả cận lâm sàng. Đây là điểm xung đột luồng nghiêm trọng giữa *bệnh nhân mới đến khám lần đầu* và *bệnh nhân cũ quay lại đọc kết quả*.
+
+### 2.2. Tổng quy mô toàn viện: 35 đến 45 phòng ban / chuyên khoa
+Một bệnh viện đa khoa quốc tế quy chuẩn JCI như Vinmec Times City / Smart City có quy mô gồm khoảng **35 đến 45 phòng ban**, chia làm 4 khối lớn:
+* **Khối Lâm sàng Nội trú & Ngoại trú (18 – 22 khoa):** Tim mạch, Tiêu hóa, Hô hấp, Cơ xương khớp, Thần kinh, Sản - Phụ khoa, Nhi, Ngoại tổng quát, Chấn thương chỉnh hình, Mắt, Tai Mũi Họng, Da liễu, Răng Hàm Mặt, Y học tái tạo...
+* **Khối Can thiệp & Cấp cứu (4 – 6 đơn vị):** Cấp cứu (ER), Phòng mổ (OR), Hồi sức tích cực (ICU/CCU), Đơn nguyên can thiệp tim mạch (Cathlab)...
+* **Khối Cận lâm sàng & Dược (5 – 7 đơn vị):** Trung tâm Xét nghiệm (Huyết học, Sinh hóa, Vi sinh, Giải phẫu bệnh), Trung tâm Chẩn đoán hình ảnh, Khoa Dược, Đơn vị Kiểm soát nhiễm khuẩn...
+* **Khối Vận hành & Hậu cần (8 – 10 phòng ban):** Chăm sóc khách hàng, Viện phí, Kế toán, Bảo hiểm, Công nghệ thông tin (IT/HIS), Thiết bị y tế, Dinh dưỡng, Hành chính nhân sự, Quản lý chất lượng...
+
+### 2.3. Tỷ lệ chiếm dụng & Ý nghĩa Insight vận hành (Service Blueprint Insights)
+
+$$\text{Tỷ lệ phòng ban tiếp xúc trực tiếp} = \frac{5 \text{ đến } 7 \text{ phòng ban}}{35 \text{ đến } 45 \text{ phòng ban}} \approx \mathbf{12\% - 16\%}$$
+
+* **1. Chạm ít nhưng phân tán cao (High Spatial Fragmentation):** Người bệnh chỉ đi qua 12% – 16% phòng ban của viện, nhưng các phòng này lại nằm rải rác ở các tầng khác nhau. Mỗi lần di chuyển giữa các trạm là một **"Điểm đứt gãy trải nghiệm" (Handoff friction)** — đúng như phát hiện của người dùng **P2** (lúng túng không biết tầng 1 đã xong chưa hay phải lên tầng 2).
+* **2. Hiện tượng tảng băng chìm & Sự mù mờ hậu trường (Operational Opacity):** Đằng sau 15% bề nổi (Frontstage) là **85% bộ máy vận hành vô hình (Backstage)** (máy phân tích máu tự động, kỹ thuật viên đọc ảnh MRI, hệ thống mạng HIS, duyệt bảo hiểm). Khi người bệnh ngồi chờ ở hành lang, họ hoàn toàn không nhìn thấy 85% cỗ máy này đang chạy hết công suất.
+* **3. Quy luật tâm lý học xếp hàng David Maister:** *"Thời gian chờ đợi không rõ nguyên nhân và không có việc gì làm sẽ dài gấp nhiều lần thời gian chờ đợi có giải thích"*. Sự mù mờ hậu trường khiến người bệnh cảm thấy "thời gian chờ chết" trôi qua quá lâu, sinh ra hoang mang và phải tự tìm đến Google/AI để trấn an — đúng như trường hợp của **P3 (Minh Nam)**.
+
+---
+
+## 3. Chi Tiết 4 Trạm Trọng Yếu & Danh Mục Điểm Nghẽn Tiềm Năng
 
 | Trạm vận hành | Vị trí thực tế | Đối tượng tương tác | Điểm đau & Điểm nghẽn tiềm năng (Bottlenecks) |
 | :--- | :--- | :--- | :--- |
@@ -57,7 +90,7 @@ flowchart TD
 
 ---
 
-## 3. Chiến Lược Phân Chia Nhóm 3 Giai Đoạn (3-Stage Team Partitioning Architecture)
+## 4. Chiến Lược Phân Chia Nhóm 3 Giai Đoạn (3-Stage Team Partitioning Architecture)
 
 Để đảm bảo công bằng, triệt tiêu bè phái và tối ưu hóa năng lực học viên, Coach áp dụng cơ chế phân chia nhân sự qua 3 giai đoạn cốt lõi:
 
@@ -74,33 +107,33 @@ flowchart TD
 
 ---
 
-## 4. Lần 1 (Tuần 0): Chia Blue Team vs Red Team (Bốc Thăm Phân Tầng Cân Bằng)
+## 5. Lần 1 (Tuần 0): Chia Blue Team vs Red Team (Bốc Thăm Phân Tầng Cân Bằng)
 
 Thay vì dùng các bài trắc nghiệm tính cách (MBTI) lý thuyết sáo rỗng, Coach K2 sử dụng **Bảng Rà Soát Kỹ Năng T-shape Nhanh (3 Phút - 4 Câu Hỏi Thực Chiến)** ngay buổi chiều Thứ Sáu nhận team:
 
-### 4.1. Bảng rà soát 4 nhóm năng lực
+### 5.1. Bảng rà soát 4 nhóm năng lực
 1. **Năng lực Kỹ thuật (Tech/Code):** Đã từng viết Python, dùng Streamlit, gọi LLM API hoặc dùng Git chưa? (Có / Chưa).
 2. **Năng lực Thiết kế & Trải nghiệm (UX/Product):** Có biết dùng Figma, vẽ User Flow hoặc phỏng vấn người dùng không?
 3. **Năng lực Tư duy Phản biện (Critical Thinking):** Thích tìm lỗi hổng logic, soi rủi ro đạo đức hay thích xây dựng tính năng mới?
 4. **Năng lực Viết & Trình bày (Documentation):** Có thế mạnh về tổng hợp báo cáo và làm slide không?
 
-### 4.2. Cơ chế bốc thăm phân tầng (Stratified Skill-Balanced Lottery)
+### 5.2. Cơ chế bốc thăm phân tầng (Stratified Skill-Balanced Lottery)
 * **Quy tắc:** Coach chia danh sách học viên vào 3 rổ năng lực: (1) Rổ Dev/Code; (2) Rổ UX/Design; (3) Rổ Critical/Research.
 * **Bốc thăm chia đôi:** Mỗi rổ bốc thăm ngẫu nhiên chia đều 50% sang Blue Team và 50% sang Red Team.
 * **Kết quả:** Đảm bảo cả hai phe đều có người biết code (để soi mã nguồn prototype), đều có người biết vẽ flow và người có tư duy phản biện. Hai bên cân bằng lực lượng tuyệt đối, tránh tình trạng "bên quá giỏi, bên quá đuối".
 
 ---
 
-## 5. Lần 2 (Tuần 1): Chia Cặp Khảo Sát Thực Địa (Ma Trận Luân Phiên Không Trùng Lặp)
+## 6. Lần 2 (Tuần 1): Chia Cặp Khảo Sát Thực Địa (Ma Trận Luân Phiên Không Trùng Lặp)
 
-### 5.1. Nguyên tắc kỷ luật thép
+### 6.1. Nguyên tắc kỷ luật thép
 * **TUYỆT ĐỐI CẤM TỰ CHỌN BẠN CẶP:** Loại bỏ hoàn toàn tình trạng "cặp bạn thân" đi viện chỉ túm tụm cười nói buôn chuyện làm phiền bệnh viện.
 * **Tránh ghép đôi xung đột:** Nếu trong nhóm có 2 bạn có xích mích hoặc không hợp tính nhau từ trước, Coach tách ra các cặp khác nhau.
 * **Đảm bảo tính bao phủ & gắn kết tập thể (Double Invariant):**
   1. *Bất biến 1 (Station Coverage):* Mỗi cá nhân trong 4 ngày **bắt buộc phải đi qua đủ cả 4 trạm bệnh viện**.
   2. *Bất biến 2 (Social Rotation):* Mỗi ngày **phải đi cùng một bạn cặp mới**, tuyệt đối không đi trùng bạn cặp của ngày hôm trước. Đến hết tuần, ai cũng đã làm việc chung với các thành viên khác, hiểu rõ tính cách của nhau trước khi vào dev thật.
 
-### 5.2. Ma trận phân công luân chuyển toán học (Ví dụ cho nhóm 8 học viên: $S_1 \dots S_8$)
+### 6.2. Ma trận phân công luân chuyển toán học (Ví dụ cho nhóm 8 học viên: $S_1 \dots S_8$)
 
 | Lịch trực | Cặp Trạm 1 (Tiếp đón) | Cặp Trạm 2 (Phòng khám) | Cặp Trạm 3 (Cận lâm sàng) | Cặp Trạm 4 (Nhà thuốc & Ra viện) |
 | :---: | :---: | :---: | :---: | :---: |
@@ -114,15 +147,15 @@ Thay vì dùng các bài trắc nghiệm tính cách (MBTI) lý thuyết sáo r�
 
 ---
 
-## 6. Lần 3 (Tuần 2 & 3): Tái Cấu Trúc 2 Team Dev (Chống Bẫy "Super Team")
+## 7. Lần 3 (Tuần 2 & 3): Tái Cấu Trúc 2 Team Dev (Chống Bẫy "Super Team")
 
 Vào sáng Thứ Hai Tuần 2 (09/11), Coach công bố 2 Bài toán lớn đã được gạn lọc từ dữ liệu tuần 1. Việc chia thành **2 Team Dev chuyên trách (Team Dev A & Team Dev B)** phải tuân thủ nghiêm ngặt quy tắc chống bẫy độc quyền:
 
-### 6.1. Nguyên tắc chống bẫy "Super Team" (Anti-Super-Team Rule)
+### 7.1. Nguyên tắc chống bẫy "Super Team" (Anti-Super-Team Rule)
 * **Bản chất tâm lý học sinh tồn:** Nếu cho phép 2 Team Lead tự do chọn người, theo bản năng họ sẽ lập tức "vơ vét" toàn bộ những bạn giỏi nhất về team mình $\rightarrow$ Tạo ra **1 Super Team và 1 Team phế/bị bỏ rơi**. Điều này sẽ phá nát tinh thần đoàn kết, gây bất mãn và triệt tiêu hoàn toàn động lực học hỏi của các bạn yếu hơn.
 * **Kỷ luật:** **TUYỆT ĐỐI KHÔNG CHO LEAD TỰ DO CHỌN THÀNH VIÊN.**
 
-### 6.2. Quy trình phân bổ 4 bước theo "Giỏ Kỹ Năng" (Skill Basket Allocation)
+### 7.2. Quy trình phân bổ 4 bước theo "Giỏ Kỹ Năng" (Skill Basket Allocation)
 1. **Bước 1 — Bổ nhiệm Team Lead (Merit-based):** 
    - Coach chỉ định **2 bạn có bản Daily Field Log sắc bén, thấu cảm và có tư duy hệ thống tốt nhất ở Tuần 1** làm Lead của 2 team. Hai bạn này sở hữu và chịu trách nhiệm bảo vệ Need Statement tại Cổng 1.
 2. **Bước 2 — Phân rã các thành viên còn lại vào 3 Giỏ năng lực:**
@@ -144,7 +177,7 @@ Vào sáng Thứ Hai Tuần 2 (09/11), Coach công bố 2 Bài toán lớn đã 
 
 ---
 
-## 7. Kế Hoạch Bàn Giao Sang Tuần 3 (Sprint Dev 14 Ngày)
+## 8. Kế Hoạch Bàn Giao Sang Tuần 3 (Sprint Dev 14 Ngày)
 
 Sau khi vượt qua **Cổng 1 vào Thứ Sáu 13/11/2026**:
 1. Cả 2 Team Dev đã có cấu trúc nhân sự cân bằng 100%, không ai tị nạnh hay cảm thấy mình bị bỏ rơi.
