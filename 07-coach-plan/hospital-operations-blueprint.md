@@ -57,77 +57,98 @@ flowchart TD
 
 ---
 
-## 3. Cơ Chế Phân Cặp Khảo Sát Hiện Trường Trong Tuần 1
+## 3. Chiến Lược Phân Chia Nhóm 3 Giai Đoạn (3-Stage Team Partitioning Architecture)
 
-Để bao phủ toàn diện 4 trạm mà không gây ồn ào khoa phòng, Coach chia nhóm K4 thành **3–4 Cặp (Buddy Pairs)**:
+Để đảm bảo công bằng, triệt tiêu bè phái và tối ưu hóa năng lực học viên, Coach áp dụng cơ chế phân chia nhân sự qua 3 giai đoạn cốt lõi:
 
 ```mermaid
 flowchart TD
-    Squad["Nhóm K4 (6 - 10 bạn)"] --> Pair1["Cặp A (2 bạn): Chuyên trách Trạm 1"]
-    Squad --> Pair2["Cặp B (2 bạn): Chuyên trách Trạm 2"]
-    Squad --> Pair3["Cặp C (2 bạn): Chuyên trách Trạm 3"]
-    Squad --> Pair4["Cặp D (1-2 bạn): Chuyên trách Trạm 4"]
+    G1["LẦN 1: TUẦN 0 (KICKOFF HACKATHON)<br>Chia Blue Team vs Red Team<br>• Rà soát nhanh Kỹ năng T-shape (3 phút)<br>• Bốc thăm phân tầng cân bằng (Stratified Lottery)"]
     
-    Pair1 -. Luân phiên mỗi ngày .-> Pair2
-    Pair2 -. Luân phiên mỗi ngày .-> Pair3
-    Pair3 -. Luân phiên mỗi ngày .-> Pair4
-    Pair4 -. Luân phiên mỗi ngày .-> Pair1
+    G2["LẦN 2: TUẦN 1 (KHẢO SÁT THỰC ĐỊA)<br>Chia theo Cặp Luân Phiên (Buddy Pairs)<br>• CẤM TỰ CHỌN CẶP (Chống cặp bạn thân buôn chuyện)<br>• Ma trận luân phiên: Vừa đi hết 4 trạm, vừa ĐỔI BẠN CẶP MỖI NGÀY"]
+    
+    G3["LẦN 3: TUẦN 2 & 3 (SPRINT DEV 2 DỰ ÁN)<br>Tái Cấu Trúc 2 Team Dev Chuyên Trách<br>• 2 bạn viết log sắc bén nhất làm Team Lead<br>• CẤM LEAD TỰ CHỌN NGƯỜI (Chống bẫy Super Team)<br>• Phân bổ theo Giỏ kỹ năng (Snake Draft + Coach giám sát)"]
+    
+    G1 --> G2 --> G3
 ```
-
-### 3.1. Phân vai trong từng Cặp (Pair Roles)
-1. **Lead Interviewer (Người chủ trì giao tiếp):**
-   - Đóng vai người cần giúp đỡ hoặc thực tập sinh thân thiện.
-   - Trò chuyện với bệnh nhân/người nhà/điều dưỡng theo đúng kỹ thuật *The Mom Test* (tuyệt đối không nhắc đến AI/App).
-2. **Behavioral Observer & Scribe (Người ghi chép & quan sát cử chỉ):**
-   - Cầm sổ tay nhỏ ghi lại **nguyên văn câu nói (Raw Quotes)**.
-   - Bấm giờ đo thời gian chờ thực tế (bằng đồng hồ đeo tay).
-   - Ghi lại các giải pháp chữa cháy (Workarounds) của nhân viên y tế (như dán giấy note viết tay, chỉ tay nhiều lần).
-
-### 3.2. Lịch luân chuyển trạm khám (Daily Rotation)
-- Mỗi ngày 1 cặp phụ trách 1 trạm. Sau 4 ngày (Thứ Hai $\rightarrow$ Thứ Năm), 100% học viên đều đi qua đủ 4 trạm.
-- 18h00 mỗi ngày: Từng cá nhân nộp [Daily Field Observation Log](./fieldwork-stakeholder-questions.md#phần-vi-mẫu-nhật-ký-quan-sát-hiện-trường-hàng-ngày-daily-field-observation-log-template).
-- **18h00 Thứ Năm (05/11):** Khóa sổ dữ liệu để sáng Thứ Sáu tổng hợp chéo.
 
 ---
 
-## 4. Cơ Chế Chuyển Giao: Từ Khảo Sát Theo Cặp Sang 2 Team Dev (Tuần 2 & 3)
+## 4. Lần 1 (Tuần 0): Chia Blue Team vs Red Team (Bốc Thăm Phân Tầng Cân Bằng)
 
-Vào sáng Thứ Sáu Tuần 1 (06/11) và cuối tuần (07–08/11), Coach dùng bảng ma trận đối chiếu để **gạn lọc ra đúng 2 Bài toán lớn nhất** có dữ liệu thực tế dày dặn nhất. 
+Thay vì dùng các bài trắc nghiệm tính cách (MBTI) lý thuyết sáo rỗng, Coach K2 sử dụng **Bảng Rà Soát Kỹ Năng T-shape Nhanh (3 Phút - 4 Câu Hỏi Thực Chiến)** ngay buổi chiều Thứ Sáu nhận team:
 
-Sáng Thứ Hai Tuần 2 (09/11), toàn bộ nhân sự các cặp khảo sát sẽ được **tái cấu trúc thành 2 Team Dev chuyên trách**:
+### 4.1. Bảng rà soát 4 nhóm năng lực
+1. **Năng lực Kỹ thuật (Tech/Code):** Đã từng viết Python, dùng Streamlit, gọi LLM API hoặc dùng Git chưa? (Có / Chưa).
+2. **Năng lực Thiết kế & Trải nghiệm (UX/Product):** Có biết dùng Figma, vẽ User Flow hoặc phỏng vấn người dùng không?
+3. **Năng lực Tư duy Phản biện (Critical Thinking):** Thích tìm lỗi hổng logic, soi rủi ro đạo đức hay thích xây dựng tính năng mới?
+4. **Năng lực Viết & Trình bày (Documentation):** Có thế mạnh về tổng hợp báo cáo và làm slide không?
 
-```mermaid
-flowchart LR
-    subgraph W1["TUẦN 1: 4 CẶP KHẢO SÁT THEO TRẠM"]
-        P1["Cặp A (Trạm 1)"]
-        P2["Cặp B (Trạm 2)"]
-        P3["Cặp C (Trạm 3)"]
-        P4["Cặp D (Trạm 4)"]
-    end
+### 4.2. Cơ chế bốc thăm phân tầng (Stratified Skill-Balanced Lottery)
+* **Quy tắc:** Coach chia danh sách học viên vào 3 rổ năng lực: (1) Rổ Dev/Code; (2) Rổ UX/Design; (3) Rổ Critical/Research.
+* **Bốc thăm chia đôi:** Mỗi rổ bốc thăm ngẫu nhiên chia đều 50% sang Blue Team và 50% sang Red Team.
+* **Kết quả:** Đảm bảo cả hai phe đều có người biết code (để soi mã nguồn prototype), đều có người biết vẽ flow và người có tư duy phản biện. Hai bên cân bằng lực lượng tuyệt đối, tránh tình trạng "bên quá giỏi, bên quá đuối".
 
-    Filter{"HỘI TỤ DỮ LIỆU<br>(Tổng hợp sáng T6 06/11 & CN 08/11)<br>Coach chốt 2 Bài toán"}
+---
 
-    subgraph W23["TUẦN 2 & 3: 2 TEAM DEV CHUYÊN TRÁCH"]
-        DevA["TEAM DEV A: CARE NAVIGATOR<br>• Giải quyết điểm nghẽn Trạm 2 & 3<br>• Hỗ trợ giải thích kết quả cận lâm sàng & Hậu khám<br>(1 Lead + 2 Dev + 1 Tester)"]
-        DevB["TEAM DEV B: LIVE WAYFINDING & TRIAGE<br>• Giải quyết điểm nghẽn Trạm 1 & 3<br>• Điều hướng luồng khám & Giảm thời gian chờ chết<br>(1 Lead + 2 Dev + 1 Tester)"]
-    end
+## 5. Lần 2 (Tuần 1): Chia Cặp Khảo Sát Thực Địa (Ma Trận Luân Phiên Không Trùng Lặp)
 
-    P1 --> Filter
-    P2 --> Filter
-    P3 --> Filter
-    P4 --> Filter
-    Filter --> DevA
-    Filter --> DevB
-```
+### 5.1. Nguyên tắc kỷ luật thép
+* **TUYỆT ĐỐI CẤM TỰ CHỌN BẠN CẶP:** Loại bỏ hoàn toàn tình trạng "cặp bạn thân" đi viện chỉ túm tụm cười nói buôn chuyện làm phiền bệnh viện.
+* **Tránh ghép đôi xung đột:** Nếu trong nhóm có 2 bạn có xích mích hoặc không hợp tính nhau từ trước, Coach tách ra các cặp khác nhau.
+* **Đảm bảo tính bao phủ & gắn kết tập thể (Double Invariant):**
+  1. *Bất biến 1 (Station Coverage):* Mỗi cá nhân trong 4 ngày **bắt buộc phải đi qua đủ cả 4 trạm bệnh viện**.
+  2. *Bất biến 2 (Social Rotation):* Mỗi ngày **phải đi cùng một bạn cặp mới**, tuyệt đối không đi trùng bạn cặp của ngày hôm trước. Đến hết tuần, ai cũng đã làm việc chung với các thành viên khác, hiểu rõ tính cách của nhau trước khi vào dev thật.
 
-### 4.1. Cấu trúc tiêu chuẩn của 1 Team Dev (4–5 người)
-- **1 Product / Clinical Lead:** Bạn có kỹ năng quan sát thấu cảm và viết log sắc sảo nhất ở Tuần 1. Chịu trách nhiệm viết và bảo vệ câu Need Statement tại Cổng 1 (Thứ Sáu 13/11).
-- **2 AI & Frontend Dev:** Chịu trách nhiệm code giao diện Streamlit/Figma clickable và tinh chỉnh System Prompt/RAG Pipeline.
-- **1 Data & Testing Specialist:** Chịu trách nhiệm tạo dữ liệu giả lập (Mock Data sạch) và xây dựng kịch bản kiểm thử người dùng cho Tuần 4.
+### 5.2. Ma trận phân công luân chuyển toán học (Ví dụ cho nhóm 8 học viên: $S_1 \dots S_8$)
 
-### 4.2. Kế hoạch bàn giao sang Tuần 3
-- Khi vượt qua **Cổng 1 vào Thứ Sáu 13/11/2026**, hai Team Dev đã có sẵn đầy đủ:
-  1. Need Statement được Trưởng khoa Vinmec phê duyệt.
-  2. Bằng chứng thực địa từ 4 Trạm khám của Tuần 1.
-  3. Phân công vai trò kỹ thuật rõ ràng.
-- **Sáng Thứ Hai 16/11/2026:** Cả 2 team mở repo nhánh và bắt tay vào Sprint Dev 2 tuần tốc lực mà không mất một phút nào phân vân hay cãi vã về ý tưởng!
+| Lịch trực | Cặp Trạm 1 (Tiếp đón) | Cặp Trạm 2 (Phòng khám) | Cặp Trạm 3 (Cận lâm sàng) | Cặp Trạm 4 (Nhà thuốc & Ra viện) |
+| :---: | :---: | :---: | :---: | :---: |
+| **Thứ Hai** | Cặp $(S_1, S_2)$ | Cặp $(S_3, S_4)$ | Cặp $(S_5, S_6)$ | Cặp $(S_7, S_8)$ |
+| **Thứ Ba** | Cặp $(S_6, S_8)$ | Cặp $(S_1, S_3)$ | Cặp $(S_2, S_4)$ | Cặp $(S_5, S_7)$ |
+| **Thứ Tư** | Cặp $(S_3, S_7)$ | Cặp $(S_4, S_8)$ | Cặp $(S_1, S_5)$ | Cặp $(S_2, S_6)$ |
+| **Thứ Năm**| Cặp $(S_2, S_8)$ | Cặp $(S_3, S_5)$ | Cặp $(S_4, S_6)$ | Cặp $(S_1, S_7)$ |
+| **Thứ Sáu**| **Cả nhóm tập trung tại phòng làm việc Vinmec: Họp tổng hợp chéo dữ liệu & Soạn Báo cáo Tuần 1** |
+
+*Kiểm chứng thuật ngữ:* Học viên $S_1$ lần lượt ghép với $S_2$ (Thứ Hai), $S_3$ (Thứ Ba), $S_5$ (Thứ Tư), $S_7$ (Thứ Năm). Mỗi ngày một bạn mới, đồng thời đi đủ $T_1 \rightarrow T_2 \rightarrow T_3 \rightarrow T_4$!
+
+---
+
+## 6. Lần 3 (Tuần 2 & 3): Tái Cấu Trúc 2 Team Dev (Chống Bẫy "Super Team")
+
+Vào sáng Thứ Hai Tuần 2 (09/11), Coach công bố 2 Bài toán lớn đã được gạn lọc từ dữ liệu tuần 1. Việc chia thành **2 Team Dev chuyên trách (Team Dev A & Team Dev B)** phải tuân thủ nghiêm ngặt quy tắc chống bẫy độc quyền:
+
+### 6.1. Nguyên tắc chống bẫy "Super Team" (Anti-Super-Team Rule)
+* **Bản chất tâm lý học sinh tồn:** Nếu cho phép 2 Team Lead tự do chọn người, theo bản năng họ sẽ lập tức "vơ vét" toàn bộ những bạn giỏi nhất về team mình $\rightarrow$ Tạo ra **1 Super Team và 1 Team phế/bị bỏ rơi**. Điều này sẽ phá nát tinh thần đoàn kết, gây bất mãn và triệt tiêu hoàn toàn động lực học hỏi của các bạn yếu hơn.
+* **Kỷ luật:** **TUYỆT ĐỐI KHÔNG CHO LEAD TỰ DO CHỌN THÀNH VIÊN.**
+
+### 6.2. Quy trình phân bổ 4 bước theo "Giỏ Kỹ Năng" (Skill Basket Allocation)
+1. **Bước 1 — Bổ nhiệm Team Lead (Merit-based):** 
+   - Coach chỉ định **2 bạn có bản Daily Field Log sắc bén, thấu cảm và có tư duy hệ thống tốt nhất ở Tuần 1** làm Lead của 2 team. Hai bạn này sở hữu và chịu trách nhiệm bảo vệ Need Statement tại Cổng 1.
+2. **Bước 2 — Phân rã các thành viên còn lại vào 3 Giỏ năng lực:**
+   - *Giỏ Dev (Frontend & LLM/Prompting):* 2–4 bạn.
+   - *Giỏ UX & Visual Design:* 2 bạn.
+   - *Giỏ Data & Testing/Ops:* 2 bạn.
+3. **Bước 3 — Snake Draft có Trọng tài Coach giám sát:**
+   - Thay vì chọn tự do, 2 Lead chọn lần lượt theo thứ tự zic-zac (Snake Draft):
+     * Vòng 1 (Giỏ Dev): Lead A chọn trước $\rightarrow$ Lead B nhận bạn còn lại.
+     * Vòng 2 (Giỏ UX): Lead B chọn trước $\rightarrow$ Lead A nhận bạn còn lại.
+     * Vòng 3 (Giỏ Data/Ops): Lead A chọn trước $\rightarrow$ Lead B nhận bạn còn lại.
+4. **Bước 4 — Quyền Phủ Quyết & Điều Chuyển Của Coach (Coach Veto & Peer Mentoring):**
+   - Coach quan sát hành vi của cả Tuần 1, nắm rõ ai làm việc ăn ý với ai, ai từng có xung đột.
+   - **Coach can thiệp điều chuyển chéo nếu:**
+     * Hai bạn có xích mích cá nhân vô tình bị xếp cùng team.
+     * Một team bị lệch trình độ: Bắt buộc áp dụng nguyên tắc **Peer Mentoring (1 bạn cứng kèm 1 bạn yếu hơn)** để kéo nhau cùng tiến bộ.
+5. **Bước 5 — Bốc thăm đề tài:**
+   - Hai Lead bốc thăm công bằng để nhận **Bài toán 1 (Care Navigator)** hoặc **Bài toán 2 (Live Wayfinding & Triage)**.
+
+---
+
+## 7. Kế Hoạch Bàn Giao Sang Tuần 3 (Sprint Dev 14 Ngày)
+
+Sau khi vượt qua **Cổng 1 vào Thứ Sáu 13/11/2026**:
+1. Cả 2 Team Dev đã có cấu trúc nhân sự cân bằng 100%, không ai tị nạnh hay cảm thấy mình bị bỏ rơi.
+2. Mỗi nhóm có đầy đủ 1 Product Lead + 2 Dev + 1 Tester/Data.
+3. Cuối tuần 14–15/11 chuẩn bị môi trường và Mock Data.
+4. **Sáng Thứ Hai 16/11/2026:** Đúng 08h30, cả 2 team mở nhánh repo và lao vào Sprint Dev prototype tốc lực mà không mất dù chỉ 1 phút để cãi nhau về nhân sự hay ý tưởng!
+
