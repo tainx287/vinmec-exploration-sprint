@@ -155,3 +155,28 @@ Từ đó, hãy gợi ý cấu trúc ma trận đánh giá rủi ro (Risk Assess
 - Ranh giới giữa giải thích thông tin phi lâm sàng và hành vi chẩn đoán y khoa trái phép."
 ```
 
+---
+
+## 5. Ranh Giới Lâm Sàng: Giải Tỏa "Scanxiety" & "Cyberchondria" Bằng Mô Hình 3 Bước (In-Context AI)
+
+### 5.1. Triết Lý Thiết Kế: "Không Chẩn Đoán Nhưng Tuyệt Đối Không Vô Tích Sự"
+Một thông báo tĩnh dạng banner (*"Bạn vui lòng ngồi chờ bác sĩ giải thích"*) hay một câu pop-up từ chối máy móc đã làm được việc bảo bệnh nhân ngồi chờ, **hoàn toàn không cần đến một LLM đắt đỏ**. Khi người bệnh chủ động bấm vào Trợ lý AI ngay tại màn hình kết quả xét nghiệm cá nhân:
+1. **Implicit Contextual Consent (Sự đồng thuận ngữ cảnh ngầm định):** Bệnh nhân đã đăng nhập và đang xem kết quả của chính mình. Bắt người bệnh bấm pop-up *"Cho phép đọc màn hình"* là tạo ra lực cản thừa thãi làm gián đoạn cảm xúc.
+2. **Scanxiety & Cyberchondria:** Sự lo âu trong phòng chờ (`Scanxiety`) và nỗi sợ bệnh tật kích hoạt bởi ký hiệu bôi đỏ `H (High)` (`Cyberchondria`) sẽ bùng phát nếu AI phủi tay bằng câu từ chối máy móc. Người bệnh sẽ lập tức thoát app để tra Google và tự hù dọa bản thân bằng ung thư hay suy gan.
+
+### 5.2. Mô Hình 3 Bước: Translate – Contextualize – Empower
+* **Bước 1 — Translate (Dịch thuật ngữ sang ngôn ngữ đời thường):** Giải thích bản chất AST/ALT là enzym bên trong tế bào gan, khi gan phản ứng nhẹ thì tiết vào máu.
+* **Bước 2 — Contextualize (Định khung mức độ nghiêm trọng):** Chỉ số 52 và 58 U/L chỉ nhích nhẹ so với mốc 40, rất phổ biến do thức khuya, dùng thuốc giảm đau, căng thẳng hay uống rượu bia gần ngày khám; **hoàn toàn không đồng nghĩa với tổn thương gan nghiêm trọng hay suy gan**.
+* **Bước 3 — Empower (Trao quyền cho bệnh nhân):** Chuyển nỗi sợ thành 2 câu hỏi trọng tâm để người bệnh tự tin làm việc cùng Bác sĩ tại phòng khám:
+  1. *"Thưa bác sĩ, men gan của tôi hơi nhích nhẹ thế này thì có liên quan đến loại thuốc/thói quen sinh hoạt gần đây không?"*
+  2. *"Với mức HbA1c 6.1%, tôi cần điều chỉnh dinh dưỡng ra sao và bao lâu thì nên làm xét nghiệm kiểm tra lại ạ?"*
+
+### 5.3. Bảng Ma Trận Đối Sánh Chi Tiết
+
+| Tiêu chí | Kịch bản Chatbot rập khuôn (Thất bại) | Kịch bản Trợ lý In-context chuẩn xác (MyVinmec MIA) |
+| :--- | :--- | :--- |
+| **Phản xạ ban đầu** | Bắt copy-paste hoặc hiện pop-up xin cấp quyền đọc màn hình. Chào hỏi chung chung vô nghĩa. | Đọc ngầm dữ liệu màn hình (Implicit Contextual Consent), biết chính xác người bệnh đang xem xét nghiệm nào tại buồng khám nào. |
+| **Xử lý chỉ số đỏ (H)** | *"Chỉ số này bất thường, đây là chuyên môn sâu, bạn hãy chờ gặp bác sĩ chuyên khoa để được chẩn đoán."* | Giải thích bản chất men gan/đường huyết là gì và giải tỏa nỗi sợ: mức tăng nhẹ này rất phổ biến do lối sống, dập tắt ý định tra Google. |
+| **Cảm xúc người bệnh** | Hoang mang tăng vọt, cảm thấy hệ thống giấu bệnh, lập tức mở Google tra cứu dẫn đến Cyberchondria. | Thở phào nhẹ nhõm, bớt căng thẳng, nhịp tim ổn định trở lại, dập tắt hội chứng Scanxiety trong phòng chờ. |
+| **Giá trị tạo ra cho ca khám** | Người bệnh bước vào phòng khám với thái độ chất vấn, căng thẳng, dồn dập hỏi bác sĩ làm quá tải thời gian tư vấn. | Người bệnh bình tĩnh bước vào với đúng 2 câu hỏi trọng tâm đã chuẩn bị sẵn, tăng hiệu quả phối hợp cùng Bác sĩ. |
+

@@ -57,20 +57,30 @@ function detectRedFlags(text) {
 }
 
 /**
- * BỘ TỪ KHÓA NHẬN DIỆN CÂU HỎI ĐỊNH DANH (IDENTITY & ROLE FALLBACK)
- * Đảm bảo giới thiệu rõ đây là bản thử nghiệm của Lab Coach Nguyễn Xuân Tài
+ * BỘ TỪ KHÓA NHẬN DIỆN CÂU HỎI ĐỊNH DANH & TÍNH NĂNG (IDENTITY & ROLE FALLBACK)
+ * Quy tắc:
+ * 1. Chỉ giới hạn nhắc đến Lab Coach Nguyễn Xuân Tài 1 lần duy nhất ở đầu session cho câu hỏi "Bạn là ai".
+ * 2. Đối với "Bạn có thể làm gì", bỏ qua tên tác giả, giải thích ngắn gọn 3 việc thiết thực (Dịch thuật ngữ, Định khung an toàn, Soạn câu hỏi).
+ * 3. Tuyệt đối không đính kèm 2 câu hỏi bác sĩ thừa thãi hay gợi ý bấm nút máy móc.
  */
-const IDENTITY_PATTERNS = [
-  /bạn\s*là\s*ai/i,
+const WHO_ARE_YOU_PATTERNS = [
+  /bạn\s*(là|la)\s*(ai|gì|gi)/i,
   /bạn\s*tên\s*(là\s*)?gì/i,
-  /mày\s*là\s*(ai|gì)/i,
+  /mày\s*(là|la)\s*(ai|gì)/i,
   /who\s*are\s*you/i,
-  /bạn\s*có\s*(tác\s*dụng|tính\s*năng|vai\s*trò|nhiệm\s*vụ|chức\s*năng)\s*gì/i,
-  /bạn\s*giúp\s*(được\s*)?gì/i,
-  /what\s*(can\s*you\s*do|is\s*your\s*purpose)/i,
   /ai\s*(tạo|làm|viết|code|dựng)\s*ra\s*bạn/i,
   /nguồn\s*gốc\s*(của\s*)?bạn/i,
   /giới\s*thiệu\s*(về\s*)?bạn/i
+];
+
+const WHAT_CAN_YOU_DO_PATTERNS = [
+  /bạn\s*(có\s*thể\s*)?làm\s*(được\s*)?(gì|gi)/i,
+  /bạn\s*có\s*(tác\s*dụng|tính\s*năng|vai\s*trò|nhiệm\s*vụ|chức\s*năng)\s*(gì|gi)/i,
+  /bạn\s*(giúp|hỗ\s*trợ)\s*(được\s*)?(gì|gi)/i,
+  /what\s*(can\s*you\s*do|is\s*your\s*purpose)/i,
+  /tác\s*dụng\s*của\s*bạn/i,
+  /chức\s*năng\s*của\s*bạn/i,
+  /bạn\s*biết\s*làm\s*gì/i
 ];
 
 /**
@@ -80,18 +90,51 @@ function detectIdentityQuestion(text) {
   if (!text || typeof text !== 'string') return null;
   const trimmed = text.trim();
 
-  for (const pattern of IDENTITY_PATTERNS) {
+  // 1. Kiểm tra câu hỏi "Bạn là ai?"
+  for (const pattern of WHO_ARE_YOU_PATTERNS) {
+    if (pattern.test(trimmed)) {
+      let alreadyMentioned = false;
+      try {
+        alreadyMentioned = !!sessionStorage.getItem("vinmec_author_mentioned");
+      } catch (e) {
+        alreadyMentioned = false;
+      }
+
+      let introText = "";
+      if (!alreadyMentioned) {
+        try {
+          sessionStorage.setItem("vinmec_author_mentioned", "1");
+        } catch (e) {}
+        introText = `Chào bạn! Tôi là <strong>Trợ lý AI MIA (bản mô phỏng nghiên cứu)</strong>, thuộc đề án AI Y tế thực chiến của Lab Coach Nguyễn Xuân Tài. Tôi giúp bạn đọc hiểu nhanh ý nghĩa đời thường của các chỉ số cận lâm sàng và chuẩn bị sẵn các câu hỏi trọng tâm trước khi vào phòng khám.`;
+      } else {
+        introText = `Tôi là <strong>Trợ lý AI MIA</strong>, đồng hành hỗ trợ bạn đọc hiểu kết quả cận lâm sàng và giải tỏa lo lắng trong lúc chờ gặp Bác sĩ.`;
+      }
+
+      return {
+        isIdentity: true,
+        badge: "Trợ Lý AI MIA • Giới Thiệu",
+        meaning: introText,
+        questions: [],
+        lifestyle: null,
+        disclaimer: null
+      };
+    }
+  }
+
+  // 2. Kiểm tra câu hỏi "Bạn có thể làm gì?"
+  for (const pattern of WHAT_CAN_YOU_DO_PATTERNS) {
     if (pattern.test(trimmed)) {
       return {
         isIdentity: true,
-        badge: "Trợ Lý AI MIA • Bản Thử Nghiệm",
-        meaning: `Chào bạn! Tôi là <strong>Bản nguyên mẫu tương tác (Interactive Prototype) của Trợ lý AI MIA</strong>, được phát triển trong khuôn khổ <strong>Đề án nghiên cứu AI Y tế thực chiến của Lab Coach Nguyễn Xuân Tài (Vinmec Exploration Sprint)</strong>.<br><br>🎯 <strong>Mục đích thử nghiệm:</strong> Tôi là giải pháp mô phỏng giao tiếp phi lâm sàng, giúp bạn đọc hiểu nhanh ý nghĩa các chỉ số xét nghiệm máu (như ALT, AST, HbA1c, Creatinine...) trong 45 phút chờ khám và chuẩn bị sẵn 2 câu hỏi trọng tâm để bạn tự tin trao đổi cùng Bác sĩ.<br><br>⚠️ <strong>Lưu ý quan trọng:</strong> Đây là bản copy mô phỏng phục vụ Hội đồng Giám khảo đánh giá đề án, không phải hệ thống sản xuất chính thức của Hệ thống Y tế Quốc tế Vinmec và không thay thế chẩn đoán chuyên môn của Bác sĩ.`,
-        questions: [
-          "Thưa bác sĩ, các chỉ số xét nghiệm hôm nay của tôi có điểm nào cần đặc biệt lưu ý không ạ?",
-          "Tôi cần điều chỉnh thói quen sinh hoạt và ăn uống ra sao theo kết quả này ạ?"
-        ],
-        lifestyle: "Hãy chọn thử các tình huống cận lâm sàng mẫu ở danh sách phía trên hoặc gõ câu hỏi để trải nghiệm cách MIA đồng hành cùng bạn nhé!",
-        disclaimer: "Đề án nghiên cứu thực chiến • Lab Coach Nguyễn Xuân Tài (K4 AI Product Management)."
+        badge: "Trợ Lý AI MIA • Tính Năng Đồng Hành",
+        meaning: `Tôi giúp bạn 3 việc thiết thực ngay trong lúc chờ khám:<br><br>
+1. <strong>Dịch thuật ngữ y khoa:</strong> Giải thích các chữ viết tắt (như AST, ALT, HbA1c...) sang ngôn ngữ đời thường, dễ hiểu.<br>
+2. <strong>Định khung mức độ (De-escalate):</strong> Giúp bạn hiểu vì sao chỉ số nhích nhẹ mà không vội hoảng sợ tra Google.<br>
+3. <strong>Soạn sẵn câu hỏi cho Bác sĩ:</strong> Chuẩn bị 2 câu hỏi trọng tâm để bạn tận dụng tối đa 10–15 phút trao đổi cùng Bác sĩ.<br><br>
+Anh/chị có thể hỏi em về bất kỳ chỉ số nào trên màn hình hoặc gõ thắc mắc của mình nhé!`,
+        questions: [],
+        lifestyle: null,
+        disclaimer: null
       };
     }
   }

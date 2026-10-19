@@ -478,10 +478,12 @@ function buildRAGCardHtml(data, noticeText) {
         </div>
       ` : ""}
 
-      <div class="disclaimer-badge" style="margin-top:10px;">
-        <span>⚠️</span>
-        <span>${data.disclaimer || "Thông tin mang tính giải thích đời thường, luôn tuân thủ hướng dẫn của Bác sĩ."}</span>
-      </div>
+      ${data.disclaimer ? `
+        <div class="disclaimer-badge" style="margin-top:10px;">
+          <span>⚠️</span>
+          <span>${data.disclaimer}</span>
+        </div>
+      ` : ""}
 
       ${nurseHtml}
     </div>

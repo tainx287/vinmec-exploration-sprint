@@ -77,6 +77,21 @@ Thư mục `05-prototype/` được tái cấu trúc theo mô hình phân tầng
   - **Bảng điều khiển DevTools:** Toàn bộ thông điệp lỗi kỹ thuật được đẩy kín đáo về `console.error` (F12) để kỹ sư kiểm tra.
 - **Bức tường lửa Red-Flag Clinical Escalation:** Phản hồi dưới **100ms** khi phát hiện dấu hiệu cấp cứu (đau ngực dữ dội, méo miệng, hụt hơi, nôn ra máu, v.v.), ngay lập tức khóa luồng chat và hiển thị thẻ cảnh báo đỏ toàn màn hình kèm hotline cấp cứu 115 và Vinmec.
 
+### 🧠 4. Trải Nghiệm Tâm Lý Lâm Sàng: Giải Tỏa "Scanxiety" & "Cyberchondria" (In-Context AI)
+- **Sự đồng thuận ngữ cảnh ngầm định (Implicit Contextual Consent):** Bệnh nhân đã đăng nhập và chủ động chạm vào AI trên trang kết quả xét nghiệm cá nhân. Bot đọc ngầm dữ liệu màn hình (AST 52, ALT 58, HbA1c 6.1%) mà **tuyệt đối không bắt người dùng bấm popup xin phép cấp quyền đọc màn hình**, loại bỏ hoàn toàn lực cản tâm lý (friction).
+- **Ranh giới "Không chẩn đoán nhưng tuyệt đối không vô tích sự":** Cấm hoàn toàn câu từ chối máy móc (*"Đây là chuyên môn sâu, vui lòng chờ bác sĩ"*), vì câu từ chối này sẽ đẩy bệnh nhân vào trạng thái **Cyberchondria** (tự tra Google và hù dọa mình bằng ung thư gan).
+- **Áp dụng Mô hình 3 bước (Translate – Contextualize – Empower):**
+  1. *Translate:* Dịch bản chất enzym men gan và đường huyết sang ngôn ngữ bình dân.
+  2. *Contextualize:* Định khung mức độ: tăng nhẹ 52, 58 U/L là rất phổ biến do thức khuya, stress, thuốc giảm đau hay rượu bia, hoàn toàn không đồng nghĩa với suy gan.
+  3. *Empower:* Chuẩn bị sẵn 2 câu hỏi trọng tâm để bệnh nhân tự tin phối hợp cùng Bác sĩ Mai tại phòng 302.
+
+| Tiêu chí | Kịch bản Chatbot rập khuôn (Thất bại) | Kịch bản Trợ lý In-context chuẩn xác (MyVinmec MIA) |
+| :--- | :--- | :--- |
+| **Phản xạ ban đầu** | Bắt copy-paste hoặc hiện pop-up xin cấp quyền đọc màn hình. Chào hỏi chung chung vô nghĩa. | Đọc ngầm dữ liệu màn hình (Implicit Contextual Consent), biết chính xác người bệnh đang xem xét nghiệm nào tại buồng khám nào. |
+| **Xử lý chỉ số đỏ (H)** | *"Chỉ số này bất thường, đây là chuyên môn sâu, bạn hãy chờ gặp bác sĩ chuyên khoa để được chẩn đoán."* | Giải thích bản chất men gan/đường huyết là gì và giải tỏa nỗi sợ: mức tăng nhẹ này rất phổ biến do lối sống, dập tắt ý định tra Google. |
+| **Cảm xúc người bệnh** | Hoang mang tăng vọt, cảm thấy hệ thống giấu bệnh, lập tức mở Google tra cứu dẫn đến Cyberchondria. | Thở phào nhẹ nhõm, bớt căng thẳng, nhịp tim ổn định trở lại, dập tắt hội chứng Scanxiety trong phòng chờ. |
+| **Giá trị tạo ra cho ca khám** | Người bệnh bước vào phòng khám với thái độ chất vấn, căng thẳng, dồn dập hỏi bác sĩ làm quá tải thời gian tư vấn. | Người bệnh bình tĩnh bước vào với đúng 2 câu hỏi trọng tâm đã chuẩn bị sẵn, tăng hiệu quả phối hợp cùng Bác sĩ. |
+
 ---
 
 ## 3. Hướng Dẫn Khởi Chạy Nhanh (Quickstart)

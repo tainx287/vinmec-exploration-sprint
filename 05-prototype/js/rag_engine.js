@@ -24,6 +24,27 @@ const LOCAL_RAG_CORPUS = [
     disclaimer: "MIA là công cụ giao tiếp phi lâm sàng của đề án nghiên cứu, kết quả thăm khám do Bác sĩ kết luận."
   },
   {
+    id: "overview_in_context",
+    keywords: [
+      "các chỉ số", "chỉ số của tôi", "kết quả của tôi", "ý nghĩa là gì", "xét nghiệm của tôi",
+      "kết quả hôm nay", "tổng quan", "tôi bị làm sao", "đọc kết quả", "giải thích kết quả",
+      "xét nghiệm sinh hóa", "kết quả xét nghiệm", "bị gì không", "sao không", "có sao không",
+      "có nặng không", "nguy hiểm không", "ý nghĩa gì", "chỉ số này là gì", "xét nghiệm"
+    ],
+    title: "Tổng Quan Kết Quả Cận Lâm Sàng Hôm Nay",
+    badge: "Phân Tích Cận Lâm Sàng • In-Context",
+    meaning: `Chào anh Tài! Hệ thống ghi nhận đợt xét nghiệm sinh hóa máu sáng nay tại Phòng 302 của anh gồm các chỉ số chính. Em xin tóm tắt bức tranh toàn cảnh bằng ngôn ngữ đời thường theo 3 nhóm:<br><br>
+1. <strong>Men gan (AST: 52 U/L & ALT: 58 U/L):</strong> Đang hơi nhích nhẹ so với ngưỡng chuẩn (&lt; 40 U/L). Đây là enzym bên trong tế bào gan, việc tăng nhẹ này rất phổ biến khi gan phản ứng với việc thức khuya, dùng thuốc giảm đau, căng thẳng hoặc ăn nhiều dầu mỡ/uống bia rượu gần ngày xét nghiệm. <em>Hoàn toàn không đồng nghĩa với suy gan hay bệnh hiểm nghèo!</em><br><br>
+2. <strong>Đường huyết (HbA1c: 6.1% & Glucose: 5.2 mmol/L):</strong> Glucose lúc đói 5.2 mmol/L hoàn toàn chuẩn. Riêng chỉ số HbA1c 6.1% nằm ở ranh giới tiền tiểu đường (chuẩn &lt; 5.7%). Đây là "thời điểm vàng" để điều chỉnh chế độ ăn giảm đồ ngọt và tăng vận động trước khi cần can thiệp thuốc.<br><br>
+3. <strong>Thận & Chuyển hóa đạm (Creatinine: 85 µmol/L & Acid Uric: 380 µmol/L):</strong> Cả hai đều nằm hoàn hảo trong giới hạn an toàn, chức năng lọc thải của thận đang hoạt động rất tốt.`,
+    questions: [
+      "Thưa bác sĩ, men gan của tôi hơi nhích nhẹ thế này thì có liên quan đến loại thuốc/thói quen sinh hoạt gần đây không?",
+      "Với mức HbA1c 6.1%, tôi cần điều chỉnh dinh dưỡng ra sao và bao lâu thì nên làm xét nghiệm kiểm tra lại ạ?"
+    ],
+    lifestyle: "Bác sĩ Mai dự kiến gọi anh vào phòng 302 sau khoảng 15–20 phút nữa. Anh có muốn ghi chú thêm triệu chứng hay loại thuốc đang dùng gần đây để em tổng hợp sẵn giúp anh trao đổi với Bác sĩ không?",
+    disclaimer: "MIA là trợ lý giao tiếp phi lâm sàng, giúp giải tỏa lo âu và chuẩn bị câu hỏi trước khi gặp Bác sĩ."
+  },
+  {
     id: "liver_enzymes",
     keywords: ["men gan", "alt", "ast", "sgot", "sgpt", "gan", "58", "52", "u/l"],
     title: "Men Gan ALT & AST",
@@ -261,17 +282,17 @@ class CareNavigatorRAG {
       };
     }
 
-    // 4. Trường hợp câu hỏi ngoài danh mục
+    // 4. Trường hợp câu hỏi tự do ngoài danh mục: Luôn neo vào bối cảnh màn hình kết quả tại Phòng 302
     return {
-      source: "FALLBACK_CAUTIOUS",
-      badge: "Tư Vấn Thông Tin Y Tế",
-      meaning: `Thắc mắc của bạn về: <em>"${query}"</em> liên quan đến chuyên môn lâm sàng chuyên sâu. Để đảm bảo an toàn tuyệt đối, hệ thống khuyến nghị bạn trao đổi trực tiếp với Bác sĩ tại phòng khám sau ít phút nữa.`,
+      source: "FALLBACK_IN_CONTEXT",
+      badge: "Đồng Hành Trước Giờ Khám • Phòng 302",
+      meaning: `Em hiểu anh Tài đang băn khoăn về vấn đề này trong lúc chờ khám. Đối với hồ sơ xét nghiệm sáng nay tại Phòng 302, chức năng thận (Creatinine 85 µmol/L) và chuyển hóa đạm (Acid Uric 380 µmol/L) của anh đều rất tốt; chỉ có men gan (AST 52, ALT 58 U/L) hơi nhích nhẹ và HbA1c ở mức 6.1%. Đây là những dao động sinh hoạt thường gặp, hoàn toàn không phải tình trạng nguy kịch.<br><br>Để bác sĩ Trần Thị Mai giải đáp chính xác nhất băn khoăn này kết hợp cùng thể trạng thực tế trong 15 phút khám sắp tới, em gợi ý anh chuẩn bị sẵn 2 câu hỏi trọng tâm sau:`,
       questions: [
-        "Thưa bác sĩ, với thể trạng hiện tại của tôi thì kết quả khám hôm nay có điều gì cần đặc biệt chú ý không ạ?",
-        "Tôi cần làm thêm xét nghiệm nào khác hay chỉ cần tái khám định kỳ theo lịch hẹn ạ?"
+        `"Thưa bác sĩ, đối với thắc mắc '${query}' và các chỉ số hôm nay của tôi thì hướng xử lý hoặc lưu ý cụ thể ra sao ạ?"`,
+        "Tôi có cần làm thêm kiểm tra cận lâm sàng nào khác hay điều chỉnh thói quen sinh hoạt ra sao ạ?"
       ],
-      lifestyle: "Hãy ngồi thư giãn tại sảnh chờ, app sẽ tự động rung chuông khi đến lượt bạn vào gặp Bác sĩ.",
-      disclaimer: "Trợ lý AI MIA giữ ranh giới an toàn phi lâm sàng để bảo vệ người bệnh.",
+      lifestyle: "Anh có muốn ghi chú lại triệu chứng hay loại thuốc đang uống gần đây không, em sẽ tổng hợp sẵn giúp anh trình bày mạch lạc với Bác sĩ Mai!",
+      disclaimer: "MIA là công cụ hỗ trợ giao tiếp phi lâm sàng, đồng hành cùng bạn trước giờ vào phòng khám.",
       showNurseButton: true
     };
   }

@@ -44,3 +44,60 @@ flowchart LR
 ### 2.3. Ranh giới Pháp lý & Khước từ Trách nhiệm (Legal Disclaimer)
 * Dịch vụ này được định vị rõ ràng là **"Tiện ích hỗ trợ thông tin và giao tiếp phi lâm sàng" (Non-clinical Communication Support Tool)**, không phải là thiết bị y tế (Software as a Medical Device - SaMD) và không thay thế hoạt động khám chữa bệnh của người hành nghề y theo Luật Khám bệnh, chữa bệnh 2023.
 * Bản thông báo pháp lý bắt buộc xuất hiện trong màn hình khởi tạo và ở cuối mỗi phản hồi để người bệnh nhận thức đầy đủ quyền và nghĩa vụ của mình.
+
+---
+
+## 3. Tâm Lý Học Lâm Sàng & Ranh Giới: "Không Chẩn Đoán Nhưng Không Được Vô Tích Sự"
+
+### 3.1. Sự Đồng Thuận Ngữ Cảnh Ngầm Định (Implicit Contextual Consent) vs Lực Cản Phê Duyệt (Permission Friction)
+Một lỗi thiết kế AI phổ biến là bắt người bệnh phải trải qua bước pop-up: *"Bạn có cho phép Trợ lý AI đọc các chỉ số xét nghiệm trên màn hình này không?"*.
+* **Bản chất lâm sàng:** Khi người bệnh đã đăng nhập vào tài khoản MyVinmec chính chủ và chủ động chạm vào biểu tượng Trợ lý AI ngay tại màn hình **Chi Tiết Kết Quả Xét Nghiệm**, hành vi đó đã là **Sự đồng thuận ngữ cảnh ngầm định (Implicit Contextual Consent)**.
+* **Tác hại của Pop-up xin quyền:** Tạo ra một lực cản (friction) thừa thãi, làm đứt gãy mạch cảm xúc của một người đang trong trạng thái lo âu chờ đợi.
+* **Chuẩn thiết kế In-context & Context-aware:** AI phải nhận diện ngay các tham số đang hiển thị trên màn hình (như AST: 52 U/L, ALT: 58 U/L, HbA1c: 6.1%). Lời mở đầu của AI không bao giờ là câu chào trống rỗng, mà phải chủ động neo vào bối cảnh cụ thể của ca khám:
+  > *"Chào anh Tài, em thấy hệ thống vừa cập nhật kết quả xét nghiệm sinh hóa của anh tại Phòng 302. Bác sĩ Trần Thị Mai dự kiến sẽ gọi anh vào khám sau khoảng 20 phút nữa. Trong lúc chờ, em có thể hỗ trợ anh giải thích bản chất đời thường của các chỉ số này nhé."*
+
+---
+
+### 3.2. Ranh Giới Mong Manh: Dập Tắt "Scanxiety" & "Cyberchondria" Bằng Mô Hình 3 Bước
+
+> [!CRITICAL]
+> **Bài học xương máu trong thiết kế AI Y tế:**
+> Một dòng chữ tĩnh (*"Kết quả này là chuyên môn sâu, vui lòng chờ bác sĩ"*) hay một pop-up từ chối máy móc đã làm được việc bảo bệnh nhân ngồi chờ — **hoàn toàn không cần đến một LLM đắt đỏ**. 
+> Khi người bệnh chủ động bấm vào chatbot ngay tại màn hình kết quả xét nghiệm, họ đang rơi vào trạng thái tâm lý:
+> 1. **Scanxiety (Hội chứng lo âu chờ đợi kết quả cận lâm sàng):** Nhịp tim tăng, căng thẳng thần kinh trong 30–45 phút trống trải giữa lúc nhận giấy và lúc bác sĩ gọi tên.
+> 2. **Cyberchondria (Nỗi sợ bệnh tật bị kích hoạt bởi Internet):** Khi thấy chữ số bôi đỏ kèm ký hiệu `H (High)` hay `⚠️`, nếu AI phủi tay từ chối, phản xạ tự nhiên của họ là **thoát app, mở Google tra cứu** và tự hù dọa bản thân bằng các chẩn đoán tồi tệ nhất như ung thư gan, xơ gan giai đoạn cuối.
+
+Để vừa tuân thủ đạo đức y khoa (không hành nghề y trái phép), vừa thực sự giải tỏa "khoảng trống thông tin", AI áp dụng triệt để **Mô Hình 3 Bước: Translate – Contextualize – Empower**:
+
+```mermaid
+flowchart LR
+    A[Bước 1: Translate<br>Dịch thuật ngữ đời thường] --> B[Bước 2: Contextualize<br>Định khung mức độ an toàn] --> C[Bước 3: Empower<br>Biến lo âu thành 2 câu hỏi trọng tâm]
+```
+
+#### Bước 1: Dịch thuật ngữ y khoa sang ngôn ngữ đời thường (Plain Language Translation)
+* Người bệnh hoảng sợ phần lớn vì họ không hiểu chữ viết tắt kỹ thuật "AST", "ALT" hay "HbA1c" là gì.
+* **Cách AI giải thích:** *"AST và ALT là hai loại enzym (men) bình thường nằm bên trong tế bào gan. Khi gan làm việc nhiều hơn bình thường hoặc có phản ứng nhẹ, các chất này có thể giải phóng vào máu khiến chỉ số nhích lên một chút."*
+
+#### Bước 2: Định khung mức độ nghiêm trọng (De-escalating Severity Framing)
+* Đây là chìa khóa dập tắt nỗi sợ Google mà không cần phải kết luận bệnh:
+* **Cách AI xoa dịu an toàn:** *"Chỉ số của anh là 52 và 58 U/L, cao hơn ngưỡng tham chiếu chuẩn (dưới 40) một chút. Mức tăng nhẹ này rất hay gặp trong đời sống hàng ngày do thức khuya, dùng thuốc giảm đau, căng thẳng, ăn đồ nhiều dầu mỡ hoặc uống bia rượu gần đây, chứ không đồng nghĩa với tổn thương gan nghiêm trọng hay suy gan. Bác sĩ Mai sẽ kết hợp thêm thể trạng thực tế của anh để đánh giá chính xác."*
+
+#### Bước 3: Biến lo âu thành hành động hữu ích (Empowerment / Question Formulation)
+* Chuyển người bệnh từ tâm thế *"ngồi chờ trong sợ hãi"* sang tâm thế *"chủ động chuẩn bị làm việc cùng chuyên gia"*:
+* **Cách AI dẫn dắt:** *"Để tận dụng tốt nhất 10–15 phút trao đổi với Bác sĩ sắp tới, em gợi ý anh có thể hỏi bác sĩ 2 câu trọng tâm này:*
+  1. *'Thưa bác sĩ, men gan của tôi hơi nhích nhẹ thế này thì có liên quan đến loại thuốc/thói quen sinh hoạt gần đây không?'*
+  2. *'Với mức HbA1c 6.1%, tôi cần điều chỉnh chế độ ăn uống ra sao hay có cần làm thêm kiểm tra gì không?'*  
+  *Anh có muốn ghi chú lại triệu chứng gì gần đây để em tổng hợp sẵn giúp anh trao đổi với Bác sĩ không?"*
+
+---
+
+### 3.3. Bảng Ma Trận Đối Sánh: Chatbot Rập Khuôn vs Trợ Lý In-Context Chuẩn Xác
+
+Bảng so sánh này minh chứng sự khác biệt giữa việc chỉ gọi API máy móc và việc thấu hiểu sâu sắc tâm lý lâm sàng thực địa:
+
+| Tiêu chí | Kịch bản Chatbot rập khuôn (Thất bại) | Kịch bản Trợ lý In-context chuẩn xác (MyVinmec MIA) |
+| :--- | :--- | :--- |
+| **Phản xạ ban đầu** | Bắt copy-paste hoặc hiện pop-up xin cấp quyền đọc màn hình. Chào hỏi chung chung vô nghĩa. | Đọc ngầm dữ liệu màn hình (Implicit Contextual Consent), biết chính xác người bệnh đang xem xét nghiệm nào tại buồng khám nào. |
+| **Xử lý chỉ số đỏ (H)** | *"Chỉ số này bất thường, đây là chuyên môn sâu, bạn hãy chờ gặp bác sĩ chuyên khoa để được chẩn đoán."* | Giải thích bản chất men gan/đường huyết là gì và giải tỏa nỗi sợ: mức tăng nhẹ này rất phổ biến do lối sống, dập tắt ý định tra Google. |
+| **Cảm xúc người bệnh** | Hoang mang tăng vọt, cảm thấy hệ thống giấu bệnh, lập tức mở Google tra cứu dẫn đến Cyberchondria. | Thở phào nhẹ nhõm, bớt căng thẳng, nhịp tim ổn định trở lại, dập tắt hội chứng Scanxiety trong phòng chờ. |
+| **Giá trị tạo ra cho ca khám** | Người bệnh bước vào phòng khám với thái độ chất vấn, căng thẳng, dồn dập hỏi bác sĩ làm quá tải thời gian tư vấn. | Người bệnh bình tĩnh bước vào với đúng 2 câu hỏi trọng tâm đã chuẩn bị sẵn, tăng hiệu quả phối hợp cùng Bác sĩ. |

@@ -81,24 +81,36 @@ export default async function handler(req, res) {
   const model = process.env.LLM_MODEL || "agnes-3.0-flash";
 
   const systemPrompt = `Bạn là Trợ lý AI MIA (Phiên bản mô phỏng nghiên cứu - Research Prototype) được phát triển trong đề án thực chiến của Lab Coach Nguyễn Xuân Tài (Vinmec Exploration Sprint).
-MỤC ĐÍCH THỬ NGHIỆM: Mô phỏng giải pháp giao tiếp phi lâm sàng thân thiện, giúp bệnh nhân đọc hiểu nhanh ý nghĩa đời thường của các chỉ số xét nghiệm máu (như ALT, AST, HbA1c, Creatinine...) trong 45 phút chờ khám và chuẩn bị sẵn đúng 2 câu hỏi trọng tâm để tự tin trao đổi với Bác sĩ tại phòng khám.
-ĐÂY LÀ BẢN COPY MÔ PHỎNG PHỤC VỤ HỘI ĐỒNG GIÁM KHẢO ĐÁNH GIÁ, KHÔNG PHẢI PHIÊN BẢN CHÍNH THỨC THAY THẾ CHO HỆ THỐNG Y TẾ SẢN XUẤT CỦA BỆNH VIỆN VINMEC.
+BỐI CẢNH NGẦM ĐỊNH (IMPLICIT CONTEXTUAL CONSENT):
+Bệnh nhân Nguyễn Xuân Tài (Nam, 28 tuổi, PID: 1000087289) đang ngồi chờ khám tại Phòng 302 (Bác sĩ Trần Thị Mai) của Bệnh viện Vinmec Times City.
+Hệ thống vừa cập nhật kết quả xét nghiệm sinh hóa máu sáng nay:
+- Men gan ALT (SGPT): 58.0 U/L (ngưỡng chuẩn < 40 U/L) -> Hơi nhích nhẹ
+- Men gan AST (SGOT): 52.0 U/L (ngưỡng chuẩn < 40 U/L) -> Hơi nhích nhẹ
+- Đường huyết HbA1c: 6.1% (ngưỡng chuẩn 4.0 - 5.6%) -> Ranh giới tiền đái tháo đường
+- Glucose lúc đói: 5.2 mmol/L (ngưỡng chuẩn 3.9 - 6.4 mmol/L) -> Hoàn toàn chuẩn
+- Creatinine lọc thận: 85.0 µmol/L (ngưỡng chuẩn 62 - 106 µmol/L) -> Rất tốt
+- Acid Uric: 380.0 µmol/L (ngưỡng chuẩn 200 - 420 µmol/L) -> Rất an toàn
 
-QUY TẮC BẮT BUỘC:
-1. Khi bệnh nhân hỏi bạn là ai, bạn có tác dụng gì, ai tạo ra bạn: Giới thiệu rõ bạn là Bản mô phỏng Trợ lý AI MIA thuộc dự án nghiên cứu AI Y tế của Lab Coach Nguyễn Xuân Tài (Vinmec Exploration Sprint), đóng vai trò hỗ trợ bệnh nhân đọc hiểu cận lâm sàng và chuẩn bị câu hỏi trước khi gặp Bác sĩ.
-2. Tuyệt đối KHÔNG chẩn đoán bệnh tật, KHÔNG khẳng định bệnh nan y và KHÔNG kê đơn thuốc.
-3. Với các chỉ số tăng nhẹ (như ALT 58 U/L, AST 52 U/L), luôn giải thích rằng đây là hiện tượng phổ biến do sinh hoạt ăn uống, vận động hoặc bia rượu gần ngày khám, HOÀN TOÀN KHÔNG đồng nghĩa với suy gan hay bệnh hiểm nghèo.
-4. Luôn cung cấp đúng 2 câu hỏi thực tế để bệnh nhân trao đổi cùng bác sĩ.
-5. Đưa ra 1 gợi ý sinh hoạt nhẹ nhàng (uống nước, nghỉ ngơi, thở sâu).
-6. Giọng điệu ấm áp, xưng là "MIA" (thân thiện, gần gũi, thấu cảm, không dùng từ kỹ thuật thô ráp như "Core Navigator").
+TÂM LÝ LÂM SÀNG CỦA BỆNH NHÂN:
+Bệnh nhân đang trong trạng thái Scanxiety (lo âu chờ kết quả) và dễ bị kích hoạt Cyberchondria (tự hù dọa mình bằng Google khi thấy chỉ số bị bôi đỏ hay gắn nhãn H).
+TUYỆT ĐỐI CẤM: Không bao giờ dùng câu từ chối máy móc dạng "Thắc mắc của bạn liên quan chuyên môn sâu, hệ thống khuyến nghị bạn chờ bác sĩ". Một câu từ chối như vậy sẽ làm bệnh nhân hoảng loạn và tìm đến Google!
+
+ÁP DỤNG BẮT BUỘC MÔ HÌNH 3 BƯỚC (TRANSLATE – CONTEXTUALIZE – EMPOWER):
+1. Bước 1 - Dịch thuật ngữ (Translate): Giải thích AST, ALT là hai enzym bình thường nằm trong tế bào gan; khi gan làm việc nhiều hơn hoặc phản ứng nhẹ thì tiết vào máu làm chỉ số nhích lên.
+2. Bước 2 - Định khung mức độ (De-escalating Severity Framing): Giải thích mức tăng nhẹ (52, 58 U/L) rất phổ biến trong đời sống do thức khuya, dùng thuốc giảm đau, căng thẳng, ăn đồ nhiều dầu mỡ hay uống rượu bia gần ngày xét nghiệm; HOÀN TOÀN KHÔNG đồng nghĩa với tổn thương gan nghiêm trọng hay suy gan. Bác sĩ Mai sẽ kết hợp thể trạng thực tế để đánh giá.
+3. Bước 3 - Trao quyền hành động (Empower): Chuẩn bị đúng 2 câu hỏi trọng tâm cho ca khám tại phòng 302 sắp tới, giúp người bệnh chủ động làm việc cùng chuyên gia.
+
+QUY TẮC CÂU HỎI ĐỊNH DANH:
+- Khi hỏi "Bạn là ai", giới thiệu ngắn gọn là Trợ lý AI MIA (bản mô phỏng nghiên cứu).
+- Khi hỏi "Bạn có thể làm gì", KHÔNG nhắc tên tác giả, giải thích ngắn gọn 3 việc (Dịch thuật ngữ, Định khung an toàn, Soạn câu hỏi), không kèm câu hỏi bác sĩ thừa thãi.
 
 BẮT BUỘC TRẢ VỀ DUY NHẤT ĐỊNH DẠNG JSON HỢP LỆ (Không kèm markdown code fence):
 {
   "badge": "Trợ lý AI MIA • [Tên chuyên khoa hoặc nhóm chỉ số]",
-  "meaning": "Lời giải thích đời thường, thân thiện, trấn an tâm lý...",
+  "meaning": "Lời giải thích đời thường, thân thiện, trấn an tâm lý, giải tỏa Scanxiety...",
   "questions": ["Câu hỏi 1 bạn nên hỏi Bác sĩ?", "Câu hỏi 2 bạn nên hỏi Bác sĩ?"],
-  "lifestyle": "Gợi ý sinh hoạt nhẹ nhàng...",
-  "disclaimer": "Thông tin mang tính chất mô phỏng tham khảo. Mọi kết luận chính xác do Bác sĩ tại phòng khám đưa ra."
+  "lifestyle": "Gợi ý tương tác hoặc sinh hoạt nhẹ nhàng...",
+  "disclaimer": "MIA là công cụ giao tiếp phi lâm sàng, giúp giải tỏa lo âu và chuẩn bị câu hỏi trước khi gặp Bác sĩ."
 }`;
 
   try {
@@ -132,12 +144,41 @@ BẮT BUỘC TRẢ VỀ DUY NHẤT ĐỊNH DẠNG JSON HỢP LỆ (Không kèm m
     try {
       parsed = JSON.parse(rawText);
     } catch {
-      const s = rawText.indexOf("{");
-      const e = rawText.lastIndexOf("}");
-      if (s !== -1 && e > s) {
-        parsed = JSON.parse(rawText.slice(s, e + 1));
-      } else {
-        throw new Error("Invalid JSON from LLM");
+      try {
+        const s = rawText.indexOf("{");
+        const e = rawText.lastIndexOf("}");
+        if (s !== -1 && e > s) {
+          parsed = JSON.parse(rawText.slice(s, e + 1));
+        } else {
+          throw new Error("No JSON bracket found");
+        }
+      } catch {
+        // Regex-based resilient fallback for unescaped quotes or broken JSON
+        const badgeMatch = rawText.match(/"badge"\s*:\s*"([^"]+)"/i);
+        const meaningMatch = rawText.match(/"meaning"\s*:\s*"([\s\S]*?)"\s*,\s*"(?:questions|lifestyle|disclaimer)"/i);
+        const lifestyleMatch = rawText.match(/"lifestyle"\s*:\s*"([\s\S]*?)"\s*,\s*"(?:disclaimer|}")/i);
+        const disclaimerMatch = rawText.match(/"disclaimer"\s*:\s*"([\s\S]*?)"\s*}/i);
+        
+        const questions = [];
+        const qRegex = /"([^"]{10,250}\?)"/g;
+        let qMatch;
+        while ((qMatch = qRegex.exec(rawText)) !== null) {
+          if (!questions.includes(qMatch[1])) {
+            questions.push(qMatch[1]);
+          }
+          if (questions.length >= 2) break;
+        }
+
+        parsed = {
+          badge: badgeMatch ? badgeMatch[1] : "Trợ lý AI MIA • Bệnh viện Vinmec Times City",
+          meaning: meaningMatch ? meaningMatch[1].replace(/\\"/g, '"') : rawText.replace(/[{}[\]"\\]/g, " ").trim(),
+          questions: questions.length ? questions : [
+            "Thưa bác sĩ, các chỉ số xét nghiệm hôm nay của tôi có điểm nào cần đặc biệt lưu ý không ạ?",
+            "Tôi có cần điều chỉnh thói quen sinh hoạt và ăn uống ra sao theo kết quả này ạ?"
+          ],
+          lifestyle: lifestyleMatch ? lifestyleMatch[1] : "Ngồi thư giãn tại sảnh chờ, app sẽ tự động rung chuông khi đến lượt bạn vào phòng 302.",
+          disclaimer: disclaimerMatch ? disclaimerMatch[1] : "MIA là công cụ giao tiếp phi lâm sàng, giúp giải tỏa lo âu và chuẩn bị câu hỏi trước khi gặp Bác sĩ."
+        };
       }
     }
 
