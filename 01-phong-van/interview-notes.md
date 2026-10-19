@@ -14,25 +14,12 @@
 
 ---
 
-## 2. Ghi Chép Dùng Thử Ứng Dụng MyVinmec Của Ứng Viên (Self-Heuristic Audit)
+## 2. Ghi Chép Dùng Thử Ứng Dụng MyVinmec Của Ứng Viên
 
-*Trước khi phỏng vấn người dùng, ứng viên Nguyễn Xuân Tài (K2) trực tiếp tải, đăng ký tài khoản và thực hiện bài kiểm tra khả năng sử dụng (Heuristic Walkthrough) trên ứng dụng MyVinmec thực tế (phiên bản cập nhật tháng 10/2026 trên iOS/Android). Ghi nhận các điểm nghẽn trải nghiệm thực tế như sau:*
+*Toàn bộ nhật ký ứng viên tự tải, trải nghiệm và đánh giá khả năng sử dụng (Heuristic Walkthrough) trên ứng dụng MyVinmec thực tế theo đúng yêu cầu đề bài Mục 6.3 ("Bạn làm gì – Thấy gì – Vướng ở đâu") được lưu trữ thành file độc lập tại:*  
+👉 **[Xem chi tiết Nhật Ký Dùng Thử MyVinmec (myvinmec-heuristic-audit.md)](./myvinmec-heuristic-audit.md)**
 
-### 2.1. Kiểm thử luồng Đặt lịch khám & Tương tác Trợ lý AI (Booking & Conversational Flow)
-
-| Thao tác kiểm thử (Task) | Kỳ vọng của người dùng | Thực tế quan sát được trên app | Phân tích điểm nghẽn kỹ thuật & UX (Friction / Heuristic Violation) |
-| :--- | :--- | :--- | :--- |
-| **Chọn Chuyên khoa & Bác sĩ** | Chọn chuyên khoa trước, hệ thống tự động lọc ra danh sách bác sĩ có lịch trống phù hợp với ngày mong muốn. | Khi chỉ chọn chuyên khoa mà chưa chọn bác sĩ, hệ thống báo lỗi nhưng **không chỉ rõ nguyên nhân hoặc highlight trường thông tin bắt buộc**. Chỉ khi ấn vào từng bác sĩ cụ thể mới biết bác sĩ đó có trống lịch vào ngày đã chọn hay không (ví dụ: hai bác sĩ nam đầu danh sách đều kín lịch vào Thứ Hai, chuyển sang bác sĩ nữ mới thấy hiển thị bảng khung giờ). | ⚠️ **Vi phạm Heuristic #9 (Help users recognize and recover from errors):** Thông báo lỗi mơ hồ, thiếu chỉ dẫn phục hồi lỗi; người dùng phải thao tác thử-sai (trial and error) để tìm bác sĩ còn lịch. |
-| **Chuyển đổi tiêu chí phân loại (Tab Switching)** | Tab "Chuyên khoa", "Bác sĩ" và "Triệu chứng" đóng vai trò là các bộ lọc bổ trợ (Faceted filters) giúp thu hẹp phạm vi tìm kiếm. | Sau khi đã chọn xong Chuyên khoa và Bác sĩ, người dùng chuyển sang tab "Triệu chứng" để bổ sung thông tin thì hệ thống **tự động xóa sạch (State Reset)** toàn bộ các lựa chọn đã thiết lập trước đó. | ⚠️ **Lỗi quản lý trạng thái giao diện (State Loss):** Mental model của người dùng bị phá vỡ; gây mất công sức thao tác và gia tăng cảm giác ức chế khi bị buộc phải chọn lại từ đầu. |
-| **Xác nhận Khung giờ khám (Time Slot Selection)** | Chọn khung giờ còn trống (sáng/chiều) và bấm "Đặt lịch" để chuyển sang bước thanh toán/xác nhận thông tin. | Dù đã chọn mốc thời gian hiển thị sẵn trên màn hình (đã chọn dot sáng/chiều), khi bấm "Đặt lịch", hệ thống liên tục xuất thông báo lỗi dạng Toast: *"Thông báo: có lỗi xảy ra. Mời bạn thử lại sau"*. Thao tác thử trên nhiều mốc thời gian khác nhau vẫn gặp lỗi tương tự, dẫn đến không thể hoàn tất giao dịch đặt khám. | ⚠️ **Lỗi ngoại lệ hệ thống không tường minh (Unhandled System Error):** Lỗi kết nối hoặc đồng bộ lịch khám giữa client và backend/HIS không được thông báo rõ nguyên nhân (do mạng, do hết slot, hay lỗi tài khoản), khiến giao dịch bị tắc nghẽn hoàn toàn. |
-| **Tương tác với Trợ lý AI tư vấn triệu chứng** | Người dùng mô tả triệu chứng ban đầu để AI gợi ý định hướng chuyên khoa phù hợp nhằm đặt lịch nhanh. | AI liên tục đặt nhiều câu hỏi mở đào sâu vào các triệu chứng phụ khác một cách vòng vo; đặc biệt **giao diện không cung cấp nút "Bỏ qua" (Skip / Escape Hatch)** để người dùng chủ động ngắt đoạn hội thoại và quay lại đặt lịch thủ công. | ⚠️ **Vi phạm Heuristic #3 (User control and freedom):** Bẫy hội thoại không lối thoát (Conversational Lock-in); làm kéo dài thời gian tác vụ không cần thiết khi người dùng đang có nhu cầu đặt khám khẩn trương. |
-
-### 2.2. Kiểm thử luồng Xem Hồ sơ & Kết quả Cận lâm sàng (Results & Post-visit Flow)
-
-| Thao tác kiểm thử (Task) | Kỳ vọng của người dùng | Thực tế quan sát được trên app | Phân tích điểm nghẽn kỹ thuật & UX |
-| :--- | :--- | :--- | :--- |
-| **Xem bảng kết quả xét nghiệm** | Mở xem kết quả nhanh chóng, có chú giải dễ hiểu để nắm bắt tình trạng sức khỏe ban đầu trước giờ gặp bác sĩ. | Kết quả trả về dưới dạng file scan PDF hoặc bảng dữ liệu phòng lab với nhiều ký hiệu viết tắt kỹ thuật (`SGOT`, `Creatinine`, `HbA1c`), kèm chỉ số bôi đỏ `H`/`L` mà không có lớp diễn giải ngôn ngữ đời thường. | ⚠️ **Rào cản thuật ngữ y khoa & Vùng trũng lo âu:** Người bệnh dễ rơi vào tình trạng hoang mang và tự tra cứu trên mạng, đẩy tâm lý lo lắng lên cao trong thời gian chờ đợi (chủ đề trọng tâm của đề án). |
-| **Theo dõi đơn thuốc & Dặn dò** | Dễ dàng xem lại phác đồ, nhắc giờ uống thuốc và đặt hẹn tái khám một chạm trực tiếp từ đơn thuốc. | Đơn thuốc hiển thị dạng văn bản tĩnh; thiếu tích hợp lời dặn dò sinh hoạt cụ thể và chưa có tính năng đồng bộ lịch tái khám vào điện thoại. | ⚠️ **Đứt gãy chăm sóc sau thăm khám:** Người bệnh dễ quên dặn dò của bác sĩ sau khi rời viện. |
+*Nội dung dưới đây tập trung toàn bộ vào biên bản ghi chép thực tế từ 3 cuộc phỏng vấn người dùng (P1, P2, P3).*
 
 ---
 

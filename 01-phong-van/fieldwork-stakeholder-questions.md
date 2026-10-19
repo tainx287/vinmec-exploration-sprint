@@ -1,11 +1,12 @@
 # Cẩm Nang Phỏng Vấn Thực Địa & Ngân Hàng Câu Hỏi Nghiên Cứu Bệnh Viện (Fieldwork Stakeholder Question Bank)
 
-> **Dành cho:** Kỹ sư nhúng / Product Lead trong đợt **Exploration Sprint 6 tuần tại Hệ thống Y tế Vinmec**  
-> **Nguyên tắc bất biến:** **TUYỆT ĐỐI KHÔNG NHẮC ĐẾN CÔNG NGHỆ, TÍNH NĂNG HAY AI** (Zero-Solution Bias / Solution-Blindness). Mục tiêu duy nhất là quan sát thực tế, lắng nghe thấu cảm, bóc tách hành vi đã xảy ra, cảm xúc chân thật và phát hiện các điểm nghẽn (Bottlenecks) trong quy trình vận hành bệnh viện.  
-> **Cơ sở phương pháp luận:** Tổng hợp từ phương pháp **The Mom Test (Rob Fitzpatrick)**, **Contextual Inquiry (Nghiên cứu theo ngữ cảnh)**, **Stanford Biodesign Need Finding** và **Tâm lý học hành vi (Behavioral Psychology)** thuộc chương trình đào tạo AI Thực Chiến Track 1 (Day 2, 5, 17, 18, 19).
+> **Dành cho:** Forward Deployed Engineer / Product Lead trong đợt **Exploration Sprint 6 tuần tại Hệ thống Y tế Vinmec**  
+> **Mục đích tài liệu:** Ngân hàng câu hỏi nghiên cứu thực địa (Stakeholder Question Bank) phục vụ giai đoạn làm việc trực tiếp tại bệnh viện Vinmec.  
+> **Nguyên tắc bất biến:** **TUYỆT ĐỐI KHÔNG NHẮC ĐẾN CÔNG NGHỆ, TÍNH NĂNG HAY AI** (Zero-Solution Bias / Solution-Blindness). Mục tiêu là quan sát thực tế, lắng nghe thấu cảm, bóc tách hành vi đã xảy ra và phát hiện các điểm nghẽn vận hành.  
+> **Cơ sở phương pháp luận:** Tổng hợp từ **The Mom Test (Rob Fitzpatrick)**, **Contextual Inquiry** và **Stanford Biodesign Need Finding** (Track 1 AI Thực Chiến).  
 
 > [!NOTE]
-> **Vai trò của tài liệu trong hồ sơ bài tập 1 tuần:** Đây là **Bộ công cụ sẵn sàng thực địa (Fieldwork Readiness Toolkit)** do ứng viên K1–K3 chủ động thiết kế trước. Tài liệu này đóng vai trò là "giáo án tác chiến" để Lead chuyển giao và hướng dẫn nhóm học viên K4 (5–10 người) sử dụng trong **Tuần 1 của đợt Sprint 6 tuần chính thức**, sau khi toàn bộ đội ngũ đã ký cam kết bảo mật y tế (NDA) và được cấp quyền Onboard vào môi trường bệnh viện Vinmec. Trong phạm vi bài tập 1 tuần hiện tại, ứng viên tuyệt đối tuân thủ quy chuẩn đạo đức y tế: **không tự ý tiếp cận bệnh nhân tại viện** mà chỉ thực hiện khảo sát trên người dùng bên ngoài (P1–P3) và tự kiểm thử Heuristic ứng dụng công khai MyVinmec.
+> **Phạm vi bài tập sơ bộ 1 tuần:** Đây là tài liệu nghiên cứu mở rộng được chuẩn bị sẵn cho giai đoạn thực địa 6 tuần tại bệnh viện. Đối với bài tập 1 tuần hiện tại, ứng viên chỉ thực hiện phỏng vấn 3 người dùng bên ngoài theo kịch bản chuẩn tại [interview-guide.md](./interview-guide.md).
 
 ---
 

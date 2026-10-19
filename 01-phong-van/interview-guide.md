@@ -24,13 +24,22 @@
 
 ---
 
-## 3. Khung Đối Tượng & Bối Cảnh Khảo Sát
+## 3. Khung Đối Tượng & Quá Trình Tuyển Chọn (User Personas & Recruitment)
 
-| Mã người tham gia | Nhóm chân dung người dùng (User Persona) | Bối cảnh đi khám gần nhất | Kênh thực hiện | Thời lượng |
+### 3.1. Giả thuyết chân dung mục tiêu ban đầu (Initial Persona Hypotheses)
+Trước khi ra thực tế, nghiên cứu định hình 3 nhóm đối tượng lý tưởng:
+1. *Nhóm 1:* Người trẻ khám bệnh lý cá nhân (Tech-savvy).
+2. *Nhóm 2:* Người chăm sóc (Caregiver) đưa người thân đi khám.
+3. *Nhóm 3:* Người đi khám định kỳ/ngoại trú thường xuyên.
+
+### 3.2. Đối tượng phỏng vấn thực tế được tuyển chọn (Actual Recruited Participants)
+> *Ghi chú tuyển chọn:* Trong giới hạn thời gian bài tập sơ bộ 1 tuần và tuân thủ quy định không tiếp cận bệnh nhân đang điều trị trong viện, ứng viên đã linh hoạt tiếp cận **3 người thật trong mạng lưới quan hệ (bạn bè, đồng đội cũ)** vừa có trải nghiệm đi khám bệnh viện gần đây nhất để thu thập dữ liệu thực chứng (Ground Truth):
+
+| Mã đối tượng | Chân dung người dùng thực tế | Bối cảnh đi khám gần nhất | Kênh thực hiện | Thời lượng |
 | :--- | :--- | :--- | :--- | :--- |
-| **`P1`** | **Người trẻ bận rộn (Tech-savvy):** Tự đi khám sức khỏe định kỳ / khám tổng quát cá nhân. | Khám tổng quát tại bệnh viện tư nhân / Vinmec trong 3 tháng qua. | Trực tiếp (F2F) | 35 phút |
-| **`P2`** | **Người chăm sóc gia đình (Caregiver):** Cài app, đặt lịch và đưa bố mẹ lớn tuổi đi khám chuyên khoa. | Đưa người thân đi kiểm tra sức khỏe tại phòng khám/bệnh viện. | Google Meet | 40 phút |
-| **`P3`** | **Bệnh nhân tái khám ngoại trú:** Đã quen với quy trình nhưng thường xuyên nhận nhiều kết quả xét nghiệm liên hoàn. | Khám ngoại trú định kỳ theo chỉ định bác sĩ. | Phỏng vấn qua điện thoại | 30 phút |
+| **`P1`** *(M.N.)* | **Bệnh nhân khám chấn thương chuyên sâu:** Cựu quân nhân, đau khớp gối kéo dài, tự tra AI rồi đi chụp MRI tại bệnh viện lớn. | Khám chấn thương & Chụp MRI dịch vụ tại bệnh viện đa khoa lớn. | Trực tiếp 1-1 | 38 phút |
+| **`P2`** *(T.H.)* | **Người khám định kỳ theo đơn vị vũ trang:** Sĩ quan Hậu cần Hải quân, khám sức khỏe tập trung theo kế hoạch đơn vị. | Khám định kỳ đoàn tại Viện Y học Hải quân (phòng đông, áp lực thời gian). | Điện thoại trực tiếp | 25 phút |
+| **`P3`** *(V.D.)* | **Người khám sức khỏe doanh nghiệp bắt buộc:** Kỹ sư nhà máy FDI tại KCN, khám theo lịch công ty (quy trình tuần tự nhiều phòng). | Khám sức khỏe định kỳ doanh nghiệp tại bệnh viện đối tác KCN. | Điện thoại trực tiếp | 28 phút |
 
 ---
 
