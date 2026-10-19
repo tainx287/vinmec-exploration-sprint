@@ -77,45 +77,82 @@ st.set_page_config(
     layout="centered"
 )
 
-# Tùy biến CSS mô phỏng phong cách hiện đại của MyVinmec
+# Tùy biến CSS mô phỏng phong cách hiện đại của MyVinmec (Teal/Mint/Gold)
 st.markdown("""
 <style>
+    :root {
+        --vinmec-teal: #008B7A;
+        --vinmec-mint: #E0F2F1;
+        --vinmec-gold: #F59E0B;
+    }
+    .stApp {
+        background-color: #F8FAFC;
+    }
     .main-header {
-        color: #0f766e;
-        font-size: 26px;
-        font-weight: 700;
-        margin-bottom: 4px;
+        color: #008B7A;
+        font-size: 24px;
+        font-weight: 800;
+        margin-bottom: 2px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
     }
     .sub-header {
-        color: #64748b;
-        font-size: 14px;
-        margin-bottom: 20px;
+        color: #64748B;
+        font-size: 13px;
+        margin-bottom: 16px;
+    }
+    .patient-badge {
+        background: #FFFFFF;
+        border: 1px solid #E2E8F0;
+        border-radius: 12px;
+        padding: 10px 14px;
+        margin-bottom: 16px;
+        box-shadow: 0 2px 6px rgba(0, 139, 122, 0.06);
     }
     .emergency-card {
-        background-color: #fee2e2;
-        border: 2px solid #dc2626;
-        border-radius: 12px;
+        background-color: #FEF2F2;
+        border: 2px solid #DC2626;
+        border-radius: 14px;
         padding: 20px;
-        color: #991b1b;
+        color: #991B1B;
         margin-top: 15px;
         margin-bottom: 20px;
     }
     .emergency-card h3 {
-        color: #b91c1c;
+        color: #B91C1C;
         margin-top: 0;
     }
     .result-card {
-        background-color: #f8fafc;
-        border-left: 4px solid #0d9488;
-        padding: 16px;
-        border-radius: 8px;
-        margin-bottom: 16px;
+        background-color: #FFFFFF;
+        border-left: 4px solid #008B7A;
+        padding: 14px 16px;
+        border-radius: 12px;
+        margin-bottom: 14px;
+        border: 1px solid #E2E8F0;
+    }
+    .stButton>button {
+        background-color: #008B7A !important;
+        color: white !important;
+        border-radius: 20px !important;
+        border: none !important;
+        font-weight: 700 !important;
+    }
+    .stButton>button:hover {
+        background-color: #006D60 !important;
     }
 </style>
 """, unsafe_allow_html=True)
 
-st.markdown('<div class="main-header">🏥 MyVinmec Plain-Language Care Navigator</div>', unsafe_allow_html=True)
-st.markdown('<div class="sub-header">Trợ lý giải thích kết quả cận lâm sàng & chuẩn bị câu hỏi cho Bác sĩ (Interactive Prototype)</div>', unsafe_allow_html=True)
+st.markdown('<div class="main-header">🏥 MyVinmec Care Navigator</div>', unsafe_allow_html=True)
+st.markdown('<div class="sub-header">Trợ lý phiên dịch kết quả cận lâm sàng dạng ngôn ngữ bình dân • Trang bị câu hỏi hỏi Bác sĩ</div>', unsafe_allow_html=True)
+
+st.markdown("""
+<div class="patient-badge">
+    <strong>Bệnh nhân:</strong> NGUYỄN VĂN A &nbsp;|&nbsp; <strong>Mã y tế:</strong> 10088921 (Vinmec Times City)<br>
+    <span style="font-size:12px; color:#64748B;">Khoa Khám bệnh Ngoại trú • Bác sĩ chỉ định: CKI. Trần Thị Mai</span>
+</div>
+""", unsafe_allow_html=True)
 
 # Sidebar điều khiển tình huống kiểm thử
 st.sidebar.header("🧪 Bộ Tình Huống Kiểm Thử (Presets)")

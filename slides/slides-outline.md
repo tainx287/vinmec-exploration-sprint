@@ -1,4 +1,4 @@
-﻿# Đề Cương Bài Thuyết Trình 10 Slide (Slides Outline Deck)
+# Đề Cương Bài Thuyết Trình 10 Slide (Slides Outline Deck)
 
 > **Mục đích:** Bản tóm tắt chiến lược cho buổi trình bày 10 phút trước Hội đồng Tuyển chọn VinUni VRIC – Vinmec (kèm 20 phút phỏng vấn có cấu trúc).  
 > **Quy chuẩn:** Đúng 10 slide tối đa theo quy định tại Mục 6.0 & 6.3 của đề bài. Mạch kể chuyện (Storytelling) mạch lạc từ Vấn đề → Nghiên cứu → Need Statement → Prototype → An toàn → Năng lực Dẫn dắt K4.
@@ -14,11 +14,12 @@
 ---
 
 ## Slide 2: Bối Cảnh & Điểm Nghẽn Trên MyVinmec (Context & Heuristic Audit)
-* **Tiêu đề:** Khoảnh Khắc Của Sự Thật: Người Bệnh Cầm Điện Thoại Đọc Kết Quả
+* **Tiêu đề:** Khoảnh Khắc Của Sự Thật: "Information Void" & Hội Chứng "Scanxiety" Tại Sảnh Chờ
 * **Nội dung trọng tâm:**
-  * Khảo sát ứng dụng MyVinmec: Chuyển đổi số rất tốt khâu đặt lịch và trả file PDF kết quả.
-  * Nghịch lý số hóa: Người bệnh nhận được dữ liệu thô (Raw Data) nhưng thiếu ngữ cảnh hiểu biết → Đẩy họ vào cơn hoảng loạn "Google Anxiety" ngay tại sảnh bệnh viện.
-* **Hình ảnh/Trực quan:** Ảnh chụp màn hình mô phỏng file PDF kết quả xét nghiệm với các chỉ số viết tắt bôi đỏ `H`/`L`.
+  * Khảo sát ứng dụng MyVinmec: Chuyển đổi số rất tốt khâu đặt lịch và trả trực tiếp file PDF kết quả về điện thoại.
+  * Nghịch lý số hóa (Con dao hai lưỡi): Trả kết quả sớm nhưng vô tình đẩy người bệnh vào **"Khoảng trống thông tin" (Information Void)** không người giải thích.
+  * Kích hoạt hội chứng y khoa **"Scanxiety"** *(Scan + Anxiety)*: Người bệnh thảm họa hóa suy diễn (**Catastrophizing**) và hơn 80% rơi vào cơn hoảng loạn **"Cyberchondria"** (lo âu bệnh lý do tự chẩn đoán sai trên Google) khi thấy các chỉ số bôi đỏ `H`/`L`.
+* **Hình ảnh/Trực quan:** Ảnh chụp màn hình mô phỏng file PDF kết quả xét nghiệm với các chỉ số viết tắt bôi đỏ `H`/`L` đối lập với đồ thị lo âu bùng phát.
 * **Thời lượng trình bày:** 1:00 phút.
 
 ---
@@ -26,20 +27,23 @@
 ## Slide 3: Lắng Nghe Tiếng Nói Người Bệnh (3 In-depth Anonymous Interviews)
 * **Tiêu đề:** Nghiên Cứu Hiện Trường: 3 Cuộc Phỏng Vấn Ẩn Danh P1, P2, P3
 * **Nội dung trọng tâm:**
-  * **P1 (Người trẻ):** *"Em hoang mang suốt 45 phút vì tưởng nhầm men gan cao nhẹ là bệnh hiểm nghèo khi tra Google."*
-  * **P2 (Người chăm sóc mẹ già):** *"Không biết đã có đủ hết xét nghiệm chưa, không biết đưa mẹ đi đâu tiếp."*
-  * **P3 (Bệnh nhân tái khám):** *"Bác sĩ nói nhanh quá không kịp hỏi; về nhà quên hết dặn dò."*
+  * **P1 (Người trẻ - Cyberchondria):** *"Em hoang mang suốt 45 phút vì tưởng nhầm men gan cao nhẹ là bệnh hiểm nghèo khi tra Google."*
+  * **P2 (Người chăm sóc mẹ già - Cognitive Load):** *"Không biết đã có đủ hết xét nghiệm chưa, không biết đưa mẹ đi đâu tiếp."*
+  * **P3 (Bệnh nhân tái khám - White-coat effect):** *"Bác sĩ nói nhanh quá không kịp hỏi; về nhà quên hết dặn dò."*
 * **Hình ảnh/Trực quan:** 3 thẻ User Persona với các trích dẫn nguyên văn (Verbatim Quotes) gây xúc động.
 * **Thời lượng trình bày:** 1:00 phút.
 
 ---
 
-## Slide 4: Bản Đồ Hành Trình & Vùng Trũng Lo Âu (Workflow Journey Map)
-* **Tiêu đề:** Đỉnh Điểm Lo Âu Tại Giai Đoạn Chờ Kết Quả Xét Nghiệm
+## Slide 4: Bản Đồ Hành Trình & Tam Giác Tác Động (Journey Map & Impact Triangle)
+* **Tiêu đề:** Đỉnh Điểm Lo Âu & Tam Giác Tác Động: Bệnh Nhân – Bác Sĩ – Bệnh Viện
 * **Nội dung trọng tâm:**
   * Biểu đồ đường cong cảm xúc (Emotion Curve): Trạng thái tinh thần rơi tự do từ lúc app báo "Đã có kết quả" đến trước khi bước vào phòng khám.
-  * Phân tích 5 Whys: Bệnh viện số hóa quy trình nhưng chưa số hóa trải nghiệm nhận thức của người bệnh.
-* **Hình ảnh/Trực quan:** Sơ đồ Journey Map với vùng đánh dấu đỏ rực tại Pha 3 & 4.
+  * **Tam giác tác động 3 bên do Information Void gây ra:**
+    * **Người bệnh:** Rơi vào trạng thái phòng thủ (*Fight-or-Flight*), tê liệt nhận thức (**Cognitive Overload**), nhiễu loạn sinh hiệu (huyết áp/nhịp tim tăng do stress).
+    * **Bác sĩ:** Lãng phí **7–10 phút đầu của ca khám** chỉ để "dọn dẹp hiểu lầm" bệnh nhân tự đọc trên mạng, tăng nguy cơ kiệt sức (**Doctor Burnout**).
+    * **Bệnh viện Vinmec:** Giảm tốc độ luân chuyển bệnh nhân (**Patient Throughput**) và đứt gãy cảm giác được chăm sóc (**Care Continuity**).
+* **Hình ảnh/Trực quan:** Sơ đồ Journey Map với vùng đánh dấu đỏ rực tại Pha 3 & 4 kèm biểu đồ Tam Giác Tác Động 3 bên.
 * **Thời lượng trình bày:** 1:00 phút.
 
 ---
@@ -47,8 +51,9 @@
 ## Slide 5: Tuyên Bố Nhu Cầu Chuẩn Stanford Biodesign (Need Statement)
 * **Tiêu đề:** Định Nghĩa Đúng Nhu Cầu Cốt Lõi — Không Thiên Kiến Giải Pháp
 * **Nội dung trọng tâm:**
-  * **Tuyên bố Biodesign:** *"Một cách để giảm thiểu mức độ hoang mang lo âu và nâng cao khả năng chủ động hiểu biết về tình trạng sức khỏe cho người bệnh ngoại trú đang gặp khó khăn trong việc đọc hiểu các chỉ số kỹ thuật trên bảng kết quả cận lâm sàng trong khoảng thời gian chờ tư vấn trực tiếp với bác sĩ tại bệnh viện."*
-  * Rà soát nghiêm ngặt: 100% không chứa từ khóa "AI", "App", "Chatbot"; tập trung giải quyết nhu cầu con người.
+  * **Tuyên bố Biodesign:** *"Một cách để hóa giải hội chứng 'Scanxiety', giảm thiểu hoang mang lo âu và nâng cao khả năng chủ động hiểu biết về tình trạng sức khỏe cho người bệnh ngoại trú đang gặp khó khăn trong việc đọc hiểu các chỉ số kỹ thuật trên bảng kết quả cận lâm sàng trong khoảng thời gian chờ tư vấn trực tiếp với bác sĩ tại bệnh viện."*
+  * **Định vị cốt lõi:** Thiết lập **"Bước đệm giảm xóc tâm lý" (Psychological Shock-absorber)** và **"Lớp phiên dịch thông tin phi lâm sàng"** dọn dẹp tâm trí người bệnh; 100% không chẩn đoán thay bác sĩ.
+  * **Chỉ số đo lường kép:** Giảm 80% lo âu người bệnh + Tiết kiệm 5–8 phút giải thích hiểu lầm cho bác sĩ mỗi ca khám (**Consultation Efficiency**).
 * **Hình ảnh/Trực quan:** Bảng phân tách 4 thành tố: Problem – Population – Outcome – Context.
 * **Thời lượng trình bày:** 1:00 phút.
 

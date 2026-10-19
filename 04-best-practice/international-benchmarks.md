@@ -24,7 +24,8 @@
 ### 1.4. Bài học & Điều chỉnh khi áp dụng cho Vinmec
 * **Tính tương thích:** Rất cao đối với các xét nghiệm sinh hóa/huyết học thường quy trên MyVinmec.
 * **Điều chỉnh cho Việt Nam:**
-  * Bệnh nhân Việt Nam có thói quen "ngại hỏi bác sĩ" vì sợ phiền hoặc sợ bị mắng. Tính năng gợi ý câu hỏi cần sử dụng văn phong gần gũi, khích lệ người bệnh chủ động giãi bày.
+  * Khách hàng tại các hệ thống y tế tư nhân chất lượng cao như Vinmec có đặc thù mang tâm thế người tiêu dùng dịch vụ (Healthcare Consumerism): học vấn cao, chủ động tìm kiếm thông tin và đòi hỏi quyền lợi được giải thích chi tiết. Vấn đề không phải họ 'ngại hỏi', mà là họ thiếu định hướng chuyên môn nên dễ bị cuốn vào thông tin rác trên internet trong thời gian chờ đợi. Tính năng Pre-appointment Prompting tại Vinmec đóng vai trò chuyển hóa những lo âu suy diễn thành 2–3 câu hỏi lâm sàng trọng tâm, giúp bệnh nhân và bác sĩ đối thoại bình đẳng, hiệu quả và đúng bản chất ca bệnh
+  * Tính năng gợi ý câu hỏi cần sử dụng văn phong gần gũi, khích lệ người bệnh chủ động giãi bày.
   * Phải có bộ lọc loại trừ tuyệt đối đối với các kết quả giải phẫu bệnh, đột biến gen hoặc nghi ngờ ung bướu — những kết quả này bắt buộc phải để bác sĩ giải thích trực tiếp.
 
 ---

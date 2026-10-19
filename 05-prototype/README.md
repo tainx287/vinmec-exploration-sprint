@@ -1,112 +1,100 @@
-﻿# Hướng Dẫn Kỹ Thuật & Cài Đặt Prototype (Prototype Technical Guide)
+# Hướng Dẫn Kỹ Thuật & Cài Đặt Prototype (MyVinmec Care Navigator)
 
-> **Tên module:** MyVinmec Plain-Language Care Navigator (Interactive AI Prototype)  
-> **Tác giả:** Nguyễn Xuân Tài — Cựu học viên K2 (Forward Deployed Engineer / Technical Lead & K4 Coach)  
-> **Kiến trúc:** Python 3.10+ / Streamlit Micro-app hoặc Node.js Web UI  
-> **LLM Provider:** Google Gemini API / Anthropic Claude / OpenAI GPT-4o-mini (Hỗ trợ đa nhà cung cấp, kiểm tra an toàn qua Guardrail Engine)
-
----
-
-## 1. Kiến Trúc Giải Pháp & Luồng Dữ Liệu Bảo Mật (Privacy-by-Design Dataflow)
-
-Hệ thống được thiết kế theo nguyên tắc bảo vệ quyền riêng tư nghiêm ngặt (Zero PII Exposure):
-
-```mermaid
-sequenceDiagram
-    autonumber
-    actor Patient as Bệnh nhân (Giao diện MyVinmec Mock)
-    participant UI as Giao diện Prototype (Streamlit)
-    participant Guard as Safety & Red-Flag Interceptor
-    participant Engine as LLM Reasoning Engine (Structured Mock)
-    
-    Patient->>UI: Mở kết quả xét nghiệm / Nhập thắc mắc
-    UI->>Guard: Kiểm tra tiền xử lý (Dấu hiệu nguy cấp?)
-    alt Có dấu hiệu Red-Flag cấp cứu
-        Guard-->>UI: 🚨 NGẮT LUỒNG: Hiển thị Hotline Cấp cứu 115 / Vinmec
-        UI-->>Patient: Bật màn hình đỏ cảnh báo khẩn cấp tức thì
-    else An toàn (Chỉ số thông thường)
-        Guard->>Engine: Gửi System Prompt + Dữ liệu mock (Khử định danh 100%)
-        Engine-->>Guard: Trả về bản tóm tắt 3 phần + 2 câu hỏi hỏi Bác sĩ
-        Guard->>Guard: Hậu kiểm tra (Loại trừ lời khuyên chẩn đoán)
-        Guard-->>UI: Hiển thị bản giải thích ngôn ngữ dễ hiểu
-        UI-->>Patient: Người bệnh an tâm và sẵn sàng gặp Bác sĩ
-    end
-```
+> **Tên Module:** MyVinmec Plain-Language Care Navigator (Interactive AI Mobile Prototype)  
+> **Dự Án:** Exploration Sprint 6 Tuần tại Bệnh Viện Đa Khoa Quốc Tế Vinmec  
+> **Ứng Viên:** Nguyễn Xuân Tài (K2) — Technical Lead / Forward Deployed Engineer & K4 Coach  
+> **Kiến Trúc:** Modern Web SPA Simulator (Vanilla HTML5/CSS3/ES6 Modular) + Lightweight Python RAG Proxy (Zero-dependency)  
+> **Mặc Định Khi Mở:** Màn hình Chi Tiết Kết Quả Xét Nghiệm (`screen-result`), liên thông 2 chiều thông suốt với tất cả các màn hình còn lại.
 
 ---
 
-## 2. Cấu Trúc Thư Mục Mã Nguồn
+## 1. Kiến Trúc Hệ Thống Tinh Gọn & Hiện Đại (Modular Directory Structure)
+
+Thư mục `05-prototype/` được tái cấu trúc theo mô hình phân tầng hệ thống chuẩn mực, dễ bảo trì và sẵn sàng mở rộng lâu dài:
 
 ```text
 05-prototype/
-├── README.md                           # Tài liệu kỹ thuật và hướng dẫn khởi chạy này
-├── prompts-and-system-instructions.md  # Định nghĩa chi tiết System Prompt & Guardrails
-├── user-testing-logs.md                # Biên bản thử nghiệm 3 người dùng và chu kỳ tối ưu
-├── app.py                              # Mã nguồn chính của ứng dụng Prototype (Streamlit)
+├── index.html                          # Single Page Application (SPA) mô phỏng điện thoại MyVinmec
+├── server.py                           # Local Backend Proxy nhẹ (Python stdlib, tự động đọc .env & phục vụ API /api/chat)
+├── start.bat                           # Script 1 chạm tự khởi chạy server & mở trình duyệt trên Windows
+├── .env.example                        # File mẫu cấu hình API Key & Base URL (Agnes AI, OpenAI, Gemini)
+├── .gitignore                          # Loại trừ .env, __pycache__, venv để bảo mật tuyệt đối
+│
+├── css/
+│   └── style.css                       # Design System chuẩn MyVinmec (Teal, Mint, Gold, Red, Smart FAB, Toast)
+│
+├── js/
+│   ├── app.js                          # SPA Router, History Stack, Smart FAB Scroll/Dock Controller, Preset Triggers
+│   ├── guardrails.js                   # Clinical Escalation Interceptor (< 100ms, FAST Stroke, Cardiac, Emergency Hard-stop)
+│   └── rag_engine.js                   # Hybrid RAG Engine (Corpus nội bộ + API LLM Call + F12 Console Error Shield)
+│
+├── data/
+│   └── knowledge_base.json             # Cơ sở tri thức y tế chuẩn hóa (Men gan, HbA1c, Creatinine, Acid Uric, Lipid, CBC)
+│
 ├── mock_data/
-│   ├── blood_panel_normal.json         # Mẫu xét nghiệm máu bình thường
-│   ├── liver_enzymes_elevated.json     # Mẫu men gan tăng nhẹ (AST/ALT)
-│   └── hba1c_prediabetes.json          # Mẫu chỉ số đường huyết ranh giới
-├── requirements.txt                    # Thư viện phụ thuộc Python
-└── .env.example                        # Cấu hình khóa API mẫu
+│   ├── liver_enzymes_elevated.json     # Dữ liệu kiểm thử men gan AST/ALT
+│   └── hba1c_prediabetes.json          # Dữ liệu kiểm thử đường huyết ranh giới
+│
+├── prompts-and-system-instructions.md  # System Prompts, Guardrail Rules & Phân tích ranh giới y tế
+├── user-testing-logs.md                # Biên bản thử nghiệm 3 người dùng (P1, P2, P3) & Chu kỳ tối ưu
+├── app.py                              # Bản mô phỏng phụ trợ bằng Streamlit (tùy chọn)
+└── README.md                           # Tài liệu hướng dẫn kỹ thuật này
 ```
 
 ---
 
-## 3. Hướng Dẫn Cài Đặt & Chạy Thử Nghiệm Nhanh (Quickstart)
+## 2. Các Đặc Điểm Kỹ Thuật Đột Phá
 
-### Bước 1: Chuẩn bị môi trường Python
+### 🔄 1. Điều Hướng Liên Thông 2 Chiều Thông Suốt (Bidirectional Navigation)
+- **Màn hình mặc định khi mở app:** Màn hình **Chi Tiết Kết Quả Xét Nghiệm** (`screen-result`).
+- **Thanh App Bar trên cùng:** Nút mũi tên quay lại (`<`) kích hoạt hàm `goBack()` duyệt ngăn xếp lịch sử (`navigationHistory stack`) giúp người dùng đi qua bất kỳ màn hình nào rồi lùi lại chính xác.
+- **Thanh Bottom Navigation Bar (5 tabs):**
+  1. `Trang chủ`: Dashboard tìm kiếm, banner ưu đãi, 6 tiện ích nhanh, lịch khám gần đây.
+  2. `Hồ sơ`: Lịch sử các đợt khám, hồ sơ sức khỏe cá nhân, liên kết đợt khám hôm nay sang trang kết quả.
+  3. `Đặt lịch` (Nút tròn nổi ở giữa): Đặt lịch khám đa khoa, chuyên khoa với bộ chip tương tác linh hoạt.
+  4. `Thông báo`: Tin nhắn nhắc lịch tư vấn với Bác sĩ lúc 10:15, thông báo có kết quả xét nghiệm, voucher VIP.
+  5. `Tài khoản`: Thông tin VIP Care, Touch ID/Face ID, chính sách bảo mật Nghị định 13/2023/NĐ-CP.
+- **Tất cả các thành phần trên màn hình kết quả đều có thể click:**
+  - Thẻ thông tin bệnh nhân → Nhảy sang Trang Tài Khoản / Hồ Sơ.
+  - Banner tiến độ khám 10:15 → Nhảy sang Trang Thông Báo.
+  - Từng dòng kết quả trong bản PDF Scan cũ hoặc bản Native AI → Chạm vào mở ngay Care Navigator giải thích tương ứng.
+  - Nút đặt lịch tái khám và xem hồ sơ cận lâm sàng dưới chân kết quả → Nhảy sang Đặt Lịch hoặc Hồ Sơ.
 
-```bash
-# Di chuyển vào thư mục prototype
-cd 05-prototype
+### 🔘 2. Cơ Chế Ẩn Thông Minh Của Nút Trợ Lý AI Care Navigator (Smart FAB)
+- **Vị trí chuẩn xác MyVinmec:** Nút tròn màu Teal nằm ở góc dưới bên phải (`bottom: 84px; right: 18px`).
+- **Khi người dùng bắt đầu cuộn trang:** Nút tự động thu nhỏ (`scale: 0.8`), làm mờ (`opacity: 0.35`) và ẩn tooltip để **hoàn toàn không che khuất bảng số liệu và chữ số y khoa**.
+- **Khi người dùng dừng cuộn 1.2 giây:** Nút tự động phục hồi kích thước và độ mờ ban đầu.
+- **Khi người dùng dừng cuộn quá 10 giây (Idle State):** Nút tự động nép vào mép phải màn hình dạng tai thỏ nhỏ (`docked mode`). Chạm hoặc rê chuột vào sẽ bung lại toàn bộ.
 
-# Tạo và kích hoạt môi trường ảo
-# Trên Windows PowerShell:
-python -m venv venv
-.\venv\Scripts\Activate.ps1
-
-# Trên Linux / macOS:
-python3 -m venv venv
-source venv/bin/activate
-```
-
-### Bước 2: Cài đặt thư viện cần thiết
-
-```bash
-pip install -r requirements.txt
-```
-
-*(Nội dung file `requirements.txt` tối giản gồm: `streamlit>=1.35.0`, `google-genai>=0.1.0` hoặc `openai>=1.30.0`, `python-dotenv>=1.0.0`)*
-
-### Bước 3: Cấu hình biến môi trường
-
-```bash
-# Sao chép file cấu hình mẫu
-# Trên Windows:
-Copy-Item .env.example .env
-
-# Trên Linux/macOS:
-cp .env.example .env
-```
-
-Mở file `.env` và điền API Key của bạn (hỗ trợ `GEMINI_API_KEY` hoặc `OPENAI_API_KEY`).
-
-### Bước 4: Khởi chạy ứng dụng
-
-```bash
-streamlit run app.py
-```
-
-Ứng dụng sẽ tự động mở tại địa chỉ: `http://localhost:8501`.
+### 🛡️ 3. RAG Y Tế 2 Tầng & Cơ Chế Bọc Lỗi An Toàn (Zero-Error Leakage)
+- **Cấu hình API Key linh hoạt (`.env`):** Tự động đọc key từ `.env` (hỗ trợ `AGNES_API_KEY`, `OPENAI_API_KEY`, `GEMINI_API_KEY`, `BASE_URL`). File `.env` được bảo vệ tuyệt đối bởi `.gitignore`.
+- **Nguyên tắc "No Error on UI":** Nếu mạng đứt, lỗi API hoặc câu hỏi ngoài tầm kiểm soát:
+  - **Giao diện người dùng:** Tuyệt đối KHÔNG hiển thị exception hay lỗi kỹ thuật; chỉ hiển thị lời khuyên nhẹ nhàng kèm nút gọi Điều dưỡng Vinmec `1900 23 23 89`.
+  - **Bảng điều khiển DevTools:** Toàn bộ thông điệp lỗi kỹ thuật được đẩy kín đáo về `console.error` (F12) để kỹ sư kiểm tra.
+- **Bức tường lửa Red-Flag Clinical Escalation:** Phản hồi dưới **100ms** khi phát hiện dấu hiệu cấp cứu (đau ngực dữ dội, méo miệng, hụt hơi, nôn ra máu, v.v.), ngay lập tức khóa luồng chat và hiển thị thẻ cảnh báo đỏ toàn màn hình kèm hotline cấp cứu 115 và Vinmec.
 
 ---
 
-## 4. Các Tình Huống Trình Diễn Có Sẵn (Pre-loaded Demo Scenarios)
+## 3. Hướng Dẫn Khởi Chạy Nhanh (Quickstart)
 
-Giao diện prototype cung cấp 3 nút bấm kiểm thử nhanh (One-click Presets) để hội đồng giám khảo dễ dàng trải nghiệm:
+### ⚡ Cách 1: 1-Click Bằng Double-Click Trên Windows (Khuyến nghị số 1)
+Chỉ cần nhấp đúp chuột vào file:
+```cmd
+start.bat
+```
+- Nếu máy có cài Python: Script sẽ tự động chạy `server.py` trong nền và mở trình duyệt tại `http://localhost:8000`.
+- Nếu máy không có Python: Script sẽ mở trực tiếp file `index.html` độc lập trên trình duyệt mặc định.
 
-1. **Preset 1 (Men gan tăng nhẹ):** Mô phỏng bệnh nhân P1 nhận kết quả khám sức khỏe có AST = 52 U/L, ALT = 58 U/L → Trình diễn khả năng giải tỏa lo âu và gợi ý 2 câu hỏi hỏi bác sĩ.
-2. **Preset 2 (Chỉ số HbA1c ranh giới):** Bệnh nhân hỏi có nên tự mua thuốc tiểu đường không → Trình diễn khả năng từ chối kê đơn, bảo vệ ranh giới y khoa.
-3. **Preset 3 (Tình huống cấp cứu khẩn cấp):** Bệnh nhân gõ triệu chứng đau thắt ngực → Trình diễn cơ chế Hard-Stop, tự động hiển thị màn hình cấp cứu với Hotline 115 và Vinmec.
+### 🌐 Cách 2: Xem Trực Tiếp Trên Trình Duyệt / GitHub (Cross-Platform)
+Mở trực tiếp file `index.html` bằng bất kỳ trình duyệt nào (Chrome, Safari, Edge, Firefox).
+- Giao diện điện thoại 412px được căn giữa trang web, hai bên rìa màu trắng hoàn toàn (`#FFFFFF`).
+- Không cần cài đặt bất kỳ phần mềm hay thư viện bên ngoài nào.
 
+### 🛠️ Cách 3: Chạy Thủ Công Qua Dòng Lệnh
+```bash
+# Khởi động Backend Server
+python server.py
+
+# Mở trình duyệt tại địa chỉ
+http://localhost:8000
+```

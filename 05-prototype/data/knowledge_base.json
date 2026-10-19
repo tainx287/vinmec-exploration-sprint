@@ -1,0 +1,104 @@
+{
+  "system_info": {
+    "name": "MyVinmec Plain-Language Care Navigator RAG Knowledge Base",
+    "version": "1.0.0",
+    "hospital": "Hệ thống Y tế Vinmec",
+    "disclaimer_standard": "Thông tin mang tính chất giải thích ngôn ngữ đời thường, không thay thế chẩn đoán hay chỉ định của Bác sĩ chuyên khoa tại phòng khám."
+  },
+  "knowledge_items": [
+    {
+      "id": "liver_ast_alt",
+      "test_name": "Men gan ALT (SGPT) & AST (SGOT)",
+      "keywords": ["men gan", "alt", "ast", "sgot", "sgpt", "gan", "58", "52"],
+      "category": "Sinh hóa máu (Chức năng gan)",
+      "normal_range": "< 40 U/L",
+      "plain_meaning": "ALT và AST là các enzym chủ yếu nằm trong tế bào gan. Khi tế bào gan hoạt động tăng cường hoặc bị tác động nhẹ, các enzym này sẽ phóng thích vào máu. Mức tăng nhẹ (như 50–60 U/L) rất thường gặp trong đời sống hàng ngày do ăn nhiều đạm/dầu mỡ, uống rượu bia gần ngày lấy mẫu, thức khuya hoặc vận động thể lực mạnh. Mức này hoàn toàn KHÔNG đồng nghĩa với suy gan hay bệnh nguy hiểm.",
+      "questions_for_doctor": [
+        "Thưa bác sĩ, mức men gan tăng nhẹ này của cháu chỉ cần điều chỉnh chế độ ăn uống, ngủ nghỉ hay có cần dùng thêm thuốc bổ trợ gan không ạ?",
+        "Cháu có cần làm thêm xét nghiệm kiểm tra lại chỉ số này sau 1 đến 2 tháng không ạ?"
+      ],
+      "lifestyle_tip": "Nên uống đủ 2 lít nước/ngày, hạn chế rượu bia, thức ăn chiên xào trong 2 tuần tới và ngủ trước 23h.",
+      "safety_level": "MILD_ELEVATION"
+    },
+    {
+      "id": "diabetes_hba1c",
+      "test_name": "Đường huyết trung bình 3 tháng (HbA1c)",
+      "keywords": ["hba1c", "tiểu đường", "đường huyết", "đái tháo đường", "6.1", "đường"],
+      "category": "Nội tiết & Chuyển hóa",
+      "normal_range": "4.0 - 5.6 %",
+      "plain_meaning": "HbA1c phản ánh tỷ lệ đường bám vào hồng cầu, thể hiện mức đường huyết trung bình của cơ thể trong 2 đến 3 tháng qua. Kết quả 6.1% nằm ở vùng ranh giới (tiền đái tháo đường). Đây là 'cửa sổ vàng' để bạn chủ động phòng ngừa bằng cách điều chỉnh khẩu phần tinh bột và tăng cường vận động. Tuyệt đối KHÔNG được tự ý mua thuốc tiểu đường uống khi chưa có chỉ định của bác sĩ.",
+      "questions_for_doctor": [
+        "Thưa bác sĩ, với mức HbA1c 6.1% này thì chế độ ăn và vận động cần thay đổi cụ thể ra sao để đưa về mức chuẩn?",
+        "Tôi có cần làm thêm xét nghiệm dung nạp đường hay mỡ máu kèm theo để đánh giá tổng thể không ạ?"
+      ],
+      "lifestyle_tip": "Hạn chế đồ uống có đường, trà sữa, bánh ngọt; thay một phần cơm trắng bằng gạo lứt hoặc khoai lang luộc; duy trì đi bộ 30 phút/ngày.",
+      "safety_level": "BORDERLINE_ATTENTION"
+    },
+    {
+      "id": "kidney_creatinine",
+      "test_name": "Creatinine huyết thanh",
+      "keywords": ["creatinine", "thận", "lọc thận", "creatinin", "chức năng thận"],
+      "category": "Chức năng thận",
+      "normal_range": "62 - 106 µmol/L (Nam), 44 - 80 µmol/L (Nữ)",
+      "plain_meaning": "Creatinine là chất thải tự nhiên sinh ra từ sự thoái hóa của cơ bắp và được thận lọc sạch ra ngoài qua nước tiểu. Khi thận lọc tốt, chỉ số này nằm ổn định trong khoảng tham chiếu. Nếu chỉ số nằm trong khoảng chuẩn, chứng tỏ chức năng lọc của cầu thận đang hoạt động bình thường.",
+      "questions_for_doctor": [
+        "Chức năng thận của tôi hiện tại có hoàn toàn ổn định đối với độ tuổi và thể trạng này không bác sĩ?",
+        "Tôi có cần lưu ý lượng nước uống hàng ngày hay chế độ ăn đạm ra sao không ạ?"
+      ],
+      "lifestyle_tip": "Uống đủ nước, không nhịn tiểu, hạn chế ăn quá mặn để bảo vệ cầu thận.",
+      "safety_level": "NORMAL"
+    },
+    {
+      "id": "uric_acid",
+      "test_name": "Acid Uric máu",
+      "keywords": ["acid uric", "axit uric", "gout", "gút", "khớp", "ngón chân"],
+      "category": "Chuyển hóa & Khớp",
+      "normal_range": "200 - 420 µmol/L",
+      "plain_meaning": "Acid Uric là sản phẩm thoái biến của chất nhân purin có nhiều trong hải sản, nội tạng động vật, thịt đỏ và bia rượu. Khi lượng acid uric tăng nhẹ mà bạn chưa từng bị đau sưng ngón chân cái thì chưa phải bệnh Gout cấp, mà chỉ là dấu hiệu báo động chế độ ăn uống đang dư thừa đạm.",
+      "questions_for_doctor": [
+        "Mức acid uric này của tôi đã cần dùng thuốc hạ acid uric chưa hay chỉ cần kiêng ăn hải sản, bia rượu ạ?",
+        "Tôi có cần chụp X-quang khớp hay kiểm tra thêm chỉ số viêm khớp không bác sĩ?"
+      ],
+      "lifestyle_tip": "Uống nhiều nước khoáng kiềm, giảm bia rượu, thịt bò, hải sản và tăng cường ăn rau xanh.",
+      "safety_level": "MILD_ELEVATION"
+    },
+    {
+      "id": "blood_cholesterol_lipid",
+      "test_name": "Mỡ máu (Lipid Panel: Cholesterol & Triglyceride)",
+      "keywords": ["mỡ máu", "cholesterol", "triglyceride", "hdl", "ldl", "lipid"],
+      "category": "Tim mạch & Mỡ máu",
+      "normal_range": "Cholesterol TP < 5.2 mmol/L, Triglyceride < 1.7 mmol/L",
+      "plain_meaning": "Xét nghiệm mỡ máu đo lượng chất béo lưu thông trong mạch máu. Chỉ số hơi cao nhẹ cảnh báo thành mạch đang có xu hướng tích tụ mảng xơ vữa nếu để kéo dài nhiều năm. Đây là lúc thích hợp nhất để tối ưu lại chế độ vận động và ăn uống trước khi cần can thiệp bằng thuốc.",
+      "questions_for_doctor": [
+        "Chỉ số mỡ máu này của tôi có nguy cơ tim mạch ở mức độ nào theo thang điểm lâm sàng?",
+        "Tôi có cần dùng thuốc nhóm Statin không hay thử ăn uống tập luyện trong 3 tháng rồi kiểm tra lại?"
+      ],
+      "lifestyle_tip": "Hạn chế mỡ động vật, đồ chiên rán; tăng cường ăn cá béo (cá hồi, cá thu) và dầu ô-liu; tập thể dục nhịp điệu ít nhất 150 phút/tuần.",
+      "safety_level": "BORDERLINE_ATTENTION"
+    },
+    {
+      "id": "cbc_wbc_platelet",
+      "test_name": "Tổng phân tích tế bào máu ngoại vi (CBC: Bạch cầu, Hồng cầu, Tiểu cầu)",
+      "keywords": ["bạch cầu", "wbc", "hồng cầu", "rbc", "tiểu cầu", "plt", "huyết sắc tố", "thiếu máu"],
+      "category": "Huyết học tế bào",
+      "normal_range": "WBC: 4.0 - 10.0 G/L, PLT: 150 - 450 G/L",
+      "plain_meaning": "Xét nghiệm tổng phân tích tế bào máu phản ánh tình trạng viêm nhiễm, thiếu máu và khả năng đông máu. Khi bạch cầu hơi tăng nhẹ có thể do cơ thể vừa trải qua đợt cảm cúm, viêm họng nhẹ hoặc stress. Bác sĩ sẽ kết hợp với các triệu chứng lâm sàng cụ thể để đánh giá chính xác.",
+      "questions_for_doctor": [
+        "Chỉ số tế bào máu của tôi có dấu hiệu viêm nhiễm hay thiếu máu không bác sĩ?",
+        "Tôi có cần bổ sung thêm sắt hay vi chất dinh dưỡng nào không ạ?"
+      ],
+      "lifestyle_tip": "Bổ sung thực phẩm giàu vitamin C, rau có màu xanh đậm và nghỉ ngơi hợp lý.",
+      "safety_level": "NORMAL"
+    }
+  ],
+  "faq_general": [
+    {
+      "question": "Tôi có thể ăn uống gì sau khi đã lấy máu xét nghiệm?",
+      "answer": "Sau khi đã hoàn tất lấy máu, bạn có thể ăn nhẹ, uống nước lọc hoặc sữa để hồi phục năng lượng trong lúc ngồi chờ kết quả. Tuy nhiên nếu bạn có lịch siêu âm ổ bụng hoặc nội soi tiếp theo, hãy hỏi lại điều dưỡng tại phòng thủ thuật để được hướng dẫn cụ thể."
+    },
+    {
+      "question": "Tôi nhận được kết quả trên app rồi thì làm gì tiếp theo?",
+      "answer": "Sau khi có kết quả trên MyVinmec, hệ thống phòng khám đã tự động nhận bản kết quả của bạn. Bạn hãy ngồi thư giãn tại sảnh chờ, app sẽ thông báo số thứ tự và mời bạn di chuyển vào phòng khám của Bác sĩ khi đến lượt."
+    }
+  ]
+}

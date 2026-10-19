@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MyVinmec Care Navigator — Interactive Mobile Prototype</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- KHUNG ĐIỆN THOẠI DI ĐỘNG CĂN GIỮA (2 BÊN RÌA MÀU TRẮNG HOÀN TOÀN) -->
+  <div class="device-wrapper">
+
+    <!-- 1. STATUS BAR -->
+    <div class="status-bar">
+      <span>09:41</span>
+      <div class="status-icons">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12.55a11 11 0 0 1 14.08 0M1.42 9a16 16 0 0 1 21.16 0M8.53 16.11a6 6 0 0 1 6.95 0M12 20h.01"/></svg>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="2" y="7" width="16" height="10" rx="2"/><line x1="22" y1="11" x2="22" y2="13"/></svg>
+      </div>
+    </div>
+
+    <!-- 2. TOP APP BAR (HEADER TEAL CHUẨN MYVINMEC) -->
+    <div class="top-app-bar">
+      <div class="app-bar-left">
+        <button id="btn-header-back" class="btn-back" title="Quay lại" onclick="goBack()">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"></polyline></svg>
+        </button>
+        <div>
+          <div id="header-title" class="app-bar-title">Chi Tiết Xét Nghiệm</div>
+          <div id="header-subtitle" class="app-bar-subtitle">Hồ sơ sức khỏe Vinmec Times City</div>
+        </div>
+      </div>
+      <span id="header-badge" class="app-bar-badge">LIVE MOCK</span>
+    </div>
+
+    <!-- 3. SCREEN CONTAINER: CHỨA TẤT CẢ CÁC MÀN HÌNH LIÊN THÔNG -->
+    <div class="screen-container">
+
+      <!-- ======================================================== -->
+      <!-- MÀN HÌNH MẶC ĐỊNH MỞ LÊN: CHI TIẾT KẾT QUẢ XÉT NGHIỆM -->
+      <!-- ======================================================== -->
+      <div id="screen-result" class="app-screen active">
+
+        <!-- VIEW SWITCHER (A/B TESTING TAB) -->
+        <div class="view-switcher-bar">
+          <button id="tab-btn-native" class="switch-tab active" onclick="switchView('native')">
+            ✨ MyVinmec Mới + AI
+          </button>
+          <button id="tab-btn-raw" class="switch-tab" onclick="switchView('raw')">
+            📄 Bản Scan PDF Cũ (Lab)
+          </button>
+        </div>
+
+        <!-- THẺ THÔNG TIN BỆNH NHÂN (CLICK ĐỂ SANG TRANG TÀI KHOẢN / HỒ SƠ) -->
+        <div class="patient-header-card" onclick="navigateTo('screen-profile')" title="Chạm để xem chi tiết tài khoản & hồ sơ sức khỏe">
+          <div class="patient-avatar">NA</div>
+          <div class="patient-info" style="flex:1;">
+            <h3>NGUYỄN VĂN A <span class="patient-tag">VIP Care</span></h3>
+            <div class="patient-meta">Mã y tế: <strong>10088921</strong> • Nam, 28 tuổi</div>
+            <div class="patient-meta">BS chỉ định: <strong>CKI. Trần Thị Mai</strong> • Khoa Ngoại trú</div>
+          </div>
+          <div style="color:var(--vinmec-teal); font-size:18px; font-weight:700;">›</div>
+        </div>
+
+        <!-- BANNER BÁO TIẾN ĐỘ THỰC TẾ (CLICK ĐỂ SANG TRANG THÔNG BÁO) -->
+        <div class="wait-status-banner" onclick="navigateTo('screen-notifications')" title="Chạm để xem thông báo cập nhật luồng khám">
+          <div class="pulse-dot"></div>
+          <div class="wait-status-text" style="flex:1;">
+            Đã có kết quả <strong>3/3 xét nghiệm</strong>. Bác sĩ dự kiến gọi khám lúc <strong>10:15 (còn ~25 phút)</strong> tại Phòng 302.
+          </div>
+          <div style="color:#D97706; font-size:16px; font-weight:700; margin-left:6px;">›</div>
+        </div>
+
+        <!-- CHẾ ĐỘ 1: RAW PDF PHÒNG LAB CŨ -->
+        <div id="view-raw-pdf" class="view-pane">
+          <div class="raw-pdf-card">
+            <div class="pdf-header">
+              <div>
+                <div class="pdf-title">BỆNH VIỆN ĐA KHOA QUỐC TẾ VINMEC</div>
+                <div class="pdf-subtitle">PHIẾU KẾT QUẢ XÉT NGHIỆM / LABORATORY REPORT</div>
+              </div>
+              <div style="font-size: 9px; color: #64748B; text-align: right;">
+                <div>Số phiếu: 2026/XN-0921</div>
+                <div>Lấy mẫu: 18/10/2026 08:30</div>
+              </div>
+            </div>
+
+            <table class="raw-table">
+              <thead>
+                <tr>
+                  <th>Tên xét nghiệm</th>
+                  <th>Kết quả</th>
+                  <th>CSBT</th>
+                  <th>Đơn vị</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr onclick="openDrawerWithPreset('ast_alt')" title="Chạm để mở Care AI giải thích chỉ số AST">
+                  <td><strong>AST (SGOT)</strong> 💬</td>
+                  <td><span class="flag-h">52.0 H</span></td>
+                  <td>&lt; 40</td>
+                  <td>U/L</td>
+                </tr>
+                <tr onclick="openDrawerWithPreset('ast_alt')" title="Chạm để mở Care AI giải thích chỉ số ALT">
+                  <td><strong>ALT (SGPT)</strong> 💬</td>
+                  <td><span class="flag-h">58.0 H</span></td>
+                  <td>&lt; 40</td>
+                  <td>U/L</td>
+                </tr>
+                <tr onclick="openDrawerWithPreset('hba1c')" title="Chạm để mở Care AI giải thích chỉ số HbA1c">
+                  <td>HbA1c 💬</td>
+                  <td><span style="color:#D97706; font-weight:700;">6.1</span></td>
+                  <td>4.0 - 5.6</td>
+                  <td>%</td>
+                </tr>
+                <tr onclick="openDrawerWithPreset('glucose')" title="Chạm để mở Care AI giải thích chỉ số Glucose">
+                  <td>Glucose (Đói) 💬</td>
+                  <td>5.2</td>
+                  <td>3.9 - 6.4</td>
+                  <td>mmol/L</td>
+                </tr>
+                <tr onclick="openDrawerWithPreset('creatinine')" title="Chạm để mở Care AI giải thích chỉ số Creatinine">
+                  <td>Creatinine 💬</td>
+                  <td>85.0</td>
+                  <td>62 - 106</td>
+                  <td>µmol/L</td>
+                </tr>
+                <tr onclick="openDrawerWithPreset('acid_uric')" title="Chạm để mở Care AI giải thích chỉ số Acid Uric">
+                  <td>Acid Uric 💬</td>
+                  <td>380.0</td>
+                  <td>200 - 420</td>
+                  <td>µmol/L</td>
+                </tr>
+              </tbody>
+            </table>
+
+            <div class="pdf-warning-box">
+              ⚠️ <strong>Điểm gãy trải nghiệm quan sát được trên app:</strong> Chữ viết tắt kỹ thuật kèm ký hiệu <code>H (High)</code> bôi đỏ làm bệnh nhân hoảng loạn tự tra Google trong 45 phút chờ đợi. (Nhấp vào từng dòng để xem AI giải thích bình dân).
+            </div>
+          </div>
+        </div>
+
+        <!-- CHẾ ĐỘ 2: MYVINMEC NATIVE + AI CARE NAVIGATOR -->
+        <div id="view-native-ai" class="view-pane active">
+          <div class="native-section-title">
+            <span>DANH SÁCH CHỈ SỐ XÉT NGHIỆM</span>
+            <span style="font-size: 11px; color: var(--vinmec-teal); font-weight:600;">Chạm để xem AI giải thích</span>
+          </div>
+
+          <!-- Thẻ Men Gan ALT (High) -->
+          <div class="result-item-card" onclick="openDrawerWithPreset('ast_alt')">
+            <div class="result-item-top">
+              <div>
+                <div class="result-name">Men gan ALT (SGPT)</div>
+                <div class="result-category">Sinh hóa máu • Mẫu máu tĩnh mạch</div>
+              </div>
+              <span class="badge-status high">🔺 Hơi cao (H)</span>
+            </div>
+            <div class="result-value-row">
+              <span class="result-big-value" style="color: var(--vinmec-red);">58.0</span>
+              <span class="result-unit">U/L</span>
+              <span class="result-ref-range">Chuẩn: &lt; 40 U/L</span>
+            </div>
+            <div class="result-ai-hint">
+              <span>✨ Xem Care Navigator giải thích & câu hỏi hỏi Bác sĩ</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+            </div>
+          </div>
+
+          <!-- Thẻ Men Gan AST (High) -->
+          <div class="result-item-card" onclick="openDrawerWithPreset('ast_alt')">
+            <div class="result-item-top">
+              <div>
+                <div class="result-name">Men gan AST (SGOT)</div>
+                <div class="result-category">Sinh hóa máu • Mẫu máu tĩnh mạch</div>
+              </div>
+              <span class="badge-status high">🔺 Hơi cao (H)</span>
+            </div>
+            <div class="result-value-row">
+              <span class="result-big-value" style="color: var(--vinmec-red);">52.0</span>
+              <span class="result-unit">U/L</span>
+              <span class="result-ref-range">Chuẩn: &lt; 40 U/L</span>
+            </div>
+            <div class="result-ai-hint">
+              <span>✨ Xem Care Navigator giải thích & câu hỏi hỏi Bác sĩ</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+            </div>
+          </div>
+
+          <!-- Thẻ Đường Huyết HbA1c (Borderline) -->
+          <div class="result-item-card" onclick="openDrawerWithPreset('hba1c')">
+            <div class="result-item-top">
+              <div>
+                <div class="result-name">Đường huyết HbA1c</div>
+                <div class="result-category">Đánh giá đường huyết trung bình 3 tháng</div>
+              </div>
+              <span class="badge-status borderline">⚠️ Tiền đái tháo đường</span>
+            </div>
+            <div class="result-value-row">
+              <span class="result-big-value" style="color: var(--vinmec-gold-dark);">6.1</span>
+              <span class="result-unit">%</span>
+              <span class="result-ref-range">Chuẩn: 4.0 - 5.6 %</span>
+            </div>
+            <div class="result-ai-hint">
+              <span>✨ Xem Care Navigator giải thích & câu hỏi hỏi Bác sĩ</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+            </div>
+          </div>
+
+          <!-- Thẻ Creatinine (Bình thường) -->
+          <div class="result-item-card" onclick="openDrawerWithPreset('creatinine')">
+            <div class="result-item-top">
+              <div>
+                <div class="result-name">Creatinine huyết thanh</div>
+                <div class="result-category">Chức năng lọc thận</div>
+              </div>
+              <span class="badge-status normal">✓ Bình thường</span>
+            </div>
+            <div class="result-value-row">
+              <span class="result-big-value" style="color: var(--vinmec-green);">85.0</span>
+              <span class="result-unit">µmol/L</span>
+              <span class="result-ref-range">Chuẩn: 62 - 106 µmol/L</span>
+            </div>
+            <div class="result-ai-hint">
+              <span>✨ Xem Care Navigator giải thích chức năng thận</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+            </div>
+          </div>
+
+          <!-- Thẻ Acid Uric (Bình thường) -->
+          <div class="result-item-card" onclick="openDrawerWithPreset('acid_uric')">
+            <div class="result-item-top">
+              <div>
+                <div class="result-name">Acid Uric huyết thanh</div>
+                <div class="result-category">Chuyển hóa đạm & Phòng ngừa Gút</div>
+              </div>
+              <span class="badge-status normal">✓ Bình thường</span>
+            </div>
+            <div class="result-value-row">
+              <span class="result-big-value" style="color: var(--vinmec-green);">380.0</span>
+              <span class="result-unit">µmol/L</span>
+              <span class="result-ref-range">Chuẩn: 200 - 420 µmol/L</span>
+            </div>
+            <div class="result-ai-hint">
+              <span>✨ Xem Care Navigator giải thích nguy cơ gút & ăn uống</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+            </div>
+          </div>
+
+          <!-- CÁC NÚT HÀNH ĐỘNG ĐIỀU HƯỚNG LIÊN THÔNG SANG CÁC TRANG KHÁC -->
+          <div class="action-buttons-group">
+            <button class="btn-secondary-action" onclick="navigateTo('screen-booking')">
+              <span>📅 Đặt Lịch Tái Khám / Tư Vấn Chuyên Sâu</span>
+              <span>→</span>
+            </button>
+            <button class="btn-secondary-action" onclick="navigateTo('screen-records')">
+              <span>📑 Xem Toàn Bộ Lịch Sử Hồ Sơ Khám Bệnh</span>
+              <span>→</span>
+            </button>
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- ======================================================== -->
+      <!-- MÀN HÌNH 1: TRANG CHỦ (SCREEN-HOME)                     -->
+      <!-- ======================================================== -->
+      <div id="screen-home" class="app-screen">
+        
+        <!-- Search bar -->
+        <div class="home-search-bar">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#64748B" stroke-width="2.5"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+          <input type="text" placeholder="Tìm bác sĩ, chuyên khoa, dịch vụ y tế..." readonly onclick="navigateTo('screen-booking')">
+        </div>
+
+        <!-- Banner Hero Ưu đãi -->
+        <div class="hero-banner-card">
+          <h4>Chăm Sóc Thai Kỳ Toàn Diện</h4>
+          <p>Gói phục hồi chuyên sâu sau sinh cho mẹ & tầm soát sơ sinh sớm tại Vinmec Times City.</p>
+          <button class="btn-banner-cta" onclick="navigateTo('screen-booking')">Khám Phá Ngay</button>
+        </div>
+
+        <!-- Lưới 6 icon tiện ích (2x3) chuẩn MyVinmec -->
+        <div class="quick-action-grid">
+          <div class="quick-action-item" onclick="navigateTo('screen-booking')">
+            <div class="action-icon-circle">📅</div>
+            <div class="action-title">Lịch Hẹn</div>
+          </div>
+          <div class="quick-action-item" onclick="openDrawerWithPreset('ast_alt')">
+            <div class="action-icon-circle" style="background:#FEF3C7; color:#B45309;">✨</div>
+            <div class="action-title">Care AI</div>
+          </div>
+          <div class="quick-action-item" onclick="navigateTo('screen-records')">
+            <div class="action-icon-circle">📑</div>
+            <div class="action-title">Hồ Sơ Y Tế</div>
+          </div>
+          <div class="quick-action-item" onclick="navigateTo('screen-booking')">
+            <div class="action-icon-circle">🩺</div>
+            <div class="action-title">Dịch Vụ</div>
+          </div>
+          <div class="quick-action-item">
+            <div class="action-icon-circle">🍼</div>
+            <div class="action-title">Làm Mẹ</div>
+          </div>
+          <div class="quick-action-item">
+            <div class="action-icon-circle">💉</div>
+            <div class="action-title">Sổ Tiêm</div>
+          </div>
+        </div>
+
+        <!-- BANNER BÁO CÓ KẾT QUẢ XÉT NGHIỆM HÔM NAY (CLICK NHẢY SANG TRANG KẾT QUẢ) -->
+        <div class="home-result-alert" onclick="navigateTo('screen-result')">
+          <div style="display:flex; align-items:center; gap:10px;">
+            <div class="pulse-dot"></div>
+            <div>
+              <div style="font-size:12.5px; font-weight:800; color:var(--vinmec-teal-dark);">Đã có kết quả xét nghiệm hôm nay!</div>
+              <div style="font-size:11px; color:var(--vinmec-muted);">3 chỉ số sinh hóa máu • Nhấn để xem & hỏi Care AI</div>
+            </div>
+          </div>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--vinmec-teal)" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+        </div>
+
+        <!-- Khám gần đây -->
+        <div class="native-section-title">
+          <span>ĐÃ KHÁM GẦN ĐÂY</span>
+          <span style="font-size:11px; color:var(--vinmec-teal); cursor:pointer;" onclick="navigateTo('screen-records')">Xem tất cả</span>
+        </div>
+
+        <div class="record-item-card" onclick="navigateTo('screen-result')">
+          <div>
+            <span class="record-date-badge">18/10/2026 • Hôm nay</span>
+            <div class="record-title">Khám Ngoại Trú & Xét Nghiệm Máu</div>
+            <div class="record-hospital">Vinmec Times City • BS. CKI Trần Thị Mai</div>
+          </div>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#64748B" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+        </div>
+
+      </div>
+
+      <!-- ======================================================== -->
+      <!-- MÀN HÌNH 2: TRANG HỒ SƠ SỨC KHỎE (SCREEN-RECORDS)        -->
+      <!-- ======================================================== -->
+      <div id="screen-records" class="app-screen">
+        
+        <!-- Header Hồ sơ -->
+        <div class="patient-header-card">
+          <div class="patient-avatar">NA</div>
+          <div class="patient-info">
+            <h3>NGUYỄN VĂN A</h3>
+            <div class="patient-meta">Mã y tế: <strong>10088921</strong> • Nam, 28 tuổi</div>
+            <div class="patient-meta">Hồ sơ liên kết: <strong>01 bệnh nhân</strong></div>
+          </div>
+        </div>
+
+        <div class="native-section-title">
+          <span>LỊCH SỬ THĂM KHÁM & KẾT QUẢ</span>
+        </div>
+
+        <!-- Đợt khám hôm nay -> Bấm vào nhảy sang Trang Kết Quả -->
+        <div class="record-item-card" style="border: 1.5px solid var(--vinmec-teal); background:#F0FDF4;" onclick="navigateTo('screen-result')">
+          <div>
+            <span class="record-date-badge" style="background:var(--vinmec-teal); color:#FFFFFF;">18/10/2026 • Đang diễn ra</span>
+            <div class="record-title">Khám Ngoại Trú & Sinh Hóa Máu (3 chỉ số)</div>
+            <div class="record-hospital">Vinmec Times City • Phòng 302 • Bác sĩ Trần Thị Mai</div>
+          </div>
+          <span style="font-size:11px; font-weight:800; color:var(--vinmec-teal);">Xem kết quả →</span>
+        </div>
+
+        <!-- Đợt khám quá khứ 1 -->
+        <div class="record-item-card">
+          <div>
+            <span class="record-date-badge">02/07/2021</span>
+            <div class="record-title">Khám Sức Khỏe Tổng Quát Định Kỳ</div>
+            <div class="record-hospital">Vinmec Times City • Khoa Khám bệnh</div>
+          </div>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#94A3B8" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+        </div>
+
+        <!-- Đợt khám quá khứ 2 -->
+        <div class="record-item-card">
+          <div>
+            <span class="record-date-badge">26/12/2020</span>
+            <div class="record-title">Khám Chuyên Khoa Tai Mũi Họng</div>
+            <div class="record-hospital">Vinmec Times City • Nội soi vòm họng</div>
+          </div>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#94A3B8" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+        </div>
+
+      </div>
+
+      <!-- ======================================================== -->
+      <!-- MÀN HÌNH 3: TRANG ĐẶT LỊCH KHÁM (SCREEN-BOOKING)        -->
+      <!-- ======================================================== -->
+      <div id="screen-booking" class="app-screen">
+        
+        <div class="booking-step-card">
+          <div class="booking-label">1. Cơ sở y tế Vinmec</div>
+          <div class="booking-chip-group">
+            <div class="booking-chip selected">Vinmec Times City (Hà Nội)</div>
+            <div class="booking-chip">Vinmec Central Park (TP.HCM)</div>
+            <div class="booking-chip">Vinmec Đà Nẵng</div>
+          </div>
+        </div>
+
+        <div class="booking-step-card">
+          <div class="booking-label">2. Chuyên khoa khám</div>
+          <div class="booking-chip-group">
+            <div class="booking-chip selected">Nội Đa Khoa</div>
+            <div class="booking-chip">Nội Tiết & Tiểu Đường</div>
+            <div class="booking-chip">Tiêu Hóa - Gan Mật</div>
+            <div class="booking-chip">Tim Mạch</div>
+          </div>
+        </div>
+
+        <div class="booking-step-card">
+          <div class="booking-label">3. Khung giờ mong muốn</div>
+          <div class="booking-chip-group">
+            <div class="booking-chip selected">Sáng 09:00 - 10:00</div>
+            <div class="booking-chip">Sáng 10:30 - 11:30</div>
+            <div class="booking-chip">Chiều 14:00 - 15:00</div>
+          </div>
+        </div>
+
+        <button class="btn-confirm-booking" onclick="confirmBooking()">
+          Xác Nhận Đặt Lịch Khám
+        </button>
+
+      </div>
+
+      <!-- ======================================================== -->
+      <!-- MÀN HÌNH 4: TRANG THÔNG BÁO (SCREEN-NOTIFICATIONS)      -->
+      <!-- ======================================================== -->
+      <div id="screen-notifications" class="app-screen">
+        
+        <!-- Thông báo kết quả xét nghiệm (Click nhảy sang Trang Kết Quả) -->
+        <div class="notif-item-card" style="border-left: 3px solid var(--vinmec-teal);" onclick="navigateTo('screen-result')">
+          <div class="notif-icon">📑</div>
+          <div class="notif-content">
+            <h5>Kết quả xét nghiệm sinh hóa máu đã sẵn sàng!</h5>
+            <p>Bảng kết quả cận lâm sàng của bạn đã được cập nhật. Nhấn vào đây để xem chi tiết và tham vấn cùng Trợ lý AI Care Navigator.</p>
+            <div class="notif-time">10 phút trước • Bệnh viện Vinmec Times City</div>
+          </div>
+        </div>
+
+        <div class="notif-item-card">
+          <div class="notif-icon">⏰</div>
+          <div class="notif-content">
+            <h5>Nhắc lịch tư vấn với Bác sĩ</h5>
+            <p>Dự kiến lượt khám của bạn với BS. CKI Trần Thị Mai tại Phòng 302 sẽ bắt đầu lúc 10:15.</p>
+            <div class="notif-time">25 phút trước • Thông báo luồng khám</div>
+          </div>
+        </div>
+
+        <div class="notif-item-card">
+          <div class="notif-icon">🎁</div>
+          <div class="notif-content">
+            <h5>Đặc quyền thành viên VIP Care</h5>
+            <p>Tặng 01 voucher tư vấn dinh dưỡng trực tuyến khi hoàn tất đợt khám tổng quát trong tháng 10.</p>
+            <div class="notif-time">Hôm qua • Chương trình khách hàng</div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- ======================================================== -->
+      <!-- MÀN HÌNH 5: TRANG TÀI KHOẢN (SCREEN-PROFILE)            -->
+      <!-- ======================================================== -->
+      <div id="screen-profile" class="app-screen">
+        
+        <div class="profile-card">
+          <div class="profile-avatar-big">NA</div>
+          <h4 style="font-size:16px; font-weight:800;">NGUYỄN VĂN A</h4>
+          <p style="font-size:11px; color:var(--vinmec-muted); margin-top:2px;">Mã y tế: 10088921 • Hạng thẻ: <strong>Vinmec VIP Care</strong></p>
+        </div>
+
+        <div class="profile-menu-list">
+          <div class="profile-menu-item" onclick="navigateTo('screen-records')">
+            <span>📑 Hồ sơ sức khỏe cá nhân</span>
+            <span>→</span>
+          </div>
+          <div class="profile-menu-item">
+            <span>👥 Quản lý hồ sơ người thân (01 người)</span>
+            <span>→</span>
+          </div>
+          <div class="profile-menu-item">
+            <span>🔒 Bảo mật Touch ID / Face ID</span>
+            <span style="color:var(--vinmec-teal); font-weight:700;">Đã bật</span>
+          </div>
+          <a href="tel:1900232389" class="profile-menu-item">
+            <span>📞 Tổng đài CSKH Vinmec: 1900 23 23 89</span>
+            <span>Gọi ngay</span>
+          </a>
+          <div class="profile-menu-item" onclick="alert('Tuân thủ nghiêm ngặt Nghị định 13/2023/NĐ-CP và tiêu chuẩn bảo mật y tế JCI.');">
+            <span>🛡️ Chính sách bảo mật dữ liệu (NĐ 13)</span>
+            <span>→</span>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- 4. SMART FLOATING ACTION BUTTON (FAB MYVINMEC CƠ CHẾ ẨN THÔNG MINH) -->
+    <div id="fab-main-container" class="fab-container">
+      <div class="fab-badge-tip">
+        <span>💬 Hỏi Care Navigator</span>
+      </div>
+      <div class="fab-chat-btn" onclick="toggleDrawer()" title="Mở Trợ lý Care Navigator">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+      </div>
+    </div>
+
+    <!-- 5. AI CARE NAVIGATOR DRAWER (BOTTOM SHEET TRƯỢT LÊN) -->
+    <div id="drawer-overlay" class="ai-drawer-overlay" onclick="toggleDrawer()"></div>
+    <div id="ai-drawer" class="ai-drawer">
+      <div class="drawer-handle-bar"></div>
+      
+      <div class="drawer-header">
+        <div class="drawer-title-group">
+          <h4>🏥 MyVinmec Care Navigator</h4>
+          <p>Phiên dịch ngôn ngữ bình dân • Trang bị câu hỏi hỏi Bác sĩ</p>
+        </div>
+        <button class="btn-close-drawer" onclick="toggleDrawer()">✕</button>
+      </div>
+
+      <div class="drawer-body">
+        
+        <!-- CHỌN PRESET NHANH -->
+        <div class="preset-chips-container">
+          <div class="preset-label">Tình huống kiểm thử nhanh (Demo Presets):</div>
+          <div class="preset-list">
+            <div class="preset-chip" onclick="handlePreset('ast_alt')">
+              <span>🩸</span>
+              <span><strong>Tình huống 1:</strong> Men gan tăng nhẹ 58 U/L (P1)</span>
+            </div>
+            <div class="preset-chip" onclick="handlePreset('hba1c')">
+              <span>🩺</span>
+              <span><strong>Tình huống 2:</strong> HbA1c 6.1% ranh giới (P2)</span>
+            </div>
+            <div class="preset-chip" onclick="handlePreset('creatinine')">
+              <span>🧪</span>
+              <span><strong>Tình huống 3:</strong> Creatinine 85 µmol/L (Thận tốt)</span>
+            </div>
+            <div class="preset-chip" onclick="handlePreset('acid_uric')">
+              <span>🥩</span>
+              <span><strong>Tình huống 4:</strong> Acid Uric 380 µmol/L (An toàn)</span>
+            </div>
+            <div class="preset-chip" onclick="handlePreset('glucose')">
+              <span>🍯</span>
+              <span><strong>Tình huống 5:</strong> Glucose đói 5.2 mmol/L (Chuẩn)</span>
+            </div>
+            <div class="preset-chip red-preset" onclick="handlePreset('red_flag')">
+              <span>🚨</span>
+              <span><strong>Thử thách Cấp cứu:</strong> Đau ngực & Khó thở (Red-Flag)</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- VÙNG HIỂN THỊ KẾT QUẢ AI -->
+        <div id="ai-response-container">
+          <div class="ai-response-box">
+            <div class="ai-response-section">
+              <span class="ai-section-badge">✨ Giới thiệu tính năng</span>
+              <div class="ai-plain-text">
+                Chào bạn! Tôi là <strong>Care Navigator</strong>. Tôi giúp bạn hiểu ý nghĩa đời thường của các chỉ số xét nghiệm và chuẩn bị sẵn các câu hỏi trọng tâm để bạn tự tin trao đổi với bác sĩ trong phòng khám sắp tới.
+              </div>
+            </div>
+            <div class="disclaimer-badge">
+              <span>⚠️</span>
+              <span><strong>Rào chắn y tế:</strong> Tôi là công cụ giao tiếp phi lâm sàng, không đưa ra chẩn đoán và không kê đơn thuốc.</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- CHAT INPUT -->
+      <div class="drawer-input-area">
+        <input type="text" id="user-chat-input" class="chat-input" placeholder="Hỏi thêm về chỉ số xét nghiệm..." onkeypress="if(event.key === 'Enter') sendUserQuery()">
+        <button class="btn-send-chat" onclick="sendUserQuery()" title="Gửi câu hỏi">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+        </button>
+      </div>
+
+    </div>
+
+    <!-- 6. BOTTOM NAVIGATION BAR (CHUẨN 5 TABS MYVINMEC) -->
+    <div class="bottom-nav-bar">
+      <div id="tab-nav-home" class="nav-tab-item" onclick="navigateTo('screen-home')">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
+        <span>Trang chủ</span>
+      </div>
+      <div id="tab-nav-records" class="nav-tab-item active" onclick="navigateTo('screen-records')">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+        <span>Hồ sơ</span>
+      </div>
+      <div id="tab-nav-booking" class="nav-tab-item nav-tab-center" onclick="navigateTo('screen-booking')">
+        <div class="center-action-btn" title="Đặt khám nhanh">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        </div>
+        <span>Đặt lịch</span>
+      </div>
+      <div id="tab-nav-notifications" class="nav-tab-item" onclick="navigateTo('screen-notifications')">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg>
+        <span>Thông báo</span>
+      </div>
+      <div id="tab-nav-profile" class="nav-tab-item" onclick="navigateTo('screen-profile')">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        <span>Tài khoản</span>
+      </div>
+    </div>
+
+    <!-- 7. HOME INDICATOR IPHONE -->
+    <div class="home-indicator"></div>
+
+  </div>
+
+  <!-- LOAD MODULES: GUARDRAILS -> RAG ENGINE -> APP ROUTER -->
+  <script src="js/guardrails.js"></script>
+  <script src="js/rag_engine.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

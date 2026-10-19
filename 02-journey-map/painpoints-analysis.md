@@ -15,9 +15,36 @@
 
 ---
 
-## 2. Phân Tích Nguyên Nhân Gốc Rễ (5 Whys Analysis) cho Điểm Đau P-01
+## 2. Bản Chất Của "Khủng Hoảng Chờ Đợi" (Information Void) & Tam Giác Tác Động
 
-Áp dụng phương pháp 5 Whys (Năm câu hỏi Tại sao) để đào sâu nguyên nhân căn cốt của Điểm đau P-01:
+Khoảnh khắc bệnh nhân nhận kết quả xét nghiệm/hình ảnh trên ứng dụng MyVinmec nhưng chưa đến lượt vào phòng gặp bác sĩ được gọi là **"Khoảng trống thông tin" (Information Void)**. Đây là một "khủng hoảng chờ đợi" mang tính hệ thống cần được can thiệp khẩn cấp dưới 3 lăng kính chuyên ngành:
+
+```mermaid
+flowchart TD
+    IV["Khoảng Trống Thông Tin<br>(Information Void)"] --> P["1. TÂM LÝ HỌC HÀNH VI<br>• Scanxiety<br>• Catastrophizing (Thảm họa hóa)<br>• Cyberchondria (Bác sĩ Google)"]
+    IV --> C["2. LÂM SÀNG & KHÁM CHỮA<br>• Cognitive Overload (Tê liệt nhận thức)<br>• Nhiễu loạn sinh hiệu (Huyết áp/Nhịp tim)<br>• Trạng thái phòng thủ (Fight-or-Flight)"]
+    IV --> O["3. VẬN HÀNH BỆNH VIỆN<br>• Lãng phí 10 phút vàng của ca khám<br>• Giảm Patient Throughput & Gây quá tải<br>• Đứt gãy cảm giác được chăm sóc (Care Continuity)"]
+```
+
+### 2.1. Góc độ Tâm lý học hành vi (Psychological Impact)
+* **Thuật ngữ chuyên ngành quốc tế — "Scanxiety":** Trong y khoa thế giới, nỗi sợ hãi tột cùng trong lúc chờ đợi kết quả chụp chiếu/xét nghiệm được định danh chính thức là *"Scanxiety"* (ghép giữa *Scan* và *Anxiety*).
+* **Con dao hai lưỡi của số hóa:** Khi MyVinmec minh bạch hóa dữ liệu bằng cách trả kết quả thẳng về điện thoại, người bệnh nhìn thấy các chỉ số màu đỏ (vượt ngưỡng) hoặc thuật ngữ kỹ thuật phức tạp (`ECHO hỗn hợp`, `tăng men gan`, `thâm nhiễm`) mà không có người giải thích, kích hoạt ngay 2 phản ứng tâm lý tiêu cực:
+  * **Mất kiểm soát cảm xúc & Thảm họa hóa (Catastrophizing):** Người bệnh tự động phóng đại mức độ nghiêm trọng của một chỉ số nhỏ thành bệnh hiểm nghèo/ung thư, gây triệu chứng thực thể tức thì (tim đập nhanh, vã mồ hôi, buồn nôn).
+  * **Hội chứng "Bác sĩ Google" & Cyberchondria:** Theo thống kê y tế quốc tế, hơn 80% người bệnh đối diện khoảng trống thông tin sẽ copy thuật ngữ lên Google. Việc đọc các kịch bản tồi tệ nhất sinh ra **Cyberchondria** (hội chứng lo âu bệnh lý do tự chẩn đoán sai trên internet), biến sự chờ đợi mệt mỏi thành cơn hoảng loạn tột độ.
+
+### 2.2. Góc độ Lâm sàng & Chất lượng khám chữa bệnh (Clinical Impact)
+Khủng hoảng tâm lý không chỉ ảnh hưởng người bệnh mà trực tiếp kéo lùi chất lượng chuyên môn của ca khám:
+* **Tê liệt nhận thức (Cognitive Overload):** Khi bước vào phòng khám trong trạng thái "Cyberchondria", bộ não người bệnh rơi vào cơ chế phòng thủ (*Fight-or-Flight*). Họ tê liệt khả năng lắng nghe khách quan, khó tiếp thu phác đồ phức tạp, hoặc liên tục ngắt lời bác sĩ bằng các thông tin rác vừa đọc trên mạng.
+* **Nhiễu loạn sinh hiệu lâm sàng:** Lo âu kích thích hệ giao cảm làm tăng nhịp tim và huyết áp thực tế (tương tự *Hội chứng áo choàng trắng - White-Coat Syndrome*), dễ khiến bác sĩ đánh giá sai lệch các chỉ số sinh hiệu đo tại chỗ.
+
+### 2.3. Góc độ Vận hành & Trải nghiệm Dịch vụ (Operational & Experience Impact)
+Tại hệ thống y tế tư nhân cao cấp như Vinmec, trải nghiệm dịch vụ bị định hình mạnh mẽ nhất ở các điểm nghẽn:
+* **Lãng phí "10 phút vàng" của bác sĩ:** Thay vì dành trọn vẹn 15 phút quý giá để đào sâu phác đồ và giải pháp điều trị, bác sĩ phải mất 7–10 phút đầu tiên chỉ để "dọn dẹp" hiểu lầm, xoa dịu hoảng loạn và đính chính các suy diễn sai lệch. Điều này làm giảm luân chuyển bệnh nhân (*Patient Throughput*), gây trễ giờ dây chuyền và đẩy bác sĩ vào tình trạng kiệt sức (*Doctor Burnout*).
+* **Đứt gãy cảm giác được chăm sóc (Care Continuity):** Dù ứng dụng có hiện đại đến đâu, việc quăng cho người bệnh một tệp PDF thông số lạnh lẽo và để họ tự bơi trong sợ hãi chính là sự đứt gãy trải nghiệm chữa lành, tạo cảm giác bị bỏ rơi (*Cognitive Abandonment*) tại điểm chạm nhạy cảm nhất.
+
+---
+
+## 3. Phân Tích Nguyên Nhân Gốc Rễ (5 Whys Analysis) cho Điểm Đau P-01
 
 * **Vấn đề bề mặt:** *Người bệnh cảm thấy cực kỳ hoang mang, sợ hãi khi mở file kết quả xét nghiệm trên ứng dụng MyVinmec.*
   * **Tại sao 1?** Vì trên app hiển thị các bảng chỉ số với nhiều thuật ngữ viết tắt tiếng Anh và các ký hiệu `H` (High), `L` (Low) bôi đỏ mà không có giải thích ý nghĩa.
@@ -28,10 +55,11 @@
 
 ---
 
-## 3. Quyết Định Lựa Chọn & Phạm Vi Giải Pháp (Scoping Decision)
+## 4. Quyết Định Lựa Chọn & Phạm Vi Giải Pháp (Scoping Decision)
 
-* **Điểm đau được chọn chính thức:** **P-01 — Khoảng trống lo âu và rào cản thuật ngữ khi người bệnh đọc kết quả xét nghiệm trên MyVinmec.**
+* **Điểm đau được chọn chính thức:** **P-01 — Khủng hoảng chờ đợi (Information Void & Scanxiety) khi đọc kết quả cận lâm sàng trên MyVinmec.**
+* **Định vị giải pháp (Core Role):** Không chẩn đoán thay bác sĩ, mà đóng vai trò là **"Bước đệm giảm xóc tâm lý" (Psychological Shock-absorber)** và **"Lớp phiên dịch thông tin y tế phi lâm sàng"**.
 * **Ranh giới giải quyết (Boundary & Constraints):**
-  * **Giải quyết cái gì:** Cung cấp bản tóm tắt giải thích ý nghĩa thông thường của các chỉ số xét nghiệm phổ biến, so sánh với khoảng chuẩn, giải tỏa tâm lý hoang mang và gợi ý sẵn 2–3 câu hỏi người bệnh nên hỏi bác sĩ.
-  * **TUYỆT ĐỐI KHÔNG LÀM GÌ:** Không đưa ra chẩn đoán ("Anh bị bệnh X rồi"), không kê đơn, không khẳng định vô hại nếu chỉ số bất thường nguy cấp.
-* **Đầu vào chuyển tiếp:** Điểm đau P-01 sẽ được chuẩn hóa thành **Need Statement theo chuẩn Stanford Biodesign** tại thư mục `03-need-statement/`.
+  * **Giải quyết cái gì:** Dọn dẹp tâm trí người bệnh khỏi sự hoảng loạn vô nghĩa (Cyberchondria), giải thích ý nghĩa phổ thông của chỉ số, phân loại mức độ bình thường/bất thường một cách chừng mực, và trang bị sẵn 2–3 câu hỏi trọng tâm để tối ưu hóa buổi tư vấn lâm sàng với bác sĩ.
+  * **TUYỆT ĐỐI KHÔNG LÀM GÌ:** Không đưa ra chẩn đoán ("Anh bị bệnh X rồi"), không kê đơn, không kết luận vô hại đối với các triệu chứng báo động đỏ (Red Flags).
+* **Đầu vào chuyển tiếp:** Điểm đau P-01 được chuẩn hóa thành **Need Statement theo chuẩn Stanford Biodesign** tại thư mục `03-need-statement/`.

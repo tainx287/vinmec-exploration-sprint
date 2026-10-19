@@ -1,4 +1,4 @@
-﻿# Nhật Ký Phỏng Vấn & Ghi Chép Hiện Trường (Interview Notes)
+# Nhật Ký Phỏng Vấn Người Dùng & Ghi Chép Nghiên Cứu (User Interview Notes)
 
 > **Ghi chú bảo mật:** Toàn bộ dữ liệu trong tài liệu này đã được ẩn danh theo quy định đạo đức nghiên cứu của VinUni VRIC – Vinmec. Mọi định danh cá nhân được thay thế bằng mã số `P1`, `P2`, `P3`. Không lưu trữ bệnh án, hình ảnh hay chẩn đoán lâm sàng.
 
@@ -8,9 +8,9 @@
 
 | Mã đối tượng | Phân loại người dùng | Kênh / Địa điểm | Ngày thực hiện | Thời lượng | Trạng thái đồng thuận |
 | :--- | :--- | :--- | :--- | :--- | :--- |
-| **`P1`** | Bệnh nhân trẻ (26t, Nhân viên văn phòng, Khám tổng quát định kỳ) | Trực tiếp tại quán cafe gần viện | 15/10/2026 | 35 phút | Đã đồng thuận (Bằng văn bản) |
-| **`P2`** | Người chăm sóc (42t, Quản lý tài chính, Đưa mẹ 68t đi khám nội tiết) | Google Meet | 16/10/2026 | 42 phút | Đã đồng thuận (Bằng âm thanh) |
-| **`P3`** | Bệnh nhân ngoại trú (34t, Kỹ sư IT, Tái khám tiêu hóa sau 1 tháng) | Điện thoại trực tiếp | 16/10/2026 | 32 phút | Đã đồng thuận (Bằng âm thanh) |
+| **`P1`** *(M.N.)* | Nam, 32t, Cựu quân nhân nghĩa vụ / NV Kho vận, Khám chấn thương khớp gối & Chụp MRI tại bệnh viện lớn | Trực tiếp 1-1 | 19/10/2026 | 38 phút | Đã đồng thuận (Ẩn danh PII theo NĐ 13/2023) |
+| **`P2`** *(T.H.)* | Nam, 28t, Sĩ quan Hậu cần Quân chủng Hải quân, Khám định kỳ theo đơn vị tại Viện Y học Hải quân | Điện thoại trực tiếp | 19/10/2026 | 25 phút | Đã đồng thuận (Bằng âm thanh) |
+| **`P3`** *(V.D.)* | Nam, 29t, Kỹ sư nhà máy FDI Hàn Quốc tại KCN, Khám sức khỏe bắt buộc theo công ty | Điện thoại trực tiếp | 19/10/2026 | 28 phút | Đã đồng thuận (Bằng âm thanh) |
 
 ---
 
@@ -36,48 +36,66 @@
 
 ---
 
-## 3. Biên Bản Chi Tiết Các Cuộc Phỏng Vấn
+## 3. Biên Bản Chi Tiết Các Cuộc Phỏng Vấn Người Dùng Trải Nghiệm (P1 – P3)
 
-### 3.1. Cuộc phỏng vấn P1 — Người trẻ khám định kỳ
+### 3.1. Cuộc phỏng vấn P1 — Anh M.N. (Nam, 32t, Cựu quân nhân, từng điều trị chấn thương khớp gối & chụp MRI)
 
-* **Bối cảnh:** Đi khám sức khỏe tổng quát cá nhân tại cơ sở y tế tư nhân cao cấp cách đây 2 tuần. Tự thao tác app từ đầu đến cuối.
-* **Hành vi quan sát được:** Rất quen thuộc với công nghệ số, mong muốn mọi thứ tự động và không phải xếp hàng hỏi nhân viên lễ tân.
-* **Trích dẫn tiêu biểu (Verbatim Quotes):**
-  > *"Em nhận được thông báo 'Đã có kết quả xét nghiệm' trên điện thoại lúc đang ngồi ở quán cafe tầng 1. Em mở ra xem thì thấy một bảng PDF dài dằng dặc, toàn tên viết tắt tiếng Anh và chỉ số `H` (High) màu đỏ. Em giật mình không biết có bị sao nặng không, vội vàng lên Google gõ chữ viết tắt đó thì ra một đống bài viết về ung thư và suy nội tạng, làm em hoang mang tột độ suốt 45 phút ngồi chờ quay lại phòng bác sĩ."*  
-  > *"Ước gì app có một dòng giải thích ngắn gọn: 'Chỉ số này hơi cao nhẹ do chế độ ăn, không phải tình huống khẩn cấp, hãy bình tĩnh trao đổi với bác sĩ ở bước tiếp theo' thì em đã không bị stress đến thế."*
-* **Cảm xúc xuyên suốt:** Tự tin lúc đặt lịch → Bối rối và lo lắng tột độ khi đọc bảng kết quả → Thở phào nhẹ nhõm sau khi nghe bác sĩ giải thích chỉ là thiếu nước nhẹ.
-* **Điểm đau cốt lõi:** Hiện tượng "Google Anxiety" do app ném ra dữ liệu thô (raw data) mà không có lớp đệm thông tin thân thiện cho người dùng phổ thông.
-
----
-
-### 3.2. Cuộc phỏng vấn P2 — Người chăm sóc đưa người thân đi khám
-
-* **Bối cảnh:** Đưa mẹ lớn tuổi đi kiểm tra sức khỏe và làm xét nghiệm máu liên hoàn. P2 là người cầm điện thoại cài app và quản lý hồ sơ cho mẹ.
-* **Hành vi quan sát được:** Vừa phải di chuyển dìu mẹ, vừa phải nhìn màn hình điện thoại, tay xách túi hồ sơ giấy; chịu áp lực thời gian lớn.
-* **Trích dẫn tiêu biểu (Verbatim Quotes):**
-  > *"Mẹ mình lớn tuổi nên đi lại chậm, mình thì mắt nhìn điện thoại xem có kết quả chưa, tai thì căng ra nghe loa gọi tên. Khi app báo có kết quả, mình bấm vào xem thì không biết là đã đủ hết các xét nghiệm chưa hay mới chỉ có 1 trong 3 cái. Mình không biết nên đưa mẹ lên lại tầng 3 gặp bác sĩ ngay hay phải ngồi chờ tiếp ở tầng 2."*  
-  > *"Nhiều khi muốn hỏi điều dưỡng ở sảnh nhưng thấy các bạn ấy bận rộn quá, mình ngại hỏi nhiều. Nếu app có trạng thái tiến độ rõ ràng kiểu như đặt xe Grab: 'Đã xong 2/3 xét nghiệm - Dự kiến còn 15 phút - Hãy tiếp tục ngồi chờ tại sảnh B' thì người nhà đỡ khổ biết bao nhiêu."*
-* **Cảm xúc xuyên suốt:** Căng thẳng, sốt ruột, cảm giác bất lực vì thiếu thông tin định hướng không gian và thời gian.
-* **Điểm đau cốt lõi:** Thiếu sự minh bạch về tiến trình xét nghiệm liên hoàn và khoảng trống chỉ dẫn di chuyển (Navigation & Progress Blindness).
+* **Bối cảnh & Tiền sử bệnh:** 
+  - Từng đi cùng khóa nghĩa vụ quân sự và có thời gian nằm điều trị chấn thương cũ tại cơ sở quân y nơi tác giả từng tham gia công tác (thời điểm đó chỉ uống thuốc giảm đau qua loa chứ chưa giải quyết dứt điểm). Cơn đau âm ỉ kéo dài cho đến khi ra quân.
+  - Gần đây đá bóng bị chấn thương nặng ở khớp gối, đau nhức suốt cả tuần, đi lại tập tễnh.
+  - Ban đầu tự chữa trị chắp vá: đắp thuốc lá của thầy lang và nghe lời tư vấn các mẹo chữa ngắn hạn quanh địa phương nhưng không đỡ.
+  - **Bước ngoặt hành vi (AI-First Discovery):** Người bệnh tự mở AI (ChatGPT/Copilot) ra mô tả triệu chứng. AI phân tích nguy cơ tổn thương cấu trúc khớp sâu (dây chằng/sụn chêm) và khuyến nghị phải đến bệnh viện lớn có máy chụp cộng hưởng từ (MRI). Nhờ đó bệnh nhân mới quyết định đi khám chuyên khoa.
+* **Hành vi & Trải nghiệm thực tế tại bệnh viện:**
+  - **Khủng hoảng chờ đợi (The Triple Waiting Pain):** Người bệnh chia sẻ điều gây ức chế và mệt mỏi nhất trong cả buổi khám là **chuỗi chờ đợi kéo dài liên hoàn**: chờ lấy phiếu khám, chờ vào phòng chụp MRI, và dài nhất là **chờ cầm kết quả đợi bác sĩ gọi tên vào thông báo**.
+  - **Sự cô đơn nhận thức (Cognitive Isolation):** Cầm tờ kết quả và phim MRI trên tay, đọc các thông số kỹ thuật y khoa khô khốc nhưng hoàn toàn không hiểu gì. Cảm giác lo lắng, bất an ập đến dai dẳng.
+  - **Sự tiến hóa của hành vi chống chế (Workarounds Evolution):**
+    > *"Ngày xưa khi cầm tờ kết quả thì người ta sẽ đi hỏi lan man các bệnh nhân ngồi xung quanh ghế chờ. Phổ cập hơn một chút thì bốc máy gọi điện cho người quen có chuyên môn y tế. Còn hiện tại như anh thì mở ngay điện thoại ra search Google và hỏi AI."*
+  - **Nhu cầu tâm lý sâu kín:** Bệnh nhân tiếp tục hỏi AI liên tục ngay trong lúc ngồi chờ bác sĩ gọi:
+    > *"Anh cần một người nói chuyện cùng trong lúc chờ đợi để không bị hoang mang. Cảm giác lo lắng ập đến khi đã xét nghiệm xong và dai dẳng trong lúc phải chờ đợi tới lượt gọi vào phòng kết quả."*
+  - **Ranh giới an toàn y tế:** Cho đến trước khi bước vào phòng gặp bác sĩ, cả bệnh nhân và AI đều không ai biết chắc chắn là mình bị **đứt dây chằng chéo**. Phải đến sau khi bác sĩ chuyên khoa đối chiếu lâm sàng và đọc phim thì chẩn đoán xác định mới được đưa ra.
+* **Điểm gãy khi vào gặp Bác sĩ (Doctor Consultation Breakdown):**
+  - Chi trả số tiền lớn để chụp chiếu dịch vụ kỹ thuật cao, nhưng lúc vào phòng khám thì **bác sĩ tư vấn rất ít** (ít hơn nhiều so với những gì AI đã giải thích).
+  - Bệnh nhân có rất nhiều nghi vấn, câu hỏi vụn vặt trong đầu nhưng không kịp hỏi hoặc e ngại vì phòng khám đông đúc, bác sĩ bận rộn.
+  - **Đứt gãy sau xuất viện:** Đi về nhà rồi vẫn tiếp tục ôm điện thoại hỏi AI về bài tập phục hồi, kiêng cữ vận động và dùng thuốc.
 
 ---
 
-### 3.3. Cuộc phỏng vấn P3 — Bệnh nhân tái khám ngoại trú
+### 3.2. Cuộc phỏng vấn P2 — Anh T.H. (Nam, 28t, Sĩ quan Hậu cần Quân chủng Hải quân)
 
-* **Bối cảnh:** Tái khám định kỳ sau đợt điều trị ngoại trú. Đã dùng app nhiều lần để theo dõi lịch hẹn và thanh toán viện phí.
-* **Hành vi quan sát được:** Tương đối am hiểu quy trình, nhưng gặp khó khăn trong việc ghi nhớ lời dặn của bác sĩ và kết nối giữa kết quả cũ với kết quả mới.
-* **Trích dẫn tiêu biểu (Verbatim Quotes):**
-  > *"Lúc vào phòng khám, bác sĩ nói rất nhanh vì đông bệnh nhân. Bác bảo kết quả này tốt hơn tháng trước rồi, cứ duy trì đơn thuốc. Nhưng lúc về nhà mở app ra, mình muốn xem lại xem chỉ số của mình tháng này so với tháng trước tăng giảm cụ thể thế nào thì app lại để ở hai file PDF tách rời, không có biểu đồ so sánh xu hướng."*  
-  > *"Về nhà mình cũng quên mất là loại thuốc nào uống trước ăn, loại nào sau ăn, gọi lên tổng đài thì máy bận. Mình nghĩ app y tế thông minh là phải giúp người bệnh nhớ được dặn dò và theo dõi được tiến trình sức khỏe của mình sau khi bước chân ra khỏi viện."*
-* **Cảm xúc xuyên suốt:** Hài lòng ở khâu thanh toán/đặt hẹn → Hụt hẫng sau khi khám xong vì thông tin dặn dò bị trôi mất.
-* **Điểm đau cốt lõi:** Trải nghiệm "đứt gãy sau xuất viện" (Post-visit Abandonment); thiếu công cụ trực quan hóa xu hướng tiến triển và nhắc việc chăm sóc tại nhà.
+* **Bối cảnh:** Đi khám sức khỏe định kỳ bắt buộc theo lịch sắp đặt của đơn vị tại Viện Y học Hải quân. Khám theo đoàn thể quân y.
+* **Hành vi quan sát được:** Thể trạng trẻ khỏe, xem việc đi khám là thủ tục hoàn thành nhiệm vụ theo quy định; không có nhu cầu đào sâu chỉ số cá nhân.
+* **Điểm nghẽn cốt lõi (Core Friction):**
+  - **Áp lực dòng người & Rào cản e ngại (Patient Hesitancy under Pressure):** 
+    > *"Lúc vào phòng muốn hỏi bác sĩ thêm về tình trạng cơ thể thì phòng đông người quá. Người khám sau đứng ngay sát cửa thúc ép cần hoàn thành nhanh để đến lượt họ. Bác sĩ thì mải làm việc nên quên không trả lời hoặc không nghe thấy, thành ra mình ngại nên thôi chẳng hỏi nữa, cầm giấy đi ra luôn."*
+* **Ý nghĩa đối với đề án:** Khẳng định tâm lý e ngại hỏi bác sĩ là có thật, xuất phát từ áp lực thời gian của phòng khám. Nếu người bệnh được app trang bị sẵn **2 câu hỏi trọng tâm ngắn gọn trong 30 giây**, họ sẽ vượt qua được rào cản e ngại và bác sĩ cũng dễ dàng giải đáp chớp nhoáng mà không làm trễ ca khám.
 
 ---
 
-## 4. Tổng Kết Bằng Chứng & Bước Tiếp Theo
+### 3.3. Cuộc phỏng vấn P3 — Anh V.D. (Nam, 29t, Kỹ sư nhà máy FDI Hàn Quốc tại KCN)
 
-Toàn bộ phát hiện từ 3 cuộc phỏng vấn và buổi Heuristic Audit của ứng viên cho thấy:
-1. **Dữ liệu thô gây hoang mang:** Người bệnh không thiếu kết quả, họ thiếu **sự diễn giải mang tính trấn an và định hướng**.
-2. **Khoảng trống thời gian chờ:** Thời gian từ lúc nhận kết quả trên app đến lúc được bác sĩ giải thích là vùng trũng tâm lý nguy hiểm nhất.
-3. **Cơ hội rõ ràng cho AI:** Cần một lớp trợ lý thông tin ngôn ngữ dễ hiểu (Plain Language Layer) giúp người bệnh chuẩn bị sẵn câu hỏi trọng tâm trước khi bước vào phòng bác sĩ.
+* **Bối cảnh:** Khám sức khỏe định kỳ bắt buộc hàng năm theo chính sách công ty tại cơ sở y tế hợp đồng. Vào và ra rất nhanh theo quy trình công nghiệp.
+* **Hành vi quan sát được:** Cầm tờ phiếu giấy khám sức khỏe có in sẵn các chuyên khoa, di chuyển qua lại giữa các phòng khám.
+* **Điểm nghẽn cốt lõi (Core Friction):**
+  - **Bẫy tuần tự & Mù định hướng không gian (Sequential Trap & Wayfinding Blindness):**
+    > *"Khám xong một chỗ thì không biết các phòng tiếp theo ở đâu, đã đi hết các phòng ở tầng 1 chưa hay phải leo lên tầng 2. Cứ nghĩ là phải đi theo đúng thứ tự in trên tờ giấy nên đi lòng vòng tìm kiếm rất mất công. Thường những lúc như vậy đều phải chạy đi tìm y tá đứng ở sảnh để hỏi chỗ xét nghiệm tiếp theo."*
+* **Ý nghĩa đối với đề án:** Khẳng định nhu cầu cấp thiết về **Thanh tiến trình điều hướng trạm khám (Live Journey Tracker)** trên ứng dụng: Phải chỉ rõ cho người bệnh biết họ đã hoàn thành bao nhiêu xét nghiệm, bước tiếp theo cần di chuyển đến phòng nào, tầng mấy.
+
+---
+
+## 4. Tổng Kết Dữ Liệu Nghiên Cứu & Đối Chiếu Persona
+
+Hội tụ dữ liệu từ 3 cuộc phỏng vấn thực tế tạo nên **Bản đồ nhu cầu 2 tầng hoàn chỉnh**:
+
+```mermaid
+flowchart TD
+    A[Nhu Cầu Người Đi Khám] --> B[TẦNG 1: ĐIỀU HƯỚNG VẬN HÀNH<br>• Chứng minh bởi P3 V.D. & P2 T.H.<br>• Nhu cầu: Biết phòng tiếp theo ở đâu, thứ tự nào tối ưu, giải tỏa áp lực xếp hàng]
+    A --> C[TẦNG 2: ĐỒNG HÀNH NHẬN THỨC & TÂM LÝ<br>• Chứng minh bởi P1 M.N.<br>• Nhu cầu: Có người nói chuyện giải tỏa hoang mang lúc chờ kết quả, phiên dịch chỉ số, trang bị câu hỏi hỏi Bác sĩ]
+    
+    B --> D[Tính Năng: Live Journey Tracker trên MyVinmec]
+    C --> E[Tính Năng: AI Care Navigator trên MyVinmec]
+```
+
+1. **Khám đoàn định kỳ (P2, P3):** Điểm nghẽn nổi cộm là **Quy trình & Điều hướng trạm khám (Wayfinding & Queue Flow)**. Người bệnh không quan tâm sâu chỉ số vì họ coi mình khỏe mạnh.
+2. **Khám bệnh lý thực sự (P1):** Điểm nghẽn tột cùng là **Khoảng trống thông tin & Sự cô đơn trong lúc chờ đợi (Information Void & Emotional Isolation)**. Người bệnh cần một người bạn đồng hành giải tỏa hoang mang trong 45–60 phút chờ đợi, và cần được trang bị câu hỏi để tận dụng tối đa thời gian tư vấn ít ỏi của bác sĩ.
+3. **Cả hai nhóm đều chứng minh:** Người bệnh rất cần sự hỗ trợ của công nghệ số, và giải pháp **MyVinmec Care Navigator** giải quyết trọn vẹn cả 2 tầng nhu cầu này.
 

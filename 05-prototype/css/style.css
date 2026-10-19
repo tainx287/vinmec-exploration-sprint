@@ -1,0 +1,1375 @@
+:root {
+  --vinmec-teal: #008B7A;
+  --vinmec-teal-dark: #006D60;
+  --vinmec-teal-light: #00A693;
+  --vinmec-mint: #E0F2F1;
+  --vinmec-mint-bg: #E6F7F5;
+  --vinmec-gold: #F59E0B;
+  --vinmec-gold-dark: #D97706;
+  --vinmec-gold-light: #FEF3C7;
+  --vinmec-red: #DC2626;
+  --vinmec-red-light: #FEE2E2;
+  --vinmec-green: #10B981;
+  --vinmec-green-light: #D1FAE5;
+  --vinmec-bg: #F8FAFC;
+  --vinmec-card: #FFFFFF;
+  --vinmec-text: #1E293B;
+  --vinmec-muted: #64748B;
+  --vinmec-border: #E2E8F0;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Be Vietnam Pro', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  background-color: #FFFFFF; /* Hai bên rìa màu trắng hoàn toàn theo yêu cầu */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  color: var(--vinmec-text);
+  overflow-x: hidden;
+}
+
+/* KHUNG MÔ PHỎNG ĐIỆN THOẠI DI ĐỘNG */
+.device-wrapper {
+  width: 412px;
+  height: 880px;
+  background: #FFFFFF;
+  border-radius: 44px;
+  box-shadow: 0 25px 60px -15px rgba(0, 139, 122, 0.22), 0 0 0 12px #1E293B, 0 0 0 14px #94A3B8;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  margin: 24px auto;
+}
+
+@media (max-width: 440px) {
+  .device-wrapper {
+    width: 100vw;
+    height: 100vh;
+    border-radius: 0;
+    box-shadow: none;
+    margin: 0;
+  }
+}
+
+/* STATUS BAR */
+.status-bar {
+  height: 44px;
+  background: var(--vinmec-teal);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 24px;
+  color: #FFFFFF;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  z-index: 30;
+  flex-shrink: 0;
+}
+
+.status-icons {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* TOP APP BAR CHUẨN MYVINMEC */
+.top-app-bar {
+  background: var(--vinmec-teal);
+  color: #FFFFFF;
+  padding: 10px 16px 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 25;
+  flex-shrink: 0;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.app-bar-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.btn-back {
+  background: rgba(255, 255, 255, 0.18);
+  border: none;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-back:hover {
+  background: rgba(255, 255, 255, 0.35);
+  transform: scale(1.05);
+}
+
+.app-bar-title {
+  font-size: 16.5px;
+  font-weight: 700;
+}
+
+.app-bar-subtitle {
+  font-size: 11px;
+  opacity: 0.88;
+  font-weight: 400;
+}
+
+.app-bar-badge {
+  background: var(--vinmec-gold);
+  color: #1E293B;
+  font-size: 10px;
+  font-weight: 800;
+  padding: 3px 8px;
+  border-radius: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* QUẢN LÝ MÀN HÌNH (SCREEN CONTAINER & ROUTER) */
+.screen-container {
+  flex: 1;
+  position: relative;
+  overflow: hidden;
+  background: var(--vinmec-bg);
+}
+
+.app-screen {
+  position: absolute;
+  inset: 0;
+  overflow-y: auto;
+  padding: 14px 14px 84px;
+  display: none;
+  background: var(--vinmec-bg);
+}
+
+.app-screen.active {
+  display: block;
+}
+
+/* BỘ CHUYỂN CHẾ ĐỘ VIEW TRÊN MÀN HÌNH KẾT QUẢ (A/B TESTING TAB) */
+.view-switcher-bar {
+  background: #FFFFFF;
+  border-bottom: 1px solid var(--vinmec-border);
+  display: flex;
+  padding: 6px 12px;
+  gap: 8px;
+  margin: -14px -14px 14px -14px;
+  position: sticky;
+  top: -14px;
+  z-index: 15;
+}
+
+.switch-tab {
+  flex: 1;
+  padding: 8px 10px;
+  font-size: 11px;
+  font-weight: 600;
+  border: 1px solid var(--vinmec-border);
+  background: var(--vinmec-bg);
+  border-radius: 10px;
+  cursor: pointer;
+  text-align: center;
+  transition: all 0.2s;
+  color: var(--vinmec-muted);
+}
+
+.switch-tab.active {
+  background: var(--vinmec-mint);
+  border-color: var(--vinmec-teal);
+  color: var(--vinmec-teal-dark);
+  font-weight: 700;
+}
+
+/* CARD THÔNG TIN BỆNH NHÂN */
+.patient-header-card {
+  background: #FFFFFF;
+  border-radius: 16px;
+  padding: 14px 16px;
+  margin-bottom: 12px;
+  border: 1px solid var(--vinmec-border);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.patient-avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--vinmec-teal), var(--vinmec-teal-light));
+  color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  font-weight: 800;
+  flex-shrink: 0;
+}
+
+.patient-info h3 {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--vinmec-text);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.patient-meta {
+  font-size: 11px;
+  color: var(--vinmec-muted);
+  margin-top: 2px;
+}
+
+.patient-tag {
+  background: var(--vinmec-gold-light);
+  color: var(--vinmec-gold-dark);
+  font-size: 10px;
+  font-weight: 700;
+  padding: 2px 6px;
+  border-radius: 6px;
+}
+
+/* BANNER BÁO TIẾN ĐỘ THỰC TẾ */
+.wait-status-banner {
+  background: linear-gradient(90deg, #ECFDF5, #F0FDF4);
+  border: 1px solid #A7F3D0;
+  border-radius: 14px;
+  padding: 10px 14px;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.pulse-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--vinmec-green);
+  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.25);
+  animation: pulseAnim 1.8s infinite;
+  flex-shrink: 0;
+}
+
+@keyframes pulseAnim {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.2); opacity: 0.6; }
+}
+
+.wait-status-text {
+  font-size: 11.5px;
+  color: #065F46;
+  line-height: 1.4;
+}
+
+/* CHẾ ĐỘ RAW PDF PHÒNG LAB (MÔ PHỎNG THỰC TẾ BƯỚC 5 TRONG APP) */
+.view-pane {
+  display: none;
+}
+
+.view-pane.active {
+  display: block;
+}
+
+.raw-pdf-card {
+  background: #FFFFFF;
+  border-radius: 12px;
+  border: 1px solid #CBD5E1;
+  padding: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  font-size: 11px;
+}
+
+.pdf-header {
+  border-bottom: 2px solid #008B7A;
+  padding-bottom: 8px;
+  margin-bottom: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.pdf-title {
+  font-size: 13px;
+  font-weight: 800;
+  color: #008B7A;
+  text-transform: uppercase;
+}
+
+.pdf-subtitle {
+  font-size: 9px;
+  color: #64748B;
+}
+
+.raw-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 10.5px;
+}
+
+.raw-table th {
+  background: #F1F5F9;
+  color: #475569;
+  text-align: left;
+  padding: 6px 4px;
+  font-weight: 700;
+  border-bottom: 1px solid #CBD5E1;
+  font-size: 10px;
+}
+
+.raw-table td {
+  padding: 7px 4px;
+  border-bottom: 1px solid #F1F5F9;
+  color: #334155;
+}
+
+.flag-h {
+  color: #DC2626;
+  font-weight: 800;
+  background: #FEE2E2;
+  padding: 2px 6px;
+  border-radius: 4px;
+  display: inline-block;
+}
+
+.pdf-warning-box {
+  margin-top: 14px;
+  padding: 10px;
+  background: #FFFBEB;
+  border-left: 3px solid var(--vinmec-gold);
+  border-radius: 6px;
+  font-size: 10px;
+  color: #92400E;
+  line-height: 1.4;
+}
+
+/* CHẾ ĐỘ NATIVE MYVINMEC KẾT QUẢ */
+.native-section-title {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--vinmec-text);
+  margin: 8px 0 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.result-item-card {
+  background: #FFFFFF;
+  border-radius: 16px;
+  border: 1px solid var(--vinmec-border);
+  padding: 14px 16px;
+  margin-bottom: 10px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.result-item-card:hover {
+  border-color: var(--vinmec-teal);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 139, 122, 0.12);
+}
+
+.result-item-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 6px;
+}
+
+.result-name {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--vinmec-text);
+}
+
+.result-category {
+  font-size: 10px;
+  color: var(--vinmec-muted);
+}
+
+.badge-status {
+  font-size: 10px;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: 12px;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.badge-status.high {
+  background: var(--vinmec-red-light);
+  color: var(--vinmec-red);
+}
+
+.badge-status.borderline {
+  background: var(--vinmec-gold-light);
+  color: var(--vinmec-gold-dark);
+}
+
+.badge-status.normal {
+  background: var(--vinmec-green-light);
+  color: var(--vinmec-green);
+}
+
+.result-value-row {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  margin: 6px 0;
+}
+
+.result-big-value {
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--vinmec-text);
+}
+
+.result-unit {
+  font-size: 11px;
+  color: var(--vinmec-muted);
+}
+
+.result-ref-range {
+  font-size: 10.5px;
+  color: var(--vinmec-muted);
+  margin-left: auto;
+}
+
+.result-ai-hint {
+  margin-top: 8px;
+  padding-top: 8px;
+  border-top: 1px dashed var(--vinmec-border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: var(--vinmec-teal);
+  font-size: 11px;
+  font-weight: 600;
+}
+
+/* SMART FLOATING ACTION BUTTON (FAB MYVINMEC CƠ CHẾ ẨN THÔNG MINH) */
+.fab-container {
+  position: absolute;
+  bottom: 84px;
+  right: 18px;
+  z-index: 35;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 8px;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Trạng thái khi người dùng cuộn màn hình: Tự động thu nhỏ và làm mờ */
+.fab-container.scrolling {
+  opacity: 0.35;
+  transform: scale(0.8) translateX(12px);
+  pointer-events: none;
+}
+
+/* Trạng thái nghỉ sau 10s: Thu gọn sang mép phải dạng tai thỏ */
+.fab-container.docked {
+  opacity: 0.65;
+  transform: translateX(24px);
+}
+
+.fab-container.docked:hover {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.fab-badge-tip {
+  background: #FFFFFF;
+  border: 1px solid var(--vinmec-teal);
+  color: var(--vinmec-teal-dark);
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 10.5px;
+  font-weight: 700;
+  box-shadow: 0 6px 16px rgba(0, 139, 122, 0.2);
+  pointer-events: none;
+  animation: floatTip 3s ease-in-out infinite;
+  white-space: nowrap;
+}
+
+@keyframes floatTip {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+
+.fab-chat-btn {
+  background: linear-gradient(135deg, var(--vinmec-teal), var(--vinmec-teal-light));
+  color: #FFFFFF;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  box-shadow: 0 8px 20px rgba(0, 139, 122, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border: 3px solid #FFFFFF;
+  transition: all 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.fab-chat-btn:hover {
+  transform: scale(1.08);
+  box-shadow: 0 10px 25px rgba(0, 139, 122, 0.55);
+}
+
+/* AI BOTTOM DRAWER (TRỢ LÝ MYVINMEC CARE NAVIGATOR) */
+.ai-drawer-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.55);
+  backdrop-filter: blur(3px);
+  z-index: 40;
+  display: none;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.ai-drawer-overlay.active {
+  display: block;
+  opacity: 1;
+}
+
+.ai-drawer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #FFFFFF;
+  border-radius: 28px 28px 0 0;
+  box-shadow: 0 -10px 30px rgba(0,0,0,0.15);
+  z-index: 45;
+  max-height: 84%;
+  display: flex;
+  flex-direction: column;
+  transform: translateY(100%);
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.ai-drawer.open {
+  transform: translateY(0);
+}
+
+.drawer-handle-bar {
+  width: 44px;
+  height: 5px;
+  background: #CBD5E1;
+  border-radius: 10px;
+  margin: 10px auto 4px;
+}
+
+.drawer-header {
+  padding: 8px 18px 12px;
+  border-bottom: 1px solid var(--vinmec-border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.drawer-title-group h4 {
+  font-size: 15px;
+  font-weight: 800;
+  color: var(--vinmec-teal-dark);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.drawer-title-group p {
+  font-size: 10.5px;
+  color: var(--vinmec-muted);
+}
+
+.btn-close-drawer {
+  background: var(--vinmec-bg);
+  border: none;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  font-size: 14px;
+  color: var(--vinmec-muted);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.drawer-body {
+  padding: 14px 18px;
+  overflow-y: auto;
+  flex: 1;
+}
+
+/* PRESETS CHỌN NHANH */
+.preset-chips-container {
+  margin-bottom: 14px;
+}
+
+.preset-label {
+  font-size: 10.5px;
+  font-weight: 700;
+  color: var(--vinmec-muted);
+  margin-bottom: 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+.preset-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.preset-chip {
+  background: var(--vinmec-bg);
+  border: 1px solid var(--vinmec-border);
+  border-radius: 12px;
+  padding: 8px 12px;
+  font-size: 11px;
+  color: var(--vinmec-text);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.2s;
+}
+
+.preset-chip:hover {
+  background: var(--vinmec-mint);
+  border-color: var(--vinmec-teal);
+  color: var(--vinmec-teal-dark);
+}
+
+.preset-chip.red-preset:hover {
+  background: var(--vinmec-red-light);
+  border-color: var(--vinmec-red);
+  color: var(--vinmec-red);
+}
+
+/* KHUNG KẾT QUẢ AI GIẢI THÍCH (3 PHẦN CHUẨN MỰC) */
+.ai-response-box {
+  background: #F8FAFC;
+  border-radius: 16px;
+  border: 1px solid var(--vinmec-border);
+  padding: 14px;
+  margin-top: 10px;
+}
+
+.ai-response-section {
+  margin-bottom: 12px;
+}
+
+.ai-section-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 10px;
+  font-weight: 800;
+  color: var(--vinmec-teal-dark);
+  background: var(--vinmec-mint);
+  padding: 3px 8px;
+  border-radius: 8px;
+  margin-bottom: 6px;
+  text-transform: uppercase;
+}
+
+.ai-plain-text {
+  font-size: 12px;
+  line-height: 1.55;
+  color: var(--vinmec-text);
+}
+
+.question-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.question-list li {
+  background: #FFFFFF;
+  border: 1px solid var(--vinmec-mint);
+  border-left: 3px solid var(--vinmec-teal);
+  border-radius: 8px;
+  padding: 8px 10px;
+  font-size: 11.5px;
+  color: var(--vinmec-text);
+  line-height: 1.4;
+}
+
+.lifestyle-box {
+  background: #F0FDF4;
+  border: 1px solid #BBF7D0;
+  color: #166534;
+  padding: 8px 10px;
+  border-radius: 8px;
+  font-size: 11px;
+  line-height: 1.4;
+  margin-top: 6px;
+}
+
+.disclaimer-badge {
+  background: #FFFBEB;
+  border: 1px solid #FDE68A;
+  color: #92400E;
+  border-radius: 8px;
+  padding: 8px 10px;
+  font-size: 10px;
+  line-height: 1.4;
+  display: flex;
+  align-items: flex-start;
+  gap: 6px;
+}
+
+.nurse-connect-box {
+  margin-top: 10px;
+  padding: 10px;
+  background: #EFF6FF;
+  border: 1px solid #BFDBFE;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.btn-call-nurse {
+  background: var(--vinmec-teal);
+  color: #FFFFFF;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 11.5px;
+  font-weight: 700;
+  margin-top: 6px;
+  box-shadow: 0 4px 10px rgba(0, 139, 122, 0.3);
+}
+
+/* THẺ CẢNH BÁO CẤP CỨU RED-FLAG */
+.emergency-card-red {
+  background: #FEF2F2;
+  border: 2px solid var(--vinmec-red);
+  border-radius: 16px;
+  padding: 16px;
+  color: #991B1B;
+  animation: alertPulse 2s infinite;
+}
+
+@keyframes alertPulse {
+  0%, 100% { border-color: var(--vinmec-red); }
+  50% { border-color: #F87171; }
+}
+
+.emergency-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 800;
+  color: var(--vinmec-red);
+  margin-bottom: 6px;
+}
+
+.emergency-badge-tag {
+  display: inline-block;
+  background: #FEE2E2;
+  color: #B91C1C;
+  font-size: 10.5px;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: 6px;
+  margin-bottom: 8px;
+}
+
+.emergency-text {
+  font-size: 11.5px;
+  line-height: 1.5;
+  margin-bottom: 12px;
+}
+
+.hotline-action-btn {
+  color: #FFFFFF;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 14px;
+  border-radius: 12px;
+  font-size: 12.5px;
+  font-weight: 800;
+  margin-bottom: 8px;
+}
+
+.hotline-action-btn.primary-hotline {
+  background: var(--vinmec-red);
+  box-shadow: 0 4px 12px rgba(220, 38, 38, 0.35);
+}
+
+.hotline-action-btn.secondary-hotline {
+  background: #991B1B;
+}
+
+.emergency-guide-box {
+  font-size: 10.5px;
+  line-height: 1.45;
+  background: rgba(255,255,255,0.7);
+  padding: 8px;
+  border-radius: 8px;
+  margin-top: 8px;
+}
+
+/* CHAT INPUT AREA TẠI DRAWER */
+.drawer-input-area {
+  padding: 10px 18px 16px;
+  border-top: 1px solid var(--vinmec-border);
+  background: #FFFFFF;
+  display: flex;
+  gap: 8px;
+}
+
+.chat-input {
+  flex: 1;
+  border: 1px solid var(--vinmec-border);
+  border-radius: 20px;
+  padding: 9px 14px;
+  font-size: 12px;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.chat-input:focus {
+  border-color: var(--vinmec-teal);
+}
+
+.btn-send-chat {
+  background: var(--vinmec-teal);
+  border: none;
+  color: #FFFFFF;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: background 0.2s;
+}
+
+.btn-send-chat:hover {
+  background: var(--vinmec-teal-dark);
+}
+
+/* ========================================================= */
+/* THIẾT KẾ CÁC TRANG CÒN LẠI (HOME, RECORDS, BOOKING, ETC.) */
+/* ========================================================= */
+
+/* TRANG CHỦ (SCREEN-HOME) */
+.home-search-bar {
+  background: #FFFFFF;
+  border-radius: 14px;
+  padding: 10px 14px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 14px;
+  border: 1px solid var(--vinmec-border);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+}
+
+.home-search-bar input {
+  border: none;
+  outline: none;
+  flex: 1;
+  font-size: 12px;
+  color: var(--vinmec-text);
+}
+
+.hero-banner-card {
+  background: linear-gradient(135deg, #008B7A, #005A4F);
+  border-radius: 20px;
+  padding: 16px 18px;
+  color: #FFFFFF;
+  margin-bottom: 16px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 8px 20px rgba(0, 139, 122, 0.25);
+}
+
+.hero-banner-card h4 {
+  font-size: 15px;
+  font-weight: 800;
+  margin-bottom: 4px;
+}
+
+.hero-banner-card p {
+  font-size: 11px;
+  opacity: 0.9;
+  line-height: 1.4;
+  margin-bottom: 12px;
+  max-width: 80%;
+}
+
+.btn-banner-cta {
+  background: var(--vinmec-gold);
+  color: #1E293B;
+  border: none;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+/* LƯỚI ICON 2X3 TIỆN ÍCH TRÊN TRANG CHỦ */
+.quick-action-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.quick-action-item {
+  background: #FFFFFF;
+  border: 1px solid var(--vinmec-border);
+  border-radius: 16px;
+  padding: 12px 6px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 6px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.quick-action-item:hover {
+  transform: translateY(-2px);
+  border-color: var(--vinmec-teal);
+  box-shadow: 0 4px 12px rgba(0, 139, 122, 0.12);
+}
+
+.action-icon-circle {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--vinmec-mint);
+  color: var(--vinmec-teal-dark);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+}
+
+.action-title {
+  font-size: 10.5px;
+  font-weight: 600;
+  color: var(--vinmec-text);
+  line-height: 1.25;
+}
+
+/* BANNER CTA KẾT QUẢ XÉT NGHIỆM TRỰC TUYẾN */
+.home-result-alert {
+  background: #FFFFFF;
+  border: 1.5px solid var(--vinmec-teal);
+  border-radius: 16px;
+  padding: 14px 16px;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(0, 139, 122, 0.1);
+  transition: all 0.2s;
+}
+
+.home-result-alert:hover {
+  background: var(--vinmec-mint-bg);
+  transform: translateY(-1px);
+}
+
+/* TRANG HỒ SƠ (SCREEN-RECORDS) */
+.record-item-card {
+  background: #FFFFFF;
+  border-radius: 16px;
+  padding: 14px 16px;
+  margin-bottom: 10px;
+  border: 1px solid var(--vinmec-border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.record-item-card:hover {
+  border-color: var(--vinmec-teal);
+  box-shadow: 0 4px 12px rgba(0, 139, 122, 0.1);
+}
+
+.record-date-badge {
+  background: var(--vinmec-mint);
+  color: var(--vinmec-teal-dark);
+  font-size: 11px;
+  font-weight: 800;
+  padding: 4px 10px;
+  border-radius: 8px;
+  margin-bottom: 4px;
+  display: inline-block;
+}
+
+.record-title {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--vinmec-text);
+}
+
+.record-hospital {
+  font-size: 11px;
+  color: var(--vinmec-muted);
+}
+
+/* TRANG ĐẶT LỊCH (SCREEN-BOOKING) */
+.booking-step-card {
+  background: #FFFFFF;
+  border-radius: 16px;
+  border: 1px solid var(--vinmec-border);
+  padding: 14px 16px;
+  margin-bottom: 12px;
+}
+
+.booking-label {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--vinmec-muted);
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.booking-chip-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.booking-chip {
+  padding: 7px 12px;
+  border-radius: 10px;
+  border: 1px solid var(--vinmec-border);
+  background: var(--vinmec-bg);
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.booking-chip.selected {
+  background: var(--vinmec-teal);
+  color: #FFFFFF;
+  border-color: var(--vinmec-teal);
+}
+
+.btn-confirm-booking {
+  width: 100%;
+  background: var(--vinmec-teal);
+  color: #FFFFFF;
+  border: none;
+  padding: 12px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 800;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(0, 139, 122, 0.35);
+  margin-top: 10px;
+}
+
+/* TRANG THÔNG BÁO (SCREEN-NOTIFICATIONS) */
+.notif-item-card {
+  background: #FFFFFF;
+  border-radius: 14px;
+  border: 1px solid var(--vinmec-border);
+  padding: 12px 14px;
+  margin-bottom: 8px;
+  display: flex;
+  gap: 10px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.notif-item-card:hover {
+  background: var(--vinmec-mint-bg);
+}
+
+.notif-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--vinmec-mint);
+  color: var(--vinmec-teal);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  flex-shrink: 0;
+}
+
+.notif-content h5 {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--vinmec-text);
+  margin-bottom: 2px;
+}
+
+.notif-content p {
+  font-size: 11px;
+  color: var(--vinmec-muted);
+  line-height: 1.35;
+}
+
+.notif-time {
+  font-size: 9.5px;
+  color: #94A3B8;
+  margin-top: 4px;
+}
+
+/* TRANG TÀI KHOẢN (SCREEN-PROFILE) */
+.profile-card {
+  background: #FFFFFF;
+  border-radius: 16px;
+  border: 1px solid var(--vinmec-border);
+  padding: 16px;
+  margin-bottom: 12px;
+  text-align: center;
+}
+
+.profile-avatar-big {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--vinmec-teal), var(--vinmec-teal-light));
+  color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  font-weight: 800;
+  margin: 0 auto 8px;
+}
+
+.profile-menu-list {
+  background: #FFFFFF;
+  border-radius: 16px;
+  border: 1px solid var(--vinmec-border);
+  overflow: hidden;
+  margin-bottom: 12px;
+}
+
+.profile-menu-item {
+  padding: 12px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--vinmec-border);
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--vinmec-text);
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.profile-menu-item:last-child {
+  border-bottom: none;
+}
+
+.profile-menu-item:hover {
+  background: var(--vinmec-bg);
+}
+
+/* BOTTOM NAVIGATION BAR CHUẨN 5 TABS MYVINMEC */
+.bottom-nav-bar {
+  height: 64px;
+  background: #FFFFFF;
+  border-top: 1px solid var(--vinmec-border);
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 28;
+  padding: 0 4px;
+}
+
+.nav-tab-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  color: var(--vinmec-muted);
+  text-decoration: none;
+  font-size: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  flex: 1;
+  height: 100%;
+  transition: all 0.2s;
+}
+
+.nav-tab-item.active {
+  color: var(--vinmec-teal);
+  font-weight: 700;
+}
+
+.nav-tab-center {
+  position: relative;
+  top: -12px;
+}
+
+.center-action-btn {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--vinmec-teal), var(--vinmec-teal-light));
+  color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 14px rgba(0, 139, 122, 0.4);
+  border: 3px solid #FFFFFF;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.center-action-btn:hover {
+  transform: scale(1.08);
+}
+
+/* HOME INDICATOR IPHONE */
+.home-indicator {
+  width: 134px;
+  height: 4px;
+  background: #CBD5E1;
+  border-radius: 4px;
+  position: absolute;
+  bottom: 4px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 32;
+}
+
+/* INTERACTIVE HOVER & TOAST ENHANCEMENTS */
+.patient-header-card {
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.patient-header-card:hover {
+  transform: translateY(-1px);
+  border-color: var(--vinmec-teal);
+  box-shadow: 0 4px 12px rgba(0, 139, 122, 0.12);
+}
+
+.wait-status-banner {
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.wait-status-banner:hover {
+  background: #FEF3C7;
+  transform: translateY(-1px);
+}
+
+.raw-table tbody tr {
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.raw-table tbody tr:hover {
+  background: #F1F5F9;
+}
+
+.action-buttons-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 14px;
+  margin-bottom: 20px;
+}
+
+.btn-secondary-action {
+  background: #FFFFFF;
+  border: 1.5px solid var(--vinmec-teal);
+  color: var(--vinmec-teal-dark);
+  padding: 10px 14px;
+  border-radius: 14px;
+  font-size: 11.5px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-secondary-action:hover {
+  background: var(--vinmec-mint);
+  transform: translateY(-1px);
+}
+
+/* APP IN-PHONE TOAST */
+.app-toast {
+  position: absolute;
+  top: 60px;
+  left: 20px;
+  right: 20px;
+  background: #1E293B;
+  color: #FFFFFF;
+  padding: 10px 16px;
+  border-radius: 12px;
+  font-size: 11.5px;
+  font-weight: 600;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.25);
+  z-index: 60;
+  opacity: 0;
+  transform: translateY(-10px);
+  pointer-events: none;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  border-left: 4px solid var(--vinmec-teal);
+  text-align: center;
+}
+
+.app-toast.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+

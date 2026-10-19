@@ -25,14 +25,14 @@ Toàn bộ tài liệu, bằng chứng nghiên cứu và mã nguồn được c�
 
 | Thư mục / File | Mô tả nội dung chi tiết | Liên kết nhanh |
 | :--- | :--- | :--- |
-| `01-phong-van/` | Ghi chép dùng thử MyVinmec, Interview Guide, biên bản phỏng vấn P1–P3, tổng hợp Insight & **Cẩm nang phỏng vấn thực địa bệnh viện (6 nhóm đối tượng & 4 chủ đề)**. | [Xem 01-phong-van](./01-phong-van/interview-guide.md) · [Ngân hàng câu hỏi](./01-phong-van/fieldwork-stakeholder-questions.md) |
+| `01-phong-van/` | Ghi chép dùng thử MyVinmec (Bạn làm gì – Thấy gì – Vướng ở đâu), Interview Guide, biên bản phỏng vấn 3 người dùng (P1–P3 theo quy chế bảo mật), tổng hợp Insight & **Bộ công cụ câu hỏi thực địa chuẩn bị cho Sprint 6 tuần (Fieldwork Question Bank để K1–K3 coach K4 khi Onboard vào viện)**. | [Dùng thử MyVinmec](./01-phong-van/myvinmec-heuristic-audit.md) · [Interview Guide](./01-phong-van/interview-guide.md) · [Nhật ký P1–P3](./01-phong-van/interview-notes.md) · [Ngân hàng câu hỏi 6 tuần](./01-phong-van/fieldwork-stakeholder-questions.md) |
 | `02-journey-map/` | Bản đồ hành trình (Workflow Journey Map) và ma trận phân tích điểm đau (Pain points analysis). | [Xem 02-journey-map](./02-journey-map/workflow-journey-map.md) |
 | `03-need-statement/` | Tuyên bố nhu cầu chuẩn Stanford Biodesign (không chứa công nghệ/giải pháp). | [Xem 03-need-statement](./03-need-statement/need-statement.md) |
 | `04-best-practice/` | Nghiên cứu 3 mô hình quốc tế (Mayo Clinic, Cleveland Clinic/MyChart, Ada Health/NHS) & bài học cho Vinmec. | [Xem 04-best-practice](./04-best-practice/international-benchmarks.md) |
-| `05-prototype/` | Mã nguồn/thiết kế prototype AI, System Instructions, Safety Guardrails và User Testing Logs (2–3 người). | [Xem 05-prototype](./05-prototype/README.md) |
+| `05-prototype/` | Mã nguồn/thiết kế prototype AI: **Giao diện điện thoại MyVinmec độc lập ([Xem trực tiếp index.html](./05-prototype/index.html))**, script **1-click [start.bat](./05-prototype/start.bat)**, bản Streamlit (`app.py`), System Instructions và User Testing Logs. | [Xem trực tiếp Prototype](./05-prototype/index.html) · [Hướng dẫn kỹ thuật](./05-prototype/README.md) |
 | `06-rui-ro-dao-duc/` | Phân tích rủi ro an toàn thông tin (Nghị định 13/2023/NĐ-CP, HIPAA), Ảo giác AI và Quy trình chuyển tuyến khẩn cấp. | [Xem 06-rui-ro-dao-duc](./06-rui-ro-dao-duc/safety-and-privacy-risks.md) |
 | `07-coach-plan/` | Bản kế hoạch 1 trang dẫn dắt nhóm K4: Lịch trình các cổng, quy trình review tuần, chiến lược gỡ rối và Quality Gate. | [Xem 07-coach-plan](./07-coach-plan/k4-coaching-framework.md) |
-| `slides/` | Đề cương và slide thuyết trình chuẩn 10 slide phục vụ vòng phỏng vấn 10 phút. | [Xem slides-outline](./slides/slides-outline.md) |
+| `slides.pdf` (hoặc `slides/`) | **Bản thuyết trình chính thức (chuẩn 10 slide theo Mục 6.0 & 6.3)**: Tóm tắt toàn bài dùng cho buổi present 10 phút trước Hội đồng Tuyển chọn Vinmec. | **[Tải file slides.pdf](./slides.pdf)** · [Xem đề cương outline](./slides/slides-outline.md) · [Bản trình chiếu HTML](./slides/presentation.html) |
 
 ---
 
@@ -78,4 +78,4 @@ Tuân thủ nghiêm ngặt quy định tại Mục 6.4 & 142 của tài liệu h
 
 1. **Bảo mật và Quyền riêng tư:** Tuyệt đối không thu thập, lưu trữ hay xử lý dữ liệu bệnh án thật. Mọi thông tin người tham gia được ẩn danh hóa nghiêm ngặt (`P1`, `P2`, `P3`). Không lưu trữ hình ảnh cá nhân hay giấy tờ viện phí.
 2. **Ranh giới Phi lâm sàng (Non-clinical Boundary):** Phỏng vấn và giải pháp chỉ xoay quanh trải nghiệm dịch vụ, luồng di chuyển, tương tác ứng dụng số; không hỏi và không can thiệp vào chẩn đoán hay điều trị y khoa.
-3. **Tuân thủ quy chế:** Sẵn sàng ký NDA và hoàn thành đầy đủ các khóa đào tạo bắt buộc của Vinmec trước khi chính thức nhúng vào bệnh viện thực địa tại Tuần 0.
+3. **Tuân thủ quy chế:** Sẵn sàng ký NDA và hoàn thành đầy đủ các khóa đào tạo bắt buộc của Vinmec trước khi chính thức vào bệnh viện làm việc thực tế tại Tuần 0.
