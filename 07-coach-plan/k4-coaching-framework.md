@@ -73,7 +73,45 @@ flowchart TD
 
 ---
 
-## 3. Quy Trình Review Báo Cáo Tuần & Nhịp Làm Việc (Weekly Cadence)
+## 3. Chiến Lược Thực Địa Tuần 1: Luân Phiên 4 Trạm Bệnh Viện (Daily Touchpoint Rotation) & Bộ Lọc Năng Lực Học Viên
+
+### 3.1. Bức tranh lớn vận hành bệnh viện đa khoa (Big Picture of Hospital Operations)
+Bệnh viện đa khoa là một hệ sinh thái dòng chảy đa điểm chạm (Patient Flow Ecosystem). Nếu không nắm được bức tranh tổng thể, học viên K4 sẽ rơi vào tình trạng "thầy bói xem voi" (chỉ thấy triệu chứng bề nổi mà bỏ qua căn nguyên gốc rễ). Coach phân rã hiện trường thành 4 trạm nút thắt then chốt để nhóm bám sát:
+
+```mermaid
+flowchart LR
+    T1["TRẠM 1: Tiếp Đón & Phân Luồng<br>(Kiosk bấm số, Lễ tân, BHYT)"] --> T2["TRẠM 2: Khám Chuyên Khoa<br>(Phòng khám Ngoại trú, Bác sĩ)"]
+    T2 --> T3["TRẠM 3: Kỹ Thuật Cận Lâm Sàng<br>(Máu, X-Quang, MRI, Siêu âm)"]
+    T3 --> T2
+    T2 --> T4["TRẠM 4: Trả Kết Quả, Dược & Ra Viện<br>(Tư vấn đơn thuốc, Thanh toán)"]
+```
+
+### 3.2. Cơ chế luân phiên hàng ngày (Daily Shadowing Rotation - T2 đến T6)
+* **Quy tắc phân công luân chuyển:** Mỗi thành viên trong nhóm K4 sẽ trực chiến tại một trạm khác nhau mỗi ngày (vòng tròn khép kín). Đảm bảo đến hết tuần, 100% học viên đều trải nghiệm tối thiểu 3–4 trạm khác nhau trong hành trình người bệnh.
+* **Tâm thế quan sát:** Đóng vai "Fly on the wall" (người quan sát vô hình), giữ khoảng cách 2 mét, tuyệt đối không can thiệp chuyên môn, không nhìn màn hình bệnh án có danh tính thật, không đứng trong phòng thủ thuật kín.
+
+| Lịch trực chiến | Thành viên 1 | Thành viên 2 | Thành viên 3 | Thành viên 4 | Thành viên 5 (nếu có) |
+| :---: | :---: | :---: | :---: | :---: | :---: |
+| **Thứ Hai** | Trạm 1 (Tiếp đón) | Trạm 2 (Phòng khám) | Trạm 3 (Xét nghiệm) | Trạm 4 (Nhà thuốc) | Trạm 1 (Hỗ trợ luồng) |
+| **Thứ Ba** | Trạm 2 (Phòng khám) | Trạm 3 (Xét nghiệm) | Trạm 4 (Nhà thuốc) | Trạm 1 (Tiếp đón) | Trạm 2 (Hỗ trợ luồng) |
+| **Thứ Tư** | Trạm 3 (Xét nghiệm) | Trạm 4 (Nhà thuốc) | Trạm 1 (Tiếp đón) | Trạm 2 (Phòng khám) | Trạm 3 (Hỗ trợ luồng) |
+| **Thứ Năm**| Trạm 4 (Nhà thuốc) | Trạm 1 (Tiếp đón) | Trạm 2 (Phòng khám) | Trạm 3 (Xét nghiệm) | Trạm 4 (Hỗ trợ luồng) |
+| **Thứ Sáu**| **Họp tổng hợp chéo dữ liệu & Soạn thảo Báo cáo Tuần 1 tại phòng họp chung** |
+
+### 3.3. Bộ lọc năng lực & Thái độ học viên qua "Daily Field Observation Log"
+Cuối mỗi ngày (trước 18h00), từng học viên nộp 1 bản **Daily Fieldwork Log** (theo mẫu chuẩn trong `fieldwork-stakeholder-questions.md`). Cuối tuần, Coach thực hiện **Đối chiếu tam giác hóa (Triangulated Cross-Check)** trên cùng 1 trạm khám:
+
+1. **Bộ lọc phát hiện mức độ cam kết & năng lực thực chất:**
+   * **Học viên làm đối phó / lười biếng:** Ghi chép chung chung ("Khu vực đông", "Bệnh nhân bình thường"), không có số liệu đo lường thời gian (phút), không có câu trích dẫn cảm xúc thật của người bệnh/nhân viên y tế.
+   * **Học viên cẩn trọng & giàu thấu cảm (Empathy):** Ghi chép chi tiết từng cử chỉ bối rối, ánh mắt lo lắng, đo được số phút chờ trung bình giữa 2 khâu, trích dẫn chuẩn The Mom Test câu hỏi bệnh nhân hay hỏi đi hỏi lại điều dưỡng.
+   * **Học viên có tư duy hệ thống & đột phá (Systems Thinking):** Nhìn ra sự đứt gãy giữa các phòng ban (ví dụ: phát hiện bác sĩ Trạm 2 bị quá tải là do Trạm 3 trả kết quả giấy không có phần giải thích cơ bản, khiến bệnh nhân phải quay lại hỏi dồn dập).
+2. **Giá trị chắt lọc dữ liệu thực chiến (High-Fidelity Ground Truth):**
+   * Nếu cả 3 bạn quan sát Trạm 3 vào các ngày khác nhau đều độc lập ghi nhận điểm nghẽn *"Bệnh nhân cầm giấy xét nghiệm đi lạc giữa tầng 1 và tầng 2"* -> Đây là **Sự thật khách quan 100% (Ground Truth)**, không phải nhận định chủ quan của một cá nhân.
+   * Đây chính là nguồn tư liệu vàng để nhóm chốt **Need Statement đạt điểm tuyệt đối tại Cổng 1 (Tuần 2)** trước Hội đồng Bác sĩ Trưởng khoa.
+
+---
+
+## 4. Quy Trình Review Báo Cáo Tuần & Nhịp Làm Việc (Weekly Cadence)
 
 * **Nhịp làm việc cố định hàng tuần:**
   * **Thứ Hai:** Tham gia buổi đào tạo phương pháp của V-RIC cùng nhóm.
@@ -89,7 +127,7 @@ flowchart TD
 
 ---
 
-## 4. Chiến Lược Gỡ Rối Khi Nhóm Bế Tắc (Unblocking Strategies)
+## 5. Chiến Lược Gỡ Rối Khi Nhóm Bế Tắc (Unblocking Strategies)
 
 | Tình huống bế tắc | Dấu hiệu nhận biết | Chiến lược Coach can thiệp ngay lập tức |
 | :--- | :--- | :--- |
@@ -100,7 +138,7 @@ flowchart TD
 
 ---
 
-## 5. Bộ Tiêu Chí Kiểm Soát Chất Lượng (Quality Gate Rubric)
+## 6. Bộ Tiêu Chí Kiểm Soát Chất Lượng (Quality Gate Rubric)
 
 Trước khi ký duyệt cho nhóm nộp bài lên Hội đồng Vinmec tại các Cổng, Coach chấm theo thang điểm 4 chuẩn mực:
 

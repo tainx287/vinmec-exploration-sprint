@@ -197,3 +197,39 @@ Khi hướng dẫn nhóm học viên Khóa 4 (Day 17–18) thực hiện phỏng
 1. **Kiểm tra Conversation Guide trước khi ra trận:** Thu hồi toàn bộ câu hỏi có chứa chữ *"AI"*, *"tự động"*, *"phần mềm"*, *"bạn có muốn"*.
 2. **Theo sát hiện trường (Shadowing the Shadowers):** Nhắc học viên luôn cầm theo cuốn sổ tay nhỏ, ghi lại **quotes nguyên văn** (có cả tiếng thở dài, từ ngữ bình dân) thay vì ghi lại suy diễn của bản thân.
 3. **Phát hiện Workarounds:** Dạy học viên chụp lại (nếu được phép) hoặc vẽ lại các cuốn sổ ghi tay, bảng dán ghi chú của nhân sự y tế để đưa vào bằng chứng cho Need Statement.
+
+---
+
+## PHẦN VI: MẪU NHẬT KÝ QUAN SÁT HIỆN TRƯỜNG HÀNG NGÀY (DAILY FIELD OBSERVATION LOG TEMPLATE)
+
+> **Hướng dẫn nộp bài:** Mỗi học viên K4 hoàn thành và nộp 1 bản log này trước **18h00 hàng ngày** trong Tuần 1. Coach K2 sẽ đối chiếu chéo các bản log cùng trạm vào cuối tuần để đánh giá năng lực quan sát và chắt lọc điểm nghẽn thực chất.
+
+```markdown
+# NHẬT KÝ QUAN SÁT HIỆN TRƯỜNG (DAILY FIELD LOG)
+- Ngày quan sát: [YYYY-MM-DD] (Thứ ...)
+- Họ và tên học viên: [Nguyễn Văn A] — Mã học viên: [K4-XXX]
+- Trạm trực chiến trong ngày: [ ] Trạm 1 (Tiếp đón) | [ ] Trạm 2 (Phòng khám) | [ ] Trạm 3 (Cận lâm sàng) | [ ] Trạm 4 (Nhà thuốc/Ra viện)
+- Khung giờ trực quan sát: [Ví dụ: 08:30 – 11:30 & 13:30 – 16:00]
+
+---
+
+### 1. DỮ LIỆU ĐO LƯỜNG THỰC TẾ (QUANTITATIVE METRICS)
+- Thời gian chờ trung bình tại trạm: [Ví dụ: 25 phút / lượt]
+- Số lượt người bệnh hỏi lặp lại cùng một câu hỏi: [Ví dụ: 12 người hỏi cùng câu "Lấy máu xong thì lên đâu?"]
+- Tỷ lệ người đi cùng người nhà để hỗ trợ: [Ví dụ: 7/10 người]
+
+### 2. QUAN SÁT HÀNH VI & NGỮ CẢNH (BEHAVIORAL CONTEXT & WORKAROUNDS)
+- Hành vi bối rối/lúng túng quan sát được: [Mô tả chi tiết nét mặt, cử chỉ cầm giấy tờ, tìm biển chỉ dẫn...]
+- Giải pháp "chữa cháy" (Workaround) của nhân viên/người bệnh: [Ví dụ: Bác sĩ dán giấy note viết tay lên cửa, người bệnh gọi điện hỏi người quen...]
+
+### 3. NGUYÊN VĂN CÂU NÓI CỦA NGƯỜI TRONG CUỘC (MOM TEST RAW QUOTES)
+- Quote 1 (Người bệnh/Người nhà): "[Ghi chính xác nguyên văn, kèm giọng điệu, thở dài hoặc bức xúc nếu có]"
+- Quote 2 (Nhân viên y tế/Điều dưỡng): "[Ghi chính xác câu than phiền hoặc giải thích lặp đi lặp lại]"
+
+### 4. ĐIỂM NGHẼN QUY TRÌNH PHÁT HIỆN ĐƯỢC (IDENTIFIED BOTTLENECK)
+- Mô tả điểm đứt gãy: [Chỉ rõ sự lệch pha giữa các khâu hoặc sự quá tải nhận thức của người bệnh]
+- Mức độ ảnh hưởng: [ ] Khó chịu nhẹ | [ ] Gây chậm trễ dây chuyền | [ ] Nguy cơ an toàn/bỏ về
+
+### 5. GIẢ THUYẾT ĐỘT PHÁ & GÓC NHÌN CẢI TIẾN CỦA BẠN (SYSTEM HYPOTHESIS)
+- Nhận định cá nhân: [Bạn nghĩ nguyên nhân sâu xa là gì? Có giải pháp nào giải quyết tận gốc mà không cần làm phiền bác sĩ?]
+```
