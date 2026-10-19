@@ -1,21 +1,21 @@
 :root {
-  --vinmec-teal: #008B7A;
-  --vinmec-teal-dark: #006D60;
-  --vinmec-teal-light: #00A693;
-  --vinmec-mint: #E0F2F1;
-  --vinmec-mint-bg: #E6F7F5;
+  --vinmec-teal: #20A69A;
+  --vinmec-teal-dark: #168278;
+  --vinmec-teal-light: #2DD4BF;
+  --vinmec-mint: #EBFEFF;
+  --vinmec-mint-bg: #E8F8F7;
   --vinmec-gold: #F59E0B;
   --vinmec-gold-dark: #D97706;
   --vinmec-gold-light: #FEF3C7;
-  --vinmec-red: #DC2626;
+  --vinmec-red: #EF4444;
   --vinmec-red-light: #FEE2E2;
   --vinmec-green: #10B981;
   --vinmec-green-light: #D1FAE5;
-  --vinmec-bg: #F8FAFC;
+  --vinmec-bg: #F5F6F8;
   --vinmec-card: #FFFFFF;
-  --vinmec-text: #1E293B;
-  --vinmec-muted: #64748B;
-  --vinmec-border: #E2E8F0;
+  --vinmec-text: #1F2937;
+  --vinmec-muted: #6B7280;
+  --vinmec-border: #E5E7EB;
 }
 
 * {
@@ -27,7 +27,7 @@
 }
 
 body {
-  background-color: #FFFFFF; /* Hai bên rìa màu trắng hoàn toàn theo yêu cầu */
+  background-color: #F1F5F9; /* Nền xám nhạt slate làm giá đỡ Device Mockup chuyên nghiệp */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -36,13 +36,14 @@ body {
   overflow-x: hidden;
 }
 
-/* KHUNG MÔ PHỎNG ĐIỆN THOẠI DI ĐỘNG */
+/* KHUNG MÔ PHỎNG ĐIỆN THOẠI DI ĐỘNG (DEVICE MOCKUP CHUYÊN NGHIỆP) */
 .device-wrapper {
   width: 412px;
   height: 880px;
   background: #FFFFFF;
   border-radius: 44px;
-  box-shadow: 0 25px 60px -15px rgba(0, 139, 122, 0.22), 0 0 0 12px #1E293B, 0 0 0 14px #94A3B8;
+  border: 8px solid #1E293B;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
   position: relative;
   overflow: hidden;
   display: flex;
@@ -55,6 +56,7 @@ body {
     width: 100vw;
     height: 100vh;
     border-radius: 0;
+    border: none;
     box-shadow: none;
     margin: 0;
   }
@@ -520,23 +522,94 @@ body {
 }
 
 .fab-chat-btn {
-  background: linear-gradient(135deg, var(--vinmec-teal), var(--vinmec-teal-light));
-  color: #FFFFFF;
-  width: 56px;
-  height: 56px;
+  background: transparent;
+  width: 62px;
+  height: 62px;
   border-radius: 50%;
-  box-shadow: 0 8px 20px rgba(0, 139, 122, 0.4);
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  border: 3px solid #FFFFFF;
+  border: none;
+  filter: drop-shadow(0 6px 14px rgba(32, 166, 154, 0.45));
   transition: all 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
+.fab-chat-btn img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transition: transform 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
 .fab-chat-btn:hover {
-  transform: scale(1.08);
-  box-shadow: 0 10px 25px rgba(0, 139, 122, 0.55);
+  transform: scale(1.1) translateY(-2px);
+  filter: drop-shadow(0 10px 20px rgba(32, 166, 154, 0.6));
+}
+
+.fab-chat-btn:hover img {
+  transform: rotate(-4deg);
+}
+
+/* HERO INTRO TRONG DRAWER (PHONG CÁCH MYVINMEC MIA) */
+.mia-hero-intro {
+  text-align: center;
+  padding: 14px 16px 16px;
+  background: linear-gradient(180deg, #EBFEFF 0%, #FFFFFF 100%);
+  border-radius: 20px;
+  margin-bottom: 14px;
+  border: 1px solid rgba(32, 166, 154, 0.18);
+}
+
+.mia-hero-mascot {
+  width: 72px;
+  height: 72px;
+  object-fit: contain;
+  margin: 0 auto 6px;
+  display: block;
+  filter: drop-shadow(0 4px 10px rgba(32, 166, 154, 0.25));
+  animation: bounceMascot 4s ease-in-out infinite;
+}
+
+@keyframes bounceMascot {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
+}
+
+.mia-hero-greeting {
+  font-size: 13.5px;
+  font-weight: 700;
+  color: #1F2937;
+  margin-bottom: 4px;
+}
+
+.mia-hero-sub {
+  font-size: 11px;
+  color: #6B7280;
+  line-height: 1.45;
+}
+
+/* BADGE THÔNG BÁO DƯỚI FOOTER */
+.nav-icon-wrap {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav-badge-count {
+  position: absolute;
+  top: -4px;
+  right: -8px;
+  background: #EF4444;
+  color: #FFFFFF;
+  font-size: 9px;
+  font-weight: 800;
+  padding: 1px 4px;
+  border-radius: 10px;
+  min-width: 14px;
+  text-align: center;
+  line-height: 1.2;
 }
 
 /* AI BOTTOM DRAWER (TRỢ LÝ MYVINMEC CARE NAVIGATOR) */
@@ -1372,4 +1445,799 @@ body {
   opacity: 1;
   transform: translateY(0);
 }
+
+/* ================================================================= */
+/* DNA MYVINMEC AUTHENTIC UI ENHANCEMENTS: HOME, PROFILE, NOTIFS     */
+/* ================================================================= */
+
+/* --- 1. HOME SCREEN ENHANCEMENTS (SCREEN-HOME) --- */
+.home-search-pill-wrapper {
+  margin-bottom: 12px;
+}
+
+.home-search-pill {
+  display: flex;
+  align-items: center;
+  background: #FFFFFF;
+  border: 1px solid var(--vinmec-border);
+  border-radius: 24px;
+  padding: 8px 14px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  gap: 10px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.home-search-pill:hover {
+  border-color: var(--vinmec-teal);
+  box-shadow: 0 4px 12px rgba(32,166,154,0.12);
+}
+
+.home-search-pill input {
+  border: none;
+  background: transparent;
+  outline: none;
+  font-size: 12px;
+  color: var(--vinmec-text);
+  flex: 1;
+  cursor: pointer;
+}
+
+/* Banner Carousel thật Vinmec */
+.home-promo-slider {
+  background: linear-gradient(135deg, #1E88E5 0%, #20A69A 100%);
+  border-radius: 18px;
+  padding: 16px;
+  color: #FFFFFF;
+  margin-bottom: 14px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 6px 18px rgba(32,166,154,0.2);
+}
+
+.home-promo-slider::after {
+  content: "🛡️";
+  position: absolute;
+  right: -10px;
+  bottom: -15px;
+  font-size: 90px;
+  opacity: 0.18;
+  pointer-events: none;
+}
+
+.promo-brand-tag {
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  background: rgba(255,255,255,0.22);
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 8px;
+  margin-bottom: 6px;
+}
+
+.promo-title {
+  font-size: 14.5px;
+  font-weight: 800;
+  line-height: 1.3;
+  margin-bottom: 4px;
+}
+
+.promo-sub {
+  font-size: 11px;
+  opacity: 0.92;
+  margin-bottom: 10px;
+}
+
+.promo-btn-cta {
+  background: #FFFFFF;
+  color: var(--vinmec-teal-dark);
+  border: none;
+  font-size: 10.5px;
+  font-weight: 800;
+  padding: 6px 14px;
+  border-radius: 16px;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  transition: all 0.2s;
+}
+
+.promo-btn-cta:hover {
+  transform: scale(1.04);
+  background: #FEF3C7;
+}
+
+/* Lưới 12 Tiện ích y tế chuẩn ảnh thật */
+.home-utilities-container {
+  background: #FFFFFF;
+  border-radius: 20px;
+  padding: 16px 10px;
+  margin-bottom: 14px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.04);
+  border: 1px solid rgba(229,231,235,0.6);
+}
+
+.utilities-grid-12 {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px 6px;
+  text-align: center;
+}
+
+.utility-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  transition: transform 0.18s;
+  padding: 4px 2px;
+}
+
+.utility-item:hover {
+  transform: translateY(-2px);
+}
+
+.utility-icon-wrap {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: #F0FDF4;
+  border: 1px solid #DCFCE7;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--vinmec-teal);
+  margin-bottom: 5px;
+  position: relative;
+  font-size: 18px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+}
+
+.utility-badge-tag {
+  position: absolute;
+  top: -4px;
+  right: -6px;
+  background: #FF5722;
+  color: #FFFFFF;
+  font-size: 8.5px;
+  font-weight: 800;
+  padding: 1px 5px;
+  border-radius: 8px;
+  border: 1.5px solid #FFFFFF;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+}
+
+.utility-name {
+  font-size: 10px;
+  font-weight: 600;
+  color: #374151;
+  line-height: 1.25;
+  text-align: center;
+  max-width: 72px;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+/* Khối phân mục Home chuẩn MyVinmec */
+.home-section-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 16px 2px 8px;
+}
+
+.home-section-head h4 {
+  font-size: 14.5px;
+  font-weight: 800;
+  color: #111827;
+}
+
+.home-section-head span {
+  font-size: 11px;
+  color: var(--vinmec-teal);
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* Thẻ Dịch vụ mới */
+.service-feature-card {
+  background: #FFFFFF;
+  border-radius: 16px;
+  padding: 12px 14px;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border-left: 4px solid var(--vinmec-teal);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.service-feature-card:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(32,166,154,0.12);
+}
+
+.service-feature-thumb {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: #E8F8F7;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  flex-shrink: 0;
+}
+
+.service-feature-info {
+  flex: 1;
+}
+
+.service-feature-title {
+  font-size: 12.5px;
+  font-weight: 700;
+  color: #1E293B;
+  margin-bottom: 2px;
+}
+
+.service-feature-desc {
+  font-size: 10.5px;
+  color: var(--vinmec-muted);
+}
+
+.service-feature-arrow {
+  color: #F97316;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+/* Thẻ Câu hỏi sàng lọc sức khỏe */
+.screening-action-card {
+  background: #FFFFFF;
+  border-radius: 16px;
+  padding: 12px 14px;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.screening-action-card:hover {
+  border-color: var(--vinmec-teal);
+  transform: translateY(-1px);
+}
+
+.screening-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: #E0F2FE;
+  color: #0284C7;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  flex-shrink: 0;
+}
+
+.screening-title {
+  font-size: 12.5px;
+  font-weight: 700;
+  color: #1E293B;
+  flex: 1;
+}
+
+/* Thẻ Thông báo quan trọng */
+.important-notice-card {
+  background: #E8F8F7;
+  border-radius: 16px;
+  padding: 12px 14px;
+  margin-bottom: 14px;
+  border: 1px dashed rgba(32,166,154,0.4);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.important-notice-card:hover {
+  background: #D9F4F1;
+}
+
+.notice-pill-tag {
+  background: var(--vinmec-teal);
+  color: #FFFFFF;
+  font-size: 9.5px;
+  font-weight: 800;
+  padding: 2px 8px;
+  border-radius: 10px;
+  display: inline-block;
+  margin-bottom: 6px;
+}
+
+.notice-text {
+  font-size: 11.5px;
+  font-weight: 600;
+  color: var(--vinmec-teal-dark);
+  line-height: 1.35;
+}
+
+/* Tin tức mới nhất */
+.news-article-row {
+  background: #FFFFFF;
+  border-radius: 14px;
+  padding: 10px 12px;
+  margin-bottom: 8px;
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.news-article-row:hover {
+  box-shadow: 0 4px 10px rgba(0,0,0,0.06);
+  transform: translateY(-1px);
+}
+
+.news-thumb {
+  width: 64px;
+  height: 52px;
+  border-radius: 8px;
+  background: #F1F5F9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+
+.news-info {
+  flex: 1;
+}
+
+.news-title {
+  font-size: 11.5px;
+  font-weight: 700;
+  color: #1E293B;
+  line-height: 1.35;
+  margin-bottom: 3px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.news-date {
+  font-size: 9.5px;
+  color: var(--vinmec-muted);
+}
+
+.home-feedback-pill {
+  background: #FFFFFF;
+  border: 1px solid var(--vinmec-border);
+  border-radius: 20px;
+  padding: 8px 16px;
+  margin: 16px auto 10px;
+  width: fit-content;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11.5px;
+  font-weight: 600;
+  color: #2563EB;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+}
+
+.home-copyright-text {
+  text-align: center;
+  font-size: 10px;
+  color: #94A3B8;
+  margin: 8px 0 24px;
+}
+
+
+/* --- 2. NOTIFICATIONS SCREEN ENHANCEMENTS (SCREEN-NOTIFICATIONS) --- */
+.notif-scroll-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-bottom: 24px;
+}
+
+.notif-card-real {
+  background: #FFFFFF;
+  border-radius: 16px;
+  padding: 12px 14px;
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+  border: 1px solid #F1F5F9;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.notif-card-real:hover {
+  border-color: var(--vinmec-teal);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(32,166,154,0.1);
+}
+
+.notif-card-real.highlight {
+  border-left: 3.5px solid var(--vinmec-teal);
+  background: #FAFEFD;
+}
+
+.notif-icon-box {
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  background: #E8F8F7;
+  border: 1px solid #C4EDE9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--vinmec-teal);
+  position: relative;
+  flex-shrink: 0;
+  font-size: 18px;
+}
+
+.notif-red-dot {
+  width: 8px;
+  height: 8px;
+  background: #EF4444;
+  border: 1.5px solid #FFFFFF;
+  border-radius: 50%;
+  position: absolute;
+  top: -2px;
+  right: -2px;
+}
+
+.notif-content-area {
+  flex: 1;
+}
+
+.notif-header-line {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 3px;
+  gap: 6px;
+}
+
+.notif-title-real {
+  font-size: 12px;
+  font-weight: 700;
+  color: #0F172A;
+  line-height: 1.35;
+}
+
+.notif-time-real {
+  font-size: 10px;
+  color: #94A3B8;
+  font-weight: 500;
+  flex-shrink: 0;
+}
+
+.notif-body-real {
+  font-size: 11px;
+  color: #475569;
+  line-height: 1.45;
+}
+
+.notif-action-tag {
+  margin-top: 6px;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--vinmec-teal);
+  background: #E8F8F7;
+  padding: 2px 8px;
+  border-radius: 6px;
+}
+
+
+/* --- 3. PROFILE / ACCOUNT SCREEN ENHANCEMENTS (SCREEN-PROFILE) --- */
+.profile-wave-hero {
+  background: linear-gradient(180deg, #20A69A 0%, #168278 100%);
+  border-radius: 0 0 32px 32px;
+  margin: -14px -14px 16px -14px;
+  padding: 20px 16px 26px;
+  text-align: center;
+  color: #FFFFFF;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 6px 18px rgba(22,130,120,0.18);
+}
+
+.profile-wave-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle at 20% 40%, rgba(255,255,255,0.12) 0%, transparent 60%),
+                    radial-gradient(circle at 80% 80%, rgba(45,212,191,0.2) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+.profile-avatar-wrapper {
+  width: 82px;
+  height: 82px;
+  border-radius: 50%;
+  background: #E2E8F0;
+  border: 3.5px solid #FFFFFF;
+  margin: 0 auto 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.15);
+}
+
+.profile-camera-btn {
+  width: 26px;
+  height: 26px;
+  background: #FFFFFF;
+  border-radius: 50%;
+  position: absolute;
+  bottom: -2px;
+  right: -2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  color: #64748B;
+  cursor: pointer;
+}
+
+.profile-phone-text {
+  font-size: 16.5px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  margin-bottom: 4px;
+}
+
+.profile-user-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255,255,255,0.2);
+  backdrop-filter: blur(8px);
+  padding: 3px 12px;
+  border-radius: 12px;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+/* Các nhóm mục Profile */
+.profile-card-group {
+  background: #FFFFFF;
+  border-radius: 18px;
+  margin-bottom: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+  border: 1px solid #F1F5F9;
+}
+
+.profile-group-header {
+  font-size: 13.5px;
+  font-weight: 800;
+  color: #0F172A;
+  padding: 14px 16px 6px;
+}
+
+.profile-row-item {
+  display: flex;
+  align-items: center;
+  padding: 12px 16px;
+  border-bottom: 1px solid #F8FAFC;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.profile-row-item:last-child {
+  border-bottom: none;
+}
+
+.profile-row-item:hover {
+  background: #F8FAFC;
+}
+
+.profile-row-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  margin-right: 12px;
+  flex-shrink: 0;
+}
+
+.profile-row-title {
+  font-size: 12.5px;
+  font-weight: 600;
+  color: #334155;
+  flex: 1;
+}
+
+.profile-row-meta {
+  font-size: 11.5px;
+  color: #64748B;
+  margin-right: 6px;
+}
+
+.profile-row-arrow {
+  color: #CBD5E1;
+  font-size: 15px;
+  font-weight: 700;
+}
+
+/* Chân trang Công ty & Bộ Công Thương */
+.profile-legal-footer {
+  text-align: center;
+  padding: 16px 12px 28px;
+  color: #94A3B8;
+  font-size: 10px;
+  line-height: 1.5;
+}
+
+.profile-legal-title {
+  font-weight: 700;
+  color: #64748B;
+  font-size: 10.5px;
+  margin-bottom: 2px;
+}
+
+.bct-badge-container {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  border-radius: 8px;
+  padding: 6px 14px;
+  margin: 10px auto 6px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.03);
+}
+
+.bct-seal {
+  font-size: 18px;
+}
+
+.bct-text-bold {
+  font-size: 10px;
+  font-weight: 800;
+  color: #0284C7;
+  text-transform: uppercase;
+  line-height: 1.1;
+  text-align: left;
+}
+
+.bct-text-sub {
+  font-size: 8px;
+  color: #0284C7;
+  letter-spacing: 0.3px;
+}
+
+.profile-version-tag {
+  margin-top: 4px;
+  font-size: 10px;
+  color: #94A3B8;
+  font-weight: 500;
+}
+
+/* --- CHAT CONVERSATION TIMELINE & USER QUERY HISTORY --- */
+.chat-timeline-container {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-top: 14px;
+  padding-bottom: 16px;
+}
+
+.chat-row {
+  display: flex;
+  flex-direction: column;
+  animation: fadeInMsg 0.25s ease-out;
+}
+
+@keyframes fadeInMsg {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* User Message Bubble */
+.chat-row.user {
+  align-items: flex-end;
+}
+
+.chat-bubble-user {
+  background: var(--vinmec-teal);
+  color: #FFFFFF;
+  padding: 10px 14px;
+  border-radius: 18px 18px 4px 18px;
+  max-width: 82%;
+  font-size: 12.5px;
+  line-height: 1.45;
+  box-shadow: 0 2px 8px rgba(32,166,154,0.25);
+  word-break: break-word;
+}
+
+.chat-meta-user {
+  font-size: 9.5px;
+  color: #94A3B8;
+  margin-top: 3px;
+  margin-right: 4px;
+}
+
+/* Bot Message Bubble */
+.chat-row.bot {
+  align-items: flex-start;
+}
+
+.chat-bot-wrap {
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+  width: 100%;
+}
+
+.chat-bot-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  object-fit: contain;
+  background: #E8F8F7;
+  border: 1px solid #C4EDE9;
+  flex-shrink: 0;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+}
+
+.chat-bubble-bot {
+  background: #FFFFFF;
+  border: 1px solid var(--vinmec-border);
+  border-radius: 4px 18px 18px 18px;
+  padding: 14px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.04);
+  flex: 1;
+}
+
+.chat-bubble-bot.loading {
+  background: #F8FAFC;
+  border-color: #E2E8F0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 16px;
+  color: var(--vinmec-teal-dark);
+  font-size: 11.5px;
+  font-weight: 600;
+}
+
+.rate-limit-card {
+  background: #FFFBEB;
+  border: 1.5px solid #FCD34D;
+  border-radius: 14px;
+  padding: 12px 14px;
+  color: #92400E;
+  font-size: 11px;
+  line-height: 1.45;
+  margin: 10px 0;
+  box-shadow: 0 2px 8px rgba(245,158,11,0.1);
+}
+
+
 

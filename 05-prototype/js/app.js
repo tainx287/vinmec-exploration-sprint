@@ -7,14 +7,14 @@
 let navigationHistory = ["screen-home", "screen-records", "screen-result"];
 let currentScreenId = "screen-result"; // Mặc định mở lên là trang báo kết quả cận lâm sàng theo yêu cầu
 
-// CÁC THÔNG SỐ TITLE CHO TỪNG MÀN HÌNH
+// CÁC THÔNG SỐ TITLE CHO TỪNG MÀN HÌNH (CHUẨN DNA ẢNH CHỤP APP THẬT)
 const SCREEN_TITLES = {
-  "screen-home": { title: "MyVinmec", subtitle: "Hệ thống Y tế Quốc tế Vinmec", showBack: false, badge: "HOME" },
+  "screen-home": { title: "MyVinmec", subtitle: "Chăm sóc bằng tài năng, y đức và sự thấu cảm", showBack: false, badge: "HOME" },
   "screen-records": { title: "Hồ Sơ Sức Khỏe", subtitle: "Lịch sử khám & Cận lâm sàng", showBack: true, badge: "RECORDS" },
   "screen-result": { title: "Chi Tiết Xét Nghiệm", subtitle: "Hồ sơ sức khỏe Vinmec Times City", showBack: true, badge: "LIVE MOCK" },
   "screen-booking": { title: "Đặt Lịch Khám", subtitle: "Chọn chuyên khoa & bác sĩ", showBack: true, badge: "BOOKING" },
-  "screen-notifications": { title: "Thông Báo", subtitle: "Tin nhắn hệ thống & Lịch khám", showBack: true, badge: "NOTIF" },
-  "screen-profile": { title: "Tài Khoản Cá Nhân", subtitle: "Thông tin & Cài đặt bảo mật", showBack: true, badge: "VIP" }
+  "screen-notifications": { title: "Thông Báo", subtitle: "Luôn cập nhật lịch hẹn, ưu đãi và hơn thế nữa", showBack: true, badge: "10 MỚI" },
+  "screen-profile": { title: "Tài Khoản Cá Nhân", subtitle: "Hồ sơ cá nhân & Cài đặt bảo mật", showBack: true, badge: "VIP" }
 };
 
 /**
@@ -71,6 +71,16 @@ function goBack() {
  * Cập nhật thông tin tiêu đề và nút Back trên thanh Header
  */
 function updateTopAppBar(screenId) {
+  const topAppBar = document.querySelector(".top-app-bar");
+  
+  // Trên Trang Cá Nhân (Profile), ẩn Top App Bar để nhường chỗ cho Header vòm sóng Teal tự nhiên (Screenshot 7)
+  if (screenId === "screen-profile") {
+    if (topAppBar) topAppBar.style.display = "none";
+    return;
+  } else {
+    if (topAppBar) topAppBar.style.display = "flex";
+  }
+
   const config = SCREEN_TITLES[screenId] || { title: "MyVinmec", subtitle: "Vinmec Healthcare", showBack: true, badge: "MOCK" };
   
   document.getElementById("header-title").textContent = config.title;
@@ -83,6 +93,22 @@ function updateTopAppBar(screenId) {
   } else {
     btnBack.style.visibility = "hidden";
   }
+}
+
+/**
+ * Hiển thị Toast thông báo tương tác trong màn hình điện thoại
+ */
+let toastTimeoutId = null;
+function showAppToast(message) {
+  const toast = document.getElementById("app-toast-box");
+  if (!toast) return;
+  toast.textContent = message;
+  toast.classList.add("show");
+
+  if (toastTimeoutId) clearTimeout(toastTimeoutId);
+  toastTimeoutId = setTimeout(() => {
+    toast.classList.remove("show");
+  }, 2200);
 }
 
 /**
@@ -200,6 +226,7 @@ function toggleDrawer() {
   } else {
     drawer.classList.add("open");
     overlay.classList.add("active");
+    scrollChatToBottom();
   }
 }
 
@@ -208,14 +235,286 @@ function openDrawerWithPreset(presetType) {
   handlePreset(presetType);
 }
 
-/**
- * Xử lý các tình huống mẫu có sẵn (1-Click Presets)
- */
-async function handlePreset(type) {
+/* ========================================================= */
+/* RATE LIMITING, SESSION IDENTIFIER & CONVERSATION TIMELINE */
+/* ========================================================= */
+
+function escapeHtml(str) {
+  if (!str) return "";
+  return String(str)
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#039;");
+}
+
+function getCurrentTimeStr() {
+  const now = new Date();
+  const h = String(now.getHours()).padStart(2, '0');
+  const m = String(now.getMinutes()).padStart(2, '0');
+  return `${h}:${m}`;
+}
+
+function getSessionId() {
+  let sid = localStorage.getItem("vinmec_session_id");
+  if (!sid) {
+    sid = "sess_" + Math.random().toString(36).substring(2, 10) + "_" + Date.now().toString(36);
+    localStorage.setItem("vinmec_session_id", sid);
+  }
+  return sid;
+}
+
+const RATE_LIMIT_CONFIG = {
+  MAX_PER_10_MIN: 20,
+  MAX_PER_DAY: 30,
+  // Tự động khoá API vào ngày cuối tháng (31/10/2026 23:59:59 GMT+7)
+  EXPIRATION_TIMESTAMP: new Date("2026-10-31T23:59:59+07:00").getTime()
+};
+
+function checkRateLimit() {
+  const now = Date.now();
+  if (now > RATE_LIMIT_CONFIG.EXPIRATION_TIMESTAMP) {
+    return {
+      allowed: false,
+      reason: "expired",
+      message: "🔒 Dự án nghiên cứu thử nghiệm của Lab Coach Nguyễn Xuân Tài đã kết thúc thời hạn mở API vào ngày cuối tháng (31/10/2026). Hệ thống tự động chuyển sang cơ sở tri thức nội bộ (Offline Corpus) để BGK tiếp tục nghiệm thu."
+    };
+  }
+
+  const todayStr = new Date().toISOString().split("T")[0];
+  let store = {};
+  try {
+    store = JSON.parse(localStorage.getItem("vinmec_rate_limits") || "{}");
+  } catch (e) {
+    store = {};
+  }
+
+  if (store.date !== todayStr) {
+    store = { date: todayStr, dayCount: 0, timestamps: [] };
+  }
+
+  const tenMinAgo = now - 10 * 60 * 1000;
+  store.timestamps = (store.timestamps || []).filter(t => t > tenMinAgo);
+
+  if (store.timestamps.length >= RATE_LIMIT_CONFIG.MAX_PER_10_MIN) {
+    return {
+      allowed: false,
+      reason: "burst_limit",
+      message: "⏳ Bạn đã gửi hơn 20 yêu cầu trong 10 phút liên tục. Để bảo vệ tài nguyên API, hệ thống tạm thời dùng Offline RAG cho câu trả lời này."
+    };
+  }
+
+  if (store.dayCount >= RATE_LIMIT_CONFIG.MAX_PER_DAY) {
+    return {
+      allowed: false,
+      reason: "day_limit",
+      message: "⚠️ Đã đạt hạn mức 30 yêu cầu/ngày cho phiên này. Hệ thống tự động chuyển sang cơ chế Offline RAG để duy trì trải nghiệm liền mạch."
+    };
+  }
+
+  return { allowed: true, store };
+}
+
+function recordClientRequest() {
+  const todayStr = new Date().toISOString().split("T")[0];
+  const now = Date.now();
+  let store = {};
+  try {
+    store = JSON.parse(localStorage.getItem("vinmec_rate_limits") || "{}");
+  } catch (e) {
+    store = {};
+  }
+  if (store.date !== todayStr) {
+    store = { date: todayStr, dayCount: 0, timestamps: [] };
+  }
+  store.dayCount = (store.dayCount || 0) + 1;
+  store.timestamps = (store.timestamps || []).filter(t => t > (now - 10 * 60 * 1000));
+  store.timestamps.push(now);
+  localStorage.setItem("vinmec_rate_limits", JSON.stringify(store));
+}
+
+/* ========================================================= */
+/* LỊCH SỬ HỘI THOẠI & CUỘN TIMELINE                         */
+/* ========================================================= */
+
+function scrollChatToBottom() {
+  const drawerBody = document.querySelector("#ai-drawer .drawer-body");
+  if (drawerBody) {
+    setTimeout(() => {
+      drawerBody.scrollTo({ top: drawerBody.scrollHeight, behavior: "smooth" });
+    }, 50);
+  }
+}
+
+function getChatHistory() {
+  try {
+    return JSON.parse(sessionStorage.getItem("vinmec_chat_history") || "[]");
+  } catch (e) {
+    return [];
+  }
+}
+
+function saveChatHistory(history) {
+  try {
+    sessionStorage.setItem("vinmec_chat_history", JSON.stringify(history));
+  } catch (e) {
+    console.warn("Could not save chat history to sessionStorage", e);
+  }
+}
+
+function appendUserBubbleToUI(userText, timeStr) {
   const container = document.getElementById("ai-response-container");
-  
-  if (type === "ast_alt") {
-    renderRAGResult({
+  if (!container) return;
+  const row = document.createElement("div");
+  row.className = "chat-row user";
+  row.innerHTML = `
+    <div class="chat-bubble-user">${escapeHtml(userText)}</div>
+    <div class="chat-meta-user">${timeStr || getCurrentTimeStr()}</div>
+  `;
+  container.appendChild(row);
+  scrollChatToBottom();
+}
+
+function showBotLoading() {
+  removeBotLoading();
+  const container = document.getElementById("ai-response-container");
+  if (!container) return;
+  const row = document.createElement("div");
+  row.id = "chat-loading-row";
+  row.className = "chat-row bot";
+  row.innerHTML = `
+    <div class="chat-bot-wrap">
+      <img src="assets/logo_chatbot_fab.webp" alt="MIA" class="chat-bot-avatar" onerror="this.src='assets/logo_chatbot_fab.png'">
+      <div class="chat-bubble-bot loading">
+        <div class="pulse-dot" style="width:10px; height:10px; margin:0;"></div>
+        <span>MIA đang tra cứu cơ sở dữ liệu y tế Vinmec...</span>
+      </div>
+    </div>
+  `;
+  container.appendChild(row);
+  scrollChatToBottom();
+}
+
+function removeBotLoading() {
+  const loadingRow = document.getElementById("chat-loading-row");
+  if (loadingRow) loadingRow.remove();
+}
+
+function appendBotResultToUI(data, isEmergency = false, noticeText = null) {
+  removeBotLoading();
+  const container = document.getElementById("ai-response-container");
+  if (!container) return;
+
+  const row = document.createElement("div");
+  row.className = "chat-row bot";
+
+  let innerContent = "";
+  if (isEmergency) {
+    innerContent = renderEmergencyCard(data);
+  } else {
+    innerContent = buildRAGCardHtml(data, noticeText);
+  }
+
+  row.innerHTML = `
+    <div class="chat-bot-wrap">
+      <img src="assets/logo_chatbot_fab.webp" alt="MIA" class="chat-bot-avatar" onerror="this.src='assets/logo_chatbot_fab.png'">
+      <div class="chat-bubble-bot">
+        ${innerContent}
+      </div>
+    </div>
+  `;
+  container.appendChild(row);
+  scrollChatToBottom();
+}
+
+function buildRAGCardHtml(data, noticeText) {
+  let noticeHtml = "";
+  if (noticeText) {
+    noticeHtml = `
+      <div class="rate-limit-card">
+        ${noticeText}
+      </div>
+    `;
+  }
+
+  let questionsHtml = "";
+  if (data.questions && data.questions.length > 0) {
+    questionsHtml = data.questions.map((q, idx) => `<li>${idx + 1}. <em>"${q}"</em></li>`).join("");
+  }
+
+  let nurseHtml = "";
+  if (data.showNurseButton) {
+    nurseHtml = `
+      <div class="nurse-connect-box">
+        <div style="font-size:11px; color:#1E40AF; font-weight:600;">Bạn cần giải đáp thủ tục hoặc hỗ trợ trực tiếp?</div>
+        <a href="tel:1900232389" class="btn-call-nurse">
+          📞 Gọi Điều Dưỡng Vinmec: 1900 23 23 89
+        </a>
+      </div>
+    `;
+  }
+
+  return `
+    ${noticeHtml}
+    <div class="ai-response-box" style="margin-top:0;">
+      <div class="ai-response-section">
+        <span class="ai-section-badge">✨ ${data.badge || "Ý Nghĩa Thông Thường"}</span>
+        <div class="ai-plain-text">${data.meaning}</div>
+      </div>
+
+      ${questionsHtml ? `
+        <div class="ai-response-section">
+          <span class="ai-section-badge" style="background:#FEF3C7; color:#B45309;">💡 2 Câu hỏi trọng tâm nên hỏi Bác sĩ:</span>
+          <ul class="question-list">
+            ${questionsHtml}
+          </ul>
+        </div>
+      ` : ""}
+
+      ${data.lifestyle ? `
+        <div class="lifestyle-box">
+          🌱 <strong>Gợi ý sinh hoạt:</strong> ${data.lifestyle}
+        </div>
+      ` : ""}
+
+      <div class="disclaimer-badge" style="margin-top:10px;">
+        <span>⚠️</span>
+        <span>${data.disclaimer || "Thông tin mang tính giải thích đời thường, luôn tuân thủ hướng dẫn của Bác sĩ."}</span>
+      </div>
+
+      ${nurseHtml}
+    </div>
+  `;
+}
+
+function restoreChatHistory() {
+  const history = getChatHistory();
+  if (!history || history.length === 0) return;
+
+  const container = document.getElementById("ai-response-container");
+  if (!container) return;
+
+  // Xóa lời chào mặc định nếu đã có lịch sử trò chuyện
+  container.innerHTML = "";
+
+  history.forEach(item => {
+    if (item.role === "user") {
+      appendUserBubbleToUI(item.text, item.time);
+    } else if (item.role === "bot") {
+      appendBotResultToUI(item.data, item.isEmergency, item.noticeText);
+    }
+  });
+}
+
+/* ========================================================= */
+/* PRESET SCENARIOS & USER QUERY HANDLERS                    */
+/* ========================================================= */
+
+const PRESET_MAP = {
+  ast_alt: {
+    userText: "Tình huống 1: Men gan ALT tăng nhẹ 58 U/L (P1)",
+    data: {
       badge: "Sinh Hóa Máu • Men Gan ALT (58 U/L)",
       meaning: "ALT và AST là hai enzym chủ yếu nằm trong tế bào gan. Mức tăng nhẹ (như 52 - 58 U/L so với mốc chuẩn 40 U/L) rất thường gặp do ăn nhiều đạm/dầu mỡ, uống bia rượu gần ngày xét nghiệm, thức khuya hoặc tập thể thao nặng. <strong>Mức này hoàn toàn không đồng nghĩa với suy gan hay bệnh nguy hiểm.</strong>",
       questions: [
@@ -224,9 +523,11 @@ async function handlePreset(type) {
       ],
       lifestyle: "Nên uống đủ 2 lít nước mỗi ngày, ngủ trước 23h và hạn chế bia rượu, đồ chiên xào trong 2 tuần tới.",
       disclaimer: "Luôn chờ kết luận chính thức của bác sĩ tại Phòng 302 sau ít phút nữa. Hãy giữ tâm lý bình tĩnh!"
-    });
-  } else if (type === "hba1c") {
-    renderRAGResult({
+    }
+  },
+  hba1c: {
+    userText: "Tình huống 2: HbA1c 6.1% ranh giới tiền tiểu đường (P2)",
+    data: {
       badge: "Nội Tiết • Đường Huyết HbA1c (6.1%)",
       meaning: "HbA1c thể hiện mức đường huyết trung bình trong 3 tháng qua. Kết quả 6.1% nằm ở khoảng ranh giới tiền tiểu đường (chuẩn 4.0 - 5.6%). Đây là thời điểm vàng để điều chỉnh chế độ ăn và tăng vận động. <strong>Tuyệt đối không được tự ý mua thuốc hạ đường huyết uống khi chưa có đơn của bác sĩ!</strong>",
       questions: [
@@ -235,9 +536,11 @@ async function handlePreset(type) {
       ],
       lifestyle: "Hạn chế đồ uống có đường, trà sữa, bánh kẹo; thay một phần cơm trắng bằng gạo lứt; duy trì đi bộ nhanh 30 phút/ngày.",
       disclaimer: "Mọi quyết định điều trị và dùng thuốc phải do Bác sĩ Nội tiết chỉ định sau khi thăm khám lâm sàng."
-    });
-  } else if (type === "creatinine") {
-    renderRAGResult({
+    }
+  },
+  creatinine: {
+    userText: "Tình huống 3: Creatinine 85 µmol/L (Thận tốt)",
+    data: {
       badge: "Chức Năng Thận • Creatinine (85.0 µmol/L)",
       meaning: "Creatinine huyết thanh 85 µmol/L nằm hoàn hảo trong giới hạn chuẩn (62 - 106 µmol/L). Điều này cho thấy chức năng lọc chất thải của thận đang hoạt động rất tốt và ổn định.",
       questions: [
@@ -246,9 +549,11 @@ async function handlePreset(type) {
       ],
       lifestyle: "Duy trì uống đủ nước, không nhịn tiểu và ăn thanh đạm.",
       disclaimer: "Chỉ số bình thường là dấu hiệu tích cực. Hãy tiếp tục duy trì lối sống lành mạnh."
-    });
-  } else if (type === "acid_uric") {
-    renderRAGResult({
+    }
+  },
+  acid_uric: {
+    userText: "Tình huống 4: Acid Uric 380 µmol/L (An toàn)",
+    data: {
       badge: "Sinh Hóa Máu • Acid Uric (380 µmol/L)",
       meaning: "Acid Uric ở mức 380 µmol/L nằm an toàn dưới ngưỡng cảnh báo (200 - 420 µmol/L). Bạn không có dấu hiệu lắng đọng tinh thể urat tại các khớp.",
       questions: [
@@ -257,9 +562,11 @@ async function handlePreset(type) {
       ],
       lifestyle: "Uống đủ nước mỗi ngày giúp thận đào thải acid uric tự nhiên hiệu quả.",
       disclaimer: "Chỉ số hoàn toàn trong giới hạn chuẩn."
-    });
-  } else if (type === "glucose") {
-    renderRAGResult({
+    }
+  },
+  glucose: {
+    userText: "Tình huống 5: Glucose đói 5.2 mmol/L (Chuẩn)",
+    data: {
       badge: "Nội Tiết • Glucose Lúc Đói (5.2 mmol/L)",
       meaning: "Glucose máu lúc đói 5.2 mmol/L là mức lý tưởng (chuẩn 3.9 - 6.4 mmol/L), phản ánh cơ thể đang kiểm soát đường huyết tức thời rất tốt sau khi nhịn ăn sáng.",
       questions: [
@@ -268,11 +575,110 @@ async function handlePreset(type) {
       ],
       lifestyle: "Ăn đúng giờ, hạn chế tinh bột nhanh và nước ngọt có gas.",
       disclaimer: "Bác sĩ sẽ tư vấn chế độ dinh dưỡng tối ưu cho bạn."
-    });
-  } else if (type === "red_flag") {
-    // Kích hoạt Báo động đỏ Cấp cứu qua Guardrail
-    const flagInfo = { detectedLabel: "Đau thắt ngực cấp tính & Khó thở dữ dội" };
-    container.innerHTML = renderEmergencyCard(flagInfo);
+    }
+  },
+  red_flag: {
+    userText: "Thử thách Cấp cứu: Đau thắt ngực & Khó thở dữ dội (Red-Flag)",
+    isEmergency: true,
+    data: { detectedLabel: "Đau thắt ngực cấp tính & Khó thở dữ dội" }
+  }
+};
+
+/**
+ * Xử lý các tình huống mẫu có sẵn (1-Click Presets)
+ */
+async function handlePreset(type) {
+  const preset = PRESET_MAP[type];
+  if (!preset) return;
+
+  const timeStr = getCurrentTimeStr();
+  appendUserBubbleToUI(preset.userText, timeStr);
+
+  showBotLoading();
+  setTimeout(() => {
+    removeBotLoading();
+    appendBotResultToUI(preset.data, !!preset.isEmergency);
+
+    const history = getChatHistory();
+    history.push({ role: "user", text: preset.userText, time: timeStr });
+    history.push({ role: "bot", data: preset.data, isEmergency: !!preset.isEmergency, time: getCurrentTimeStr() });
+    saveChatHistory(history);
+  }, 350);
+}
+
+/**
+ * Xử lý câu hỏi tự do của người dùng (RAG + Guardrails + Rate Limiting + Timeline)
+ */
+async function sendUserQuery() {
+  const input = document.getElementById("user-chat-input");
+  const query = input.value.trim();
+  if (!query) return;
+
+  const timeStr = getCurrentTimeStr();
+  appendUserBubbleToUI(query, timeStr);
+  input.value = "";
+
+  showBotLoading();
+
+  // 1. KIỂM TRA BỨC TƯỜNG LỬA CẤP CỨU RED-FLAG (< 100ms)
+  const redFlagInfo = detectRedFlags(query);
+  if (redFlagInfo) {
+    removeBotLoading();
+    appendBotResultToUI(redFlagInfo, true);
+    const history = getChatHistory();
+    history.push({ role: "user", text: query, time: timeStr });
+    history.push({ role: "bot", data: redFlagInfo, isEmergency: true, time: getCurrentTimeStr() });
+    saveChatHistory(history);
+    return;
+  }
+
+  // 2. KIỂM TRA HỎI DANH TÍNH / TÁC DỤNG / BẢN QUYỀN (Guardrail Fallback)
+  const identityInfo = detectIdentityQuestion(query);
+  if (identityInfo) {
+    removeBotLoading();
+    appendBotResultToUI(identityInfo, false);
+    const history = getChatHistory();
+    history.push({ role: "user", text: query, time: timeStr });
+    history.push({ role: "bot", data: identityInfo, isEmergency: false, time: getCurrentTimeStr() });
+    saveChatHistory(history);
+    return;
+  }
+
+  // 3. KIỂM TRA RATE LIMIT CLIENT
+  const rateLimitStatus = checkRateLimit();
+  let noticeText = null;
+  if (!rateLimitStatus.allowed) {
+    noticeText = rateLimitStatus.message;
+  } else {
+    recordClientRequest();
+  }
+
+  // 4. XỬ LÝ QUA RAG ENGINE (API Backend nếu có -> Offline Corpus Fallback)
+  try {
+    const result = await ragEngine.processQuery(query);
+    appendBotResultToUI(result, false, noticeText);
+    const history = getChatHistory();
+    history.push({ role: "user", text: query, time: timeStr });
+    history.push({ role: "bot", data: result, isEmergency: false, noticeText: noticeText, time: getCurrentTimeStr() });
+    saveChatHistory(history);
+  } catch (err) {
+    console.error("[Vinmec AI Console]: Unexpected processing error:", err);
+    const fallbackResult = {
+      badge: "Hỗ Trợ Thông Tin Y Tế",
+      meaning: "Cảm ơn bạn đã đặt câu hỏi. Chỉ số này cần được Bác sĩ đối chiếu trực tiếp cùng thể trạng thực tế tại buồng khám.",
+      questions: [
+        "Bác sĩ có thể giải thích ý nghĩa chỉ số này đối với sức khỏe của tôi không?",
+        "Tôi cần kiêng cữ hay lưu ý gì sau buổi khám hôm nay ạ?"
+      ],
+      lifestyle: "Hãy giữ tâm lý thoải mái và chuẩn bị sẵn các câu hỏi trên để trao đổi cùng Bác sĩ.",
+      disclaimer: "MIA (Bản mô phỏng nghiên cứu) giữ ranh giới an toàn phi lâm sàng.",
+      showNurseButton: true
+    };
+    appendBotResultToUI(fallbackResult, false, noticeText);
+    const history = getChatHistory();
+    history.push({ role: "user", text: query, time: timeStr });
+    history.push({ role: "bot", data: fallbackResult, isEmergency: false, noticeText: noticeText, time: getCurrentTimeStr() });
+    saveChatHistory(history);
   }
 }
 
@@ -323,110 +729,6 @@ function setupBookingChips() {
   });
 }
 
-/**
- * Xử lý câu hỏi tự do của người dùng (RAG + Guardrails)
- */
-async function sendUserQuery() {
-  const input = document.getElementById("user-chat-input");
-  const query = input.value.trim();
-  if (!query) return;
-
-  const container = document.getElementById("ai-response-container");
-
-  // 1. KIỂM TRA BỨC TƯỜNG LỬA RED-FLAG (< 100ms)
-  const redFlagInfo = detectRedFlags(query);
-  if (redFlagInfo) {
-    container.innerHTML = renderEmergencyCard(redFlagInfo);
-    input.value = "";
-    return;
-  }
-
-  // 2. HIỂN THỊ TRẠNG THÁI ĐANG XỬ LÝ (LOADING)
-  container.innerHTML = `
-    <div class="ai-response-box" style="text-align:center; padding: 24px;">
-      <div class="pulse-dot" style="margin: 0 auto 10px; width:14px; height:14px;"></div>
-      <div style="font-size:12px; color: var(--vinmec-teal); font-weight:700;">
-        Care Navigator đang tra cứu cơ sở dữ liệu y tế Vinmec...
-      </div>
-    </div>
-  `;
-
-  // 3. XỬ LÝ QUA RAG ENGINE (API nếu có -> Fallback sang Corpus nội bộ)
-  try {
-    const result = await ragEngine.processQuery(query);
-    renderRAGResult(result);
-  } catch (err) {
-    console.error("[Vinmec AI Console]: Unexpected processing error:", err);
-    // Fallback an toàn ra UI, tuyệt đối không văng lỗi kỹ thuật
-    renderRAGResult({
-      badge: "Hỗ Trợ Thông Tin Y Tế",
-      meaning: "Cảm ơn bạn đã đặt câu hỏi. Chỉ số này cần được Bác sĩ đối chiếu trực tiếp cùng thể trạng thực tế tại buồng khám.",
-      questions: [
-        "Bác sĩ có thể giải thích ý nghĩa chỉ số này đối với sức khỏe của tôi không?",
-        "Tôi cần kiêng cữ hay lưu ý gì sau buổi khám hôm nay ạ?"
-      ],
-      lifestyle: "Hãy giữ tâm lý thoải mái và chuẩn bị sẵn các câu hỏi trên để trao đổi cùng Bác sĩ.",
-      disclaimer: "Care Navigator giữ ranh giới an toàn phi lâm sàng.",
-      showNurseButton: true
-    });
-  }
-
-  input.value = "";
-}
-
-/**
- * Render cấu trúc câu trả lời chuẩn 3 phần của AI
- */
-function renderRAGResult(data) {
-  const container = document.getElementById("ai-response-container");
-  
-  let questionsHtml = "";
-  if (data.questions && data.questions.length > 0) {
-    questionsHtml = data.questions.map((q, idx) => `<li>${idx + 1}. <em>"${q}"</em></li>`).join("");
-  }
-
-  let nurseHtml = "";
-  if (data.showNurseButton) {
-    nurseHtml = `
-      <div class="nurse-connect-box">
-        <div style="font-size:11px; color:#1E40AF; font-weight:600;">Bạn cần giải đáp thủ tục hoặc hỗ trợ trực tiếp?</div>
-        <a href="tel:1900232389" class="btn-call-nurse">
-          📞 Gọi Điều Dưỡng Vinmec: 1900 23 23 89
-        </a>
-      </div>
-    `;
-  }
-
-  container.innerHTML = `
-    <div class="ai-response-box">
-      <div class="ai-response-section">
-        <span class="ai-section-badge">✨ ${data.badge || "Ý Nghĩa Thông Thường"}</span>
-        <div class="ai-plain-text">${data.meaning}</div>
-      </div>
-
-      <div class="ai-response-section">
-        <span class="ai-section-badge" style="background:#FEF3C7; color:#B45309;">💡 2 Câu hỏi trọng tâm nên hỏi Bác sĩ:</span>
-        <ul class="question-list">
-          ${questionsHtml}
-        </ul>
-      </div>
-
-      ${data.lifestyle ? `
-        <div class="lifestyle-box">
-          🌱 <strong>Gợi ý sinh hoạt:</strong> ${data.lifestyle}
-        </div>
-      ` : ""}
-
-      <div class="disclaimer-badge" style="margin-top:10px;">
-        <span>⚠️</span>
-        <span>${data.disclaimer || "Thông tin mang tính giải thích đời thường, luôn tuân thủ hướng dẫn của Bác sĩ."}</span>
-      </div>
-
-      ${nurseHtml}
-    </div>
-  `;
-}
-
 // KHỞI TẠO ỨNG DỤNG KHI DOM SẴN SÀNG
 document.addEventListener("DOMContentLoaded", () => {
   setupSmartFab();
@@ -434,4 +736,5 @@ document.addEventListener("DOMContentLoaded", () => {
   updateTopAppBar(currentScreenId);
   updateBottomNavBar(currentScreenId);
   resetSmartFab();
+  restoreChatHistory();
 });

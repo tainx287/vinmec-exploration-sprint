@@ -1,10 +1,14 @@
-# Hướng Dẫn Kỹ Thuật & Cài Đặt Prototype (MyVinmec Care Navigator)
+# Hướng Dẫn Kỹ Thuật & Cài Đặt Prototype (MyVinmec Trợ Lý Sức Khỏe AI MIA)
 
-> **Tên Module:** MyVinmec Plain-Language Care Navigator (Interactive AI Mobile Prototype)  
+> **Tên Module:** MyVinmec Trợ Lý Sức Khỏe AI MIA (Bản Mô Phỏng Nghiên Cứu - Interactive AI Mobile Prototype)  
 > **Dự Án:** Exploration Sprint 6 Tuần tại Bệnh Viện Đa Khoa Quốc Tế Vinmec  
-> **Ứng Viên:** Nguyễn Xuân Tài (K2) — Technical Lead / Forward Deployed Engineer & K4 Coach  
+> **Tác Giả & Lab Coach:** Nguyễn Xuân Tài (K2/K4) — AI Product Management & Technical Coaching  
 > **Kiến Trúc:** Modern Web SPA Simulator (Vanilla HTML5/CSS3/ES6 Modular) + Lightweight Python RAG Proxy (Zero-dependency)  
 > **Mặc Định Khi Mở:** Màn hình Chi Tiết Kết Quả Xét Nghiệm (`screen-result`), liên thông 2 chiều thông suốt với tất cả các màn hình còn lại.
+
+> 🚀 **TRẢI NGHIỆM TRỰC TIẾP PROTOTYPE (LIVE DEMO TRÊN VERCEL):**  
+> 👉 **[https://myvinmec-care-navigator.vercel.app](https://myvinmec-care-navigator.vercel.app)**  
+> *(Xem ngay trên trình duyệt máy tính hoặc điện thoại — Tương tác trực tiếp không cần cài đặt hay clone repo!)*
 
 ---
 
@@ -77,15 +81,21 @@ Thư mục `05-prototype/` được tái cấu trúc theo mô hình phân tầng
 
 ## 3. Hướng Dẫn Khởi Chạy Nhanh (Quickstart)
 
-### ⚡ Cách 1: 1-Click Bằng Double-Click Trên Windows (Khuyến nghị số 1)
+### 🌐 Cách 1: Xem Trực Tiếp Trên Web Qua Vercel Live (Khuyến nghị số 1 cho Người Chấm)
+Truy cập ngay đường dẫn:  
+👉 **[https://myvinmec-care-navigator.vercel.app](https://myvinmec-care-navigator.vercel.app)**  
+- Không cần cài đặt bất kỳ công cụ nào, mở được trên cả điện thoại di động và máy tính.
+- Tự động tích hợp sẵn đầy đủ cơ chế Local Deterministic RAG và Cloud API.
+
+### ⚡ Cách 2: 1-Click Bằng Double-Click Trên Windows (Khởi chạy cục bộ)
 Chỉ cần nhấp đúp chuột vào file:
 ```cmd
 start.bat
 ```
-- Nếu máy có cài Python: Script sẽ tự động chạy `server.py` trong nền và mở trình duyệt tại `http://localhost:8000`.
+- Nếu máy có cài Python: Script sẽ tự động chạy `server.py` trong cửa sổ riêng và mở trình duyệt tại `http://localhost:8000`.
 - Nếu máy không có Python: Script sẽ mở trực tiếp file `index.html` độc lập trên trình duyệt mặc định.
 
-### 🌐 Cách 2: Xem Trực Tiếp Trên Trình Duyệt / GitHub (Cross-Platform)
+### 📄 Cách 3: Mở Trực Tiếp File index.html (Offline Tĩnh)
 Mở trực tiếp file `index.html` bằng bất kỳ trình duyệt nào (Chrome, Safari, Edge, Firefox).
 - Giao diện điện thoại 412px được căn giữa trang web, hai bên rìa màu trắng hoàn toàn (`#FFFFFF`).
 - Không cần cài đặt bất kỳ phần mềm hay thư viện bên ngoài nào.

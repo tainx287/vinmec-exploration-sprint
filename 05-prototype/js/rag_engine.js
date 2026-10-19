@@ -11,6 +11,19 @@
 // BỘ DỮ LIỆU RAG NỘI BỘ (EMBEDDED KNOWLEDGE CORPUS)
 const LOCAL_RAG_CORPUS = [
   {
+    id: "general_greeting",
+    keywords: ["hello", "hi", "chào", "xin chào", "alo", "bắt đầu", "care navigator", "mia", "ơi", "giúp"],
+    title: "Lời Chào & Giới Thiệu Trợ Lý AI MIA",
+    badge: "Trợ Lý AI MIA • Bản Thử Nghiệm",
+    meaning: "Xin chào bạn! Tôi là <strong>Trợ lý AI MIA (Bản mô phỏng nghiên cứu)</strong> thuộc đề án thực chiến của Lab Coach Nguyễn Xuân Tài. Tôi ở đây để hỗ trợ bạn đọc hiểu ý nghĩa các chỉ số xét nghiệm sang ngôn ngữ đời thường, xua tan lo âu trong phòng chờ và trang bị 2 câu hỏi trọng tâm trước khi vào gặp bác sĩ. Bạn có thể hỏi về các chỉ số như men gan (ALT/AST), đường huyết (HbA1c), chức năng thận (Creatinine), acid uric hoặc bấm các thẻ tình huống nhanh phía trên nhé!",
+    questions: [
+      "Thưa bác sĩ, các chỉ số xét nghiệm hôm nay của tôi có điểm nào cần đặc biệt lưu ý không?",
+      "Tôi cần điều chỉnh thói quen sinh hoạt hay ăn uống như thế nào dựa trên kết quả này ạ?"
+    ],
+    lifestyle: "Hãy ngồi thư giãn tại phòng chờ, uống một ngụm nước ấm và app sẽ nhắc bạn khi đến số thứ tự khám.",
+    disclaimer: "MIA là công cụ giao tiếp phi lâm sàng của đề án nghiên cứu, kết quả thăm khám do Bác sĩ kết luận."
+  },
+  {
     id: "liver_enzymes",
     keywords: ["men gan", "alt", "ast", "sgot", "sgpt", "gan", "58", "52", "u/l"],
     title: "Men Gan ALT & AST",
@@ -105,7 +118,9 @@ const LOCAL_RAG_CORPUS = [
 
 class CareNavigatorRAG {
   constructor() {
-    this.apiEndpoint = "/api/chat";
+    // Tự động điều chỉnh endpoint: Nếu mở file:// trực tiếp thì trỏ tới http://localhost:8000/api/chat
+    const isFile = typeof window !== "undefined" && (window.location.protocol === "file:" || window.location.origin === "null");
+    this.apiEndpoint = isFile ? "http://localhost:8000/api/chat" : "/api/chat";
     this.isApiAvailable = null;
   }
 
@@ -145,12 +160,16 @@ class CareNavigatorRAG {
   async queryBackendAPI(query, context) {
     const controller = new AbortController();
     const timeoutId = setTimeout(() => controller.abort(), 10000);
+    const sessionId = (typeof window !== "undefined" && window.localStorage) ? (localStorage.getItem("vinmec_session_id") || "sess_guest") : "sess_default";
 
     try {
       const response = await fetch(this.apiEndpoint, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ query, context }),
+        headers: { 
+          "Content-Type": "application/json",
+          "x-session-id": sessionId
+        },
+        body: JSON.stringify({ query, context, sessionId }),
         signal: controller.signal
       });
       clearTimeout(timeoutId);
@@ -158,7 +177,23 @@ class CareNavigatorRAG {
       if (response.ok) {
         const data = await response.json();
         if (data.fallback) {
-          if (data.error_details) {
+          if (data.expired) {
+            console.warn("[Vinmec AI Notice]: API test period ended. Switching to local offline RAG.");
+          } else if (data.rateLimited) {
+            console.warn("[Vinmec AI Notice]: Rate limit reached on server:", data.message);
+            return {
+              response: {
+                badge: "Hạn Chế Tần Suất • Bảo Vệ Hệ Thống",
+                meaning: data.message || "Bạn đã đạt giới hạn gửi tin nhắn thử nghiệm (Tối đa 20 lượt/10 phút, 30 lượt/ngày). Vui lòng thử lại sau ít phút hoặc dùng các tình huống mẫu có sẵn!",
+                questions: [
+                  "Thưa bác sĩ, tôi có thể xem các chỉ số mẫu có sẵn trong ứng dụng không?",
+                  "Khoảng bao lâu sau tôi có thể gửi câu hỏi tiếp theo ạ?"
+                ],
+                lifestyle: "Hãy chọn các tình huống lâm sàng mẫu có sẵn ở phía trên để tiếp tục trải nghiệm không gián đoạn.",
+                disclaimer: "Hệ thống tự động giới hạn lượt gọi để chống spam tài nguyên API."
+              }
+            };
+          } else if (data.error_details) {
             console.error("[Vinmec AI DevTools Error]: Backend LLM call failed:", data.error_details);
           } else {
             console.info("[Vinmec AI DevTools]: Offline mode active. Utilizing local deterministic RAG.");
@@ -178,28 +213,43 @@ class CareNavigatorRAG {
   }
 
   /**
-   * Xử lý truy vấn tổng hợp (Hybrid: API nếu có -> Fallback sang RAG Corpus nội bộ)
+   * Xử lý truy vấn tổng hợp (Hybrid: Guardrails -> API nếu có -> Fallback sang RAG Corpus nội bộ)
    */
   async processQuery(query) {
+    // 1. Kiểm tra Guardrail câu hỏi định danh ("Bạn là ai?", "Bạn có tác dụng gì?")
+    if (typeof detectIdentityQuestion === "function") {
+      const identityRes = detectIdentityQuestion(query);
+      if (identityRes) {
+        return {
+          source: "GUARDRAIL_IDENTITY",
+          badge: identityRes.badge,
+          meaning: identityRes.meaning,
+          questions: identityRes.questions,
+          lifestyle: identityRes.lifestyle,
+          disclaimer: identityRes.disclaimer
+        };
+      }
+    }
+
     const matchedItem = this.retrieveKnowledge(query);
 
-    // Thử gọi backend API (nếu có server Python/Node chạy)
+    // 2. Thử gọi backend API (nếu có server Python/Node chạy)
     const apiResult = await this.queryBackendAPI(query, matchedItem);
     if (apiResult && apiResult.response) {
       return {
         source: "LLM_AUGMENTED",
-        badge: matchedItem ? matchedItem.badge : "Trợ Lý Vinmec AI",
+        badge: matchedItem ? matchedItem.badge : "Trợ Lý AI MIA • Bản Thử Nghiệm",
         meaning: apiResult.response.meaning || apiResult.response,
         questions: apiResult.response.questions || (matchedItem ? matchedItem.questions : [
           "Bác sĩ có thể giải thích ý nghĩa chỉ số này đối với thể trạng hiện tại của tôi không?",
           "Tôi cần lưu ý gì trong sinh hoạt sau khi có kết quả này ạ?"
         ]),
         lifestyle: apiResult.response.lifestyle || (matchedItem ? matchedItem.lifestyle : "Hãy giữ tâm lý bình tĩnh chờ gặp bác sĩ."),
-        disclaimer: "Thông tin do Trợ lý Care Navigator tổng hợp dựa trên dữ liệu chuẩn của Bệnh viện Vinmec."
+        disclaimer: "Thông tin do Trợ lý AI MIA (Bản mô phỏng nghiên cứu) tổng hợp dựa trên dữ liệu chuẩn của Bệnh viện Vinmec."
       };
     }
 
-    // Nếu không có API hoặc API lỗi -> Dùng RAG Corpus nội bộ (Độ chính xác y khoa 100%)
+    // 3. Nếu không có API hoặc API lỗi -> Dùng RAG Corpus nội bộ (Độ chính xác y khoa 100%)
     if (matchedItem) {
       return {
         source: "LOCAL_RAG_CORPUS",
@@ -211,7 +261,7 @@ class CareNavigatorRAG {
       };
     }
 
-    // Trường hợp câu hỏi chung hoặc ngoài danh mục
+    // 4. Trường hợp câu hỏi ngoài danh mục
     return {
       source: "FALLBACK_CAUTIOUS",
       badge: "Tư Vấn Thông Tin Y Tế",
@@ -221,7 +271,7 @@ class CareNavigatorRAG {
         "Tôi cần làm thêm xét nghiệm nào khác hay chỉ cần tái khám định kỳ theo lịch hẹn ạ?"
       ],
       lifestyle: "Hãy ngồi thư giãn tại sảnh chờ, app sẽ tự động rung chuông khi đến lượt bạn vào gặp Bác sĩ.",
-      disclaimer: "Care Navigator giữ ranh giới phi lâm sàng để bảo vệ an toàn cao nhất cho người bệnh.",
+      disclaimer: "Trợ lý AI MIA giữ ranh giới an toàn phi lâm sàng để bảo vệ người bệnh.",
       showNurseButton: true
     };
   }

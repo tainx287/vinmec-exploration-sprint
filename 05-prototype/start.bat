@@ -1,5 +1,5 @@
 @echo off
-title MyVinmec Plain-Language Care Navigator - Khởi Chạy Prototype
+title MyVinmec Plain-Language Care Navigator - Khoi Chay Prototype
 color 0A
 echo =========================================================================
 echo    MYVINMEC CARE NAVIGATOR - INTERACTIVE AI PROTOTYPE
@@ -10,20 +10,21 @@ echo.
 
 where python >nul 2>nul
 if %ERRORLEVEL% EQU 0 (
-    echo [1/2] Phat hien Python tren he thong. Dang khoi dong Local Server...
-    start /B python server.py >nul 2>nul
-    timeout /t 1 >nul
+    echo [1/2] Khoi dong Local Backend Server tai cong 8000...
+    start "MyVinmec AI Server (Port 8000)" python server.py
+    timeout /t 2 >nul
     echo [2/2] Dang mo giao dien MyVinmec tren trinh duyet (http://localhost:8000)...
     start "" "http://localhost:8000"
 ) else (
-    echo [1/1] Khong tim thay Python. Dang mo truc tiep index.html tren trinh duyet...
+    echo [CANH BAO] Khong tim thay Python tren he thong PATH.
+    echo Dang mo truc tiep index.html tren trinh duyet...
     start "" "index.html"
 )
 
 echo.
 echo =========================================================================
-echo  KHOI CHAY THANH CONG! Ban co the trai nghiem truc tiep tren trinh duyet.
-echo  Cua so nay se tu dong dong sau 3 giay...
+echo  KHOI CHAY THANH CONG! May chu backend dang hoat dong tai http://localhost:8000
+echo  (Vui long khong tat cua so MyVinmec AI Server trong qua trinh test)
 echo =========================================================================
 timeout /t 3 >nul
 exit

@@ -57,6 +57,49 @@ function detectRedFlags(text) {
 }
 
 /**
+ * BỘ TỪ KHÓA NHẬN DIỆN CÂU HỎI ĐỊNH DANH (IDENTITY & ROLE FALLBACK)
+ * Đảm bảo giới thiệu rõ đây là bản thử nghiệm của Lab Coach Nguyễn Xuân Tài
+ */
+const IDENTITY_PATTERNS = [
+  /bạn\s*là\s*ai/i,
+  /bạn\s*tên\s*(là\s*)?gì/i,
+  /mày\s*là\s*(ai|gì)/i,
+  /who\s*are\s*you/i,
+  /bạn\s*có\s*(tác\s*dụng|tính\s*năng|vai\s*trò|nhiệm\s*vụ|chức\s*năng)\s*gì/i,
+  /bạn\s*giúp\s*(được\s*)?gì/i,
+  /what\s*(can\s*you\s*do|is\s*your\s*purpose)/i,
+  /ai\s*(tạo|làm|viết|code|dựng)\s*ra\s*bạn/i,
+  /nguồn\s*gốc\s*(của\s*)?bạn/i,
+  /giới\s*thiệu\s*(về\s*)?bạn/i
+];
+
+/**
+ * Kiểm tra xem câu hỏi có phải hỏi về danh tính / tác dụng của bot không
+ */
+function detectIdentityQuestion(text) {
+  if (!text || typeof text !== 'string') return null;
+  const trimmed = text.trim();
+
+  for (const pattern of IDENTITY_PATTERNS) {
+    if (pattern.test(trimmed)) {
+      return {
+        isIdentity: true,
+        badge: "Trợ Lý AI MIA • Bản Thử Nghiệm",
+        meaning: `Chào bạn! Tôi là <strong>Bản nguyên mẫu tương tác (Interactive Prototype) của Trợ lý AI MIA</strong>, được phát triển trong khuôn khổ <strong>Đề án nghiên cứu AI Y tế thực chiến của Lab Coach Nguyễn Xuân Tài (Vinmec Exploration Sprint)</strong>.<br><br>🎯 <strong>Mục đích thử nghiệm:</strong> Tôi là giải pháp mô phỏng giao tiếp phi lâm sàng, giúp bạn đọc hiểu nhanh ý nghĩa các chỉ số xét nghiệm máu (như ALT, AST, HbA1c, Creatinine...) trong 45 phút chờ khám và chuẩn bị sẵn 2 câu hỏi trọng tâm để bạn tự tin trao đổi cùng Bác sĩ.<br><br>⚠️ <strong>Lưu ý quan trọng:</strong> Đây là bản copy mô phỏng phục vụ Hội đồng Giám khảo đánh giá đề án, không phải hệ thống sản xuất chính thức của Hệ thống Y tế Quốc tế Vinmec và không thay thế chẩn đoán chuyên môn của Bác sĩ.`,
+        questions: [
+          "Thưa bác sĩ, các chỉ số xét nghiệm hôm nay của tôi có điểm nào cần đặc biệt lưu ý không ạ?",
+          "Tôi cần điều chỉnh thói quen sinh hoạt và ăn uống ra sao theo kết quả này ạ?"
+        ],
+        lifestyle: "Hãy chọn thử các tình huống cận lâm sàng mẫu ở danh sách phía trên hoặc gõ câu hỏi để trải nghiệm cách MIA đồng hành cùng bạn nhé!",
+        disclaimer: "Đề án nghiên cứu thực chiến • Lab Coach Nguyễn Xuân Tài (K4 AI Product Management)."
+      };
+    }
+  }
+
+  return null;
+}
+
+/**
  * Sinh mã HTML hiển thị Thẻ Cảnh Báo Khẩn Cấp Chuẩn Vinmec
  */
 function renderEmergencyCard(flagInfo) {
@@ -76,7 +119,7 @@ function renderEmergencyCard(flagInfo) {
       </div>
 
       <div class="emergency-text">
-        Hệ thống phát hiện dấu hiệu nguy kịch cần can thiệp y khoa <strong>NGAY LẬP TỨC</strong>. Để đảm bảo an toàn sinh mạng, Trợ lý Care Navigator đã tự động khóa luồng trò chuyện.
+        Hệ thống phát hiện dấu hiệu nguy kịch cần can thiệp y khoa <strong>NGAY LẬP TỨC</strong>. Để đảm bảo an toàn sinh mạng, Trợ lý AI MIA đã tự động khóa luồng trò chuyện.
       </div>
       
       <a href="tel:1900232389" class="hotline-action-btn primary-hotline">
@@ -97,5 +140,5 @@ function renderEmergencyCard(flagInfo) {
 
 // Export cho môi trường Browser / Node
 if (typeof module !== 'undefined' && module.exports) {
-  module.exports = { detectRedFlags, renderEmergencyCard, RED_FLAG_DICTIONARY };
+  module.exports = { detectRedFlags, detectIdentityQuestion, renderEmergencyCard, RED_FLAG_DICTIONARY };
 }

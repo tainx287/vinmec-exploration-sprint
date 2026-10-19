@@ -5,6 +5,10 @@
 > **Hạn nộp:** 23h59 Thứ Hai, 19/10/2026  
 > **Kênh nộp bài:** Gửi link repo qua email tới `anh.ntm2@vinuni.edu.vn` với tiêu đề `[Exploration Sprint] Bài tập 1 tuần – Nguyễn Xuân Tài – K2`
 
+> 🚀 **TRẢI NGHIỆM TRỰC TIẾP PROTOTYPE (LIVE DEMO TRÊN VERCEL):**  
+> 👉 **[https://myvinmec-care-navigator.vercel.app](https://myvinmec-care-navigator.vercel.app)**  
+> *(Người chấm có thể bấm xem và tương tác trực tiếp trên trình duyệt máy tính hoặc điện thoại — Không cần tải repo hay cài đặt bất cứ phần mềm nào!)*
+
 ---
 
 ## 1. Tổng Quan & Bối Cảnh Bài Toán
@@ -29,7 +33,7 @@ Toàn bộ tài liệu, bằng chứng nghiên cứu và mã nguồn được c�
 | `02-journey-map/` | Bản đồ hành trình (Workflow Journey Map) và ma trận phân tích điểm đau (Pain points analysis). | [Xem 02-journey-map](./02-journey-map/workflow-journey-map.md) |
 | `03-need-statement/` | Tuyên bố nhu cầu chuẩn Stanford Biodesign (không chứa công nghệ/giải pháp). | [Xem 03-need-statement](./03-need-statement/need-statement.md) |
 | `04-best-practice/` | Nghiên cứu 3 mô hình quốc tế (Mayo Clinic, Cleveland Clinic/MyChart, Ada Health/NHS) & bài học cho thiết kế trải nghiệm khám tại Vinmec. | [Xem 04-best-practice](./04-best-practice/international-benchmarks.md) |
-| `05-prototype/` | Mã nguồn/thiết kế prototype AI: **Giao diện điện thoại MyVinmec độc lập ([Xem trực tiếp index.html](./05-prototype/index.html))**, script **1-click [start.bat](./05-prototype/start.bat)**, bản Streamlit (`app.py`), System Instructions và User Testing Logs. | [Xem trực tiếp Prototype](./05-prototype/index.html) · [Hướng dẫn kỹ thuật](./05-prototype/README.md) |
+| `05-prototype/` | Mã nguồn & Live Prototype AI: **[Trải nghiệm Trực tiếp trên Vercel](https://myvinmec-care-navigator.vercel.app)** · Giao diện MyVinmec Mobile SPA ([index.html](./05-prototype/index.html)), script **1-click [start.bat](./05-prototype/start.bat)**, System Instructions và User Testing Logs. | 🌐 **[Live Demo Vercel](https://myvinmec-care-navigator.vercel.app)** · [Mở file index.html](./05-prototype/index.html) · [Tài liệu kỹ thuật](./05-prototype/README.md) |
 | `06-rui-ro-dao-duc/` | Phân tích rủi ro an toàn thông tin (Nghị định 13/2023/NĐ-CP, HIPAA), Ảo giác AI và Quy trình chuyển tuyến khẩn cấp. | [Xem 06-rui-ro-dao-duc](./06-rui-ro-dao-duc/safety-and-privacy-risks.md) |
 | `07-coach-plan/` | **Gói Kế Hoạch Huấn Luyện & Tác Chiến Khóa 4 Toàn Diện**: Kế hoạch từng tuần (mốc T5 chốt data, T6 bàn giao, hạn 18h00 tối CN, giao ban 15–20p sáng T2), Bức tranh lớn vận hành bệnh viện 4 trạm, Bộ công cụ tác chiến Google Suite (Form + Sheet 3 Tab), Cơ chế chia cặp khảo sát Tuần 1 & chia 2 Team Dev Tuần 2/3, Cẩm nang phỏng vấn & Daily Field Log Template. | [Tổng quan Gói Coach](./07-coach-plan/README.md) · [Kế hoạch từng tuần](./07-coach-plan/weekly-execution-schedule.md) · [Vận hành & Chia team](./07-coach-plan/hospital-operations-blueprint.md) · [Google Suite Ops](./07-coach-plan/fieldwork-ops-google-suite.md) · [Khung Coach](./07-coach-plan/k4-coaching-framework.md) · [Daily Log & Toolkit](./07-coach-plan/fieldwork-stakeholder-questions.md) |
 | `slides.pdf` (hoặc `slides/`) | **Bản thuyết trình chính thức (chuẩn 10 slide theo Mục 6.0 & 6.3)**: Tóm tắt toàn bài dùng cho buổi present 10 phút trước Hội đồng Tuyển chọn Vinmec. | **[Tải file slides.pdf](./slides.pdf)** · [Xem đề cương outline](./slides/slides-outline.md) · [Bản trình chiếu HTML](./slides/presentation.html) |

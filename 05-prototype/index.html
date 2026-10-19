@@ -57,11 +57,11 @@
 
         <!-- THẺ THÔNG TIN BỆNH NHÂN (CLICK ĐỂ SANG TRANG TÀI KHOẢN / HỒ SƠ) -->
         <div class="patient-header-card" onclick="navigateTo('screen-profile')" title="Chạm để xem chi tiết tài khoản & hồ sơ sức khỏe">
-          <div class="patient-avatar">NA</div>
+          <div class="patient-avatar">XT</div>
           <div class="patient-info" style="flex:1;">
-            <h3>NGUYỄN VĂN A <span class="patient-tag">VIP Care</span></h3>
-            <div class="patient-meta">Mã y tế: <strong>10088921</strong> • Nam, 28 tuổi</div>
-            <div class="patient-meta">BS chỉ định: <strong>CKI. Trần Thị Mai</strong> • Khoa Ngoại trú</div>
+            <h3>NGUYỄN XUÂN TÀI <span class="patient-tag">VIP Care</span></h3>
+            <div class="patient-meta">Mã y tế (PID): <strong>1000087289</strong> • Nam, 28 tuổi</div>
+            <div class="patient-meta">BS chỉ định: <strong>CKI. Trần Thị Mai</strong> • Khoa Nội tiết (Vinmec Times City)</div>
           </div>
           <div style="color:var(--vinmec-teal); font-size:18px; font-weight:700;">›</div>
         </div>
@@ -166,7 +166,7 @@
               <span class="result-ref-range">Chuẩn: &lt; 40 U/L</span>
             </div>
             <div class="result-ai-hint">
-              <span>✨ Xem Care Navigator giải thích & câu hỏi hỏi Bác sĩ</span>
+              <span>✨ Xem MIA giải thích & gợi ý câu hỏi hỏi Bác sĩ</span>
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
             </div>
           </div>
@@ -186,7 +186,7 @@
               <span class="result-ref-range">Chuẩn: &lt; 40 U/L</span>
             </div>
             <div class="result-ai-hint">
-              <span>✨ Xem Care Navigator giải thích & câu hỏi hỏi Bác sĩ</span>
+              <span>✨ Xem MIA giải thích & gợi ý câu hỏi hỏi Bác sĩ</span>
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
             </div>
           </div>
@@ -206,7 +206,7 @@
               <span class="result-ref-range">Chuẩn: 4.0 - 5.6 %</span>
             </div>
             <div class="result-ai-hint">
-              <span>✨ Xem Care Navigator giải thích & câu hỏi hỏi Bác sĩ</span>
+              <span>✨ Xem MIA giải thích & gợi ý câu hỏi hỏi Bác sĩ</span>
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
             </div>
           </div>
@@ -226,7 +226,7 @@
               <span class="result-ref-range">Chuẩn: 62 - 106 µmol/L</span>
             </div>
             <div class="result-ai-hint">
-              <span>✨ Xem Care Navigator giải thích chức năng thận</span>
+              <span>✨ Xem MIA giải thích chức năng thận</span>
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
             </div>
           </div>
@@ -246,7 +246,7 @@
               <span class="result-ref-range">Chuẩn: 200 - 420 µmol/L</span>
             </div>
             <div class="result-ai-hint">
-              <span>✨ Xem Care Navigator giải thích nguy cơ gút & ăn uống</span>
+              <span>✨ Xem MIA giải thích nguy cơ gút & ăn uống</span>
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
             </div>
           </div>
@@ -268,76 +268,230 @@
       </div>
 
       <!-- ======================================================== -->
-      <!-- MÀN HÌNH 1: TRANG CHỦ (SCREEN-HOME)                     -->
+      <!-- MÀN HÌNH 1: TRANG CHỦ (SCREEN-HOME CHUẨN DNA ẢNH THẬT)   -->
       <!-- ======================================================== -->
       <div id="screen-home" class="app-screen">
         
-        <!-- Search bar -->
-        <div class="home-search-bar">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#64748B" stroke-width="2.5"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-          <input type="text" placeholder="Tìm bác sĩ, chuyên khoa, dịch vụ y tế..." readonly onclick="navigateTo('screen-booking')">
-        </div>
-
-        <!-- Banner Hero Ưu đãi -->
-        <div class="hero-banner-card">
-          <h4>Chăm Sóc Thai Kỳ Toàn Diện</h4>
-          <p>Gói phục hồi chuyên sâu sau sinh cho mẹ & tầm soát sơ sinh sớm tại Vinmec Times City.</p>
-          <button class="btn-banner-cta" onclick="navigateTo('screen-booking')">Khám Phá Ngay</button>
-        </div>
-
-        <!-- Lưới 6 icon tiện ích (2x3) chuẩn MyVinmec -->
-        <div class="quick-action-grid">
-          <div class="quick-action-item" onclick="navigateTo('screen-booking')">
-            <div class="action-icon-circle">📅</div>
-            <div class="action-title">Lịch Hẹn</div>
-          </div>
-          <div class="quick-action-item" onclick="openDrawerWithPreset('ast_alt')">
-            <div class="action-icon-circle" style="background:#FEF3C7; color:#B45309;">✨</div>
-            <div class="action-title">Care AI</div>
-          </div>
-          <div class="quick-action-item" onclick="navigateTo('screen-records')">
-            <div class="action-icon-circle">📑</div>
-            <div class="action-title">Hồ Sơ Y Tế</div>
-          </div>
-          <div class="quick-action-item" onclick="navigateTo('screen-booking')">
-            <div class="action-icon-circle">🩺</div>
-            <div class="action-title">Dịch Vụ</div>
-          </div>
-          <div class="quick-action-item">
-            <div class="action-icon-circle">🍼</div>
-            <div class="action-title">Làm Mẹ</div>
-          </div>
-          <div class="quick-action-item">
-            <div class="action-icon-circle">💉</div>
-            <div class="action-title">Sổ Tiêm</div>
+        <!-- Ô TÌM KIẾM PILL CHUẨN SCREENSHOT 1 & 12 -->
+        <div class="home-search-pill-wrapper">
+          <div class="home-search-pill" onclick="navigateTo('screen-booking')">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#20A69A" stroke-width="2.3"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+            <input type="text" placeholder="Tìm kiếm (Vd: corona, vắc xin...)" readonly>
           </div>
         </div>
 
-        <!-- BANNER BÁO CÓ KẾT QUẢ XÉT NGHIỆM HÔM NAY (CLICK NHẢY SANG TRANG KẾT QUẢ) -->
+        <!-- BANNER PROMO HERO CAROUSEL CHUẨN SCREENSHOT 1 & 12 -->
+        <div class="home-promo-slider">
+          <div class="promo-brand-tag">VINMEC HEALTHCARE</div>
+          <div class="promo-title">Trao tặng sức khỏe - Gửi trọn an tâm</div>
+          <div class="promo-sub">GÓI KHÁM SỨC KHỎE TỔNG QUÁT CÁ NHÂN • GIẢM 10%</div>
+          <button class="promo-btn-cta" onclick="navigateTo('screen-booking')">ĐĂNG KÝ NGAY</button>
+        </div>
+
+        <!-- KHỐI 12 TIỆN ÍCH Y TẾ (4 CỘT X 3 HÀNG) CHUẨN NGUYÊN BẢN SCREENSHOT 1 -->
+        <div class="home-utilities-container">
+          <div class="utilities-grid-12">
+            <!-- 1. Lịch hẹn -->
+            <div class="utility-item" onclick="navigateTo('screen-booking')">
+              <div class="utility-icon-wrap">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/><circle cx="16" cy="16" r="3" fill="#20A69A" stroke="#FFFFFF" stroke-width="1.5"/></svg>
+              </div>
+              <div class="utility-name">Lịch hẹn</div>
+            </div>
+
+            <!-- 2. Liên hệ -->
+            <div class="utility-item" onclick="window.location.href='tel:1900232389'">
+              <div class="utility-icon-wrap">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              </div>
+              <div class="utility-name">Liên hệ 24/7</div>
+            </div>
+
+            <!-- 3. Dịch vụ y tế (Mới) -->
+            <div class="utility-item" onclick="navigateTo('screen-booking')">
+              <div class="utility-icon-wrap">
+                <span class="utility-badge-tag">Mới</span>
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M2 12h20"/><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.5"/></svg>
+              </div>
+              <div class="utility-name">Dịch vụ y tế</div>
+            </div>
+
+            <!-- 4. Sổ tiêm -->
+            <div class="utility-item" onclick="showAppToast('Chức năng Sổ tiêm chủng điện tử')">
+              <div class="utility-icon-wrap">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m18 2 4 4"/><path d="m17 7 3-3"/><path d="M19 9 8.7 19.3c-1 1-2.5 1-3.4 0l-.6-.6c-1-1-1-2.5 0-3.4L15 5"/><path d="m9 11 4 4"/><path d="m5 19-3 3"/></svg>
+              </div>
+              <div class="utility-name">Sổ tiêm</div>
+            </div>
+
+            <!-- 5. Đơn thuốc -->
+            <div class="utility-item" onclick="showAppToast('Chức năng Đơn thuốc điện tử Vinmec')">
+              <div class="utility-icon-wrap">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m10.5 20.5 10-10a4.95 4.95 0 1 0-7-7l-10 10a4.95 4.95 0 1 0 7 7Z"/><path d="m8.5 8.5 7 7"/></svg>
+              </div>
+              <div class="utility-name">Đơn thuốc</div>
+            </div>
+
+            <!-- 6. Danh mục giá & quyền lợi -->
+            <div class="utility-item" onclick="showAppToast('Bảng giá viện phí & Quyền lợi Bảo hiểm')">
+              <div class="utility-icon-wrap">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="8" y1="10" x2="16" y2="10"/><line x1="8" y1="14" x2="12" y2="14"/></svg>
+              </div>
+              <div class="utility-name">Bảng giá & quyền lợi</div>
+            </div>
+
+            <!-- 7. Quyền lợi CBNV Vingroup (Mới) -->
+            <div class="utility-item" onclick="showAppToast('Chế độ y tế CBNV Tập đoàn Vingroup')">
+              <div class="utility-icon-wrap">
+                <span class="utility-badge-tag">Mới</span>
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+              </div>
+              <div class="utility-name">Quyền lợi CBNV</div>
+            </div>
+
+            <!-- 8. Cộng đồng hỏi đáp bác sĩ -->
+            <div class="utility-item" onclick="openDrawerWithPreset('ast_alt')">
+              <div class="utility-icon-wrap" style="background:#ECFDF5;">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+              </div>
+              <div class="utility-name">Hỏi đáp Bác sĩ</div>
+            </div>
+
+            <!-- 9. Cẩm nang làm mẹ -->
+            <div class="utility-item" onclick="showAppToast('Cẩm nang chăm sóc Mẹ & Bé Vinmec')">
+              <div class="utility-icon-wrap">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="5"/><path d="M20 21a8 8 0 1 0-16 0"/></svg>
+              </div>
+              <div class="utility-name">Cẩm nang làm mẹ</div>
+            </div>
+
+            <!-- 10. Nhắc lịch uống thuốc -->
+            <div class="utility-item" onclick="showAppToast('Nhắc giờ uống thuốc tự động')">
+              <div class="utility-icon-wrap">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2 2"/><path d="M5 3 2 6"/><path d="m22 6-3-3"/></svg>
+              </div>
+              <div class="utility-name">Nhắc uống thuốc</div>
+            </div>
+
+            <!-- 11. Tạm ứng viện phí -->
+            <div class="utility-item" onclick="showAppToast('Thanh toán & Tạm ứng viện phí không tiền mặt')">
+              <div class="utility-icon-wrap">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>
+              </div>
+              <div class="utility-name">Tạm ứng viện phí</div>
+            </div>
+
+            <!-- 12. Tất cả dịch vụ -->
+            <div class="utility-item" onclick="navigateTo('screen-booking')">
+              <div class="utility-icon-wrap">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+              </div>
+              <div class="utility-name">Tất cả dịch vụ</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- THẺ BÁO TIẾN ĐỘ KHÁM HÔM NAY (CLICK NHẢY SANG TRANG KẾT QUẢ LAB ĐANG DIỄN RA) -->
         <div class="home-result-alert" onclick="navigateTo('screen-result')">
           <div style="display:flex; align-items:center; gap:10px;">
             <div class="pulse-dot"></div>
             <div>
               <div style="font-size:12.5px; font-weight:800; color:var(--vinmec-teal-dark);">Đã có kết quả xét nghiệm hôm nay!</div>
-              <div style="font-size:11px; color:var(--vinmec-muted);">3 chỉ số sinh hóa máu • Nhấn để xem & hỏi Care AI</div>
+              <div style="font-size:11px; color:var(--vinmec-muted);">3 chỉ số máu • Bác sĩ gọi khám 10:15 (Phòng 302) • Chạm hỏi AI MIA</div>
             </div>
           </div>
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--vinmec-teal)" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
         </div>
 
-        <!-- Khám gần đây -->
-        <div class="native-section-title">
-          <span>ĐÃ KHÁM GẦN ĐÂY</span>
-          <span style="font-size:11px; color:var(--vinmec-teal); cursor:pointer;" onclick="navigateTo('screen-records')">Xem tất cả</span>
+        <!-- PHÂN MỤC 1: DỊCH VỤ MỚI CHUẨN SCREENSHOT 1, 2, 3 -->
+        <div class="home-section-head">
+          <h4>Dịch vụ mới</h4>
         </div>
 
-        <div class="record-item-card" onclick="navigateTo('screen-result')">
-          <div>
-            <span class="record-date-badge">18/10/2026 • Hôm nay</span>
-            <div class="record-title">Khám Ngoại Trú & Xét Nghiệm Máu</div>
-            <div class="record-hospital">Vinmec Times City • BS. CKI Trần Thị Mai</div>
+        <div class="service-feature-card" onclick="openDrawerWithPreset('ast_alt')">
+          <div class="service-feature-thumb">👩‍⚕️</div>
+          <div class="service-feature-info">
+            <div class="service-feature-title">Cổng dịch vụ khách hàng</div>
+            <div class="service-feature-desc">Nhanh - Tiện - Dễ dàng • Kết nối Trợ lý AI MIA</div>
           </div>
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#64748B" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+          <div class="service-feature-arrow">›</div>
+        </div>
+
+        <div class="service-feature-card" onclick="navigateTo('screen-booking')">
+          <div class="service-feature-thumb">📱</div>
+          <div class="service-feature-info">
+            <div class="service-feature-title">Đặt lịch nhanh - Xác nhận lịch tự động</div>
+            <div class="service-feature-desc">Xem ngay lịch khám, giờ khám với bác sĩ Vinmec ở bất cứ đâu</div>
+          </div>
+          <div class="service-feature-arrow">›</div>
+        </div>
+
+        <!-- PHÂN MỤC 2: CÂU HỎI SÀNG LỌC SỨC KHỎE CHUẨN SCREENSHOT 2, 3 -->
+        <div class="home-section-head">
+          <h4>Câu hỏi sàng lọc sức khỏe</h4>
+        </div>
+
+        <div class="screening-action-card" onclick="showAppToast('Bộ câu hỏi sàng lọc sức khỏe sinh sản')">
+          <div class="screening-icon">🧬</div>
+          <div class="screening-title">Sàng lọc Sức khỏe sinh sản</div>
+          <div style="color:#CBD5E1; font-size:16px;">›</div>
+        </div>
+
+        <div class="screening-action-card" onclick="showAppToast('Bộ câu hỏi đánh giá nguy cơ đột quỵ sớm')">
+          <div class="screening-icon" style="background:#FEF3C7; color:#D97706;">🧠</div>
+          <div class="screening-title">Sàng lọc đột quỵ</div>
+          <div style="color:#CBD5E1; font-size:16px;">›</div>
+        </div>
+
+        <!-- PHÂN MỤC 3: THÔNG BÁO QUAN TRỌNG CHUẨN SCREENSHOT 2, 3 -->
+        <div class="home-section-head">
+          <h4>Thông báo quan trọng</h4>
+          <span onclick="navigateTo('screen-notifications')">Xem tất cả ›</span>
+        </div>
+
+        <div class="important-notice-card" onclick="navigateTo('screen-notifications')">
+          <span class="notice-pill-tag">📢 TIN MỚI</span>
+          <div class="notice-text">Mua thuốc tại nhà tiện lợi cùng tính năng mới trên ứng dụng MyVinmec</div>
+        </div>
+
+        <!-- PHÂN MỤC 4: TIN TỨC MỚI NHẤT CHUẨN SCREENSHOT 3 & 4 -->
+        <div class="home-section-head">
+          <h4>Tin mới nhất</h4>
+          <span onclick="showAppToast('Xem thêm tin tức y khoa Vinmec')">Xem thêm ›</span>
+        </div>
+
+        <div class="news-article-row" onclick="showAppToast('Đang mở bài viết NIPT...')">
+          <div class="news-thumb">🤰</div>
+          <div class="news-info">
+            <div class="news-title">Sàng lọc trước sinh không xâm lấn (NIPT): Hiểu đúng kết quả và giới hạn xét nghiệm</div>
+            <div class="news-date">06/10/2026 • Vinmec Times City</div>
+          </div>
+        </div>
+
+        <div class="news-article-row" onclick="showAppToast('Đang mở bài viết Sàng lọc trước mang thai...')">
+          <div class="news-thumb">👨‍👩‍👧</div>
+          <div class="news-info">
+            <div class="news-title">Sàng lọc trước mang thai: Hiểu nguy cơ di truyền trước khi có con</div>
+            <div class="news-date">06/10/2026 • Chuyên khoa Di truyền</div>
+          </div>
+        </div>
+
+        <div class="news-article-row" onclick="showAppToast('Đang mở bài viết Tế bào gốc...')">
+          <div class="news-thumb">🔬</div>
+          <div class="news-info">
+            <div class="news-title">Cấy ghép tế bào gốc chữa bại não: Chẩn đoán và điều trị</div>
+            <div class="news-date">02/10/2026 • Viện Tế bào gốc Vinmec</div>
+          </div>
+        </div>
+
+        <!-- NÚT PHẢN HỒI VỀ ỨNG DỤNG & FOOTER CHUẨN SCREENSHOT 4 -->
+        <div class="home-feedback-pill" onclick="showAppToast('Cảm ơn bạn! Hệ thống ghi nhận phản hồi.')">
+          <span>📝</span>
+          <span>Phản hồi về ứng dụng</span>
+        </div>
+
+        <div class="home-copyright-text">
+          © 2026 Vinmec Healthcare System • All rights reserved
         </div>
 
       </div>
@@ -433,72 +587,321 @@
       </div>
 
       <!-- ======================================================== -->
-      <!-- MÀN HÌNH 4: TRANG THÔNG BÁO (SCREEN-NOTIFICATIONS)      -->
+      <!-- MÀN HÌNH 4: TRANG THÔNG BÁO (SCREEN-NOTIFICATIONS THẬT)  -->
       <!-- ======================================================== -->
       <div id="screen-notifications" class="app-screen">
         
-        <!-- Thông báo kết quả xét nghiệm (Click nhảy sang Trang Kết Quả) -->
-        <div class="notif-item-card" style="border-left: 3px solid var(--vinmec-teal);" onclick="navigateTo('screen-result')">
-          <div class="notif-icon">📑</div>
-          <div class="notif-content">
-            <h5>Kết quả xét nghiệm sinh hóa máu đã sẵn sàng!</h5>
-            <p>Bảng kết quả cận lâm sàng của bạn đã được cập nhật. Nhấn vào đây để xem chi tiết và tham vấn cùng Trợ lý AI Care Navigator.</p>
-            <div class="notif-time">10 phút trước • Bệnh viện Vinmec Times City</div>
+        <div class="notif-scroll-container">
+          
+          <!-- 1. Mừng 20/10: Tầm soát vú (Unread) -->
+          <div class="notif-card-real highlight" onclick="showAppToast('Ưu đãi Gói tầm soát ung thư vú')">
+            <div class="notif-icon-box">
+              <span class="notif-red-dot"></span>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+            </div>
+            <div class="notif-content-area">
+              <div class="notif-header-line">
+                <div class="notif-title-real">🎁 Mừng 20/10: Giảm 10% gói tầm soát vú</div>
+                <div class="notif-time-real">2 giờ</div>
+              </div>
+              <div class="notif-body-real">
+                Quà tặng sức khỏe ý nghĩa cho phái đẹp! Nhận ngay ưu đãi khi đặt online Gói phát hiện sớm ung thư vú tại Vinmec, giá chỉ từ 630.000 VNĐ.
+              </div>
+              <div class="notif-action-tag">👉 Đăng ký ngay để chủ động bảo vệ bản thân!</div>
+            </div>
           </div>
-        </div>
 
-        <div class="notif-item-card">
-          <div class="notif-icon">⏰</div>
-          <div class="notif-content">
-            <h5>Nhắc lịch tư vấn với Bác sĩ</h5>
-            <p>Dự kiến lượt khám của bạn với BS. CKI Trần Thị Mai tại Phòng 302 sẽ bắt đầu lúc 10:15.</p>
-            <div class="notif-time">25 phút trước • Thông báo luồng khám</div>
+          <!-- 2. Mốc thai kỳ 22 tuần quan trọng (Unread) -->
+          <div class="notif-card-real highlight" onclick="showAppToast('Gói thai sản 22 tuần Vinmec')">
+            <div class="notif-icon-box">
+              <span class="notif-red-dot"></span>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+            </div>
+            <div class="notif-content-area">
+              <div class="notif-header-line">
+                <div class="notif-title-real">👶 Mốc thai kỳ 22 tuần quan trọng</div>
+                <div class="notif-time-real">7 giờ</div>
+              </div>
+              <div class="notif-body-real">
+                "Thời điểm vàng" siêu âm hình thái phát hiện sớm các dị tật thai nhi. Đăng ký Gói thai sản 22 tuần tại Vinmec để ba mẹ an tâm đồng hành cùng con yêu trong suốt thai kỳ.
+              </div>
+            </div>
           </div>
-        </div>
 
-        <div class="notif-item-card">
-          <div class="notif-icon">🎁</div>
-          <div class="notif-content">
-            <h5>Đặc quyền thành viên VIP Care</h5>
-            <p>Tặng 01 voucher tư vấn dinh dưỡng trực tuyến khi hoàn tất đợt khám tổng quát trong tháng 10.</p>
-            <div class="notif-time">Hôm qua • Chương trình khách hàng</div>
+          <!-- 3. An tâm xạ trị cùng chuyên gia (Read) -->
+          <div class="notif-card-real" onclick="showAppToast('Quy trình xạ trị chuẩn hóa 5 ngày')">
+            <div class="notif-icon-box">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+            </div>
+            <div class="notif-content-area">
+              <div class="notif-header-line">
+                <div class="notif-title-real">An tâm xạ trị cùng chuyên gia</div>
+                <div class="notif-time-real">1 ngày</div>
+              </div>
+              <div class="notif-body-real">
+                🏥 Mọi bước từ đánh giá hồ sơ đến lập kế hoạch xạ trị đều qua hội chẩn đa chuyên khoa.<br>
+                ✨ Quy trình chuẩn bị 5 ngày đảm bảo kiểm soát chất lượng để người bệnh an tâm điều trị.
+              </div>
+              <div class="notif-action-tag">👉 Tìm hiểu quy trình và nhận tư vấn tại đây!</div>
+            </div>
           </div>
+
+          <!-- 4. Món quà 20/10 cho người thương (Unread) -->
+          <div class="notif-card-real highlight" onclick="showAppToast('Ưu đãi 10% gói khám tổng quát')">
+            <div class="notif-icon-box">
+              <span class="notif-red-dot"></span>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+            </div>
+            <div class="notif-content-area">
+              <div class="notif-header-line">
+                <div class="notif-title-real">Món quà 20/10 cho người thương 🎁</div>
+                <div class="notif-time-real">1 ngày</div>
+              </div>
+              <div class="notif-body-real">
+                Với 4 gói khám sức khoẻ tổng quát tại Vinmec: ✔️ Đa dạng lựa chọn, ✔️ Quy trình tinh gọn, ✔️ Lộ trình khám cá thể hoá. Tiết kiệm 10% khi đặt lịch trực tuyến.
+              </div>
+            </div>
+          </div>
+
+          <!-- 5. Nhắc lịch hẹn thật của Bệnh nhân Nguyễn Xuân Tài (Unread, Click xem kết quả) -->
+          <div class="notif-card-real highlight" style="border-left: 3.5px solid #20A69A; background: #F0FDF4;" onclick="navigateTo('screen-result')">
+            <div class="notif-icon-box" style="background: #E6F7F5;">
+              <span class="notif-red-dot"></span>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#20A69A" stroke-width="2.2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            </div>
+            <div class="notif-content-area">
+              <div class="notif-header-line">
+                <div class="notif-title-real" style="color:#0F766E;">🩺 Nhắc lịch hẹn khám & Kết quả hôm nay</div>
+                <div class="notif-time-real" style="color:#0F766E; font-weight:700;">Hôm nay</div>
+              </div>
+              <div class="notif-body-real" style="color:#134E4A;">
+                BV ĐKQT Vinmec xin thông báo Quý khách <strong>Nguyễn Xuân Tài - PID 1000087289</strong> có lịch khám vào 07:45 ngày 19/10/2026 tại chuyên khoa Nội tiết. <strong>Đã có kết quả 3 xét nghiệm cận lâm sàng!</strong>
+              </div>
+              <div class="notif-action-tag" style="background:#20A69A; color:#FFFFFF;">✨ Chạm để xem bảng kết quả & hỏi AI MIA ›</div>
+            </div>
+          </div>
+
+          <!-- 6. Rút ngắn thời gian chờ xạ trị (Unread) -->
+          <div class="notif-card-real highlight" onclick="showAppToast('Quy trình xạ trị ung thư')">
+            <div class="notif-icon-box">
+              <span class="notif-red-dot"></span>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+            </div>
+            <div class="notif-content-area">
+              <div class="notif-header-line">
+                <div class="notif-title-real">Rút ngắn thời gian chờ xạ trị</div>
+                <div class="notif-time-real">2 ngày</div>
+              </div>
+              <div class="notif-body-real">
+                ⏳ Việc chờ đợi bắt đầu điều trị ung thư thường tạo nên áp lực tâm lý lớn cho người bệnh. Tại Vinmec, quy trình chuẩn hóa giúp tối ưu hóa thời gian chuẩn bị và bắt đầu xạ trị chỉ trong 5 ngày.
+              </div>
+            </div>
+          </div>
+
+          <!-- 7. Đột quỵ có thể xảy ra ngay khi ngủ (Unread) -->
+          <div class="notif-card-real highlight" onclick="showAppToast('Gói tầm soát nguy cơ đột quỵ 2.900.000 VNĐ')">
+            <div class="notif-icon-box">
+              <span class="notif-red-dot"></span>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+            </div>
+            <div class="notif-content-area">
+              <div class="notif-header-line">
+                <div class="notif-title-real">Đột quỵ có thể xảy ra ngay khi ngủ? Đừng chủ quan!</div>
+                <div class="notif-time-real">2 ngày</div>
+              </div>
+              <div class="notif-body-real">
+                Tầm soát ngay với gói phát hiện sớm nguy cơ đột quỵ tại Vinmec: ✔️ Chụp MRI mạch não, ✔️ Siêu âm Doppler động mạch cảnh, ✔️ Siêu âm tim. Giá trọn gói chỉ từ 2.900.000 VNĐ.
+              </div>
+            </div>
+          </div>
+
+          <!-- 8. Quà sức khỏe cho nàng dịp 20-10 (Unread) -->
+          <div class="notif-card-real highlight" onclick="showAppToast('Thẻ sức khỏe phụ nữ Vinmec 1.875.000 VNĐ')">
+            <div class="notif-icon-box">
+              <span class="notif-red-dot"></span>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+            </div>
+            <div class="notif-content-area">
+              <div class="notif-header-line">
+                <div class="notif-title-real">Quà sức khỏe cho nàng dịp 20-10</div>
+                <div class="notif-time-real">3 ngày</div>
+              </div>
+              <div class="notif-body-real">
+                Chỉ 1.875.000 vnđ, quyền lợi cả năm: 🌺 Miễn phí khám chuyên khoa, 🌺 Giảm 10% gói tầm soát vú, giáp, cổ tử cung, 🌺 Giảm 5% gói khám sức khỏe tổng quát.
+              </div>
+            </div>
+          </div>
+
+          <!-- 9. Bận đến mức quên khám mắt? (Unread) -->
+          <div class="notif-card-real highlight" onclick="showAppToast('Đặt lịch khám chuyên khoa Mắt')">
+            <div class="notif-icon-box">
+              <span class="notif-red-dot"></span>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+            </div>
+            <div class="notif-content-area">
+              <div class="notif-header-line">
+                <div class="notif-title-real">Bận đến mức quên khám mắt?</div>
+                <div class="notif-time-real">3 ngày</div>
+              </div>
+              <div class="notif-body-real">
+                Đặt lịch online, chọn giờ phù hợp. 👉 1 tiếng hôm nay, bảo vệ thị lực nhiều năm sau. Chọn giờ khám phù hợp ngay trên ứng dụng!
+              </div>
+            </div>
+          </div>
+
+          <!-- 10. Quản lý thai kỳ trọn vẹn cùng Vinmec (Unread) -->
+          <div class="notif-card-real highlight" onclick="showAppToast('Gói thai sản 12 tuần')">
+            <div class="notif-icon-box">
+              <span class="notif-red-dot"></span>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+            </div>
+            <div class="notif-content-area">
+              <div class="notif-header-line">
+                <div class="notif-title-real">Quản lý thai kỳ trọn vẹn cùng Vinmec</div>
+                <div class="notif-time-real">3 ngày</div>
+              </div>
+              <div class="notif-body-real">
+                Gói Thai sản 12 tuần giúp ba mẹ: ✔️ An tâm sàng lọc trước sinh, ✔️ Phát hiện sớm bất thường nếu có, ✔️ Chăm sóc thai kỳ cá thể hóa.
+              </div>
+            </div>
+          </div>
+
         </div>
 
       </div>
 
       <!-- ======================================================== -->
-      <!-- MÀN HÌNH 5: TRANG TÀI KHOẢN (SCREEN-PROFILE)            -->
+      <!-- MÀN HÌNH 5: TRANG TÀI KHOẢN (SCREEN-PROFILE CHUẨN THẬT)  -->
       <!-- ======================================================== -->
       <div id="screen-profile" class="app-screen">
         
-        <div class="profile-card">
-          <div class="profile-avatar-big">NA</div>
-          <h4 style="font-size:16px; font-weight:800;">NGUYỄN VĂN A</h4>
-          <p style="font-size:11px; color:var(--vinmec-muted); margin-top:2px;">Mã y tế: 10088921 • Hạng thẻ: <strong>Vinmec VIP Care</strong></p>
+        <!-- HEADER VÒM SÓNG XANH TEAL + AVATAR + SỐ ĐIỆN THOẠI 0362157914 -->
+        <div class="profile-wave-hero">
+          <div class="profile-avatar-wrapper">
+            <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="#94A3B8" stroke-width="2"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            <div class="profile-camera-btn" title="Cập nhật ảnh đại diện" onclick="showAppToast('Chụp hoặc chọn ảnh đại diện')">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+            </div>
+          </div>
+          <div class="profile-phone-text">0362157914</div>
+          <div class="profile-user-badge">
+            <span>Nguyễn Xuân Tài • PID 1000087289</span>
+          </div>
         </div>
 
-        <div class="profile-menu-list">
-          <div class="profile-menu-item" onclick="navigateTo('screen-records')">
-            <span>📑 Hồ sơ sức khỏe cá nhân</span>
-            <span>→</span>
+        <!-- NHÓM 1: QUẢN LÝ YÊU CẦU VÀ ƯU ĐÃI (CHUẨN SCREENSHOT 7) -->
+        <div class="profile-card-group">
+          <div class="profile-group-header">Quản lý yêu cầu và ưu đãi</div>
+          
+          <div class="profile-row-item" onclick="showAppToast('Quản lý dịch vụ giao thuốc tại nhà')">
+            <div class="profile-row-icon" style="background:#FEF3C7; color:#D97706;">📦</div>
+            <div class="profile-row-title">Yêu cầu giao thuốc</div>
+            <div class="profile-row-arrow">›</div>
           </div>
-          <div class="profile-menu-item">
-            <span>👥 Quản lý hồ sơ người thân (01 người)</span>
-            <span>→</span>
+
+          <div class="profile-row-item" onclick="showAppToast('Lịch sử yêu cầu hỗ trợ khách hàng')">
+            <div class="profile-row-icon" style="background:#E0F2FE; color:#0284C7;">💬</div>
+            <div class="profile-row-title">Quản lý yêu cầu hỗ trợ</div>
+            <div class="profile-row-arrow">›</div>
           </div>
-          <div class="profile-menu-item">
-            <span>🔒 Bảo mật Touch ID / Face ID</span>
-            <span style="color:var(--vinmec-teal); font-weight:700;">Đã bật</span>
+
+          <div class="profile-row-item" onclick="showAppToast('Danh sách voucher & ưu đãi thành viên')">
+            <div class="profile-row-icon" style="background:#FFEDD5; color:#EA580C;">🎟️</div>
+            <div class="profile-row-title">Ưu đãi của tôi</div>
+            <div class="profile-row-arrow">›</div>
           </div>
-          <a href="tel:1900232389" class="profile-menu-item">
-            <span>📞 Tổng đài CSKH Vinmec: 1900 23 23 89</span>
-            <span>Gọi ngay</span>
-          </a>
-          <div class="profile-menu-item" onclick="alert('Tuân thủ nghiêm ngặt Nghị định 13/2023/NĐ-CP và tiêu chuẩn bảo mật y tế JCI.');">
-            <span>🛡️ Chính sách bảo mật dữ liệu (NĐ 13)</span>
-            <span>→</span>
+        </div>
+
+        <!-- NHÓM 2: CÀI ĐẶT (CHUẨN SCREENSHOT 7) -->
+        <div class="profile-card-group">
+          <div class="profile-group-header">Cài đặt</div>
+
+          <div class="profile-row-item" onclick="showAppToast('Chức năng Đổi mật khẩu')">
+            <div class="profile-row-icon" style="background:#F0FDF4; color:#16A34A;">🔒</div>
+            <div class="profile-row-title">Đổi mật khẩu</div>
+            <div class="profile-row-arrow">›</div>
           </div>
+
+          <div class="profile-row-item" onclick="showAppToast('Ngôn ngữ hiện tại: Tiếng Việt')">
+            <div class="profile-row-icon" style="background:#FEE2E2; color:#DC2626;">🌐</div>
+            <div class="profile-row-title">Ngôn ngữ</div>
+            <div class="profile-row-meta">Tiếng Việt</div>
+            <div class="profile-row-arrow">›</div>
+          </div>
+
+          <div class="profile-row-item" onclick="showAppToast('Bảo mật sinh trắc học Face ID / Vân tay')">
+            <div class="profile-row-icon" style="background:#E0E7FF; color:#4F46E5;">🛡️</div>
+            <div class="profile-row-title">Bảo mật</div>
+            <div class="profile-row-meta" style="color:#94A3B8;">Chưa thiết lập</div>
+            <div class="profile-row-arrow">›</div>
+          </div>
+        </div>
+
+        <!-- NHÓM 3: ĐIỀU KHOẢN & QUY ĐỊNH (CHUẨN SCREENSHOT 7 & 8) -->
+        <div class="profile-card-group">
+          <div class="profile-group-header">Điều khoản & quy định</div>
+
+          <div class="profile-row-item" onclick="showAppToast('Quy định sử dụng dịch vụ y tế Vinmec')">
+            <div class="profile-row-icon" style="background:#E0F2FE; color:#2563EB;">📘</div>
+            <div class="profile-row-title">Quy định sử dụng</div>
+            <div class="profile-row-arrow">›</div>
+          </div>
+
+          <div class="profile-row-item" onclick="showAppToast('Chính sách giải quyết khiếu nại & tranh chấp')">
+            <div class="profile-row-icon" style="background:#FEF3C7; color:#CA8A04;">⚠️</div>
+            <div class="profile-row-title">Chính sách giải quyết khiếu nại, tranh chấp</div>
+            <div class="profile-row-arrow">›</div>
+          </div>
+
+          <div class="profile-row-item" onclick="showAppToast('Tuân thủ nghiêm ngặt Nghị định 13/2023/NĐ-CP')">
+            <div class="profile-row-icon" style="background:#FEE2E2; color:#E11D48;">🛡️</div>
+            <div class="profile-row-title">Chính sách bảo vệ dữ liệu cá nhân của Vinmec</div>
+            <div class="profile-row-arrow">›</div>
+          </div>
+
+          <div class="profile-row-item" onclick="showAppToast('Cấp quyền truy cập hồ sơ bệnh án')">
+            <div class="profile-row-icon" style="background:#F3E8FF; color:#9333EA;">⚙️</div>
+            <div class="profile-row-title">Quyền truy cập dữ liệu</div>
+            <div class="profile-row-arrow">›</div>
+          </div>
+        </div>
+
+        <!-- NHÓM 4: HỖ TRỢ & TÀI KHOẢN (CHUẨN SCREENSHOT 8) -->
+        <div class="profile-card-group">
+          <div class="profile-row-item" onclick="showAppToast('Hỏi đáp thường gặp về ứng dụng MyVinmec')">
+            <div class="profile-row-icon" style="background:#F1F5F9; color:#475569;">❓</div>
+            <div class="profile-row-title">Hỏi đáp về ứng dụng</div>
+            <div class="profile-row-arrow">›</div>
+          </div>
+
+          <div class="profile-row-item" onclick="showAppToast('Chia sẻ ứng dụng MyVinmec')">
+            <div class="profile-row-icon" style="background:#FFEDD5; color:#EA580C;">🔗</div>
+            <div class="profile-row-title">Chia sẻ ứng dụng</div>
+            <div class="profile-row-arrow">›</div>
+          </div>
+
+          <div class="profile-row-item" onclick="showAppToast('Đã đăng xuất phiên làm việc')">
+            <div class="profile-row-icon" style="background:#FEE2E2; color:#EF4444;">🚪</div>
+            <div class="profile-row-title" style="color:#EF4444; font-weight:700;">Đăng xuất</div>
+            <div class="profile-row-arrow" style="color:#FCA5A5;">›</div>
+          </div>
+        </div>
+
+        <!-- CHÂN TRANG PHÁP LÝ & BỘ CÔNG THƯƠNG CHUẨN SCREENSHOT 8 -->
+        <div class="profile-legal-footer">
+          <div class="profile-legal-title">CÔNG TY CỔ PHẦN BỆNH VIỆN ĐA KHOA QUỐC TẾ VINMEC</div>
+          <div>Số 458, phố Minh Khai, Phường Vĩnh Tuy, Quận Hai Bà Trưng, Thành phố Hà Nội, Việt Nam</div>
+          <div>Hotline: 0243.975.0028 • Email: info@vinmec.com</div>
+
+          <div class="bct-badge-container">
+            <span class="bct-seal">🔵</span>
+            <div>
+              <div class="bct-text-bold">ĐÃ THÔNG BÁO</div>
+              <div class="bct-text-sub">BỘ CÔNG THƯƠNG</div>
+            </div>
+          </div>
+
+          <div class="profile-version-tag">MyVinmec v3.0.4.0</div>
         </div>
 
       </div>
@@ -508,10 +911,10 @@
     <!-- 4. SMART FLOATING ACTION BUTTON (FAB MYVINMEC CƠ CHẾ ẨN THÔNG MINH) -->
     <div id="fab-main-container" class="fab-container">
       <div class="fab-badge-tip">
-        <span>💬 Hỏi Care Navigator</span>
+        <span>💬 Hỏi AI MIA</span>
       </div>
-      <div class="fab-chat-btn" onclick="toggleDrawer()" title="Mở Trợ lý Care Navigator">
-        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+      <div class="fab-chat-btn" onclick="toggleDrawer()" title="Mở Trợ lý Sức Khỏe AI MIA">
+        <img src="assets/logo_chatbot_fab.webp" alt="Trợ lý AI MIA" width="60" height="60" onerror="this.src='assets/logo_chatbot_fab.png'">
       </div>
     </div>
 
@@ -521,14 +924,26 @@
       <div class="drawer-handle-bar"></div>
       
       <div class="drawer-header">
-        <div class="drawer-title-group">
-          <h4>🏥 MyVinmec Care Navigator</h4>
-          <p>Phiên dịch ngôn ngữ bình dân • Trang bị câu hỏi hỏi Bác sĩ</p>
+        <div class="drawer-title-group" style="display:flex; align-items:center; gap:10px;">
+          <img src="assets/logo_chatbot_fab.webp" alt="MIA" style="width:34px; height:34px; object-fit:contain; filter:drop-shadow(0 2px 6px rgba(32,166,154,0.3));" onerror="this.src='assets/logo_chatbot_fab.png'">
+          <div>
+            <h4>Trợ lý sức khoẻ AI MIA</h4>
+            <p>Bản mô phỏng nghiên cứu • Chuẩn bị câu hỏi Bác sĩ</p>
+          </div>
         </div>
-        <button class="btn-close-drawer" onclick="toggleDrawer()">✕</button>
+        <button class="btn-close-drawer" onclick="toggleDrawer()" title="Đóng">✕</button>
       </div>
 
       <div class="drawer-body">
+        
+        <!-- HERO GREETING VỚI MASCOT 3D NGUYÊN BẢN MYVINMEC -->
+        <div class="mia-hero-intro">
+          <img src="assets/logo_chatbot_512.webp" alt="AI MIA Mascot" class="mia-hero-mascot" onerror="this.src='assets/logo_chatbot_512.png'">
+          <div class="mia-hero-greeting">
+            Chào <strong>Nguyễn Xuân Tài</strong>, hôm nay bạn thế nào?
+          </div>
+          <p class="mia-hero-sub">Tôi giúp bạn hiểu ý nghĩa đời thường của kết quả cận lâm sàng và chuẩn bị sẵn 2 câu hỏi trọng tâm trước khi vào phòng khám.</p>
+        </div>
         
         <!-- CHỌN PRESET NHANH -->
         <div class="preset-chips-container">
@@ -561,18 +976,25 @@
           </div>
         </div>
 
-        <!-- VÙNG HIỂN THỊ KẾT QUẢ AI -->
-        <div id="ai-response-container">
-          <div class="ai-response-box">
-            <div class="ai-response-section">
-              <span class="ai-section-badge">✨ Giới thiệu tính năng</span>
-              <div class="ai-plain-text">
-                Chào bạn! Tôi là <strong>Care Navigator</strong>. Tôi giúp bạn hiểu ý nghĩa đời thường của các chỉ số xét nghiệm và chuẩn bị sẵn các câu hỏi trọng tâm để bạn tự tin trao đổi với bác sĩ trong phòng khám sắp tới.
+        <!-- VÙNG HIỂN THỊ HỘI THOẠI AI (CONVERSATION TIMELINE) -->
+        <div id="ai-response-container" class="chat-timeline-container">
+          <div class="chat-row bot">
+            <div class="chat-bot-wrap">
+              <img src="assets/logo_chatbot_fab.webp" alt="MIA" class="chat-bot-avatar" onerror="this.src='assets/logo_chatbot_fab.png'">
+              <div class="chat-bubble-bot">
+                <div class="ai-response-box">
+                  <div class="ai-response-section">
+                    <span class="ai-section-badge">✨ Giới thiệu tính năng</span>
+                    <div class="ai-plain-text">
+                      Chào bạn! Tôi là <strong>Trợ lý AI MIA (Bản mô phỏng nghiên cứu)</strong>. Tôi giúp bạn hiểu ý nghĩa đời thường của các chỉ số xét nghiệm và chuẩn bị sẵn 2 câu hỏi trọng tâm để bạn tự tin trao đổi với bác sĩ trong phòng khám sắp tới.
+                    </div>
+                  </div>
+                  <div class="disclaimer-badge">
+                    <span>⚠️</span>
+                    <span><strong>Lưu ý:</strong> Đây là bản mô phỏng nghiên cứu học thuật của Lab Coach Nguyễn Xuân Tài (dự án AI Vinmec Sprint), không phải hệ thống khám chữa bệnh chính thức của Vinmec.</span>
+                  </div>
+                </div>
               </div>
-            </div>
-            <div class="disclaimer-badge">
-              <span>⚠️</span>
-              <span><strong>Rào chắn y tế:</strong> Tôi là công cụ giao tiếp phi lâm sàng, không đưa ra chẩn đoán và không kê đơn thuốc.</span>
             </div>
           </div>
         </div>
@@ -581,8 +1003,8 @@
 
       <!-- CHAT INPUT -->
       <div class="drawer-input-area">
-        <input type="text" id="user-chat-input" class="chat-input" placeholder="Hỏi thêm về chỉ số xét nghiệm..." onkeypress="if(event.key === 'Enter') sendUserQuery()">
-        <button class="btn-send-chat" onclick="sendUserQuery()" title="Gửi câu hỏi">
+        <input type="text" id="user-chat-input" class="chat-input" placeholder="Hỏi thêm về chỉ số xét nghiệm..." onkeydown="if(event.key === 'Enter') { event.preventDefault(); sendUserQuery(); }">
+        <button type="button" class="btn-send-chat" onclick="sendUserQuery()" title="Gửi câu hỏi">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
         </button>
       </div>
@@ -606,7 +1028,10 @@
         <span>Đặt lịch</span>
       </div>
       <div id="tab-nav-notifications" class="nav-tab-item" onclick="navigateTo('screen-notifications')">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg>
+        <div class="nav-icon-wrap">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg>
+          <span class="nav-badge-count">10</span>
+        </div>
         <span>Thông báo</span>
       </div>
       <div id="tab-nav-profile" class="nav-tab-item" onclick="navigateTo('screen-profile')">
@@ -615,7 +1040,10 @@
       </div>
     </div>
 
-    <!-- 7. HOME INDICATOR IPHONE -->
+    <!-- 7. TOAST NOTIFICATION POPUP -->
+    <div id="app-toast-box" class="app-toast"></div>
+
+    <!-- 8. HOME INDICATOR IPHONE -->
     <div class="home-indicator"></div>
 
   </div>

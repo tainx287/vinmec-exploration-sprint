@@ -1,0 +1,7 @@
+server.py
+app.py
+start.bat
+requirements.txt
+__pycache__
+.env
+Asset/
