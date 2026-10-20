@@ -14,23 +14,23 @@
 ---
 
 ## Slide 2: Bối Cảnh & Điểm Nghẽn Trên MyVinmec (Context & Heuristic Audit)
-* **Tiêu đề:** Khoảnh Khắc Của Sự Thật: "Information Void" & Hội Chứng "Scanxiety" Tại Sảnh Chờ
+* **Tiêu đề:** Khoảnh Khắc Của Sự Thật: "Information Void" & Nỗi Lo Khi Đọc Kết Quả Xét Nghiệm
 * **Nội dung trọng tâm:**
-  * Khảo sát ứng dụng MyVinmec: Chuyển đổi số rất tốt khâu đặt lịch và trả trực tiếp file PDF kết quả về điện thoại.
-  * Nghịch lý số hóa (Con dao hai lưỡi): Trả kết quả sớm nhưng vô tình đẩy người bệnh vào **"Khoảng trống thông tin" (Information Void)** không người giải thích.
-  * Kích hoạt hội chứng y khoa **"Scanxiety"** *(Scan + Anxiety)*: Người bệnh thảm họa hóa suy diễn (**Catastrophizing**) và hơn 80% rơi vào cơn hoảng loạn **"Cyberchondria"** (lo âu bệnh lý do tự chẩn đoán sai trên Google) khi thấy các chỉ số bôi đỏ `H`/`L`.
-* **Hình ảnh/Trực quan:** Ảnh chụp màn hình mô phỏng file PDF kết quả xét nghiệm với các chỉ số viết tắt bôi đỏ `H`/`L` đối lập với đồ thị lo âu bùng phát.
+  * Khảo sát ứng dụng MyVinmec: Chuyển đổi số rất tốt khâu đặt lịch và trả trực tiếp kết quả về điện thoại.
+  * Nghịch lý số hóa: Trả kết quả sớm nhưng vô tình đẩy người bệnh vào **"Khoảng trống thông tin" (Information Void)** trong 45 phút chờ đến lượt Bác sĩ gọi tên.
+  * Kích hoạt hội chứng y khoa **"Scanxiety"** *(Scan + Anxiety)*: Người bệnh lo âu suy diễn (**Catastrophizing**) và hơn 80% rơi vào cơn hoảng loạn **"Cyberchondria"** (lo âu sức khỏe do tự chẩn đoán sai trên Google) khi thấy các chỉ số bôi đỏ `H`/`L` hoặc chữ viết tắt y khoa.
+* **Hình ảnh/Trực quan:** Ảnh chụp màn hình ứng dụng MyVinmec thật với các chỉ số viết tắt bôi đỏ `AST`, `ALT`, `HbA1c` đối lập với ảnh người bệnh chờ đợi.
 * **Thời lượng trình bày:** 1:00 phút.
 
 ---
 
-## Slide 3: Lắng Nghe Tiếng Nói Người Bệnh (3 In-depth Anonymous Interviews)
-* **Tiêu đề:** Nghiên Cứu Hiện Trường: 3 Cuộc Phỏng Vấn Ẩn Danh P1, P2, P3
+## Slide 3: Lắng Nghe Tiếng Nói Người Bệnh (3 In-depth Interviews)
+* **Tiêu đề:** Phỏng Vấn Sâu 3 Người Quen Từng Đi Khám Bệnh Thực Tế (The Mom Test)
 * **Nội dung trọng tâm:**
-  * **P1 (Người trẻ - Cyberchondria):** *"Em hoang mang suốt 45 phút vì tưởng nhầm men gan cao nhẹ là bệnh hiểm nghèo khi tra Google."*
-  * **P2 (Người chăm sóc mẹ già - Cognitive Load):** *"Không biết đã có đủ hết xét nghiệm chưa, không biết đưa mẹ đi đâu tiếp."*
-  * **P3 (Bệnh nhân tái khám - White-coat effect):** *"Bác sĩ nói nhanh quá không kịp hỏi; về nhà quên hết dặn dò."*
-* **Hình ảnh/Trực quan:** 3 thẻ User Persona với các trích dẫn nguyên văn (Verbatim Quotes) gây xúc động.
+  * **P1 (Anh M.N. - 32t, Cựu quân nhân, khám gối & Chụp MRI):** *"Cầm kết quả và phim chụp trên tay mà nhiều từ chuyên môn quá không hiểu gì, ngồi chờ lâu càng sốt ruột. Mình phải liên tục mở điện thoại tra Google và hỏi AI để đỡ hoang mang."* → Điểm nghẽn: Khoảng trống thông tin khi chờ đợi & Rất cần được giải thích kết quả dễ hiểu.
+  * **P2 (Anh T.H. - 28t, Sĩ quan Hậu cần Hải quân, khám định kỳ theo đơn vị):** *"Phòng khám rất đông, người khám sau đứng ngay cửa thúc ép. Bác sĩ bận rộn nên mình ngại hỏi thêm về mấy chỉ số tăng nhẹ, thôi cầm giấy đi ra luôn."* → Điểm nghẽn: Thời gian gặp Bác sĩ ngắn & Ngại hỏi nếu chưa chuẩn bị sẵn câu hỏi.
+  * **P3 (Anh V.D. - 29t, Kỹ sư FDI Hàn Quốc, khám sức khỏe công ty):** *"Sau khi lấy máu xong không biết phòng tiếp theo ở đâu, cứ nghĩ phải đi đúng theo thứ tự trên phiếu nên đi lòng vòng tìm kiếm mất thời gian."* → Điểm nghẽn: Bẫy tuần tự & Lúng túng di chuyển giữa các phòng cận lâm sàng.
+* **Hình ảnh/Trực quan:** Dải ảnh chân dung kèm 3 thẻ trích dẫn nguyên văn bằng chứng thực tế.
 * **Thời lượng trình bày:** 1:00 phút.
 
 ---

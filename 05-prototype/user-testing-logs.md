@@ -1,4 +1,4 @@
-﻿# Nhật Ký Thử Nghiệm Người Dùng (User Testing Logs)
+# Nhật Ký Thử Nghiệm Người Dùng (User Testing Logs)
 
 > **Môi trường thử nghiệm:** Interactive Prototype (Streamlit Chat UI mô phỏng luồng thông báo kết quả cận lâm sàng của MyVinmec).  
 > **Bộ dữ liệu kiểm thử (Synthetic Test Data):** 100% dữ liệu phòng lab giả lập (Mock Blood & Urine Panel), không sử dụng bất kỳ dữ liệu bệnh nhân thực tế nào.  
@@ -22,7 +22,7 @@
 * **Kịch bản:** T1 mở giao diện prototype, bấm vào mục "Giải thích kết quả xét nghiệm Acid Uric (460 µmol/L)".
 * **Phản hồi của người dùng (Feedback):**
   > *"Ban đầu khi prototype v1 trả lời, đoạn văn dài quá (khoảng 4 đoạn dày đặc chữ), mình phải cuộn mãi mới đọc hết. Đang lúc sốt ruột mà bắt đọc nhiều chữ thì rất ngại. Nhưng nội dung giải thích rằng ăn nhiều hải sản hoặc đạm cũng làm tăng chỉ số tạm thời khiến mình thở phào nhẹ nhõm, không bị sợ như lần trước tra Google."*
-* **Vấn đề phát hiện (Issue Encountered):** Câu trả lời phiên bản Prompt v1.0 quá dài dòng mang tính sách vở y khoa, làm tăng tải trọng nhận thức của người bệnh tại sảnh chờ.
+* **Vấn đề phát hiện (Issue Encountered):** Câu trả lời phiên bản Prompt v1.0 quá dài dòng mang tính sách vở y khoa, làm tăng tải trọng nhận thức của người dùng trong lúc chờ đợi kết quả.
 * **Hành động tối ưu (Action Taken):**
   * Tinh chỉnh Prompt sang dạng **3 gạch đầu dòng ngắn gọn** (Bullet Points) theo cấu trúc: *Ý nghĩa thường ngày → 2 câu hỏi hỏi Bác sĩ → Lưu ý an toàn*.
   * Giới hạn độ dài phản hồi tối đa dưới 180 từ.

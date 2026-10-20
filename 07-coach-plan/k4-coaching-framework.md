@@ -133,7 +133,7 @@ Cuối mỗi ngày (trước 18h00), từng học viên nộp 1 bản **Daily Fi
 | :--- | :--- | :--- |
 | **1. Tràn ngập bài toán (Problem Overload)** | Nhóm thấy khoa phòng có hàng chục vấn đề, cãi nhau không biết chọn đề tài nào. | Dùng **Ma trận Impact vs Feasibility**. Buộc nhóm chọn khoảnh khắc hẹp nhất có thể làm xong prototype trong 10 ngày. |
 | **2. Bẫy ham công nghệ (Over-engineering Trap)** | Nhóm muốn tự huấn luyện mô hình LLM từ đầu, bàn về kiến trúc microservices phức tạp. | **Kéo về thực tế:** *"Người dùng cần giải quyết điểm đau gì? Hãy làm giao diện Streamlit trong 48 giờ để test trước đã."* |
-| **3. Bế tắc tuyển người test (User Recruiting Block)** | Nhóm ngại tiếp cận bác sĩ hoặc người dùng tại sảnh viện. | Coach trực tiếp làm mẫu cuộc phỏng vấn đầu tiên; kết nối với bác sĩ đầu mối Vinmec để sắp xếp khung giờ thuận lợi. |
+| **3. Bế tắc tuyển người test (User Recruiting Block)** | Nhóm ngại tiếp cận bác sĩ hoặc phỏng vấn người dùng. | Coach trực tiếp làm mẫu cuộc phỏng vấn đầu tiên; kết nối với bác sĩ đầu mối Vinmec để sắp xếp khung giờ thuận lợi. |
 | **4. Xung đột nội bộ (Team Friction)** | Phân chia công việc không đều, một vài thành viên thụ động hoặc lấn át người khác. | Tổ chức họp 1-on-1 lắng nghe tâm tư; tái cấu trúc vai trò rõ ràng theo năng lực (Product, Tech, Research). |
 
 ---

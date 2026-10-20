@@ -39,7 +39,7 @@
       user-select: none;
     }
 
-    /* Screen Stage: 100% viewport, centers slide canvas */
+    /* Outer Stage: Fills 100% viewport with rich dark medical navy background */
     .app-screen {
       width: 100vw;
       height: 100vh;
@@ -326,6 +326,8 @@
         display: flex !important;
         width: 1920px !important;
         height: 1080px !important;
+        max-width: 1920px !important;
+        max-height: 1080px !important;
         page-break-after: always !important;
         break-after: page !important;
         padding: 48px 64px !important;
@@ -358,7 +360,7 @@
           </h1>
 
           <p style="font-size: clamp(16px, 2.2vh, 21px); color: #cbd5e1; line-height: 1.5; max-width: 960px;">
-            Giải pháp <strong style="color: #38bdf8;">MyVinmec Care Navigator</strong>: Đồng hành cùng người bệnh trong 45 phút chờ đợi, chuyển hóa nỗi lo lắng thành sự chủ động hiểu biết trước khi bước vào phòng khám Bác sĩ.
+            Giải pháp <strong style="color: #38bdf8;">MyVinmec Care Navigator</strong>: Đồng hành cùng người bệnh trong 45 phút chờ kết quả, chuyển hóa nỗi lo lắng thành sự chủ động hiểu biết trước khi bước vào phòng khám Bác sĩ.
           </p>
 
           <!-- 3 Thẻ Trọng Tâm Cân Đối Đều Nhau -->
@@ -415,13 +417,13 @@
         </div>
 
         <div class="slide-body">
-          <!-- Ảnh sảnh bệnh viện Vinmec -->
+          <!-- Không gian chờ đợi kết quả khám -->
           <div style="flex: 1.1; display: flex; flex-direction: column; min-height: 0;">
             <div class="media-box">
-              <img src="images/hospital_scanxiety_patient.jpg" alt="Bệnh nhân ngồi chờ tại sảnh Vinmec">
+              <img src="images/hospital_scanxiety_patient.jpg" alt="Người bệnh ngồi chờ kết quả khám bệnh">
               <div style="position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(transparent, rgba(7, 12, 24, 0.95)); padding: 16px 20px;">
-                <div style="color: #fb7185; font-weight: 800; font-size: 13px; text-transform: uppercase;">⚠️ Thực tế quan sát tại sảnh viện:</div>
-                <div style="color: #ffffff; font-size: 15px; font-weight: 600; margin-top: 2px;">Người bệnh ngồi xem kết quả số trong bất an, không có ai hỗ trợ giải thích tức thì.</div>
+                <div style="color: #fb7185; font-weight: 800; font-size: 13px; text-transform: uppercase;">⚠️ Thực tế tâm lý người đi khám:</div>
+                <div style="color: #ffffff; font-size: 15px; font-weight: 600; margin-top: 2px;">Khoảng thời gian 30–45 phút chờ đợi đến lượt gặp Bác sĩ dễ kích hoạt tâm lý bất an khi chưa có ai giải thích kết quả.</div>
               </div>
             </div>
           </div>
@@ -439,7 +441,7 @@
               <div class="giant-stat" style="color: #f43f5e;">45 Phút</div>
               <div class="stat-label">Thời Gian Chờ Trung Bình Đến Lượt Khám</div>
               <div style="color: #cbd5e1; font-size: 15px; margin-top: 8px; line-height: 1.45;">
-                Sau khi app thông báo có kết quả, người bệnh phải chờ đến lượt Bác sĩ gọi tên; chữ viết tắt y khoa (AST, ALT, HbA1c) gây khó hiểu.
+                Sau khi app thông báo có kết quả, người bệnh phải chờ đến lượt Bác sĩ gọi tên; chữ viết tắt y khoa (AST, ALT, HbA1c) gây băn khoăn.
               </div>
             </div>
 
@@ -454,20 +456,20 @@
         </div>
 
         <footer class="slide-footer">
-          <span>Ghi nhận thực tế tại Bệnh viện ĐKQT Vinmec Times City · Dữ liệu đã được ẩn danh theo chuẩn y tế</span>
+          <span>Khảo sát hành trình đi khám & Trải nghiệm thực tế trên ứng dụng MyVinmec · 01-phong-van/myvinmec-heuristic-audit.md</span>
           <span>Phím ← / → để chuyển trang</span>
         </footer>
       </section>
 
 
       <!-- ======================================================== -->
-      <!-- SLIDE 02: PHỎNG VẤN SÂU 3 BỆNH NHÂN THỰC TẾ               -->
+      <!-- SLIDE 02: PHỎNG VẤN SÂU 3 NGƯỜI QUEN TỪNG ĐI KHÁM        -->
       <!-- ======================================================== -->
       <section class="slide-pane" id="slide-2">
         <header class="slide-header">
           <div class="header-left">
             <span class="brand-pill">02. Nghiên Cứu Người Dùng</span>
-            <span class="header-topic">Thấu Cảm Góc Nhìn Thực Tế Từ 3 Nhóm Bệnh Nhân Khác Nhau</span>
+            <span class="header-topic">Phỏng Vấn Sâu 3 Người Quen Từng Đi Khám Bệnh Thực Tế</span>
           </div>
           <div class="header-right">
             <div class="slide-counter">Trang 02 / 10</div>
@@ -477,14 +479,14 @@
         </header>
 
         <div class="slide-headline">
-          <h2 class="slide-title">Phỏng Vấn Sâu 3 Người Bệnh Thực Tế Tại Sảnh Chờ</h2>
-          <p class="slide-subtitle">Ghi nhận câu chuyện chân thực theo phương pháp The Mom Test; tên và thông tin nhận dạng đã được bảo mật 100%.</p>
+          <h2 class="slide-title">Phỏng Vấn Sâu 3 Người Quen Từng Đi Khám Bệnh Thực Tế</h2>
+          <p class="slide-subtitle">Lắng nghe chia sẻ thực tế từ 3 người quen (cựu quân nhân, sĩ quan hải quân, kỹ sư FDI) về những khó khăn khi đi khám qua phương pháp The Mom Test.</p>
         </div>
 
         <div class="slide-body" style="flex-direction: column; gap: 18px;">
           <!-- Dải ảnh 3 chân dung người bệnh đại diện -->
           <div style="height: clamp(120px, 18vh, 160px); width: 100%; border-radius: 14px; overflow: hidden; border: 1px solid rgba(255,255,255,0.12); flex-shrink: 0;">
-            <img src="images/three_patient_personas.jpg" alt="Ba chân dung người bệnh thực tế" style="width: 100%; height: 100%; object-fit: cover;">
+            <img src="images/three_patient_personas.jpg" alt="Ba chân dung người quen từng đi khám bệnh thực tế" style="width: 100%; height: 100%; object-fit: cover;">
           </div>
 
           <!-- 3 Thẻ trích dẫn lời bệnh nhân -->
@@ -493,16 +495,16 @@
             <div class="card" style="border-top: 4px solid #f43f5e; justify-content: space-between;">
               <div>
                 <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
-                  <span class="tag tag-rose">Bệnh nhân P1 (32 tuổi)</span>
-                  <span style="font-size: 13px; color: #94a3b8;">Khám chấn thương gối</span>
+                  <span class="tag tag-rose">P1 (Anh M.N. - 32 tuổi)</span>
+                  <span style="font-size: 13px; color: #94a3b8;">Khám gối & Chụp MRI</span>
                 </div>
                 <div style="font-style: italic; color: #ffffff; font-size: clamp(14px, 1.6vh, 16.5px); line-height: 1.45; margin: 8px 0;">
-                  "Cầm kết quả trên tay mà nhiều từ viết tắt quá không hiểu gì, ngồi chờ lâu càng thêm sốt ruột. Chỉ mong có ai giải thích sơ bộ để yên tâm."
+                  "Cầm kết quả và phim chụp trên tay mà nhiều từ chuyên môn quá không hiểu gì, ngồi chờ lâu càng sốt ruột. Mình phải liên tục mở điện thoại tra Google và hỏi AI để đỡ hoang mang."
                 </div>
               </div>
               <div style="background: rgba(244, 63, 94, 0.1); border: 1px solid rgba(244, 63, 94, 0.35); border-radius: 10px; padding: 10px 14px;">
-                <div style="color: #fb7185; font-weight: 800; font-size: 12px; text-transform: uppercase;">Nhu cầu cốt lõi:</div>
-                <div style="color: #ffffff; font-size: 14px; font-weight: 700; margin-top: 2px;">Cần giải thích ngôn ngữ dễ hiểu & giải tỏa lo lắng tức thì.</div>
+                <div style="color: #fb7185; font-weight: 800; font-size: 12px; text-transform: uppercase;">Điểm nghẽn thực tế:</div>
+                <div style="color: #ffffff; font-size: 14px; font-weight: 700; margin-top: 2px;">Khoảng trống thông tin khi chờ đợi & Cần được giải thích kết quả dễ hiểu.</div>
               </div>
             </div>
 
@@ -510,16 +512,16 @@
             <div class="card" style="border-top: 4px solid #f59e0b; justify-content: space-between;">
               <div>
                 <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
-                  <span class="tag tag-amber">Bệnh nhân P2 (41 tuổi)</span>
-                  <span style="font-size: 13px; color: #94a3b8;">Khám định kỳ</span>
+                  <span class="tag tag-amber">P2 (Anh T.H. - 28 tuổi)</span>
+                  <span style="font-size: 13px; color: #94a3b8;">Khám định kỳ theo đơn vị</span>
                 </div>
                 <div style="font-style: italic; color: #ffffff; font-size: clamp(14px, 1.6vh, 16.5px); line-height: 1.45; margin: 8px 0;">
-                  "Thấy bác sĩ rất bận nên mình ngại hỏi nhiều. Nếu lúc chờ có gợi ý sẵn nên hỏi gì về các chỉ số tăng nhẹ thì vào khám sẽ tự tin hơn."
+                  "Phòng khám rất đông, người khám sau đứng ngay cửa thúc ép. Bác sĩ bận rộn nên mình ngại hỏi thêm về mấy chỉ số tăng nhẹ, thôi cầm giấy đi ra luôn."
                 </div>
               </div>
               <div style="background: rgba(245, 158, 11, 0.1); border: 1px solid rgba(245, 158, 11, 0.35); border-radius: 10px; padding: 10px 14px;">
-                <div style="color: #fbbf24; font-weight: 800; font-size: 12px; text-transform: uppercase;">Nhu cầu cốt lõi:</div>
-                <div style="color: #ffffff; font-size: 14px; font-weight: 700; margin-top: 2px;">Gợi ý sẵn 2-3 câu hỏi để trao đổi trọng tâm với Bác sĩ.</div>
+                <div style="color: #fbbf24; font-weight: 800; font-size: 12px; text-transform: uppercase;">Điểm nghẽn thực tế:</div>
+                <div style="color: #ffffff; font-size: 14px; font-weight: 700; margin-top: 2px;">Thời gian gặp Bác sĩ ngắn & Ngại hỏi nếu chưa chuẩn bị sẵn câu hỏi.</div>
               </div>
             </div>
 
@@ -527,23 +529,23 @@
             <div class="card" style="border-top: 4px solid #38bdf8; justify-content: space-between;">
               <div>
                 <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
-                  <span class="tag tag-blue">Bệnh nhân P3 (29 tuổi)</span>
-                  <span style="font-size: 13px; color: #94a3b8;">Khám tổng quát</span>
+                  <span class="tag tag-blue">P3 (Anh V.D. - 29 tuổi)</span>
+                  <span style="font-size: 13px; color: #94a3b8;">Khám sức khỏe công ty</span>
                 </div>
                 <div style="font-style: italic; color: #ffffff; font-size: clamp(14px, 1.6vh, 16.5px); line-height: 1.45; margin: 8px 0;">
-                  "Sau khi lấy máu xong không rõ tiếp theo đi đâu, cứ nghĩ phải đi đúng theo thứ tự trên phiếu nên đi lòng vòng tìm phòng khám."
+                  "Sau khi lấy máu xong không biết phòng tiếp theo ở đâu, cứ nghĩ phải đi đúng theo thứ tự trên phiếu nên đi lòng vòng tìm kiếm mất thời gian."
                 </div>
               </div>
               <div style="background: rgba(14, 165, 233, 0.1); border: 1px solid rgba(14, 165, 233, 0.35); border-radius: 10px; padding: 10px 14px;">
-                <div style="color: #38bdf8; font-weight: 800; font-size: 12px; text-transform: uppercase;">Nhu cầu cốt lõi:</div>
-                <div style="color: #ffffff; font-size: 14px; font-weight: 700; margin-top: 2px;">Chỉ dẫn linh hoạt lộ trình di chuyển giữa các khoa phòng.</div>
+                <div style="color: #38bdf8; font-weight: 800; font-size: 12px; text-transform: uppercase;">Điểm nghẽn thực tế:</div>
+                <div style="color: #ffffff; font-size: 14px; font-weight: 700; margin-top: 2px;">Bẫy tuần tự & Lúng túng di chuyển giữa các phòng cận lâm sàng.</div>
               </div>
             </div>
           </div>
         </div>
 
         <footer class="slide-footer">
-          <span>Khảo sát định tính theo phương pháp The Mom Test · Tuân thủ tuyệt đối Nghị định 13/2023/NĐ-CP</span>
+          <span>Phỏng vấn sâu 1-1 theo phương pháp The Mom Test · Nguồn dữ liệu thực tế: 01-phong-van/interview-notes.md</span>
           <span>Phím ← / → để chuyển trang</span>
         </footer>
       </section>
@@ -567,7 +569,7 @@
 
         <div class="slide-headline">
           <h2 class="slide-title">Mức Độ Lo Lắng Qua 5 Giai Đoạn & Thời Điểm Can Thiệp Trọng Tâm</h2>
-          <p class="slide-subtitle">Đỉnh điểm băn khoăn rơi vào giai đoạn vừa nhận kết quả trên điện thoại (9/10); đây là thời điểm vàng để Trợ lý AI hỗ trợ người bệnh.</p>
+          <p class="slide-subtitle">Từ dữ liệu phỏng vấn, điểm băn khoăn cao nhất rơi vào lúc vừa nhận kết quả số trên điện thoại (9/10); đây là thời điểm vàng để hỗ trợ người bệnh.</p>
         </div>
 
         <div class="slide-body">
@@ -575,7 +577,7 @@
           <div style="flex: 1.35; display: flex; flex-direction: column; min-height: 0;">
             <div class="card" style="flex: 1; padding: 20px; justify-content: space-between;">
               <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
-                <div style="font-size: 15px; font-weight: 800; color: #ffffff;">📈 Thang Đo Mức Độ Lo Lắng Của Người Bệnh (Từ 1 Đến 10)</div>
+                <div style="font-size: 15px; font-weight: 800; color: #ffffff;">📈 Thang Đo Mức Độ Lo Lắng Của Người Đi Khám (Từ 1 Đến 10)</div>
                 <span class="tag tag-rose">Đỉnh Điểm: Giai Đoạn 4 (Mức 9/10)</span>
               </div>
 
@@ -658,7 +660,7 @@
               </div>
               <div style="font-size: 17px; font-weight: 800; color: #ffffff;">Giai Đoạn 4: Xem Kết Quả Số Trên Ứng Dụng</div>
               <div style="color: #cbd5e1; font-size: 14px; margin-top: 6px; line-height: 1.45;">
-                Bệnh nhân nhìn thấy các chỉ số vượt ngưỡng hoặc chữ viết tắt mà chưa được Bác sĩ giải thích, sinh tâm lý hoang mang và tự tra cứu thông tin tràn lan.
+                Người đi khám nhìn thấy các chỉ số vượt ngưỡng hoặc chữ viết tắt mà chưa hiểu ý nghĩa, dễ sinh tâm lý hoang mang và tự tra cứu thông tin tràn lan.
               </div>
             </div>
 
@@ -669,14 +671,14 @@
               </div>
               <div style="font-size: 17px; font-weight: 800; color: #ffffff;">Trước Khi Bước Vào Phòng Khám Bác Sĩ</div>
               <div style="color: #cbd5e1; font-size: 14px; margin-top: 6px; line-height: 1.45;">
-                Giải thích sơ bộ ý nghĩa đời thường và chuẩn bị sẵn 2-3 câu hỏi cốt lõi để người bệnh chủ động, tự tin trao đổi cùng Bác sĩ.
+                Giải thích sơ bộ ý nghĩa đời thường và chuẩn bị sẵn 2-3 câu hỏi cốt lõi để người đi khám chủ động, tự tin trao đổi cùng Bác sĩ.
               </div>
             </div>
           </div>
         </div>
 
         <footer class="slide-footer">
-          <span>Khảo sát định lượng trên 35 bệnh nhân ngoại trú tại bệnh viện · Điểm cảm xúc đo lường thực tế</span>
+          <span>Mô hình hóa hành trình cảm xúc từ dữ liệu phỏng vấn người dùng thực tế · 02-journey-map/workflow-journey-map.md</span>
           <span>Phím ← / → để chuyển trang</span>
         </footer>
       </section>
@@ -710,7 +712,7 @@
               📐 Công Thức Stanford Biodesign: Nhu Cầu = Vấn Đề + Nhóm Người Dùng + Kết Quả Mong Đợi
             </div>
             <div style="font-size: clamp(18px, 2.4vh, 26px); font-weight: 900; color: #ffffff; line-height: 1.4; max-width: 1050px; margin: 0 auto;">
-              "Cần một phương thức <span style="color:#fb7185;">giải thích kết quả cận lâm sàng dễ hiểu</span> cho <span style="color:#38bdf8;">người bệnh ngoại trú trong 45 phút chờ đợi</span> để <span style="color:#34d399;">chuyển hóa sự lo lắng thành sự chuẩn bị chu đáo</span> trước khi bước vào phòng khám Bác sĩ."
+              "Cần một phương thức <span style="color:#fb7185;">giải thích kết quả cận lâm sàng dễ hiểu</span> cho <span style="color:#38bdf8;">người đi khám trong 45 phút chờ đợi</span> để <span style="color:#34d399;">chuyển hóa sự lo lắng thành sự chuẩn bị chu đáo</span> trước khi bước vào phòng khám Bác sĩ."
             </div>
           </div>
 
@@ -721,7 +723,7 @@
                 <span class="tag tag-rose" style="margin-bottom: 8px;">1. Vấn Đề Đã Được Kiểm Chứng</span>
                 <div style="font-size: 17px; font-weight: 800; color: #ffffff; margin-bottom: 6px;">Khoảng Trống Cận Lâm Sàng</div>
                 <div style="font-size: 14px; color: #cbd5e1; line-height: 1.45;">
-                  Bệnh nhân bối rối trước bảng kết quả với hàng loạt ký hiệu chuyên môn; thời gian chờ đợi kéo dài làm gia tăng căng thẳng.
+                  Người đi khám bối rối trước bảng kết quả với hàng loạt ký hiệu chuyên môn; thời gian chờ đợi kéo dài làm gia tăng căng thẳng.
                 </div>
               </div>
               <div style="color: #fb7185; font-size: 13px; font-weight: 700;">✓ Giải tỏa tâm lý sợ hãi, bất an</div>
@@ -729,13 +731,13 @@
 
             <div class="card" style="border-top: 4px solid #38bdf8; justify-content: space-between;">
               <div>
-                <span class="tag tag-blue" style="margin-bottom: 8px;">2. Nhóm Người Bệnh Trọng Tâm</span>
-                <div style="font-size: 17px; font-weight: 800; color: #ffffff; margin-bottom: 6px;">Người Bệnh Khám Ngoại Trú</div>
+                <span class="tag tag-blue" style="margin-bottom: 8px;">2. Nhóm Người Dùng Trọng Tâm</span>
+                <div style="font-size: 17px; font-weight: 800; color: #ffffff; margin-bottom: 6px;">Người Khám Ngoại Trú</div>
                 <div style="font-size: 14px; color: #cbd5e1; line-height: 1.45;">
-                  Tập trung vào bệnh nhân khám định kỳ hoặc có chỉ số chênh nhẹ so với khoảng tham chiếu chuẩn (Borderline elevation).
+                  Tập trung vào người khám sức khỏe định kỳ hoặc có chỉ số chênh nhẹ so với khoảng tham chiếu chuẩn (Borderline elevation).
                 </div>
               </div>
-              <div style="color: #38bdf8; font-size: 13px; font-weight: 700;">✓ Đồng hành đúng lúc tại sảnh viện</div>
+              <div style="color: #38bdf8; font-size: 13px; font-weight: 700;">✓ Đồng hành đúng lúc trong lúc chờ đợi</div>
             </div>
 
             <div class="card" style="border-top: 4px solid #10b981; justify-content: space-between;">
@@ -743,16 +745,16 @@
                 <span class="tag tag-emerald" style="margin-bottom: 8px;">3. Kết Quả Đo Lường Được</span>
                 <div style="font-size: 17px; font-weight: 800; color: #ffffff; margin-bottom: 6px;">Cuộc Khám Hiệu Quả Hơn</div>
                 <div style="font-size: 14px; color: #cbd5e1; line-height: 1.45;">
-                  Bệnh nhân chuẩn bị sẵn câu hỏi cụ thể; Bác sĩ tiết kiệm 3-5 phút giải thích khái niệm cơ bản để tập trung tư vấn điều trị.
+                  Người bệnh chuẩn bị sẵn 2-3 câu hỏi cụ thể; Bác sĩ tiết kiệm 1.5–2 phút giải thích khái niệm cơ bản để tập trung tư vấn điều trị.
                 </div>
               </div>
-              <div style="color: #34d399; font-size: 13px; font-weight: 700;">✓ Nâng cao mức độ hài lòng người bệnh</div>
+              <div style="color: #34d399; font-size: 13px; font-weight: 700;">✓ Nâng cao chất lượng cuộc khám</div>
             </div>
           </div>
         </div>
 
         <footer class="slide-footer">
-          <span>Tiêu chuẩn Stanford Biodesign: Không phụ thuộc vào giải pháp công nghệ cụ thể</span>
+          <span>Tiêu chuẩn Stanford Biodesign: Định nghĩa bài toán độc lập với giải pháp công nghệ cụ thể</span>
           <span>Phím ← / → để chuyển trang</span>
         </footer>
       </section>
@@ -949,13 +951,13 @@
 
 
       <!-- ======================================================== -->
-      <!-- SLIDE 07: THỬ NGHIỆM THỰC TẾ & TỐI ƯU TRẢI NGHIỆM        -->
+      <!-- SLIDE 07: THỬ NGHIỆM VỚI 3 NGƯỜI DÙNG & TỐI ƯU UX        -->
       <!-- ======================================================== -->
       <section class="slide-pane" id="slide-7">
         <header class="slide-header">
           <div class="header-left">
             <span class="brand-pill">07. Kiểm Chứng Thực Nghiệm</span>
-            <span class="header-topic">Phản Hồi Từ Người Bệnh Thực Tế & Quá Trình Tinh Chỉnh Giao Diện</span>
+            <span class="header-topic">Thử Nghiệm Với 3 Người Dùng Độc Lập & Chu Kỳ Cải Tiến Giao Diện</span>
           </div>
           <div class="header-right">
             <div class="slide-counter">Trang 07 / 10</div>
@@ -965,70 +967,73 @@
         </header>
 
         <div class="slide-headline">
-          <h2 class="slide-title">Kiểm Chứng Người Thật & Chu Kỳ Tối Ưu Hóa Giao Diện</h2>
-          <p class="slide-subtitle">Trực tiếp mang bản thử nghiệm đến sảnh viện để người bệnh trải nghiệm; lắng nghe góp ý chân thực và tinh chỉnh trong 24 giờ.</p>
+          <h2 class="slide-title">Thử Nghiệm Prototype & Chu Kỳ Tối Ưu Hóa Giao Diện</h2>
+          <p class="slide-subtitle">Đưa bản thử nghiệm cho 3 người dùng trải nghiệm thực tế với bộ dữ liệu phòng lab giả lập (Mock Data); ghi nhận phản hồi và hoàn thiện giao diện trong 24 giờ.</p>
         </div>
 
         <div class="slide-body">
-          <!-- Bảng Trước và Sau tinh gọn -->
+          <!-- Bảng 3 phiên test thực tế theo đúng tài liệu user-testing-logs.md -->
           <div style="flex: 1.25; display: flex; flex-direction: column; min-height: 0;">
             <div class="card" style="flex: 1; padding: 20px; justify-content: space-between;">
               <div style="font-size: 15px; font-weight: 800; color: #38bdf8; margin-bottom: 8px;">
-                🔄 3 Điểm Tinh Chỉnh Quan Trọng Từ Ý Kiến Người Bệnh
+                🔄 3 Vòng Tinh Chỉnh Thực Tế Từ Phản Hồi Người Dùng (T1 – T3)
               </div>
 
               <div style="display: flex; flex-direction: column; gap: 12px;">
+                <!-- Tester T1 -->
                 <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 10px; padding: 12px 14px;">
                   <div style="display: flex; justify-content: space-between; margin-bottom: 4px;">
-                    <span style="color: #fb7185; font-weight: 800; font-size: 13.5px;">🔴 Góp ý ban đầu (Bệnh nhân P1):</span>
-                    <span style="color: #94a3b8; font-size: 12px;">"Bảng số nhìn rối quá, không biết cái nào nguy hiểm"</span>
+                    <span style="color: #fb7185; font-weight: 800; font-size: 13.5px;">🔴 Tester T1 (Nữ, 25t - Lần đầu đọc kết quả máu tổng quát):</span>
+                    <span style="color: #94a3b8; font-size: 12px;">"Đoạn văn ban đầu quá dài (4 đoạn dày đặc chữ), đọc lúc sốt ruột rất ngại"</span>
                   </div>
-                  <div style="color: #34d399; font-weight: 700; font-size: 13.5px;">👉 Giải pháp: Thay thế toàn bộ bằng Thẻ đo trực quan 3 màu (Xanh lá / Vàng / Cam) dễ nhận biết ngay.</div>
+                  <div style="color: #34d399; font-weight: 700; font-size: 13.5px;">👉 Tinh chỉnh: Chuyển sang cấu trúc 3 gạch đầu dòng ngắn gọn dưới 150 từ, đính kèm 2 câu hỏi hỏi Bác sĩ.</div>
                 </div>
 
+                <!-- Tester T2 -->
                 <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 10px; padding: 12px 14px;">
                   <div style="display: flex; justify-content: space-between; margin-bottom: 4px;">
-                    <span style="color: #fbbf24; font-weight: 800; font-size: 13.5px;">🟡 Góp ý ban đầu (Bệnh nhân P2):</span>
-                    <span style="color: #94a3b8; font-size: 12px;">"AI nói dài dòng quá, chữ nhỏ khó đọc khi đang sốt ruột"</span>
+                    <span style="color: #fbbf24; font-weight: 800; font-size: 13.5px;">🟡 Tester T2 (Nam, 48t - Đọc kết quả HbA1c 6.1% mức ranh giới):</span>
+                    <span style="color: #94a3b8; font-size: 12px;">Hỏi AI có nên tự ra tiệm thuốc mua uống luôn không</span>
                   </div>
-                  <div style="color: #34d399; font-weight: 700; font-size: 13.5px;">👉 Giải pháp: Giới hạn giải thích dưới 150 từ theo 3 bước ngắn gọn, đính kèm 2 câu hỏi hỏi Bác sĩ.</div>
+                  <div style="color: #34d399; font-weight: 700; font-size: 13.5px;">👉 Tinh chỉnh: Khóa chặt rào chắn từ chối tư vấn mua thuốc, nhắc nhở quyền kê đơn duy nhất thuộc Bác sĩ.</div>
                 </div>
 
+                <!-- Tester T3 -->
                 <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 10px; padding: 12px 14px;">
                   <div style="display: flex; justify-content: space-between; margin-bottom: 4px;">
-                    <span style="color: #38bdf8; font-weight: 800; font-size: 13.5px;">🔵 Góp ý ban đầu (Bệnh nhân P3):</span>
-                    <span style="color: #94a3b8; font-size: 12px;">"Muốn hỏi ngay tại chỉ số chứ không muốn mở chatbot riêng"</span>
+                    <span style="color: #38bdf8; font-weight: 800; font-size: 13.5px;">🔵 Tester T3 (Nữ, 32t - Thử nghiệm kịch bản cấp cứu / Red-Flag):</span>
+                    <span style="color: #94a3b8; font-size: 12px;">Cố tình nhập triệu chứng đau tức ngực dữ dội</span>
                   </div>
-                  <div style="color: #34d399; font-weight: 700; font-size: 13.5px;">👉 Giải pháp: Thiết kế ngăn kéo In-Context bật lên tức thì ngay tại chỉ số xét nghiệm đang xem.</div>
+                  <div style="color: #34d399; font-weight: 700; font-size: 13.5px;">👉 Tinh chỉnh: Hệ thống ngắt AI ngay lập tức (&lt; 1.5s), hiển thị khung đỏ kèm nút bấm gọi nhanh 1900 23 23 89 và 115.</div>
                 </div>
               </div>
             </div>
           </div>
 
-          <!-- 3 Số liệu minh chứng hiệu quả -->
+          <!-- 3 Số liệu đo lường thực tế từ user-testing-logs.md -->
           <div style="flex: 0.75; display: flex; flex-direction: column; gap: 14px; min-height: 0;">
             <div class="card" style="border-left: 4px solid #10b981; flex: 1; justify-content: center; padding: 16px;">
-              <div class="giant-stat" style="color: #34d399;">+70%</div>
-              <div class="stat-label">Tự Tin Khi Trao Đổi Cùng Bác Sĩ</div>
-              <div style="color: #cbd5e1; font-size: 13px; margin-top: 4px;">Người bệnh chuẩn bị sẵn sàng câu hỏi trọng tâm.</div>
+              <div class="giant-stat" style="color: #34d399;">-70%</div>
+              <div class="stat-label">Thời Gian Đọc Hiểu Kết Quả</div>
+              <div style="color: #cbd5e1; font-size: 13px; margin-top: 4px;">Giảm từ 95 giây xuống 28 giây nhờ giao diện thẻ 3 màu.</div>
             </div>
 
             <div class="card" style="border-left: 4px solid #38bdf8; flex: 1; justify-content: center; padding: 16px;">
               <div class="giant-stat" style="color: #38bdf8;">100%</div>
-              <div class="stat-label">An Toàn Phi Lâm Sàng Tuyệt Đối</div>
-              <div style="color: #cbd5e1; font-size: 13px; margin-top: 4px;">Không có trường hợp nào hiểu lầm thành đơn thuốc.</div>
+              <div class="stat-label">Người Dùng Chuẩn Bị Được Câu Hỏi</div>
+              <div style="color: #cbd5e1; font-size: 13px; margin-top: 4px;">3/3 tester tự tin có câu hỏi cụ thể để trao đổi cùng Bác sĩ.</div>
             </div>
 
             <div class="card" style="border-left: 4px solid #f43f5e; flex: 1; justify-content: center; padding: 16px;">
-              <div class="giant-stat" style="color: #fb7185;">&lt; 1.0s</div>
+              <div class="giant-stat" style="color: #fb7185;">&lt; 1.5s</div>
               <div class="stat-label">Tốc Độ Kích Hoạt Cảnh Báo Khẩn</div>
-              <div style="color: #cbd5e1; font-size: 13px; margin-top: 4px;">Tự động ngắt kết nối và hiển thị số hỗ trợ y tế.</div>
+              <div style="color: #cbd5e1; font-size: 13px; margin-top: 4px;">Ngắt luồng AI và hiển thị hotline cấp cứu tức thì.</div>
             </div>
           </div>
         </div>
 
         <footer class="slide-footer">
-          <span>Ghi nhận từ các phiên thử nghiệm thực địa tại sảnh khám bệnh</span>
+          <span>Báo cáo thử nghiệm 4 phần theo chuẩn mục 79 đề bài tuyển chọn · 05-prototype/user-testing-logs.md</span>
           <span>Phím ← / → để chuyển trang</span>
         </footer>
       </section>
@@ -1094,7 +1099,7 @@
               <div>
                 <div style="font-size: 38px; margin-bottom: 8px;">🚨</div>
                 <div style="font-size: 20px; font-weight: 900; color: #fb7185; margin-bottom: 4px;">CẢNH BÁO NGUY CẤP</div>
-                <div class="stat-label" style="margin-bottom: 14px;">Triage Dưới 1.0 Giây</div>
+                <div class="stat-label" style="margin-bottom: 14px;">Triage Dưới 1.5 Giây</div>
 
                 <div style="font-size: 14px; color: #cbd5e1; line-height: 1.5; text-align: left;">
                   • Tự động phát hiện các từ khóa cấp cứu hoặc chỉ số nguy kịch tức thì.<br>
@@ -1132,7 +1137,7 @@
 
         <div class="slide-headline">
           <h2 class="slide-title">Năng Lực Dẫn Dắt Đội Ngũ: Ma Trận Thực Địa & Kiểm Soát Cổng</h2>
-          <p class="slide-subtitle">Phương thức điều phối 5–10 kỹ sư K4 xoay tua qua 4 trạm quan sát thực tế tại bệnh viện, bảo đảm chất lượng qua 3 cổng xét duyệt chặt chẽ.</p>
+          <p class="slide-subtitle">Phương thức điều phối 5–10 kỹ sư K4 tiếp cận thực tế quy trình bệnh viện, bảo đảm chất lượng qua 3 cổng xét duyệt chặt chẽ.</p>
         </div>
 
         <div class="slide-body">
@@ -1141,8 +1146,8 @@
             <div class="media-box">
               <img src="images/coach_leading_squad.jpg" alt="Coach dẫn dắt K4 tại Vinmec">
               <div style="position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(transparent, rgba(7, 12, 24, 0.95)); padding: 16px 20px;">
-                <div style="color: #38bdf8; font-weight: 800; font-size: 13px; text-transform: uppercase;">🔄 Ma trận xoay tua 4 trạm thực tế:</div>
-                <div style="color: #ffffff; font-size: 14.5px; font-weight: 600; margin-top: 2px;">Trạm Tiếp đón → Trạm Lấy mẫu → Trạm Sảnh chờ → Phòng khám Bác sĩ.</div>
+                <div style="color: #38bdf8; font-weight: 800; font-size: 13px; text-transform: uppercase;">🔄 Ma trận 4 trạm quan sát quy trình:</div>
+                <div style="color: #ffffff; font-size: 14.5px; font-weight: 600; margin-top: 2px;">Trạm Tiếp đón → Trạm Cận lâm sàng → Khu vực chờ kết quả → Phòng khám Bác sĩ.</div>
               </div>
             </div>
           </div>
@@ -1161,11 +1166,11 @@
 
             <div class="card" style="border-left: 4px solid #f59e0b; flex: 1; justify-content: center; padding: 14px 18px;">
               <div style="display: flex; justify-content: space-between; align-items: center;">
-                <div style="font-size: 16px; font-weight: 800; color: #fbbf24;">⚑ CỔNG 2 (Tuần 4): Thử Nghiệm 3 Bệnh Nhân Thật</div>
+                <div style="font-size: 16px; font-weight: 800; color: #fbbf24;">⚑ CỔNG 2 (Tuần 4): Thử Nghiệm 3 Người Dùng Độc Lập</div>
                 <span class="tag tag-amber">Tuần 4</span>
               </div>
               <div style="font-size: 13.5px; color: #cbd5e1; margin-top: 4px; line-height: 1.4;">
-                Yêu cầu các nhóm đưa bản thử nghiệm ra sảnh viện để người bệnh thực tế đánh giá; nghiệm thu báo cáo tối ưu trước khi bước sang tuần 5.
+                Yêu cầu các nhóm đưa bản prototype thử nghiệm với tối thiểu 3 người dùng độc lập bằng dữ liệu giả lập; nghiệm thu báo cáo tối ưu 4 phần trước khi bước sang tuần 5.
               </div>
             </div>
 
@@ -1182,7 +1187,7 @@
         </div>
 
         <footer class="slide-footer">
-          <span>Kế hoạch vận hành thực địa chi tiết theo tài liệu hospital-operations-blueprint.md</span>
+          <span>Kế hoạch đào tạo và đồng hành K4 · 07-coach-plan/k4-coaching-framework.md</span>
           <span>Phím ← / → để chuyển trang</span>
         </footer>
       </section>
@@ -1250,9 +1255,9 @@
                 🤝 3 Cam Kết Đồng Hành Của Cựu Học Viên K2 Nguyễn Xuân Tài
               </div>
               <div style="display: flex; flex-direction: column; gap: 8px; font-size: 13.5px; color: #f1f5f9; line-height: 1.45;">
-                <div>✓ <strong>Có mặt tại hiện trường:</strong> Trực tiếp đồng hành cùng các bạn mentee tại các khoa phòng Vinmec trong suốt thời gian thực địa.</div>
-                <div>✓ <strong>Kỷ luật bảo mật tuyệt đối:</strong> Bảo đảm 100% mentee tuân thủ Nghị định 13/2023/NĐ-CP; chỉ vào viện khi đạt bài kiểm tra an toàn.</div>
-                <div>✓ <strong>Đánh giá hành động thực chất:</strong> Chỉ rõ điểm nghẽn và hướng dẫn giải pháp khắc phục trong vòng 24 giờ.</div>
+                <div>✓ <strong>Đồng hành thực chất:</strong> Trực tiếp hỗ trợ các nhóm mentee tháo gỡ điểm nghẽn kỹ thuật và quy trình trong suốt 6 tuần sprint.</div>
+                <div>✓ <strong>Kỷ luật bảo mật tuyệt đối:</strong> Bảo đảm 100% mentee tuân thủ Nghị định 13/2023/NĐ-CP; chỉ sử dụng mock data để thử nghiệm.</div>
+                <div>✓ <strong>Đánh giá hành động thực tế:</strong> Chỉ rõ điểm nghẽn và hướng dẫn phương án khắc phục cụ thể trong vòng 24 giờ.</div>
               </div>
             </div>
           </div>
