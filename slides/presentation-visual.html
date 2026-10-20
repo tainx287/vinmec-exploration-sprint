@@ -1,0 +1,1146 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vinmec x VRIC — Executive Visual Presentation (Bản Trực Quan Tinh Gọn)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    html, body {
+      width: 100%;
+      min-height: 100%;
+      background: #050811;
+      color: #f8fafc;
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+      scroll-snap-type: y mandatory;
+    }
+
+    /* Screen display: Viewport Adaptive (100vw, 100vh) */
+    .slide {
+      width: 100vw;
+      height: 100vh;
+      min-height: 100vh;
+      max-height: 100vh;
+      box-sizing: border-box;
+      overflow: hidden;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      padding: clamp(16px, 2.8vh, 36px) clamp(24px, 3.8vw, 60px);
+      background: radial-gradient(circle at 85% 15%, rgba(14, 165, 233, 0.14) 0%, transparent 45%),
+                  radial-gradient(circle at 15% 85%, rgba(16, 185, 129, 0.09) 0%, transparent 45%),
+                  #070b16;
+      scroll-snap-align: start;
+      page-break-after: always;
+      break-after: page;
+    }
+
+    @media print {
+      @page {
+        size: 1920px 1080px;
+        margin: 0;
+      }
+      html, body {
+        width: 1920px;
+        height: auto;
+        overflow: visible;
+        scroll-snap-type: none;
+      }
+      .slide {
+        width: 1920px !important;
+        height: 1080px !important;
+        min-height: 1080px !important;
+        max-height: 1080px !important;
+        padding: 40px 64px !important;
+        page-break-after: always !important;
+        break-after: page !important;
+      }
+    }
+
+    /* Header HUD */
+    .slide-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: clamp(8px, 1.4vh, 14px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      padding-bottom: clamp(6px, 1vh, 12px);
+      flex-shrink: 0;
+    }
+    .badge-wrap {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .brand-badge {
+      background: rgba(14, 165, 233, 0.15);
+      border: 1px solid rgba(14, 165, 233, 0.45);
+      color: #38bdf8;
+      padding: 4px 14px;
+      border-radius: 999px;
+      font-size: clamp(11px, 1vw, 13px);
+      font-weight: 800;
+      letter-spacing: 0.6px;
+      text-transform: uppercase;
+    }
+    .slide-category {
+      color: #94a3b8;
+      font-size: clamp(12px, 1.1vw, 15px);
+      font-weight: 600;
+    }
+    .slide-num {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: clamp(12px, 1vw, 14px);
+      font-weight: 700;
+      color: #38bdf8;
+      background: rgba(14, 165, 233, 0.08);
+      padding: 4px 12px;
+      border-radius: 8px;
+      border: 1px solid rgba(14, 165, 233, 0.2);
+    }
+    .slide-title {
+      font-size: clamp(24px, 2.8vh, 38px);
+      font-weight: 900;
+      line-height: 1.18;
+      color: #ffffff;
+      margin-bottom: clamp(3px, 0.5vh, 6px);
+      letter-spacing: -0.6px;
+      flex-shrink: 0;
+    }
+    .slide-subtitle {
+      font-size: clamp(13px, 1.45vh, 17px);
+      color: #94a3b8;
+      line-height: 1.35;
+      margin-bottom: clamp(10px, 1.5vh, 18px);
+      flex-shrink: 0;
+    }
+    .slide-body {
+      flex: 1;
+      display: flex;
+      gap: clamp(16px, 1.8vw, 28px);
+      min-height: 0;
+      overflow: hidden;
+    }
+
+    /* Cards & Glassmorphism */
+    .card {
+      background: rgba(26, 36, 56, 0.52);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 16px;
+      padding: clamp(14px, 1.8vh, 22px);
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+
+    /* Giant Numbers & Stats */
+    .giant-stat {
+      font-size: clamp(48px, 6vh, 72px);
+      font-weight: 900;
+      font-family: 'JetBrains Mono', monospace;
+      line-height: 1;
+      letter-spacing: -1.5px;
+      margin-bottom: 4px;
+      flex-shrink: 0;
+    }
+    .stat-label {
+      font-size: clamp(11px, 1.1vh, 13px);
+      color: #94a3b8;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+      flex-shrink: 0;
+    }
+
+    /* Pills & Badges */
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 3px 10px;
+      border-radius: 999px;
+      font-size: clamp(10px, 1vh, 12px);
+      font-weight: 800;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      flex-shrink: 0;
+    }
+    .pill-red { background: rgba(244, 63, 94, 0.18); color: #fb7185; border: 1px solid rgba(244, 63, 94, 0.4); }
+    .pill-green { background: rgba(16, 185, 129, 0.18); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.4); }
+    .pill-blue { background: rgba(14, 165, 233, 0.18); color: #38bdf8; border: 1px solid rgba(14, 165, 233, 0.4); }
+    .pill-amber { background: rgba(245, 158, 11, 0.18); color: #fbbf24; border: 1px solid rgba(245, 158, 11, 0.4); }
+
+    /* Footer */
+    .slide-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: clamp(6px, 1vh, 12px);
+      margin-top: auto;
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+      font-size: clamp(10px, 0.95vh, 12px);
+      color: #64748b;
+      flex-shrink: 0;
+    }
+
+    /* Visual Image Frames */
+    .visual-frame {
+      border-radius: 18px;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      box-shadow: 0 16px 36px -8px rgba(0, 0, 0, 0.6);
+      height: 100%;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+    }
+    .visual-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .phone-fit {
+      height: 100%;
+      width: auto;
+      max-width: 100%;
+      object-fit: contain !important;
+      border-radius: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ========================================== -->
+  <!-- SLIDE 0: TRANG BÌA (HERO VISUAL LOBBY)     -->
+  <!-- ========================================== -->
+  <section class="slide" id="slide-cover" style="justify-content: center; align-items: center; text-align: center; background: radial-gradient(circle at 50% 45%, rgba(14, 165, 233, 0.22) 0%, rgba(7, 11, 22, 0.98) 75%);">
+    <div style="max-width: min(1200px, 92vw); margin: auto; display: flex; flex-direction: column; align-items: center;">
+      <div style="display: inline-flex; align-items: center; gap: 10px; margin-bottom: clamp(12px, 1.8vh, 22px);">
+        <span class="brand-badge" style="font-size: clamp(12px, 1vw, 14px); padding: 6px 20px;">VinUni VRIC × Vinmec Healthcare System</span>
+        <span style="color: #94a3b8; font-weight: 600; font-size: clamp(13px, 1.1vw, 15px);">Exploration Sprint 6 Tuần — Bài Tập Tuyển Chọn K1–K3</span>
+      </div>
+      
+      <h1 style="font-size: clamp(32px, 4.8vh, 54px); font-weight: 900; line-height: 1.16; color: #ffffff; margin-bottom: clamp(10px, 1.6vh, 20px); letter-spacing: -1.2px; max-width: 1100px;">
+        Tái Thiết Kế Trải Nghiệm Đọc Hiểu Kết Quả Xét Nghiệm Với AI Trên MyVinmec
+      </h1>
+      
+      <p style="font-size: clamp(16px, 2.2vh, 23px); color: #94a3b8; margin-bottom: clamp(20px, 3.2vh, 38px); max-width: 920px; line-height: 1.45;">
+        Chuyển hóa <span style="color: #f43f5e; font-weight: 900;">"vùng trũng lo âu" 45 phút</span> chờ đợi thành khoảng thời gian người bệnh được trao quyền hiểu biết và chuẩn bị trao đổi cùng Bác sĩ.
+      </p>
+      
+      <!-- Candidate Bar -->
+      <div style="display: inline-flex; flex-wrap: wrap; justify-content: center; gap: clamp(16px, 2.5vw, 36px); background: rgba(30, 41, 59, 0.6); padding: clamp(12px, 1.8vh, 18px) clamp(22px, 3vw, 40px); border-radius: 16px; border: 1px solid rgba(255, 255, 255, 0.12); backdrop-filter: blur(12px);">
+        <div style="text-align: left;">
+          <div style="font-size: 11px; color: #64748b; font-weight: 700; text-transform: uppercase;">Ứng viên K1–K3</div>
+          <div style="font-size: clamp(15px, 1.8vh, 19px); font-weight: 800; color: #f8fafc;">Nguyễn Xuân Tài</div>
+        </div>
+        <div style="width: 1px; background: rgba(255,255,255,0.12); height: 34px;"></div>
+        <div style="text-align: left;">
+          <div style="font-size: 11px; color: #64748b; font-weight: 700; text-transform: uppercase;">Vai trò ứng tuyển</div>
+          <div style="font-size: clamp(15px, 1.8vh, 19px); font-weight: 800; color: #38bdf8;">Forward Deployed Engineer / K4 Coach</div>
+        </div>
+        <div style="width: 1px; background: rgba(255,255,255,0.12); height: 34px;"></div>
+        <div style="text-align: left;">
+          <div style="font-size: 11px; color: #64748b; font-weight: 700; text-transform: uppercase;">Khóa xuất phát</div>
+          <div style="font-size: clamp(15px, 1.8vh, 19px); font-weight: 800; color: #10b981;">K2 AI Thực Chiến VinUni</div>
+        </div>
+      </div>
+    </div>
+    
+    <div style="position: absolute; bottom: 18px; color: #64748b; font-size: 12px;">
+      19/10/2026 · Hạn nộp 23h59 GMT+7 · Hội đồng Khoa học VRIC & Hệ thống Y tế Vinmec
+    </div>
+  </section>
+
+
+  <!-- ==================================================== -->
+  <!-- SLIDE 01: BỐI CẢNH - VÙNG TRŨNG LO ÂU (VISUAL EVIDENCE)-->
+  <!-- ==================================================== -->
+  <section class="slide" id="slide-1">
+    <div class="slide-header">
+      <div class="badge-wrap">
+        <span class="brand-badge">01. Bối Cảnh Thực Tế</span>
+        <span class="slide-category">Vùng Trũng Thông Tin & Điểm Mù Ứng Dụng MyVinmec</span>
+      </div>
+      <div class="slide-num">Trang 01 / 10</div>
+    </div>
+    <h2 class="slide-title">45 Phút "Vùng Trũng Thông Tin" Tại Sảnh Chờ Bệnh Viện</h2>
+    <div class="slide-subtitle">Trả kết quả nhanh qua app nhưng thiếu ngữ cảnh giải thích đời thường, kích hoạt hội chứng Scanxiety & Cyberchondria.</div>
+
+    <div class="slide-body">
+      <!-- Ảnh 1: Bệnh nhân lo âu tại sảnh Vinmec -->
+      <div style="flex: 1; display: flex; flex-direction: column; height: 100%;">
+        <div class="visual-frame">
+          <img src="images/hospital_scanxiety_patient.jpg" alt="Bệnh nhân lo âu tại sảnh chờ Vinmec">
+          <div style="position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(transparent, rgba(7, 11, 22, 0.95)); padding: 14px 18px;">
+            <div style="color: #fb7185; font-weight: 800; font-size: 13px; text-transform: uppercase;">⚠️ Thực trạng sảnh chờ:</div>
+            <div style="color: #f8fafc; font-size: 14px; font-weight: 600;">Người bệnh ngồi xem kết quả số trong bất an, không có ai hỗ trợ giải thích.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Ảnh 2: UI Mockup MyVinmec bôi đỏ chữ viết tắt -->
+      <div style="flex: 0.75; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%;">
+        <div class="visual-frame" style="background: transparent; border: none; box-shadow: none;">
+          <img src="images/myvinmec_evidence.png" alt="UI MyVinmec khoanh đỏ điểm mù" class="phone-fit">
+        </div>
+      </div>
+
+      <!-- Cột 3: 2 Số liệu tử huyệt cực đại -->
+      <div style="flex: 0.9; display: flex; flex-direction: column; gap: clamp(12px, 1.8vh, 20px); justify-content: center;">
+        <div class="card" style="border-left: 5px solid #f43f5e; padding: 18px;">
+          <div class="giant-stat" style="color: #f43f5e;">45 Phút</div>
+          <div class="stat-label">Thời gian chờ gọi tên sau khi có kết quả</div>
+          <div style="color: #cbd5e1; font-size: 14px; margin-top: 8px; line-height: 1.4;">
+            Khoảng trống thông tin hoàn toàn cô đơn; chữ viết tắt y khoa kỹ thuật gây hoang mang.
+          </div>
+        </div>
+
+        <div class="card" style="border-left: 5px solid #38bdf8; padding: 18px;">
+          <div class="giant-stat" style="color: #38bdf8;">> 80%</div>
+          <div class="stat-label">Bệnh nhân tự lên Google tra cứu triệu chứng</div>
+          <div style="color: #cbd5e1; font-size: 14px; margin-top: 8px; line-height: 1.4;">
+            Kích hoạt phản ứng sợ hãi Cyberchondria, tự suy diễn bệnh hiểm nghèo trước giờ vào khám.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="slide-footer">
+      <span>Fieldwork Evidence · Tecno Spark 20 (Android 13)</span>
+      <span>01-phong-van/myvinmec-heuristic-audit.md</span>
+    </div>
+  </section>
+
+
+  <!-- ============================================== -->
+  <!-- SLIDE 02: 3 TIẾNG NÓI THẤU CẢM (P1 - P2 - P3) -->
+  <!-- ============================================== -->
+  <section class="slide" id="slide-2">
+    <div class="slide-header">
+      <div class="badge-wrap">
+        <span class="brand-badge">02. Nghiên Cứu Người Dùng</span>
+        <span class="slide-category">3 Chân Dung Lâm Sàng Thấu Cảm (P1 – P3) Khử Định Danh NĐ 13</span>
+      </div>
+      <div class="slide-num">Trang 02 / 10</div>
+    </div>
+    <h2 class="slide-title">Lắng Nghe Sự Thật: 3 Tiếng Nói Khử Định Danh Thực Tế</h2>
+    <div class="slide-subtitle">Trực quan hóa 3 chân dung người dùng đại diện; trích dẫn nguyên văn bằng chứng thực nghiệm The Mom Test.</div>
+
+    <div class="slide-body" style="flex-direction: column; gap: clamp(12px, 1.6vh, 18px);">
+      <!-- Dải ảnh minh họa 3 chân dung người bệnh -->
+      <div style="height: clamp(140px, 22vh, 200px); width: 100%; border-radius: 16px; overflow: hidden; border: 1px solid rgba(255,255,255,0.12); flex-shrink: 0;">
+        <img src="images/three_patient_personas.jpg" alt="Ba chân dung bệnh nhân P1 P2 P3" style="width: 100%; height: 100%; object-fit: cover;">
+      </div>
+
+      <!-- 3 Card trích dẫn nguyên văn & nhãn điểm đau đanh thép -->
+      <div class="col-3" style="flex: 1;">
+        <!-- P1 -->
+        <div class="card" style="border-top: 4px solid #f43f5e; justify-content: space-between;">
+          <div>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+              <span class="pill pill-red">P1 · Cựu quân nhân (32t)</span>
+              <span style="font-size: 11px; color: #94a3b8;">Khám gối & MRI</span>
+            </div>
+            <div style="font-style: italic; color: #ffffff; font-size: clamp(13px, 1.5vh, 16px); line-height: 1.45; margin: 6px 0;">
+              "Anh cần người nói chuyện cùng trong lúc chờ đợi để không bị hoang mang. Cầm kết quả mà không hiểu gì thì bất an dai dẳng."
+            </div>
+          </div>
+          <div style="background: rgba(244, 63, 94, 0.12); border: 1px solid rgba(244, 63, 94, 0.35); border-radius: 8px; padding: 8px 12px;">
+            <div style="color: #fb7185; font-weight: 800; font-size: 11px; text-transform: uppercase;">🔴 Điểm đau cốt lõi:</div>
+            <div style="color: #ffffff; font-size: 13px; font-weight: 700; margin-top: 2px;">Bất an kéo dài vì thiếu người giải thích.</div>
+          </div>
+        </div>
+
+        <!-- P2 -->
+        <div class="card" style="border-top: 4px solid #f59e0b; justify-content: space-between;">
+          <div>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+              <span class="pill pill-amber">P2 · Sĩ quan Hậu cần (28t)</span>
+              <span style="font-size: 11px; color: #94a3b8;">Khám định kỳ</span>
+            </div>
+            <div style="font-style: italic; color: #ffffff; font-size: clamp(13px, 1.5vh, 16px); line-height: 1.45; margin: 6px 0;">
+              "Muốn hỏi bác sĩ nhưng phòng đông quá, dòng người thúc ép từ phía sau nên ngại không dám hỏi gì thêm."
+            </div>
+          </div>
+          <div style="background: rgba(245, 158, 11, 0.12); border: 1px solid rgba(245, 158, 11, 0.35); border-radius: 8px; padding: 8px 12px;">
+            <div style="color: #fbbf24; font-weight: 800; font-size: 11px; text-transform: uppercase;">🟡 Điểm đau cốt lõi:</div>
+            <div style="color: #ffffff; font-size: 13px; font-weight: 700; margin-top: 2px;">Phòng khám quá tải, bệnh nhân ngại hỏi BS.</div>
+          </div>
+        </div>
+
+        <!-- P3 -->
+        <div class="card" style="border-top: 4px solid #38bdf8; justify-content: space-between;">
+          <div>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+              <span class="pill pill-blue">P3 · Kỹ sư FDI (29t)</span>
+              <span style="font-size: 11px; color: #94a3b8;">Khám bắt buộc</span>
+            </div>
+            <div style="font-style: italic; color: #ffffff; font-size: clamp(13px, 1.5vh, 16px); line-height: 1.45; margin: 6px 0;">
+              "Khám xong một chỗ không biết phòng tiếp theo ở đâu. Cứ nghĩ phải đi theo đúng thứ tự in trên giấy nên đi lòng vòng."
+            </div>
+          </div>
+          <div style="background: rgba(14, 165, 233, 0.12); border: 1px solid rgba(14, 165, 233, 0.35); border-radius: 8px; padding: 8px 12px;">
+            <div style="color: #38bdf8; font-weight: 800; font-size: 11px; text-transform: uppercase;">🔵 Điểm đau cốt lõi:</div>
+            <div style="color: #ffffff; font-size: 13px; font-weight: 700; margin-top: 2px;">Mù đường di chuyển & Rơi vào bẫy tuần tự.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="slide-footer">
+      <span>100% Khử định danh PII theo Nghị định 13/2023/NĐ-CP · The Mom Test Methodology</span>
+      <span>01-phong-van/interview-notes.md</span>
+    </div>
+  </section>
+
+
+  <!-- ============================================== -->
+  <!-- SLIDE 03: EMOTION CURVE & LINE CHART (TRỰC QUAN)-->
+  <!-- ============================================== -->
+  <section class="slide" id="slide-3">
+    <div class="slide-header">
+      <div class="badge-wrap">
+        <span class="brand-badge">03. Bản Đồ Hành Trình</span>
+        <span class="slide-category">Biểu Đồ Đường Cong Cảm Xúc (Emotion Curve Line Chart)</span>
+      </div>
+      <div class="slide-num">Trang 03 / 10</div>
+    </div>
+    <h2 class="slide-title">Đỉnh Điểm Lo Âu 9/10 & Phạm Vi Can Thiệp Trọng Tâm</h2>
+    <div class="slide-subtitle">Trực quan hóa mức độ lo âu qua 5 pha; xác định huyệt đạo can thiệp lấp đầy khoảng trống Pha 3 & 4.</div>
+
+    <div class="slide-body">
+      <!-- Biểu đồ Line Chart khổng lồ rực rỡ -->
+      <div style="flex: 1.35; display: flex; flex-direction: column; height: 100%;">
+        <div class="card" style="flex: 1; padding: clamp(14px, 1.8vh, 22px); justify-content: space-between;">
+          <div style="display: flex; justify-content: space-between; align-items: center;">
+            <div class="card-title" style="margin-bottom: 0;">📈 Thang Đo Cảm Xúc Người Bệnh (Thang điểm 1 - 10)</div>
+            <span class="pill pill-red">⚡ Đỉnh Điểm Pha 4 (9/10)</span>
+          </div>
+
+          <div style="width: 100%; height: clamp(230px, 35vh, 360px);">
+            <svg viewBox="0 0 860 340" width="100%" height="100%" style="overflow: visible;">
+              <defs>
+                <linearGradient id="visCurveGrad" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#f43f5e" stop-opacity="0.5" />
+                  <stop offset="50%" stop-color="#38bdf8" stop-opacity="0.18" />
+                  <stop offset="100%" stop-color="#38bdf8" stop-opacity="0.0" />
+                </linearGradient>
+                <linearGradient id="visLineGrad" x1="0" y1="0" x2="1" y2="0">
+                  <stop offset="0%" stop-color="#10b981" />
+                  <stop offset="35%" stop-color="#f59e0b" />
+                  <stop offset="70%" stop-color="#f43f5e" />
+                  <stop offset="100%" stop-color="#38bdf8" />
+                </linearGradient>
+                <filter id="visGlow">
+                  <feGaussianBlur stdDeviation="7" result="blur" />
+                  <feComposite in="SourceGraphic" in2="blur" operator="over" />
+                </filter>
+              </defs>
+
+              <!-- Lines -->
+              <line x1="80" y1="45" x2="820" y2="45" stroke="rgba(255,255,255,0.08)" stroke-dasharray="4" />
+              <text x="65" y="50" fill="#f43f5e" font-size="12" font-family="JetBrains Mono" text-anchor="end">10 (Cực đại)</text>
+
+              <line x1="80" y1="120" x2="820" y2="120" stroke="rgba(255,255,255,0.06)" stroke-dasharray="4" />
+              <text x="65" y="125" fill="#fbbf24" font-size="12" font-family="JetBrains Mono" text-anchor="end">7 (Bất an)</text>
+
+              <line x1="80" y1="195" x2="820" y2="195" stroke="rgba(255,255,255,0.06)" stroke-dasharray="4" />
+              <text x="65" y="200" fill="#94a3b8" font-size="12" font-family="JetBrains Mono" text-anchor="end">4 (Vừa)</text>
+
+              <line x1="80" y1="270" x2="820" y2="270" stroke="rgba(255,255,255,0.06)" stroke-dasharray="4" />
+              <text x="65" y="275" fill="#10b981" font-size="12" font-family="JetBrains Mono" text-anchor="end">1 (An tâm)</text>
+
+              <!-- Highlight Box -->
+              <rect x="360" y="25" width="310" height="260" rx="14" fill="rgba(244, 63, 94, 0.08)" stroke="rgba(244, 63, 94, 0.4)" stroke-width="2" stroke-dasharray="6" />
+              <text x="515" y="44" fill="#fb7185" font-size="12" font-weight="800" text-anchor="middle" letter-spacing="1">🎯 VÙNG TRŨNG THÔNG TIN CAN THIỆP</text>
+
+              <!-- Filled curve -->
+              <path d="M 120 250 Q 220 205, 290 185 T 480 110 T 600 60 T 740 195 L 740 285 L 120 285 Z" fill="url(#visCurveGrad)" />
+
+              <!-- Main line -->
+              <path d="M 120 250 Q 220 205, 290 185 T 480 110 T 600 60 T 740 195" fill="none" stroke="url(#visLineGrad)" stroke-width="6" filter="url(#visGlow)" />
+
+              <!-- Nodes -->
+              <circle cx="120" cy="250" r="7" fill="#10b981" stroke="#ffffff" stroke-width="2" />
+              <text x="120" y="232" fill="#34d399" font-size="13" font-weight="bold" text-anchor="middle">2/10</text>
+              <text x="120" y="310" fill="#94a3b8" font-size="13" font-weight="600" text-anchor="middle">1. Lấy mẫu</text>
+
+              <circle cx="290" cy="185" r="7" fill="#f59e0b" stroke="#ffffff" stroke-width="2" />
+              <text x="290" y="166" fill="#fbbf24" font-size="13" font-weight="bold" text-anchor="middle">5/10</text>
+              <text x="290" y="310" fill="#94a3b8" font-size="13" font-weight="600" text-anchor="middle">2. Chờ sảnh</text>
+
+              <circle cx="480" cy="110" r="8" fill="#f43f5e" stroke="#ffffff" stroke-width="3" />
+              <text x="480" y="90" fill="#fb7185" font-size="14" font-weight="bold" text-anchor="middle">7/10 ↑</text>
+              <text x="480" y="310" fill="#f8fafc" font-size="13" font-weight="700" text-anchor="middle">3. Nhận App</text>
+
+              <!-- Peak Node -->
+              <circle cx="600" cy="60" r="12" fill="#f43f5e" stroke="#ffffff" stroke-width="4" filter="url(#visGlow)" />
+              <text x="600" y="34" fill="#ffffff" font-size="16" font-weight="900" font-family="JetBrains Mono" text-anchor="middle">⚡ 9/10 ĐỈNH ĐIỂM</text>
+              <text x="600" y="310" fill="#f43f5e" font-size="13" font-weight="800" text-anchor="middle">4. Tự đọc & Chờ BS</text>
+
+              <circle cx="740" cy="195" r="7" fill="#38bdf8" stroke="#ffffff" stroke-width="2" />
+              <text x="740" y="176" fill="#38bdf8" font-size="13" font-weight="bold" text-anchor="middle">4/10</text>
+              <text x="740" y="310" fill="#94a3b8" font-size="13" font-weight="600" text-anchor="middle">5. Gặp Bác sĩ</text>
+            </svg>
+          </div>
+
+          <div style="background: rgba(244, 63, 94, 0.15); border: 1px solid rgba(244, 63, 94, 0.4); border-radius: 10px; padding: 10px 16px; display: flex; align-items: center; justify-content: space-between;">
+            <div style="color: #ffffff; font-weight: 800; font-size: 14px;">🎯 LẤP ĐẦY KHOẢNG TRỐNG PHA 3 & 4</div>
+            <div style="color: #fb7185; font-size: 12px; font-weight: 600;">Chuyển hóa nỗi sợ thành 2 câu hỏi làm việc cùng Bác sĩ</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tam giác tác động 3 bên dạng Icon Card súc tích -->
+      <div style="flex: 0.65; display: flex; flex-direction: column; gap: clamp(8px, 1.2vh, 14px); height: 100%; justify-content: space-between;">
+        <div class="card" style="border-left: 4px solid #f43f5e; flex: 1; justify-content: center;">
+          <div style="font-size: 24px; margin-bottom: 4px;">👤</div>
+          <div style="font-size: 16px; font-weight: 800; color: #fb7185;">1. Người Bệnh</div>
+          <div style="font-size: 13px; color: #cbd5e1; margin-top: 3px;">Tê liệt nhận thức, nhịp tim & huyết áp tăng vọt vì tự suy diễn bệnh hiểm nghèo.</div>
+        </div>
+
+        <div class="card" style="border-left: 4px solid #f59e0b; flex: 1; justify-content: center;">
+          <div style="font-size: 24px; margin-bottom: 4px;">👨‍⚕️</div>
+          <div style="font-size: 16px; font-weight: 800; color: #fbbf24;">2. Bác Sĩ</div>
+          <div style="font-size: 13px; color: #cbd5e1; margin-top: 3px;">Mất 5–7 phút đầu ca khám chỉ để giải thích hiểu lầm bệnh nhân tự tra Google.</div>
+        </div>
+
+        <div class="card" style="border-left: 4px solid #38bdf8; flex: 1; justify-content: center;">
+          <div style="font-size: 24px; margin-bottom: 4px;">🏥</div>
+          <div style="font-size: 16px; font-weight: 800; color: #38bdf8;">3. Bệnh Viện</div>
+          <div style="font-size: 13px; color: #cbd5e1; margin-top: 3px;">Nghẽn tốc độ luân chuyển phòng khám; đứt gãy trải nghiệm khách hàng cao cấp.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="slide-footer">
+      <span>Workflow Journey Map & Emotion Analysis · Vinmec Times City</span>
+      <span>02-journey-map/workflow-journey-map.md</span>
+    </div>
+  </section>
+
+
+  <!-- ============================================== -->
+  <!-- SLIDE 04: NEED STATEMENT (STANFORD BIODESIGN)  -->
+  <!-- ============================================== -->
+  <section class="slide" id="slide-4">
+    <div class="slide-header">
+      <div class="badge-wrap">
+        <span class="brand-badge">04. Định Nghĩa Nhu Cầu</span>
+        <span class="slide-category">Stanford Biodesign Need Statement Framework</span>
+      </div>
+      <div class="slide-num">Trang 04 / 10</div>
+    </div>
+    <h2 class="slide-title">Tuyên Bố Nhu Cầu Chuẩn Stanford Biodesign</h2>
+    <div class="slide-subtitle">Loại bỏ 100% từ khóa giải pháp công nghệ (Solution-free); tập trung định nghĩa đúng bản chất vấn đề con người.</div>
+
+    <div class="slide-body" style="flex-direction: column; gap: clamp(14px, 2vh, 24px); justify-content: space-between;">
+      <!-- Khung Need Statement lớn tương phản 3 màu -->
+      <div class="card" style="background: rgba(14, 165, 233, 0.08); border: 2px solid rgba(14, 165, 233, 0.4); padding: clamp(22px, 3.5vh, 40px) clamp(26px, 3.5vw, 44px); position: relative; flex-shrink: 0;">
+        <div style="position: absolute; top: 18px; right: 24px; background: rgba(16, 185, 129, 0.15); border: 2px solid #10b981; color: #34d399; font-size: clamp(11px, 1vw, 13px); font-weight: 800; padding: 6px 16px; border-radius: 999px; text-transform: uppercase;">
+          🛡️ 100% Phi Lâm Sàng — Không Chẩn Đoán Thay Bác Sĩ
+        </div>
+
+        <div style="font-size: clamp(12px, 1.2vh, 14px); font-weight: 800; color: #38bdf8; text-transform: uppercase; margin-bottom: 12px; letter-spacing: 1px;">
+          🎯 Need Statement Chính Thức:
+        </div>
+
+        <div style="font-size: clamp(19px, 2.6vh, 28px); font-weight: 800; color: #ffffff; line-height: 1.6;">
+          "Một cách để <span style="color: #34d399; background: rgba(16, 185, 129, 0.2); padding: 4px 10px; border-radius: 6px;">giảm thiểu mức độ hoang mang lo âu và nâng cao hiểu biết chủ động</span> cho <span style="color: #38bdf8; background: rgba(14, 165, 233, 0.2); padding: 4px 10px; border-radius: 6px;">người bệnh ngoại trú dùng app MyVinmec</span> trong <span style="color: #fb923c; background: rgba(251, 146, 60, 0.2); padding: 4px 10px; border-radius: 6px;">khoảng thời gian 30–45 phút chờ tư vấn trực tiếp với bác sĩ</span>."
+        </div>
+      </div>
+
+      <!-- 4 Khối Cấu Trúc Stanford Biodesign dạng Icon to -->
+      <div class="col-4" style="flex: 1;">
+        <div class="card" style="border-top: 4px solid #34d399; justify-content: space-between; text-align: center;">
+          <div style="font-size: 32px; margin-bottom: 4px;">🎯</div>
+          <div>
+            <div style="font-size: 16px; font-weight: 800; color: #34d399;">1. Outcome</div>
+            <div style="font-size: 13px; color: #cbd5e1; margin-top: 4px;">Giảm Scanxiety từ 9/10 về 4/10; trang bị 2 câu hỏi trọng tâm.</div>
+          </div>
+          <span class="pill pill-green" style="margin: auto;">100% Tự Tin Hỏi BS</span>
+        </div>
+
+        <div class="card" style="border-top: 4px solid #38bdf8; justify-content: space-between; text-align: center;">
+          <div style="font-size: 32px; margin-bottom: 4px;">👥</div>
+          <div>
+            <div style="font-size: 16px; font-weight: 800; color: #38bdf8;">2. Population</div>
+            <div style="font-size: 13px; color: #cbd5e1; margin-top: 4px;">Người bệnh ngoại trú & người nhà dùng app MyVinmec.</div>
+          </div>
+          <span class="pill pill-blue" style="margin: auto;">Bệnh Nhân Ngoại Trú</span>
+        </div>
+
+        <div class="card" style="border-top: 4px solid #f43f5e; justify-content: space-between; text-align: center;">
+          <div style="font-size: 32px; margin-bottom: 4px;">⚠️</div>
+          <div>
+            <div style="font-size: 16px; font-weight: 800; color: #fb7185;">3. Problem</div>
+            <div style="font-size: 13px; color: #cbd5e1; margin-top: 4px;">Chữ viết tắt khó hiểu, chỉ số bôi đỏ H gây hoảng sợ.</div>
+          </div>
+          <span class="pill pill-red" style="margin: auto;">Khoảng Trống Thông Tin</span>
+        </div>
+
+        <div class="card" style="border-top: 4px solid #fb923c; justify-content: space-between; text-align: center;">
+          <div style="font-size: 32px; margin-bottom: 4px;">⏱️</div>
+          <div>
+            <div style="font-size: 16px; font-weight: 800; color: #fb923c;">4. Context</div>
+            <div style="font-size: 13px; color: #cbd5e1; margin-top: 4px;">30–45 phút tại sảnh chờ trước cửa phòng khám Bác sĩ.</div>
+          </div>
+          <span class="pill pill-amber" style="margin: auto;">30 - 45 Phút Sảnh Chờ</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="slide-footer">
+      <span>Định vị: "Bước đệm giảm xóc tâm lý" (Psychological Shock-absorber) — Hỗ trợ giao tiếp y tế</span>
+      <span>03-need-statement/need-statement.md</span>
+    </div>
+  </section>
+
+
+  <!-- ============================================== -->
+  <!-- SLIDE 05: CHUẨN MỰC QUỐC TẾ (2 DÒNG ĐẮT GIÁ)   -->
+  <!-- ============================================== -->
+  <section class="slide" id="slide-5">
+    <div class="slide-header">
+      <div class="badge-wrap">
+        <span class="brand-badge">05. Thực Tiễn Quốc Tế</span>
+        <span class="slide-category">3 Mô Hình Y Tế Hàng Đầu Thế Giới & Bài Học Cho Vinmec</span>
+      </div>
+      <div class="slide-num">Trang 05 / 10</div>
+    </div>
+    <h2 class="slide-title">Chuẩn Mực Quốc Tế & Bài Học Rút Gọn Cho Vinmec</h2>
+    <div class="slide-subtitle">Khảo cứu các giải pháp giao tiếp lâm sàng tại Mỹ và Anh; rút gọn thành các công thức hành động chính xác.</div>
+
+    <div class="slide-body">
+      <div class="col-3">
+        <!-- Mayo Clinic Card -->
+        <div class="card" style="border-top: 5px solid #38bdf8; justify-content: space-between;">
+          <div>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+              <span class="pill pill-blue">Hoa Kỳ · JAMIA 2024</span>
+              <span style="font-size: 24px;">🏥</span>
+            </div>
+            <div style="font-size: clamp(20px, 2.4vh, 24px); font-weight: 900; color: #ffffff;">Mayo Clinic</div>
+            <div class="stat-label" style="margin-bottom: 16px;">Plain Language Engine</div>
+
+            <div style="background: rgba(14, 165, 233, 0.08); border-radius: 10px; padding: 14px; font-size: 14px; color: #ffffff;">
+              <strong style="color:#38bdf8;">Mô hình:</strong> Dịch kết quả xét nghiệm sang ngôn ngữ đọc hiểu phổ thông lớp 6, giảm tải 30% tin nhắn hỏi dồn dập.
+            </div>
+          </div>
+
+          <div style="background: rgba(16, 185, 129, 0.12); border: 1.5px solid rgba(16, 185, 129, 0.4); border-radius: 12px; padding: 14px 16px;">
+            <div style="color: #34d399; font-size: 11px; font-weight: 800; text-transform: uppercase;">👉 Bài học áp dụng cho Vinmec:</div>
+            <div style="color: #ffffff; font-size: 15px; font-weight: 800; margin-top: 3px;">
+              Chuẩn bị sẵn 2 câu hỏi trọng tâm để người bệnh chủ động trao đổi cùng Bác sĩ.
+            </div>
+          </div>
+        </div>
+
+        <!-- Cleveland Clinic Card -->
+        <div class="card" style="border-top: 5px solid #10b981; justify-content: space-between;">
+          <div>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+              <span class="pill pill-green">Hoa Kỳ · Epic MyChart</span>
+              <span style="font-size: 24px;">🩺</span>
+            </div>
+            <div style="font-size: clamp(20px, 2.4vh, 24px); font-weight: 900; color: #ffffff;">Cleveland Clinic</div>
+            <div class="stat-label" style="margin-bottom: 16px;">Visual Gauge 3 Màu</div>
+
+            <div style="background: rgba(16, 185, 129, 0.08); border-radius: 10px; padding: 14px; font-size: 14px; color: #ffffff;">
+              <strong style="color:#34d399;">Mô hình:</strong> Dải đo trực quan 3 màu (Xanh / Vàng / Cam) thay thế bảng số kỹ thuật khô khan.
+            </div>
+          </div>
+
+          <div style="background: rgba(16, 185, 129, 0.12); border: 1.5px solid rgba(16, 185, 129, 0.4); border-radius: 12px; padding: 14px 16px;">
+            <div style="color: #34d399; font-size: 11px; font-weight: 800; text-transform: uppercase;">👉 Bài học áp dụng cho Vinmec:</div>
+            <div style="color: #ffffff; font-size: 15px; font-weight: 800; margin-top: 3px;">
+              Định khung an toàn dải tham chiếu (De-escalating): Phân biệt nhích nhẹ vs tổn thương.
+            </div>
+          </div>
+        </div>
+
+        <!-- NHS x Ada Health Card -->
+        <div class="card" style="border-top: 5px solid #f43f5e; justify-content: space-between;">
+          <div>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+              <span class="pill pill-red">Anh Quốc · The Lancet 2023</span>
+              <span style="font-size: 24px;">🇬🇧</span>
+            </div>
+            <div style="font-size: clamp(20px, 2.4vh, 24px); font-weight: 900; color: #ffffff;">NHS × Ada Health</div>
+            <div class="stat-label" style="margin-bottom: 16px;">Red-Flag Interception</div>
+
+            <div style="background: rgba(244, 63, 94, 0.08); border-radius: 10px; padding: 14px; font-size: 14px; color: #ffffff;">
+              <strong style="color:#fb7185;">Mô hình:</strong> Tự động ngắt luồng chatbot khi phát hiện triệu chứng nguy kịch đe dọa tính mạng.
+            </div>
+          </div>
+
+          <div style="background: rgba(16, 185, 129, 0.12); border: 1.5px solid rgba(16, 185, 129, 0.4); border-radius: 12px; padding: 14px 16px;">
+            <div style="color: #34d399; font-size: 11px; font-weight: 800; text-transform: uppercase;">👉 Bài học áp dụng cho Vinmec:</div>
+            <div style="color: #ffffff; font-size: 15px; font-weight: 800; margin-top: 3px;">
+              Ngắt luồng cấp cứu bắt buộc (< 1.0s) kết nối Hotline Vinmec 1900 23 23 89.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="slide-footer">
+      <span>Nguồn: Mayo Clinic Proceedings (2024) · JAMIA (2024) · The Lancet Digital Health (2023)</span>
+      <span>04-best-practice/international-benchmarks.md</span>
+    </div>
+  </section>
+
+
+  <!-- ============================================================ -->
+  <!-- SLIDE 06: PROTOTYPE & 5 KHIÊN GUARDRAILS (HERO SLIDE)        -->
+  <!-- ============================================================ -->
+  <section class="slide" id="slide-6">
+    <div class="slide-header">
+      <div class="badge-wrap">
+        <span class="brand-badge" style="background: rgba(16, 185, 129, 0.18); border-color: #10b981; color: #34d399;">06. Giải Pháp Prototype</span>
+        <span class="slide-category">MyVinmec Care Navigator & 5 Lớp Rào Chắn Thép</span>
+      </div>
+      <div class="slide-num">Trang 06 / 10</div>
+    </div>
+    <h2 class="slide-title">Minh Chứng Trực Quan: 3 Màn Hình Prototype & 5 Khiên Bảo Vệ</h2>
+    <div class="slide-subtitle">Sản phẩm thực tế đã code và deploy Cloud; kết hợp giao diện thẻ 3 màu, Trợ lý In-Context và rào chắn an toàn thép.</div>
+
+    <div class="slide-body">
+      <!-- Bên trái: 3 Mockup điện thoại thật tỉ lệ chuẩn dọc 9:19.4 -->
+      <div style="flex: 1.15; display: flex; gap: clamp(8px, 1.2vw, 16px); align-items: center; justify-content: center; height: 100%;">
+        <div style="flex: 1; display: flex; flex-direction: column; align-items: center; height: 100%;">
+          <div class="visual-frame" style="background: transparent; border: none; box-shadow: none;">
+            <img src="images/prototype_mockup_1.png" alt="Thẻ kết quả 3 màu" class="phone-fit">
+          </div>
+          <div style="margin-top: 4px; font-size: 12px; font-weight: 800; color: #38bdf8; text-align: center;">① Thẻ Kết Quả 3 Màu</div>
+        </div>
+
+        <div style="flex: 1.05; display: flex; flex-direction: column; align-items: center; height: 100%;">
+          <div class="visual-frame" style="background: transparent; border: none; box-shadow: none; filter: drop-shadow(0 0 16px rgba(14, 165, 233, 0.35));">
+            <img src="images/prototype_mockup_2.png" alt="Trợ lý AI MIA In-Context" class="phone-fit">
+          </div>
+          <div style="margin-top: 4px; font-size: 12px; font-weight: 800; color: #34d399; text-align: center;">② Trợ Lý MIA In-Context</div>
+        </div>
+
+        <div style="flex: 1; display: flex; flex-direction: column; align-items: center; height: 100%;">
+          <div class="visual-frame" style="background: transparent; border: none; box-shadow: none;">
+            <img src="images/prototype_mockup_3.png" alt="Cảnh báo Red-Flag" class="phone-fit">
+          </div>
+          <div style="margin-top: 4px; font-size: 12px; font-weight: 800; color: #fb7185; text-align: center;">③ Cảnh Báo Red-Flag</div>
+        </div>
+      </div>
+
+      <!-- Bên phải: 5 Lớp Khiên Bảo Vệ neon lấp đầy chiều cao -->
+      <div style="flex: 0.85; display: flex; flex-direction: column; gap: clamp(8px, 1vh, 12px); justify-content: space-between; height: 100%;">
+        <div style="font-size: 14px; font-weight: 800; color: #34d399; text-transform: uppercase; letter-spacing: 0.8px;">
+          🛡️ Kiến Trúc 5 Lớp Rào Chắn An Toàn (Guardrails):
+        </div>
+
+        <div class="card" style="border-left: 4px solid #f43f5e; padding: 12px 16px; flex: 1; justify-content: center;">
+          <div style="font-size: 15px; font-weight: 800; color: #fb7185;">🚫 Khiên 1: CẤM Chẩn Đoán Lâm Sàng</div>
+          <div style="font-size: 12px; color: #94a3b8; margin-top: 2px;">Không kết luận bệnh tật; không hành nghề y trái phép.</div>
+        </div>
+
+        <div class="card" style="border-left: 4px solid #f43f5e; padding: 12px 16px; flex: 1; justify-content: center;">
+          <div style="font-size: 15px; font-weight: 800; color: #fb7185;">💊 Khiên 2: CẤM Kê Đơn & Bán Thuốc</div>
+          <div style="font-size: 12px; color: #94a3b8; margin-top: 2px;">Khóa cứng mọi gợi ý tự trị; quyền kê đơn duy nhất thuộc Bác sĩ.</div>
+        </div>
+
+        <div class="card" style="border-left: 4px solid #f59e0b; padding: 12px 16px; flex: 1; justify-content: center;">
+          <div style="font-size: 15px; font-weight: 800; color: #fbbf24;">📚 Khiên 3: Grounded Local RAG</div>
+          <div style="font-size: 12px; color: #94a3b8; margin-top: 2px;">Giới hạn tri thức trong Từ điển Cận lâm sàng Vinmec; nhiệt độ 0.1.</div>
+        </div>
+
+        <div class="card" style="border-left: 4px solid #f43f5e; padding: 12px 16px; flex: 1; justify-content: center;">
+          <div style="font-size: 15px; font-weight: 800; color: #fb7185;">🚨 Khiên 4: Red-Flag Clinical Escalation</div>
+          <div style="font-size: 12px; color: #94a3b8; margin-top: 2px;">Ngắt kết nối LLM < 1.0s khi nguy kịch; kích hoạt nút gọi cấp cứu.</div>
+        </div>
+
+        <div class="card" style="border-left: 4px solid #38bdf8; padding: 12px 16px; flex: 1; justify-content: center;">
+          <div style="font-size: 15px; font-weight: 800; color: #38bdf8;">⚖️ Khiên 5: Khước Từ Trách Nhiệm Bắt Buộc</div>
+          <div style="font-size: 12px; color: #94a3b8; margin-top: 2px;">Disclaimer pháp lý phi lâm sàng hiện diện trong mọi phản hồi.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="slide-footer">
+      <span>Mã nguồn hoàn chỉnh: 05-prototype/index.html & api/chat.js (Agnes 3.0 Flash Engine)</span>
+      <span>Live Cloud: myvinmec-care-navigator.vercel.app</span>
+    </div>
+  </section>
+
+
+  <!-- ============================================== -->
+  <!-- SLIDE 07: THỬ NGHIỆM THỰC TẾ & 3 METRIC TO      -->
+  <!-- ============================================== -->
+  <section class="slide" id="slide-7">
+    <div class="slide-header">
+      <div class="badge-wrap">
+        <span class="brand-badge">07. Kiểm Chứng Người Thật</span>
+        <span class="slide-category">Vòng Lặp Tối Ưu Tức Thì & Đo Lường Định Lượng</span>
+      </div>
+      <div class="slide-num">Trang 07 / 10</div>
+    </div>
+    <h2 class="slide-title">Kiểm Chứng Người Thật & Chu Kỳ Tối Ưu Hóa Tức Thì</h2>
+    <div class="slide-subtitle">Trực tiếp thử nghiệm trên 3 tester độc lập; chuyển biến phản hồi thành hành động kỹ thuật trong vòng 24 giờ.</div>
+
+    <div class="slide-body" style="flex-direction: column; gap: clamp(12px, 1.8vh, 20px); justify-content: space-between;">
+      <!-- 3 Case Study Trước -> Sau -->
+      <div class="col-3" style="flex: 1;">
+        <!-- T1 -->
+        <div class="card" style="border-top: 4px solid #38bdf8; justify-content: space-between;">
+          <div style="display: flex; justify-content: space-between; align-items: center;">
+            <span class="pill pill-blue">Tester T1 (25t)</span>
+            <span style="font-size: 11px; color: #94a3b8;">Acid Uric</span>
+          </div>
+          <div style="background: rgba(244, 63, 94, 0.08); border-left: 3px solid #f43f5e; padding: 8px 12px; border-radius: 6px;">
+            <span style="color:#fb7185; font-size:11px; font-weight:800;">LỖI:</span> Văn bản dài 4 đoạn, ngại đọc lúc sốt ruột.
+          </div>
+          <div style="background: rgba(16, 185, 129, 0.1); border-left: 3px solid #10b981; padding: 8px 12px; border-radius: 6px;">
+            <span style="color:#34d399; font-size:11px; font-weight:800;">👉 SỬA NGAY:</span> Rút ngắn sang 3 bullet points, thời gian đọc giảm từ 95s $\to$ 28s.
+          </div>
+        </div>
+
+        <!-- T2 -->
+        <div class="card" style="border-top: 4px solid #f59e0b; justify-content: space-between;">
+          <div style="display: flex; justify-content: space-between; align-items: center;">
+            <span class="pill pill-amber">Tester T2 (48t)</span>
+            <span style="font-size: 11px; color: #94a3b8;">HbA1c</span>
+          </div>
+          <div style="background: rgba(244, 63, 94, 0.08); border-left: 3px solid #f43f5e; padding: 8px 12px; border-radius: 6px;">
+            <span style="color:#fb7185; font-size:11px; font-weight:800;">LỖI:</span> Thấy số đỏ muốn tự đi mua thuốc uống liền.
+          </div>
+          <div style="background: rgba(16, 185, 129, 0.1); border-left: 3px solid #10b981; padding: 8px 12px; border-radius: 6px;">
+            <span style="color:#34d399; font-size:11px; font-weight:800;">👉 SỬA NGAY:</span> Hard Negative Constraint từ chối thẳng thắn, tỷ lệ hiểu lầm về 0%.
+          </div>
+        </div>
+
+        <!-- T3 -->
+        <div class="card" style="border-top: 4px solid #f43f5e; justify-content: space-between;">
+          <div style="display: flex; justify-content: space-between; align-items: center;">
+            <span class="pill pill-red">Tester T3 (32t)</span>
+            <span style="font-size: 11px; color: #94a3b8;">Red-Flag</span>
+          </div>
+          <div style="background: rgba(244, 63, 94, 0.08); border-left: 3px solid #f43f5e; padding: 8px 12px; border-radius: 6px;">
+            <span style="color:#fb7185; font-size:11px; font-weight:800;">LỖI:</span> Bot cảnh báo tốt nhưng số cấp cứu chưa bấm gọi ngay được.
+          </div>
+          <div style="background: rgba(16, 185, 129, 0.1); border-left: 3px solid #10b981; padding: 8px 12px; border-radius: 6px;">
+            <span style="color:#34d399; font-size:11px; font-weight:800;">👉 SỬA NGAY:</span> Bổ sung nút Big Red CTA gọi tức thì <code>1900232389</code> & <code>115</code>.
+          </div>
+        </div>
+      </div>
+
+      <!-- 3 Con số kết quả khổng lồ (Headline Metrics) -->
+      <div class="col-3" style="flex-shrink: 0;">
+        <div class="card" style="text-align: center; padding: clamp(14px, 2vh, 22px); background: rgba(16, 185, 129, 0.08); border-color: rgba(16, 185, 129, 0.35);">
+          <div class="giant-stat" style="color: #10b981;">100%</div>
+          <div class="stat-label" style="color: #34d399;">Chuẩn bị được 2 câu hỏi hỏi Bác sĩ</div>
+        </div>
+
+        <div class="card" style="text-align: center; padding: clamp(14px, 2vh, 22px); background: rgba(14, 165, 233, 0.08); border-color: rgba(14, 165, 233, 0.35);">
+          <div class="giant-stat" style="color: #38bdf8;">- 70%</div>
+          <div class="stat-label" style="color: #38bdf8;">Thời gian đọc hiểu kết quả (95s → 28s)</div>
+        </div>
+
+        <div class="card" style="text-align: center; padding: clamp(14px, 2vh, 22px); background: rgba(244, 63, 94, 0.08); border-color: rgba(244, 63, 94, 0.35);">
+          <div class="giant-stat" style="color: #f43f5e;">< 1.0s</div>
+          <div class="stat-label" style="color: #fb7185;">Tốc độ ngắt luồng khi phát hiện Cấp cứu</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="slide-footer">
+      <span>Báo cáo 4 phần chuẩn Mục 79 · Bằng chứng đo lường thực tế</span>
+      <span>05-prototype/user-testing-logs.md</span>
+    </div>
+  </section>
+
+
+  <!-- ============================================== -->
+  <!-- SLIDE 08: 3 TẤM KHIÊN CAM KẾT PHÁP LÝ          -->
+  <!-- ============================================== -->
+  <section class="slide" id="slide-8">
+    <div class="slide-header">
+      <div class="badge-wrap">
+        <span class="brand-badge">08. Đạo Đức & Rủi Ro</span>
+        <span class="slide-category">Ranh Giới An Toàn Y Tế & Tuân Thủ Nghị Định 13/2023</span>
+      </div>
+      <div class="slide-num">Trang 08 / 10</div>
+    </div>
+    <h2 class="slide-title">An Toàn Người Bệnh Là Ranh Giới Bất Di Bất Dịch</h2>
+    <div class="slide-subtitle">Thiết lập 3 trụ cột phòng vệ nghiêm ngặt tuân thủ Luật Khám bệnh, chữa bệnh 2023 và Nghị định 13/2023/NĐ-CP.</div>
+
+    <div class="slide-body">
+      <div class="col-3">
+        <!-- Shield Card 1 -->
+        <div class="card" style="border: 2px solid rgba(14, 165, 233, 0.4); background: rgba(14, 165, 233, 0.06); padding: clamp(20px, 3vh, 32px); justify-content: space-between; text-align: center;">
+          <div>
+            <div style="font-size: clamp(36px, 4.5vh, 48px); margin-bottom: 8px;">🔒</div>
+            <div style="font-size: clamp(20px, 2.5vh, 26px); font-weight: 900; color: #38bdf8; margin-bottom: 4px;">ZERO PII LEAK</div>
+            <div class="stat-label" style="margin-bottom: 18px;">Bảo Vệ Dữ Liệu Nhạy Cảm</div>
+
+            <div style="font-size: 14px; color: #cbd5e1; line-height: 1.5; text-align: left;">
+              • 100% Synthetic Mock Data; không gửi tên thật hay số CCCD lên Cloud.<br>
+              • Dữ liệu phiên xóa sạch ngay khi đóng app.<br>
+              • Tuân thủ nghiêm ngặt NĐ 13/2023/NĐ-CP.
+            </div>
+          </div>
+          <span class="pill pill-blue" style="margin: auto; margin-top: 16px;">Chuẩn Bảo Mật Dữ Liệu</span>
+        </div>
+
+        <!-- Shield Card 2 -->
+        <div class="card" style="border: 2px solid rgba(16, 185, 129, 0.4); background: rgba(16, 185, 129, 0.06); padding: clamp(20px, 3vh, 32px); justify-content: space-between; text-align: center;">
+          <div>
+            <div style="font-size: clamp(36px, 4.5vh, 48px); margin-bottom: 8px;">🎯</div>
+            <div style="font-size: clamp(20px, 2.5vh, 26px); font-weight: 900; color: #34d399; margin-bottom: 4px;">NO HALLUCINATION</div>
+            <div class="stat-label" style="margin-bottom: 18px;">Kiểm Soát Ảo Giác Lâm Sàng</div>
+
+            <div style="font-size: 14px; color: #cbd5e1; line-height: 1.5; text-align: left;">
+              • Nhiệt độ sinh 0.1 triệt tiêu sáng tạo bừa bãi.<br>
+              • Khóa cứng Từ điển Cận lâm sàng nội bộ Vinmec.<br>
+              • So sánh tham chiếu bằng mã cứng deterministic <code>if-else</code>.
+            </div>
+          </div>
+          <span class="pill pill-green" style="margin: auto; margin-top: 16px;">Grounded RAG 100%</span>
+        </div>
+
+        <!-- Shield Card 3 -->
+        <div class="card" style="border: 2px solid rgba(244, 63, 94, 0.4); background: rgba(244, 63, 94, 0.06); padding: clamp(20px, 3vh, 32px); justify-content: space-between; text-align: center;">
+          <div>
+            <div style="font-size: clamp(36px, 4.5vh, 48px); margin-bottom: 8px;">🚨</div>
+            <div style="font-size: clamp(20px, 2.5vh, 26px); font-weight: 900; color: #fb7185; margin-bottom: 4px;">HARD RED-FLAG BYPASS</div>
+            <div class="stat-label" style="margin-bottom: 18px;">Ngắt Luồng Cấp Cứu Tức Thì</div>
+
+            <div style="font-size: 14px; color: #cbd5e1; line-height: 1.5; text-align: left;">
+              • Tự động ngắt chat < 1.0s khi có dấu hiệu nguy kịch.<br>
+              • Chuyển hướng gặp Điều dưỡng hoặc gọi 115.<br>
+              • Không làm chậm trễ thời gian vàng cấp cứu.
+            </div>
+          </div>
+          <span class="pill pill-red" style="margin: auto; margin-top: 16px;">Triage Khẩn Cấp < 1.0s</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="slide-footer">
+      <span>Cam kết đạo đức y tế: Không dùng dữ liệu thật khi chưa ký NDA và duyệt IRB</span>
+      <span>06-rui-ro-dao-duc/safety-and-privacy-risks.md</span>
+    </div>
+  </section>
+
+
+  <!-- =============================================================== -->
+  <!-- SLIDE 09: DẪN DẮT K4 - MA TRẬN XOAY TUA & QUALITY GATES         -->
+  <!-- =============================================================== -->
+  <section class="slide" id="slide-9">
+    <div class="slide-header">
+      <div class="badge-wrap">
+        <span class="brand-badge" style="background: rgba(245, 158, 11, 0.18); border-color: #f59e0b; color: #fbbf24;">09. Quản Trị Thực Địa K4</span>
+        <span class="slide-category">Năng Lực Điều Phối 5–10 Mentee & 3 Cổng Xét Duyệt Gắt Gao</span>
+      </div>
+      <div class="slide-num">Trang 09 / 10</div>
+    </div>
+    <h2 class="slide-title">Năng Lực Dẫn Dắt Đội Ngũ: Ma Trận Thực Địa & Kiểm Soát Cổng</h2>
+    <div class="slide-subtitle">Trực quan hóa phương thức điều phối 5–10 kỹ sư K4 theo 4 điểm chạm thực tế và cơ chế xét duyệt nghiêm ngặt.</div>
+
+    <div class="slide-body">
+      <!-- Bên trái: Bức ảnh Mentor briefing squad tại Vinmec AI Research Hub -->
+      <div style="flex: 1.05; display: flex; flex-direction: column; height: 100%;">
+        <div class="visual-frame">
+          <img src="images/coach_leading_squad.jpg" alt="Coach dẫn dắt K4 tại Vinmec">
+          <div style="position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(transparent, rgba(7, 11, 22, 0.95)); padding: 14px 18px;">
+            <div style="color: #38bdf8; font-weight: 800; font-size: 13px; text-transform: uppercase;">🔄 Ma trận xoay tua 4 trạm:</div>
+            <div style="color: #ffffff; font-size: 14px; font-weight: 600;">Tiếp đón $\to$ Lấy mẫu $\to$ Sảnh chờ $\to$ Phòng khám (Đảo chéo T2-T4 & T5-T6).</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bên phải: 3 Cổng Quality Gates khắt khe -->
+      <div style="flex: 0.95; display: flex; flex-direction: column; gap: clamp(8px, 1.2vh, 14px); height: 100%; justify-content: space-between;">
+        <div class="card" style="border-left: 4px solid #10b981; flex: 1; justify-content: center;">
+          <div style="display: flex; justify-content: space-between; align-items: center;">
+            <div style="font-size: 16px; font-weight: 800; color: #34d399;">⚑ CỔNG 1 (Tuần 2): Duyệt Need Statement</div>
+            <span class="pill pill-green">Tuần 2</span>
+          </div>
+          <div style="font-size: 13px; color: #cbd5e1; margin-top: 4px;">
+            Loại bỏ 100% từ khóa giải pháp (App/AI). Chưa đạt chuẩn Stanford Biodesign bắt buộc viết lại trước khi code.
+          </div>
+        </div>
+
+        <div class="card" style="border-left: 4px solid #f59e0b; flex: 1; justify-content: center;">
+          <div style="display: flex; justify-content: space-between; align-items: center;">
+            <div style="font-size: 16px; font-weight: 800; color: #fbbf24;">⚑ CỔNG 2 (Tuần 4): Test 3 Người Thật</div>
+            <span class="pill pill-amber">Tuần 4</span>
+          </div>
+          <div style="font-size: 13px; color: #cbd5e1; margin-top: 4px;">
+            Ép nhóm mang prototype test người dùng thật ngoài sảnh; nghiệm thu báo cáo tối ưu 4 phần trước khi vào tuần 5.
+          </div>
+        </div>
+
+        <div class="card" style="border-left: 4px solid #f43f5e; flex: 1; justify-content: center;">
+          <div style="display: flex; justify-content: space-between; align-items: center;">
+            <div style="font-size: 16px; font-weight: 800; color: #fb7185;">⚑ CỔNG 3 (Tuần 6): Demo Day Readiness</div>
+            <span class="pill pill-red">Tuần 6</span>
+          </div>
+          <div style="font-size: 13px; color: #cbd5e1; margin-top: 4px;">
+            Diễn tập Mock Pitching 10 phút súc tích; rà soát 5 lớp Guardrails y tế cam kết Zero PII Leak trước Hội đồng.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="slide-footer">
+      <span>Fieldwork Ops Blueprint & Mentorship Framework · 07-coach-plan/hospital-operations-blueprint.md</span>
+      <span>07-coach-plan/k4-coaching-framework.md</span>
+    </div>
+  </section>
+
+
+  <!-- ============================================================== -->
+  <!-- SLIDE 10: LỘ TRÌNH 6 TUẦN & QR CODE TRẢI NGHIỆM TRỰC TIẾP      -->
+  <!-- ============================================================== -->
+  <section class="slide" id="slide-10">
+    <div class="slide-header">
+      <div class="badge-wrap">
+        <span class="brand-badge">10. Cam Kết & Trải Nghiệm</span>
+        <span class="slide-category">Kế Hoạch Dẫn Dắt 6 Tuần & Quét Mã QR Trải Nghiệm Trực Tiếp</span>
+      </div>
+      <div class="slide-num">Trang 10 / 10</div>
+    </div>
+    <h2 class="slide-title">Kế Hoạch Hành Động 6 Tuần & Trải Nghiệm Trực Tiếp Sản Phẩm</h2>
+    <div class="slide-subtitle">Sẵn sàng nhận nhiệm vụ Forward Deployed Engineer; bảo chứng chất lượng và hướng tới kết quả thực địa.</div>
+
+    <div class="slide-body">
+      <!-- Bên trái: Timeline 6 tuần & 3 Cam kết vàng -->
+      <div style="flex: 1.15; display: flex; flex-direction: column; gap: clamp(10px, 1.4vh, 16px); height: 100%; justify-content: space-between;">
+        <div class="card" style="padding: clamp(14px, 1.8vh, 20px);">
+          <div style="font-size: 15px; font-weight: 800; color: #38bdf8; margin-bottom: 8px;">
+            📅 Lộ Trình Triển Khai 6 Tuần Tới Demo Day
+          </div>
+          <div style="display: grid; grid-template-columns: repeat(6, 1fr); gap: 6px; text-align: center;">
+            <div style="background: rgba(255,255,255,0.04); border-radius: 8px; padding: 8px 4px;">
+              <div style="color: #38bdf8; font-weight: 800; font-size: 11px;">T0</div>
+              <div style="color: #cbd5e1; font-size: 9px; margin-top: 2px;">Ký NDA & Test</div>
+            </div>
+            <div style="background: rgba(255,255,255,0.04); border-radius: 8px; padding: 8px 4px;">
+              <div style="color: #38bdf8; font-weight: 800; font-size: 11px;">T1</div>
+              <div style="color: #cbd5e1; font-size: 9px; margin-top: 2px;">Thực địa viện</div>
+            </div>
+            <div style="background: rgba(16, 185, 129, 0.15); border: 1px solid #10b981; border-radius: 8px; padding: 8px 4px;">
+              <div style="color: #34d399; font-weight: 800; font-size: 11px;">T2 ⚑</div>
+              <div style="color: #ffffff; font-size: 9px; font-weight: 700; margin-top: 2px;">CỔNG 1</div>
+            </div>
+            <div style="background: rgba(255,255,255,0.04); border-radius: 8px; padding: 8px 4px;">
+              <div style="color: #38bdf8; font-weight: 800; font-size: 11px;">T3</div>
+              <div style="color: #cbd5e1; font-size: 9px; margin-top: 2px;">Prototype 48h</div>
+            </div>
+            <div style="background: rgba(245, 158, 11, 0.15); border: 1px solid #f59e0b; border-radius: 8px; padding: 8px 4px;">
+              <div style="color: #fbbf24; font-weight: 800; font-size: 11px;">T4 ⚑</div>
+              <div style="color: #ffffff; font-size: 9px; font-weight: 700; margin-top: 2px;">CỔNG 2</div>
+            </div>
+            <div style="background: rgba(244, 63, 94, 0.18); border: 1px solid #f43f5e; border-radius: 8px; padding: 8px 4px;">
+              <div style="color: #fb7185; font-weight: 800; font-size: 11px;">T6 ⚑</div>
+              <div style="color: #ffffff; font-size: 9px; font-weight: 700; margin-top: 2px;">DEMO DAY</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3 Cam kết vàng của Coach K2 -->
+        <div class="card" style="border-left: 4px solid #10b981; background: rgba(16, 185, 129, 0.06); padding: clamp(14px, 1.8vh, 22px); flex: 1; justify-content: space-between;">
+          <div style="font-size: 15px; font-weight: 800; color: #34d399; margin-bottom: 6px;">
+            🤝 3 Cam Kết Vàng Của Cựu Học Viên K2 Nguyễn Xuân Tài
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 8px; font-size: 13px; color: #f1f5f9; line-height: 1.45;">
+            <div>✓ <strong>Túc trực hiện trường 100%:</strong> Có mặt đầy đủ các buổi thứ Sáu Checkpoint và đồng hành thực địa tại các khoa phòng Vinmec.</div>
+            <div>✓ <strong>Kỷ luật bảo mật tuyệt đối:</strong> 100% mentee tuân thủ NĐ 13/2023/NĐ-CP; đạt điểm test an toàn ≥ 80% mới vào viện.</div>
+            <div>✓ <strong>Phản hồi hành động P-B-A:</strong> Khen ngợi (Praise) $\to$ Chỉ điểm nghẽn (Bottleneck) $\to$ Hành động sửa đổi trong 24h (Action).</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bên phải: Khung Quét QR Code Khổng Lồ Mở Live Demo -->
+      <div style="flex: 0.85; display: flex; flex-direction: column; height: 100%;">
+        <div class="card" style="flex: 1; align-items: center; justify-content: space-between; text-align: center; border: 2px solid #38bdf8; background: radial-gradient(circle at 50% 50%, rgba(14, 165, 233, 0.16) 0%, rgba(15, 23, 42, 0.8) 80%); padding: clamp(16px, 2.2vh, 26px);">
+          <div>
+            <div style="font-size: clamp(15px, 1.8vh, 18px); font-weight: 900; color: #ffffff; text-transform: uppercase; letter-spacing: 0.8px;">
+              📱 TRẢI NGHIỆM TRỰC TIẾP PROTOTYPE
+            </div>
+            <div style="font-size: 12px; color: #94a3b8; margin-top: 2px;">
+              Quét mã QR để mở bản Web App ngay trên điện thoại
+            </div>
+          </div>
+
+          <!-- QR Code Frame -->
+          <div style="background: #ffffff; padding: 12px; border-radius: 16px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); display: inline-block;">
+            <img src="images/qr_demo.png" alt="Mã QR mở Live Demo Vercel" style="width: clamp(130px, 18vh, 175px); height: clamp(130px, 18vh, 175px); display: block;">
+          </div>
+
+          <div>
+            <div style="display: inline-flex; align-items: center; gap: 6px; background: rgba(16, 185, 129, 0.15); border: 1px solid #10b981; color: #34d399; padding: 4px 14px; border-radius: 999px; font-size: 11px; font-weight: 800; margin-bottom: 6px;">
+              <span style="display: inline-block; width: 7px; height: 7px; background: #10b981; border-radius: 50%; box-shadow: 0 0 8px #10b981;"></span>
+              LIVE VERCEL PRODUCTION DEPLOYMENT
+            </div>
+
+            <div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #38bdf8; word-break: break-all; margin-bottom: 4px;">
+              https://myvinmec-care-navigator.vercel.app
+            </div>
+            <div style="font-size: 11px; color: #64748b;">
+              GitHub: github.com/tainx287/vinmec-exploration-sprint
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="slide-footer">
+      <span>Trân trọng cảm ơn Hội đồng Tuyển chọn VinUni VRIC & Hệ thống Y tế Quốc tế Vinmec!</span>
+      <span>Ứng viên: Nguyễn Xuân Tài · Forward Deployed Engineer / K4 Coach</span>
+    </div>
+  </section>
+
+  <script>
+    // Smooth presentation keyboard navigation for presenter remote and arrows
+    document.addEventListener('keydown', (e) => {
+      const slides = Array.from(document.querySelectorAll('.slide'));
+      const windowH = window.innerHeight;
+      let currentIndex = slides.findIndex(s => {
+        const rect = s.getBoundingClientRect();
+        return rect.top >= -windowH / 2 && rect.top < windowH / 2;
+      });
+      if (currentIndex === -1) currentIndex = 0;
+
+      if (['ArrowDown', 'ArrowRight', 'PageDown', ' '].includes(e.key)) {
+        if (currentIndex < slides.length - 1) {
+          e.preventDefault();
+          slides[currentIndex + 1].scrollIntoView({ behavior: 'smooth' });
+        }
+      } else if (['ArrowUp', 'ArrowLeft', 'PageUp'].includes(e.key)) {
+        if (currentIndex > 0) {
+          e.preventDefault();
+          slides[currentIndex - 1].scrollIntoView({ behavior: 'smooth' });
+        }
+      } else if (e.key === 'Home') {
+        e.preventDefault();
+        slides[0].scrollIntoView({ behavior: 'smooth' });
+      } else if (e.key === 'End') {
+        e.preventDefault();
+        slides[slides.length - 1].scrollIntoView({ behavior: 'smooth' });
+      }
+    });
+  </script>
+</body>
+</html>
